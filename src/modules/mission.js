@@ -1,0 +1,114 @@
+import axios from 'axios'
+import Ultilities from '../Ultilities/global'
+
+export const MISSION_REQUEST = 'mission/MISSION_REQUEST'
+export const MISSION_RESPONSE = 'mission/MISSION_RESPONSE'
+export const MISSION_FINISH = 'mission/MISSION_FINISH'
+export const MISSION_RESPONSE_MORE = 'mission/MISSION_RESPONSE_MORE'
+
+const initialState = {
+  data: [],
+  waiting: false
+}
+
+export default (state = initialState, action) => {
+  switch (action.type) {
+    case MISSION_REQUEST:
+      return {
+        ...state,
+        waiting: true
+      }
+    case MISSION_RESPONSE:
+      return {
+        ...state,
+        data: action.data,
+        totalRecords: action.totalRecords,
+        waiting: false
+      }
+    case MISSION_FINISH:
+      return {
+        ...state,
+        dataFinish: action.data
+      }
+    case MISSION_RESPONSE_MORE:
+      return {
+        ...state,
+        data: state.data.concat(action.data),
+        totalRecords: action.totalRecords,
+        waiting: false
+      }
+    default:
+      return state
+  }
+}
+
+export const getData = (limit, offset, token) => {
+  var header = {
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "bearer " + token,
+    }
+  }
+  return dispatch => {
+    dispatch({
+      type: MISSION_REQUEST
+    })
+    var url = Ultilities.base_url() + "mission?limit=" + limit + "&offset=" + offset;
+    return axios.get(url, header).then(function (response) {
+      dispatch({
+        type: MISSION_RESPONSE,
+        data: response.data.dataArr,
+        totalRecords: response.data.totalRecords
+      })
+    }).catch(function (error) {
+      console.log(error);
+    })
+  }
+}
+
+export const finishData = (id, scoin, token) => {
+  var header = {
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "bearer " + token,
+    }
+  }
+  return dispatch => {
+    dispatch({
+      type: MISSION_REQUEST
+    })
+    var url = Ultilities.base_url() + "mission?missionId=" + id;
+    return axios.post(url, {scoinToken: scoin}, header).then(function (response) {
+      dispatch({
+        type: MISSION_FINISH,
+        data: response
+      })
+    }).catch(function (error) {
+      console.log(error);
+    })
+  }
+}
+
+export const getMoreData = (limit, offset, token) => {
+  var header = {
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "bearer " + token,
+    }
+  }
+  return dispatch => {
+    dispatch({
+      type: MISSION_REQUEST
+    })
+    var url = Ultilities.base_url() + "mission?limit=" + limit + "&offset=" + offset;
+    return axios.get(url, header).then(function (response) {
+      dispatch({
+        type: MISSION_RESPONSE_MORE,
+        data: response.data.dataArr,
+        totalRecords: response.data.totalRecords
+      })
+    }).catch(function (error) {
+      console.log(error);
+    })
+  }
+}
