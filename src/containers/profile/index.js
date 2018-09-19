@@ -141,12 +141,20 @@ class Profile extends React.Component {
 	handleChangeFile = (FileList) => {
 		this.setState({ avatar: FileList[0] });
 	}
+	convettoLocaleString(value){
+		return value.toLocaleString();
+	}
 
 	render() {
 		const { theme } = this.props;
 		const { secondary } = theme.palette;
 		const { classes } = this.props;
 		const { fullScreen } = this.props;
+		var splayPoint=this.props.data.splayPoint;
+		if(splayPoint !== undefined){
+			splayPoint=this.convettoLocaleString(splayPoint);
+		}
+		
 		let phoneNumber= this.props.data.phoneNumber;
 		let str_phone = "";
 		if (phoneNumber !== undefined && phoneNumber !== "") {
@@ -196,7 +204,7 @@ class Profile extends React.Component {
 										<ListItemText primary={(<span style={{ fontWeight: "500" }}>VIP <span style={{ color: secondary.main }}>{this.props.data.vipLevel}</span></span>)} />
 									</ListItem>
 									<ListItem>
-										<ListItemText primary={(<span style={{ fontWeight: "500" }}>Thịt <span className="global-thit" style={{ color: "#f8b03c" }}>{(this.props.profileData.splayPoint) ? this.props.profileData.splayPoint.toLocaleString() : "0"} <img alt="just alt"
+										<ListItemText primary={(<span style={{ fontWeight: "500" }}>Thịt <span className="global-thit" style={{ color: "#f8b03c" }}>{splayPoint} <img alt="just alt"
 											src="../thit.png" /></span></span>)} />
 									</ListItem>
 									<ListItem>
@@ -279,7 +287,7 @@ class Profile extends React.Component {
 							</ListItem>
 							<ListItem>
 								<ListItemText primary="Thịt" secondary={(
-									<span className="global-thit">{this.props.profileData.splayPoint.toLocaleString()} <img alt="just alt"
+									<span className="global-thit">{splayPoint} <img alt="just alt"
 										src="../thit.png" /></span>)} />
 							</ListItem>
 						</List>

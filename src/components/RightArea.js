@@ -181,7 +181,7 @@ class RightArea extends React.Component {
 										"marginLeft": "5px",
 									}}>{obj.subTitle}</span>) : (<span></span>)}</span>)}
 										secondary={(<span>{"Hơn " + obj.downloadTurns + " lượt tải"}<br />
-											<div style={{marginTop:"5px"}}>
+											<span style={{marginTop:"5px"}}>
 												<Rating point={obj.pointReview}></Rating>
 												<span style={{
 																marginLeft:"20px",
@@ -189,9 +189,9 @@ class RightArea extends React.Component {
 																border: "1px solid #23c9b6",
 																padding:"1px 2px",
 																borderRadius: "20px"}}>
-																<label style={{color:"#23c9b6"}}>{this.getTheLoai(obj)}</label>
+																<span style={{color:"#23c9b6"}}>{this.getTheLoai(obj)}</span>
 														</span>
-											</div>
+											</span>
 										</span>)} />
 									<Button
 										style={{
