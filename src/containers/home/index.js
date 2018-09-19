@@ -453,6 +453,7 @@ class Home extends React.Component {
 												"marginLeft": "5px",
 											}}>{obj.subTitle}</span>) : (<span></span>)}</span>)}
 												secondary={(<span>{"Hơn " + obj.downloadTurns + " lượt tải"}<br />
+												<div style={{marginTop:"5px"}}>
 													<Rating point={obj.pointReview}></Rating>
 													<span style={{
 															marginLeft:"20px",
@@ -462,6 +463,7 @@ class Home extends React.Component {
 															borderRadius: "20px"}}>
 															<label style={{color:"#23c9b6"}}>{this.getTheLoai(obj)}</label>
 													</span>
+													</div>
 												</span>)} />
 											<Button
 												style={{

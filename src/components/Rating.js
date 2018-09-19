@@ -11,11 +11,11 @@ class Rating extends React.Component {
 			<span style={{lineHeight:"1em"}}>
 				{component.map((obj, key) => {
 					if(this.props.point <= obj-1){
-						return (<StarBorder key={key} style={{width:"16px"}}></StarBorder>)
+						return (<StarBorder key={key} style={{width:"16px", height:"16px",marginTop:"2px"}}></StarBorder>)
 					}else if(this.props.point < obj){
-						return (<StarHalf key={key} style={{width:"16px"}}></StarHalf>)
+						return (<StarHalf key={key} style={{width:"16px", height:"16px"}}></StarHalf>)
 					}else{
-						return (<Star key={key} style={{width:"16px"}}></Star>)
+						return (<Star key={key} style={{width:"16px", height:"16px"}}></Star>)
 					}
 				})}
 			</span>

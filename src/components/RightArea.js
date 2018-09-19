@@ -55,6 +55,19 @@ class RightArea extends React.Component {
 	goToLink(id) {
 		this.props.getDataDetail(id);
 	}
+	getTheLoai=(obj)=>{
+		var tagsList=obj.tagsList;
+		var theloai="";
+		if (tagsList !== undefined) {
+			for(var i=0; i<tagsList.length;i++){
+				if (tagsList[i].typeName === "theloai") {
+					theloai=tagsList[i].name;
+					break;
+				}
+			};
+		}
+		return theloai;
+	}
 
 	render() {
 		const { classes } = this.props;
@@ -168,7 +181,17 @@ class RightArea extends React.Component {
 										"marginLeft": "5px",
 									}}>{obj.subTitle}</span>) : (<span></span>)}</span>)}
 										secondary={(<span>{"Hơn " + obj.downloadTurns + " lượt tải"}<br />
-											<Rating point={obj.pointReview}></Rating>
+											<div style={{marginTop:"5px"}}>
+												<Rating point={obj.pointReview}></Rating>
+												<span style={{
+																marginLeft:"20px",
+																fontSize:"11px",
+																border: "1px solid #23c9b6",
+																padding:"1px 2px",
+																borderRadius: "20px"}}>
+																<label style={{color:"#23c9b6"}}>{this.getTheLoai(obj)}</label>
+														</span>
+											</div>
 										</span>)} />
 									<Button
 										style={{
