@@ -36,6 +36,7 @@ import RightArea from '../../components/RightArea'
 import Notification from '../../components/Notification'
 import Hidden from 'material-ui/Hidden'
 
+
 const styles = {
 	paper: {
 		background: "#2b323d"
@@ -85,24 +86,14 @@ class Auction_detail extends React.Component {
 			itemImage: ""
 		};
 	}
-
-	handleCloseDialog = () => {
-		this.setState({ dialogOpen: false });
-	};
-
-	handleCloseSnack = () => {
-		this.setState({ openSnack: false });
-	};
-
-	handleOpenDialog = () => {
-		this.setState({ dialogOpen: true });
-		this.props.getDataId(this.props.match.params.id)
-	};
+	componentWillUnmount() {
+		var user = JSON.parse(localStorage.getItem("user"));
+		if (user !== null) {
+			this.state.socket.disconnect();
+		}
+	}
 
 	componentDidMount() {
-		const { theme } = this.props;
-		const { primary, secondary } = theme.palette;
-		const { classes } = this.props;
 		var _this = this;
 		var user = JSON.parse(localStorage.getItem("user"));
 		this.props.getHistoryData(this.props.match.params.id, this.state.limit, this.state.offset).then(function () {
@@ -138,13 +129,19 @@ class Auction_detail extends React.Component {
 			_this.setState({ dialogLoginOpen: true });
 		}
 	}
+	
+	handleCloseDialog = () => {
+		this.setState({ dialogOpen: false });
+	};
 
-	componentWillUnmount() {
-		var user = JSON.parse(localStorage.getItem("user"));
-		if (user !== null) {
-			this.state.socket.disconnect();
-		}
-	}
+	handleCloseSnack = () => {
+		this.setState({ openSnack: false });
+	};
+
+	handleOpenDialog = () => {
+		this.setState({ dialogOpen: true });
+		this.props.getDataId(this.props.match.params.id)
+	};
 
 	loadMoreAction = () => {
 		var _this = this;
@@ -202,7 +199,11 @@ class Auction_detail extends React.Component {
 	}
 
 	render() {
-		// console.log("DATA",this.props.data);
+		var dataHistory=this.props.dataHistory;
+		var lengthHistory=0;
+		if(dataHistory){
+			lengthHistory=this.props.dataHistory.length;
+		}
 		const { theme } = this.props;
 		const { secondary } = theme.palette;
 		const { classes } = this.props;
@@ -325,11 +326,11 @@ class Auction_detail extends React.Component {
 							<Grid item xs={12}>
 								<span style={{ fontSize: "1.2em", color: "#fff" }}>Lịch sử</span>
 							</Grid>
-							{(this.props.dataHistory.length <= 0) ? (<Grid item xs={12} style={{ textAlign: "center", color: "#fff" }}>Không có lịch sử</Grid>) : (<span></span>)}
+							{(lengthHistory <= 0) ? (<Grid item xs={12} style={{ textAlign: "center", color: "#fff" }}>Không có lịch sử</Grid>) : (<span></span>)}
 							<Grid item xs={12}>
-								{this.props.dataHistory !== undefined && <div style={{ padding: "0px" }}>
+								{dataHistory !== undefined && <div style={{ padding: "0px" }}>
 									<List className="auction-history-list-root">
-										{this.props.dataHistory.map((obj, key) => (
+										{dataHistory.map((obj, key) => (
 											<ListItem key={key} style={{ padding: "8px" }}>
 												<ListItemText primary={(<span style={{ color: "#fff" }}>{obj.userPaid}</span>)}
 													secondary={(<span style={{ color: "#fff" }}>{moment(obj.createOn).format("hh:mm DD/MM/YYYY")}</span>)} />
