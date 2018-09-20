@@ -94,6 +94,7 @@ class Giftcode_detail extends React.Component {
 	}
 
 	takeGiftcode = (id) => {
+		console.log("AAAAAAAAAAAAAAAAAAAAAAAA");
 		const { theme } = this.props;
 		const { error, success } = theme.palette;
 		var user = JSON.parse(localStorage.getItem("user"));
@@ -277,7 +278,7 @@ class Giftcode_detail extends React.Component {
 																<Avatar style={{ width: "30px", height: "30px" }}><CloseIcon></CloseIcon></Avatar>)}
 														<ListItemText primary={(<span style={{ color: "#fff" }}>Đăng nhập Splay</span>)} >
 														</ListItemText>
-														{/* <ListItemText primary={(user !== null) ? 
+														<ListItemText primary={(user !== null) ? 
 															"" : (<Button variant="raised" 
 																style={{
 																	borderRadius: "20px",
@@ -291,8 +292,8 @@ class Giftcode_detail extends React.Component {
 																	minWidth: "auto",
 																	minHeight: "auto"
 																}}
-																onClick={() => _this.loginAction}>THỰC HIỆN
-															</Button>)}></ListItemText> */}
+																onClick={this.loginAction}>THỰC HIỆN
+															</Button>)}></ListItemText>
 														<div className="giftcode-check"></div>
 													</ListItem>
 												}
@@ -308,8 +309,7 @@ class Giftcode_detail extends React.Component {
 														<span style={{ color: "#1f95e7", marginLeft:"15px" }}>Chia sẻ Link trên Facebook</span>
 														<ListItemText primary={(user !== null) ? (<FacebookShareButton
 															url={_this.props.data[0].giftcodeEvent.urlShareFB}>
-															<Button variant="raised" 
-																style={{
+															<Button style={{
 																	borderRadius: "20px",
 																	background:"#232b36",
 																	float:"right",
@@ -321,9 +321,8 @@ class Giftcode_detail extends React.Component {
 																	minWidth: "auto",
 																	minHeight: "auto"
 																}}
-																onClick={() => _this.linkClicked}>THỰC HIỆN
-															</Button></FacebookShareButton>) : (<Button variant="raised" 
-																style={{
+																onClick={this.linkClicked}>THỰC HIỆN
+															</Button></FacebookShareButton>) : (<Button style={{
 																	borderRadius: "20px",
 																	background:"#232b36",
 																	float:"right",
@@ -335,7 +334,7 @@ class Giftcode_detail extends React.Component {
 																	minWidth: "auto",
 																	minHeight: "auto"
 																}}
-																onClick={() => _this.linkClicked}>THỰC HIỆN
+																onClick={this.linkClicked}>THỰC HIỆN
 															</Button>)}></ListItemText>
 														<div className="giftcode-check"></div>
 													</ListItem>
@@ -347,8 +346,7 @@ class Giftcode_detail extends React.Component {
 																<Avatar style={{ width: "30px", height: "30px" }}><CloseIcon></CloseIcon></Avatar>)}
 														<span style={{ color: "#1f95e7", marginLeft:"15px" }}>Đăng nhập vào game</span>
 														<ListItemText primary={(
-															<Button variant="raised" 
-															style={{
+															<Button style={{
 																borderRadius: "20px",
 																background:"#232b36",
 																float:"right",
