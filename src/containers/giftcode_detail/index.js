@@ -65,9 +65,6 @@ class Giftcode_detail extends React.Component {
 		};
 	}
 
-	loginAction = () => {
-		window.location.replace(`http://graph.vtcmobile.vn/oauth/authorize?client_id=707fece431a0948c498d43e881acd2c5&agencyid=0&redirect_uri=${window.location.protocol}//${window.location.host}/`);
-	}
 
 	handleChange = (event, value) => {
 		this.setState({ value });
@@ -165,7 +162,9 @@ class Giftcode_detail extends React.Component {
 		copy(text);
 		this.setState({ openSnack: true, message: "Đã sao chép " + text, snackVariant: "info" });
 	}
-
+	loginAction = () => {
+		window.location.replace(`http://graph.vtcmobile.vn/oauth/authorize?client_id=707fece431a0948c498d43e881acd2c5&agencyid=0&redirect_uri=${window.location.protocol}//${window.location.host}/`);
+	}
 	render() {
 		var user = JSON.parse(localStorage.getItem("user"));
 		const { theme } = this.props;
@@ -276,7 +275,24 @@ class Giftcode_detail extends React.Component {
 														{(this.state.logged) ? (<Avatar
 															style={{ backgroundColor: green[700], width: "30px", height: "30px" }}><CheckIcon></CheckIcon></Avatar>) : (
 																<Avatar style={{ width: "30px", height: "30px" }}><CloseIcon></CloseIcon></Avatar>)}
-														<ListItemText primary={(<span style={{ color: "#fff" }}>Đăng nhập Splay</span>)} ></ListItemText>
+														<ListItemText primary={(<span style={{ color: "#fff" }}>Đăng nhập Splay</span>)} >
+														</ListItemText>
+														{/* <ListItemText primary={(user !== null) ? 
+															"" : (<Button variant="raised" 
+																style={{
+																	borderRadius: "20px",
+																	background:"#232b36",
+																	float:"right",
+																	color: "#00948d",
+																	border: "1px solid #00948d",
+																	padding: "10px",
+																	fontSize: "0.7em",
+																	whiteSpace: "nowrap",
+																	minWidth: "auto",
+																	minHeight: "auto"
+																}}
+																onClick={() => _this.loginAction}>THỰC HIỆN
+															</Button>)}></ListItemText> */}
 														<div className="giftcode-check"></div>
 													</ListItem>
 												}
@@ -289,10 +305,38 @@ class Giftcode_detail extends React.Component {
 														{(isShared) ? (<Avatar
 															style={{ backgroundColor: green[700], width: "30px", height: "30px" }}><CheckIcon></CheckIcon></Avatar>) : (
 																<Avatar style={{ width: "30px", height: "30px" }}><CloseIcon></CloseIcon></Avatar>)}
+														<span style={{ color: "#1f95e7", marginLeft:"15px" }}>Chia sẻ Link trên Facebook</span>
 														<ListItemText primary={(user !== null) ? (<FacebookShareButton
-															url={_this.props.data[0].giftcodeEvent.urlShareFB}><span
-																style={{ color: "#1f95e7" }} onClick={_this.linkClicked}>Chia sẻ Link trên Facebook</span></FacebookShareButton>) : (<span
-																	style={{ color: "#1f95e7" }} onClick={_this.linkClicked}>Chia sẻ Link trên Facebook</span>)}></ListItemText>
+															url={_this.props.data[0].giftcodeEvent.urlShareFB}>
+															<Button variant="raised" 
+																style={{
+																	borderRadius: "20px",
+																	background:"#232b36",
+																	float:"right",
+																	color: "#00948d",
+																	border: "1px solid #00948d",
+																	padding: "10px",
+																	fontSize: "0.7em",
+																	whiteSpace: "nowrap",
+																	minWidth: "auto",
+																	minHeight: "auto"
+																}}
+																onClick={() => _this.linkClicked}>THỰC HIỆN
+															</Button></FacebookShareButton>) : (<Button variant="raised" 
+																style={{
+																	borderRadius: "20px",
+																	background:"#232b36",
+																	float:"right",
+																	color: "#00948d",
+																	border: "1px solid #00948d",
+																	padding: "10px",
+																	fontSize: "0.7em",
+																	whiteSpace: "nowrap",
+																	minWidth: "auto",
+																	minHeight: "auto"
+																}}
+																onClick={() => _this.linkClicked}>THỰC HIỆN
+															</Button>)}></ListItemText>
 														<div className="giftcode-check"></div>
 													</ListItem>
 												}
@@ -301,10 +345,24 @@ class Giftcode_detail extends React.Component {
 														{(obj.loginGame) ? (<Avatar
 															style={{ backgroundColor: green[700], width: "30px", height: "30px" }}><CheckIcon></CheckIcon></Avatar>) : (
 																<Avatar style={{ width: "30px", height: "30px" }}><CloseIcon></CloseIcon></Avatar>)}
-														<ListItemText primary={(<a target="_blank" style={{
-															color: "#1f95e7",
-															textDecoration: "none"
-														}} href={_this.props.data[0].giftcodeEvent.scoinGameObject.website}>Đăng nhập vào game</a>)}></ListItemText>
+														<span style={{ color: "#1f95e7", marginLeft:"15px" }}>Đăng nhập vào game</span>
+														<ListItemText primary={(
+															<Button variant="raised" 
+															style={{
+																borderRadius: "20px",
+																background:"#232b36",
+																float:"right",
+																color: "#00948d",
+																border: "1px solid #00948d",
+																padding: "10px",
+																fontSize: "0.7em",
+																whiteSpace: "nowrap",
+																minWidth: "auto",
+																minHeight: "auto"
+															}}
+															href={_this.props.data[0].giftcodeEvent.scoinGameObject.website}>THỰC HIỆN
+														</Button>
+														)}></ListItemText>
 														<div className="giftcode-check"></div>
 													</ListItem>
 												}
