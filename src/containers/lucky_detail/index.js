@@ -236,12 +236,19 @@ class Lucky_detail extends React.Component {
 	showItem = () => {
 		this.setState({ dialogItemOpen: true });
 	}
+	convettoLocaleString(value){
+		return value.toLocaleString();
+	}
 
 	render() {
 		const { fullScreen } = this.props;
 		const { theme } = this.props;
 		const { secondary } = theme.palette;
 		const { classes } = this.props;
+		var splayPoint=this.props.dataProfile.splayPoint;
+		if(splayPoint !== undefined){
+			splayPoint=this.convettoLocaleString(splayPoint);
+		}
 		var _this = this;
 		return (this.state.cardArr.length > 0) ? (
 			<div className="lucky-detail-root" style={{ marginTop: "8px" }}>
@@ -411,7 +418,7 @@ class Lucky_detail extends React.Component {
 						</List>
 					</DialogContent>
 					<DialogActions>
-						<div><span className="global-thit"><span style={{ color: "#fe8731" }} >{(this.props.profileData.splayPoint) ? this.props.profileData.splayPoint.toLocaleString() : "0" + " thịt"}</span> <img alt="just alt" src="../thit.png" /></span></div>
+						<div><span className="global-thit"><span style={{ color: "#fe8731" }} >{splayPoint + " thịt"}</span> <img alt="just alt" src="../thit.png" /></span></div>
 						<div>
 							<Button onClick={this.handleCloseDialog} style={{ color: "#fe8731" }}>
 								Đóng
