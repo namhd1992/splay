@@ -336,7 +336,7 @@ class Auction_detail extends React.Component {
 													secondary={(<span style={{ color: "#fff" }}>{moment(obj.createOn).format("hh:mm DD/MM/YYYY")}</span>)} />
 												<ListItemText style={{ textAlign: "right" }}
 													primary={<span className="global-thit" style={{ color: "#fe8731" }}><img
-														alt="just alt" src="../thit.png" /> {obj.currentPrice} </span>} />
+														alt="just alt" src="../thit.png" /> {obj.currentPrice.toLocaleString()} </span>} />
 											</ListItem>
 										))}
 									</List>
