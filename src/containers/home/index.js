@@ -22,16 +22,13 @@ import Dialog, {
 	withMobileDialog,
 } from 'material-ui/Dialog'
 import PropTypes from 'prop-types'
-import Slider from 'react-slick'
 import { withStyles } from 'material-ui/styles'
 import Ultilities from '../../Ultilities/global'
 import HeadMenu from '../../components/HeadMenu'
 import moment from 'moment'
-import StarRate from 'material-ui-icons/Star'
 import Hidden from 'material-ui/Hidden'
 import Rating from '../../components/Rating'
 import Divider from 'material-ui/Divider'
-import RightArea from '../../components/RightArea'
 
 const styles = theme => ({
 	gridItem: {
@@ -468,14 +465,15 @@ class Home extends React.Component {
 											<Button
 												style={{
 													borderRadius: "20px",
-													background: "linear-gradient(90deg,#22cab5,#3fe28f)",
-													color: "#fff",
+													background:"#232b36",
+													float:"right",
+													color: "#00948d",
+													border: "1px solid #00948d",
 													padding: "10px",
-													fontSize: "0.8em",
+													fontSize: "0.7em",
 													whiteSpace: "nowrap",
 													minWidth: "auto",
-													minHeight: "auto",
-													padding: "8px"
+													minHeight: "auto"
 												}}>Chơi</Button>
 											{/* {(obj.subTitle === "hot")
 										? (<div className="game-item-hot"><div className="game-item-new-inside"><div className="content">Hot</div></div></div>)
@@ -549,14 +547,14 @@ class Home extends React.Component {
 													<div>
 														<Button color="primary" style={{
 															borderRadius: "20px",
-															background: "linear-gradient(90deg,#22cab5,#3fe28f)",
-															color: "#fff",
+															background:"#232b36",
+															color: "#00948d",
+															border: "1px solid #00948d",
 															padding: "10px",
-															fontSize: "0.8em",
+															fontSize: "0.7em",
 															whiteSpace: "nowrap",
 															minWidth: "auto",
-															minHeight: "auto",
-															padding: "8px"
+															minHeight: "auto"
 														}}>
 															Chi tiết
                         </Button>
@@ -755,8 +753,9 @@ class Home extends React.Component {
 													classes={{ root: classes.missionBtn, label: classes.missionBtnLabelGhost }}
 													style={{
 														borderRadius: "20px",
-														background: "linear-gradient(90deg,#22cab5,#3fe28f)",
-														color: "#fff",
+														background:"#232b36",
+														color: "#00948d",
+														border: "1px solid #00948d",
 														padding: "8px"
 													}}
 													onClick={() => this.doMission(obj.actionName, obj.objectId, obj.objectValue, obj.scoinGameObject)}>Thực
@@ -867,8 +866,9 @@ class Home extends React.Component {
 														classes={{ root: classes.missionBtn, label: classes.missionBtnLabelGhost }}
 														style={{
 															borderRadius: "20px",
-															background: "linear-gradient(90deg,#22cab5,#3fe28f)",
-															color: "#fff",
+															background:"#232b36",
+															color: "#00948d",
+															border: "1px solid #00948d",
 															padding: "8px"
 														}}
 														onClick={() => this.doMission(obj.actionName, obj.objectId, obj.objectValue, obj.scoinGameObject)}>Thực
@@ -994,8 +994,9 @@ class Home extends React.Component {
 													<div>
 														<Button color="primary" style={{
 															borderRadius: "20px",
-															background: "linear-gradient(90deg,#22cab5,#3fe28f)",
-															color: "#fff",
+															background:"#232b36",
+															color: "#00948d",
+															border: "1px solid #00948d",
 															padding: "10px",
 															fontSize: "0.8em",
 															whiteSpace: "nowrap",
