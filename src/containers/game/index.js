@@ -323,7 +323,7 @@ class Game extends React.Component {
 														<div style={{marginTop:"5px"}}>
 															<Rating point={obj.pointReview}></Rating>
 															<span style={{
-																float:"right",
+																marginLeft:"10px",
 																fontSize:"11px",
 																border: "1px solid #23c9b6",
 																padding:"1px 2px",
