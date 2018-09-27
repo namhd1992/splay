@@ -126,7 +126,7 @@ class Phone_card extends React.Component {
 						<Grid item xs={6} >
 							<ListItem style={{ padding: "2px" }}>
 								<Avatar style={{ padding: "2px" }} src="../thit.png"><img style={{ maxWidth: "100%" }} src="../thit.png" /></Avatar>
-								<div style={{ color: "#fe8731", backgroundColor: "#15191e", width: "100%", marginLeft: "-20px", paddingLeft: "30px", borderRadius: "20px" }}>{(this.props.profileData.splayPoint) ? this.props.profileData.splayPoint.toLocaleString() : "0"}</div>
+								<div style={{ color: "#fe8731", backgroundColor: "#15191e", width: "100%", marginLeft: "-20px", paddingLeft: "30px", borderRadius: "20px" }}>{(this.props.data.splayPoint) ? this.props.data.splayPoint.toLocaleString() : "0"}</div>
 							</ListItem>
 						</Grid>
 						<Grid item xs={12}>
