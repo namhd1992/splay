@@ -179,7 +179,7 @@ class Auction extends React.Component {
 	getStatusAuction=(obj)=>{
 		var status="";
 		var color="";
-		var distance=6 * 3600;
+		var distance=6 * 3600 * 1000;
 		var now=Date.now();
 		var end=obj.toDate;
 		var duration=end-now;
