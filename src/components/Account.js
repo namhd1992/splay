@@ -32,9 +32,9 @@ class Account extends React.Component {
 	}
 
 	componentDidMount() {
-		var user = JSON.parse(localStorage.getItem("user"));
-		var _this = this;
-		_this.props.getData(user.access_token, user.scoinAccessToken);
+		// var user = JSON.parse(localStorage.getItem("user"));
+		// var _this = this;
+		// _this.props.getData(user.access_token, user.scoinAccessToken);
 	}
 
 	render() {

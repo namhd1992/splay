@@ -9,31 +9,7 @@ import {
 import {
 	changeTitle
 } from '../../modules/global'
-import Grid from 'material-ui/Grid'
-import List, { ListItem, ListItemText } from 'material-ui/List'
-import Avatar from 'material-ui/Avatar'
-import { CircularProgress } from 'material-ui/Progress'
-import Button from 'material-ui/Button'
-import CheckinIcon from 'material-ui-icons/CheckCircle'
-import LikeIcon from 'material-ui-icons/ThumbUp'
-import Dialog, {
-	DialogActions,
-	DialogContent,
-	DialogTitle,
-	withMobileDialog,
-} from 'material-ui/Dialog'
-import PropTypes from 'prop-types'
-import { withStyles } from "material-ui/styles/index"
-import Hidden from 'material-ui/Hidden'
-import Notification from '../../components/Notification'
-import RightArea from '../../components/RightArea'
-import LoginRequired from '../../components/LoginRequired'
-
-const styles = {
-	paper: {
-		background: "#2b323d"
-	},
-};
+import MissionComponent from '../../components/page/Mission'
 
 class Mission extends React.Component {
 
@@ -125,108 +101,29 @@ class Mission extends React.Component {
 	};
 
 	render() {
-		const { fullScreen } = this.props;
-		const { theme } = this.props;
-		const { classes } = this.props;
-		const { secondary } = theme.palette;
 		return (
 			<div>
-				<Grid container style={{ width: "100%", margin: "0px" }}>
-					<Grid item xs={12} md={8} >
-						<Grid container>
-							<Grid item xs={12} >
-								<List className="mission-list-root" >
-									{this.props.data.map((obj, key) => (
-										<ListItem className="mission-item" key={key} style={{ backgroundColor: "#232b36", borderRadius: "5px", marginBottom: "8px" }}>
-											<Avatar style={{ backgroundColor: secondary.main }}>
-												{(obj.actionName === "1") ? (
-													<img style={{ width: "24px", height: "24px" }} src="../lucky_icon.png" alt="just alt"
-														onClick={() => this.showDetail(obj.description)} />) : (
-														<div></div>)}
-												{(obj.actionName === "2") ? (<CheckinIcon onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
-												{(obj.actionName === "3") ? (<img style={{ width: "24px", height: "24px" }} src="../auction_icon.png" alt="just alt"
-													onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
-												{(obj.actionName === "4") ? (<img style={{ width: "24px", height: "24px" }} src="../giftcode_icon.png" alt="just alt"
-													onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
-												{(obj.actionName === "5") ? (<img style={{ width: "24px", height: "24px" }} src="../giftcode_icon.png" alt="just alt"
-													onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
-												{(obj.actionName === "8") ? (<img style={{ width: "24px", height: "24px" }} src="../giftcode_icon.png" alt="just alt"
-													onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
-												{(obj.actionName === "6") ? (<LikeIcon onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
-											</Avatar>
-											<ListItemText primary={(<span style={{ color: "#fff" }}>{obj.missionName}</span>)}
-												secondary={(<span className="global-thit"><img alt="just alt" src="../thit.png" /> <span style={{ color: "#ff6126" }}>{obj.valueAward}</span> </span>)} />
-											{(obj.finish && !obj.received) ? (<div>
-												<Button onClick={() => this.reward(obj.missionId)} style={{
-													borderRadius: "20px",
-													background: "linear-gradient(90deg,#22cab5,#3fe28f)",
-													color: "#fff",
-													padding: "10px",
-													fontSize: "0.8em",
-													whiteSpace: "nowrap",
-													minWidth: "auto",
-													minHeight: "auto"
-												}} variant="raised">Nhận</Button>
-											</div>) : (<div></div>)}
-											{(!obj.finish && !obj.received) ? (<div>
-												<Button style={{
-													borderRadius: "20px",
-													background: "transparent",
-													color: "#23c9b6",
-													border: "solid 1px #23c9b6",
-													padding: "10px",
-													fontSize: "0.8em",
-													whiteSpace: "nowrap",
-													minWidth: "auto",
-													minHeight: "auto"
-												}} onClick={() => this.doMission(obj.actionName, obj.objectId, obj.objectValue, obj.scoinGameObject)}>Thực
-                      hiện</Button>
-											</div>) : (<div></div>)}
-											{(obj.finish && obj.received) ? (<div>
-												<Button className="mission-button disabledbtn" color="primary" disabled>Đã nhận</Button>
-											</div>) : (<div></div>)}
-										</ListItem>
-									))}
-								</List>
-							</Grid>
-							{(this.props.waiting) ? (<Grid item xs={12} style={{ textAlign: "center" }}><CircularProgress
-								size={50} style={{ color: secondary.main }}
-							/></Grid>) : (this.props.totalRecords > this.state.loadedRecords) ? (
-								<Grid item xs={12} style={{ textAlign: "center", color: secondary.main }}>
-									<a onClick={this.loadMoreAction}>Xem thêm</a>
-								</Grid>
-							) : (<div></div>)}
-						</Grid>
-					</Grid>
-					<Hidden smDown>
-						<Grid item xs={12} md={4}>
-							<RightArea></RightArea>
-						</Grid>
-					</Hidden>
-				</Grid>
-				<Notification message={this.state.message} variant={this.state.snackVariant} openSnack={this.state.openSnack} closeSnackHandle={this.handleCloseSnack} ></Notification>
-				<Dialog
-					fullScreen={false}
-					open={this.state.dialogDetailOpen}
-					onClose={this.handleCloseDialogDetail}
-					aria-labelledby="responsive-dialog-title"
-					classes={{ paper: classes.paper }}
-				>
-					<DialogTitle id="responsive-dialog-title"><span style={{ color: secondary.main }}>Chi tiết nhiệm vụ</span></DialogTitle>
-					<DialogContent>
-						<div style={{ color: "#fff" }}>
-							{this.state.dialogContent}
-						</div>
-					</DialogContent>
-					<DialogActions>
-						<div>
-							<Button onClick={this.handleCloseDialogDetail} style={{ color: "#fe8731" }}>
-								Đóng
-              </Button>
-						</div>
-					</DialogActions>
-				</Dialog>
-				<LoginRequired open={this.state.dialogLoginOpen}></LoginRequired>
+				<MissionComponent
+					handleCloseDialogDetail={this.handleCloseDialogDetail}
+					showDetail={this.showDetail}
+					handleCloseSnack={this.handleCloseSnack}
+					reward={this.reward}
+					doMission={this.doMission}
+					loadMoreAction={this.loadMoreAction}
+
+					data={this.props.data}
+					dataFinish={this.props.dataFinish}
+					totalRecords={this.props.totalRecords}
+					waiting={this.props.waiting}
+					dialogDetailOpen={this.state.dialogDetailOpen}
+					dialogContent={this.state.dialogContent}
+					loadedRecords={this.state.loadedRecords}
+					message={this.state.message}
+					openSnack={this.state.openSnack}
+					dialogLoginOpen={this.state.dialogLoginOpen}
+					snackVariant={this.state.snackVariant}
+				/>
+
 			</div>
 		)
 	}
@@ -246,12 +143,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 	changeTitle
 }, dispatch)
 
-
-Mission.propTypes = {
-	fullScreen: PropTypes.bool.isRequired,
-};
-
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(withMobileDialog()(withStyles(styles, { withTheme: true })(Mission)))
+)(Mission)

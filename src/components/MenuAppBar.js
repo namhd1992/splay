@@ -29,7 +29,6 @@ import {
 } from '../modules/global'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import IconButton from 'material-ui/IconButton'
 import Avatar from 'material-ui/Avatar'
 import { withTheme } from 'material-ui/styles'
 import { withRouter } from 'react-router-dom'

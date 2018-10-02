@@ -67,7 +67,7 @@ class Inbox extends React.Component {
 			_this.props.changeTitle("INBOX");
 			_this.setState({ loadedRecords: _this.state.limit + _this.state.offset });
 		});
-		this.props.getDataProfile(user.access_token, user.scoinAccessToken);
+		// this.props.getDataProfile(user.access_token, user.scoinAccessToken);
 	}
 
 	loadMoreAction = () => {
@@ -82,8 +82,6 @@ class Inbox extends React.Component {
 	}
 
 	copy = (text) => {
-		// const { theme } = this.props;
-		// const { secondary } = theme.palette;
 		copy(text);
 		this.setState({ openSnack: true, message: "Đã sao chép " + text });
 	}

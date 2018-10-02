@@ -1,0 +1,16 @@
+:local(.girdButton){
+    border-radius: "20px";
+    background: "linear-gradient(90deg,#22cab5,#3fe28f)";
+    color: "#fff";
+    padding: "10px";
+    font-size: "0.8em";
+    white-space: "nowrap";
+    min-width: "auto";
+    min-height: "auto";
+}
+
+.girdContainer{
+    width: "100%";
+    margin: "0";
+    background-color: blue;
+}

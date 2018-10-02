@@ -122,9 +122,10 @@ class Auction_detail extends React.Component {
 					_this.setState({ itemImage: _this.props.data[0].defaultImage });
 				}
 			});
-			this.props.getData(user.access_token, user.scoinAccessToken).then(function () {
-				_this.setState({ phone: _this.props.dataProfile.phoneNumber });
-			});
+			// this.props.getData(user.access_token, user.scoinAccessToken).then(function () {
+			// 	_this.setState({ phone: _this.props.dataProfile.phoneNumber });
+			// });
+			_this.setState({ phone: _this.props.dataProfile.phoneNumber });
 		} else {
 			_this.setState({ dialogLoginOpen: true });
 		}
@@ -155,8 +156,6 @@ class Auction_detail extends React.Component {
 	}
 
 	handleUpdateProfile = () => {
-		const { theme } = this.props;
-		const { error, success } = theme.palette;
 		var _this = this;
 		var user = JSON.parse(localStorage.getItem("user"));
 		this.props.updateProfile(user.access_token, { "phoneNumber": this.state.phone }).then(function () {
@@ -170,8 +169,6 @@ class Auction_detail extends React.Component {
 	}
 
 	handleOnAuction = (id, price) => {
-		const { theme } = this.props;
-		const { error, success } = theme.palette;
 		var user = JSON.parse(localStorage.getItem("user"));
 		var _this = this;
 		this.props.auction(user.access_token, user.scoinAccessToken, id, price).then(function (response, a) {
@@ -363,8 +360,19 @@ class Auction_detail extends React.Component {
 					onClose={this.handleCloseDialog}
 					aria-labelledby="responsive-dialog-title"
 					classes={{ paper: classes.paper }}
-				>
-					<DialogTitle id="responsive-dialog-title"><span style={{ color: "#23c9b6" }} >Đấu giá</span></DialogTitle>
+				>{(durationstart > 0) ? (
+					<div>
+					<DialogTitle id="responsive-dialog-title"><span style={{ color: "#23c9b6" }} >Chưa đến thời điểm đấu giá</span></DialogTitle>
+					<DialogActions>
+						<div className="popup-button">
+							<Button onClick={this.handleCloseDialog} style={{ color: "#fe8731" }}>
+								Đóng
+              				</Button>
+						</div>
+					</DialogActions>
+					</div>): (
+						<div>
+							<DialogTitle id="responsive-dialog-title"><span style={{ color: "#23c9b6" }} >Đấu giá</span></DialogTitle>
 					<DialogContent>
 						<List className="auction-root" style={{ backgroundColor: "#232b36" }}>
 							<ListItem style={{ padding: "5px" }}>
@@ -423,7 +431,7 @@ class Auction_detail extends React.Component {
 						<div className="popup-button">
 							<Button onClick={this.handleCloseDialog} style={{ color: "#fe8731" }}>
 								Đóng
-              </Button>
+              				</Button>
 							<Button variant="raised" style={{
 								margin: "auto",
 								maxWidth: "320px",
@@ -438,10 +446,13 @@ class Auction_detail extends React.Component {
 								onClick={() => this.handleOnAuction(this.props.data[0].id, this.state.price)}
 								color="primary" autoFocus>
 								Đấu giá
-              </Button>
+              				</Button>
 						</div>
 					</DialogActions>
-				</Dialog>
+				
+						</div>
+					)}
+					</Dialog>
 				<Notification message={this.state.message} variant={this.state.snackVariant} openSnack={this.state.openSnack} closeSnackHandle={this.handleCloseSnack} ></Notification>
 				<LoginRequired open={this.state.dialogLoginOpen}></LoginRequired>
 			</div>

@@ -76,9 +76,15 @@
   box-sizing: border-box;
 }
 
-.checkin-button button {
-  border: solid 1px #007acc;
-  color: #007acc;
+.checkin-button {
+  borderRadius: "20px";
+  background: "linear-gradient(90deg,#22cab5,#3fe28f)";
+  color: "#fff";
+  padding: "10px";
+  font-size: "0.8em";
+  white-space: "nowrap";
+  min-width: "auto";
+  min-height: "auto"
 }
 
 .disabledbtn {

@@ -1,8 +1,6 @@
 import React from 'react'
-import Avatar from 'material-ui/Avatar'
-import Badge from 'material-ui/Badge'
 import { getData as getGameData } from '../modules/game'
-import { getData as getArticleData, getDataDetail } from '../modules/article'
+import { getData as getArticleData } from '../modules/article'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Grid from 'material-ui/Grid'
@@ -42,7 +40,6 @@ class RightArea extends React.Component {
 	}
 
 	componentDidMount() {
-		var user = JSON.parse(localStorage.getItem("user"));
 		var _this = this;
 		_this.props.getGameData(12, 0, "", "", "").then(function () {
 			_this.setState({ allGame: _this.props.gameData });
@@ -72,7 +69,7 @@ class RightArea extends React.Component {
 	render() {
 		const { classes } = this.props;
 		const { theme } = this.props;
-		const { primary, secondary } = theme.palette;
+		const { secondary } = theme.palette;
 		return (this.state.allGame !== undefined) ? (
 			<div>
 				<Grid container spacing={16} justify="center" style={{ margin: "0px", width: "100%" }}>
@@ -93,7 +90,7 @@ class RightArea extends React.Component {
 						{this.state.allArticles.map((obj, key) => {
 							return (
 								<ListItem key={key} style={{ padding: "10px 0px" }}>
-									{(obj.articleType == "event") ? (<div style={{
+									{(obj.articleType === "event") ? (<div style={{
 										border: "solid 1px #fe8731",
 										display: "inline-block",
 										padding: "5px",
@@ -140,7 +137,6 @@ class RightArea extends React.Component {
 								whiteSpace: "nowrap",
 								minWidth: "auto",
 								minHeight: "auto",
-								padding: "8px"
 							}}>Nhận ngay</Button></Link>
 					</Grid>
 				</Grid>
@@ -203,7 +199,6 @@ class RightArea extends React.Component {
 											whiteSpace: "nowrap",
 											minWidth: "auto",
 											minHeight: "auto",
-											padding: "8px"
 										}}>Chơi</Button>
 									{/* {(obj.subTitle === "hot")
 										? (<div className="game-item-hot"><div className="game-item-new-inside"><div className="content">Hot</div></div></div>)

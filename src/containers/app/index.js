@@ -19,7 +19,7 @@ import History from '../shop_history'
 import Mission from '../mission'
 import Profile from '../profile'
 import Article from '../article'
-import ArticleDetail from '../article_detail'
+import Article_detail from '../article_detail'
 import Item_giftcode_detail from '../item_giftcode_detail'
 import Checkin from '../checkin'
 import Inbox from '../inbox'
@@ -112,7 +112,7 @@ class App extends React.Component {
 						<Route exact path="/inbox" component={Inbox} />
 						<Route exact path="/profile" component={Profile} />    
 						<Route exact path="/article" component={Article} />
-						<Route exact path="/article_detail/:id" component={ArticleDetail} />
+						<Route exact path="/article_detail/:id" component={Article_detail} />
 						<Route exact path="/checkin" component={Checkin} />
 						<Route exact path="/luckydetail/:id" component={Lucky_detail} />
 						<Route exact path="/giftcodeplugin" component={Giftcode_plugin} />

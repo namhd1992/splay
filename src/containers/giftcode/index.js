@@ -8,15 +8,10 @@ import {
 import {
 	changeTitle
 } from '../../modules/global'
-import Grid from 'material-ui/Grid'
-import { Link } from 'react-router-dom'
-import { ListItem, ListItemText } from 'material-ui/List'
-import { CircularProgress } from 'material-ui/Progress'
-import Button from 'material-ui/Button'
 import { withStyles } from 'material-ui/styles'
 import HeadMenu from '../../components/HeadMenu'
-import RightArea from '../../components/RightArea'
-import Hidden from 'material-ui/Hidden'
+import GiftCodeComponent from '../../components/page/GiftCode'
+
 
 const styles = theme => ({
 	root: {
@@ -66,63 +61,12 @@ class Giftcode extends React.Component {
 		return (
 			<div className={classes.root}>
 				<HeadMenu></HeadMenu>
-				<Grid container spacing={8}>
-					<Grid item xs={12} md={8}>
-						<Grid container spacing={8}>
-							{(this.props.data.length <= 0) ? (<Grid item xs={12} style={{ textAlign: "center", color: "#fff" }}>Không có Giftcode</Grid>) : (<span></span>)}
-							{this.props.data.map((obj, key) => (
-								<Grid key={key} item xs={12}>
-									<div className={classes.gridItem}>
-										<Link to={"/giftcodedetail/" + obj.giftcodeEvent.id} className={classes.gridLink}>
-											<ListItem>
-												<div className="giftcode-item-image">
-													<div style={{
-														backgroundImage: "url(" + obj.defaultImage + ")",
-														backgroundSize: "contain",
-														width: "72px",
-														height: "72px",
-														backgroundPosition: "center",
-														backgroundRepeat: "no-repeat"
-													}}></div>
-												</div>
-												<ListItemText disableTypography={true}
-													primary={(<h4 style={{ color: "#fff", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", fontWeight: "400" }}
-														className="giftcode-item-name">{obj.title}</h4>)}
-													secondary={(<span style={{ color: "#ccc" }}>{"Còn lại " + (obj.giftcodeEvent.numberGiftcode - obj.giftcodeEvent.numberGiftcodeLost)}</span>)} />
-												<div>
-													<Button color="primary" style={{
-														borderRadius: "20px",
-														background: "linear-gradient(90deg,#22cab5,#3fe28f)",
-														color: "#fff",
-														padding: "10px",
-														fontSize: "0.8em",
-														whiteSpace: "nowrap",
-														minWidth: "auto",
-														minHeight: "auto"
-													}}>Nhận</Button>
-												</div>
-											</ListItem>
-										</Link>
-									</div>
-								</Grid>
-							))}
-							{(this.props.waiting) ? (<Grid item xs={12} style={{ textAlign: "center" }}>
-								<CircularProgress style={{ color: "#23c9b6" }}
-									size={50}
-								/>
-							</Grid>) : (this.props.totalRecords > this.state.loadedRecords) ? (
-								<Grid item xs={12} style={{ textAlign: "center", color: "#23c9b6" }}>
-									<a onClick={this.loadMoreAction}>Xem thêm</a>
-								</Grid>
-							) : (<div></div>)}
-						</Grid>
-					</Grid>
-					<Hidden smDown>
-						<Grid item xs={4}>
-							<RightArea></RightArea>
-						</Grid>
-					</Hidden>
-				</Grid>
+				<GiftCodeComponent
+					data={this.props.data}
+					loadedRecords={this.state.loadedRecords}
+					totalRecords={this.props.totalRecords}
+					loadMoreAction={this.loadMoreAction}
+				/>
 			</div>
 		)
 	}

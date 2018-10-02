@@ -95,9 +95,10 @@ class Item_giftcode_detail extends React.Component {
 			this.props.getDataId(this.props.match.params.id).then(function () {
 				_this.props.changeTitle(_this.props.data[0].name);
 			});
-			this.props.getData(user.access_token, user.scoinAccessToken).then(function () {
-				_this.setState({ phone: _this.props.dataProfile.phoneNumber });
-			});
+			// this.props.getData(user.access_token, user.scoinAccessToken).then(function () {
+			// 	_this.setState({ phone: _this.props.dataProfile.phoneNumber });
+			// });
+			_this.setState({ phone: _this.props.dataProfile.phoneNumber });
 		} else {
 			_this.setState({ dialogLoginOpen: true });
 		}

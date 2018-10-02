@@ -1,6 +1,5 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
-// import classNames from 'classnames'
 import { connect } from 'react-redux'
 import { withStyles } from 'material-ui/styles'
 import {
@@ -11,34 +10,13 @@ import {
 import {
 	changeTitle
 } from '../../modules/global'
-import Grid from 'material-ui/Grid'
-// import Typography from 'material-ui/Typography'
 import PropTypes from 'prop-types'
-import List, { ListItem, ListItemText } from 'material-ui/List'
-import Button from 'material-ui/Button'
+
 import Fingerprint2 from 'fingerprintjs2'
-// import Snackbar, { SnackbarContent } from 'material-ui/Snackbar'
-import { CircularProgress } from 'material-ui/Progress'
-// import Dialog, {
-// 	DialogActions,
-// 	DialogContent,
-// 	DialogTitle,
-// 	withMobileDialog,
-// } from 'material-ui/Dialog'
-import LoginRequired from '../../components/LoginRequired'
-import Notification from '../../components/Notification'
-// import { Link } from 'react-router-dom'
-import CloseIcon from 'material-ui-icons/Close'
-import CheckIcon from 'material-ui-icons/Check'
-import Avatar from 'material-ui/Avatar'
-import green from 'material-ui/colors/green'
-import {
-	FacebookShareButton,
-} from 'react-share'
 import { withTheme } from 'material-ui/styles'
 import copy from 'copy-to-clipboard'
-import Hidden from 'material-ui/Hidden'
-import RightArea from '../../components/RightArea'
+import GiftCodeDetailComponent from '../../components/page/GiftCodeDetail'
+
 
 const styles = theme => ({
 	root: {
@@ -65,11 +43,6 @@ class Giftcode_detail extends React.Component {
 		};
 	}
 
-
-	handleChange = (event, value) => {
-		this.setState({ value });
-	};
-
 	componentDidMount() {
 		var user = JSON.parse(localStorage.getItem("user"));
 		var _this = this;
@@ -94,9 +67,6 @@ class Giftcode_detail extends React.Component {
 	}
 
 	takeGiftcode = (id) => {
-		console.log("AAAAAAAAAAAAAAAAAAAAAAAA");
-		const { theme } = this.props;
-		const { error, success } = theme.palette;
 		var user = JSON.parse(localStorage.getItem("user"));
 		var _this = this;
 		var canTake = true;
@@ -134,14 +104,6 @@ class Giftcode_detail extends React.Component {
 		this.setState({ openSnack: false });
 	}
 
-	handleResponse = (data) => {
-		console.log(data);
-	}
-
-	handleError = (error) => {
-		console.log(error);
-	}
-
 	linkClicked = () => {
 		var user = JSON.parse(localStorage.getItem("user"));
 		var _this = this;
@@ -158,8 +120,6 @@ class Giftcode_detail extends React.Component {
 	}
 
 	copyText = (text) => {
-		const { theme } = this.props;
-		const { primary, secondary } = theme.palette;
 		copy(text);
 		this.setState({ openSnack: true, message: "Đã sao chép " + text, snackVariant: "info" });
 	}
@@ -167,234 +127,27 @@ class Giftcode_detail extends React.Component {
 		window.location.replace(`http://graph.vtcmobile.vn/oauth/authorize?client_id=707fece431a0948c498d43e881acd2c5&agencyid=0&redirect_uri=${window.location.protocol}//${window.location.host}/`);
 	}
 	render() {
-		var user = JSON.parse(localStorage.getItem("user"));
-		const { theme } = this.props;
-		const { primary, secondary } = theme.palette;
-		const { fullScreen } = this.props;
-		const { value } = this.state;
-		var _this = this;
-		return (this.props.data.length === 1) ? (
+		
+		return (
 			<div>
-				<Grid container spacing={8}>
-					<Grid item xs={12} md={8}>
-						<Grid container style={{ backgroundColor: "#232b36", borderRadius: "5px", width: "100%", margin: "0px" }}>
-							<Grid item xs={12}>
-								<ListItem style={{ padding: "5px" }}>
-									<img alt="game icon" style={{ width: "72px" }} src={this.props.data[0].defaultImage} />
-									<Hidden xsDown>
-										<ListItemText style={{ textAlign: "left", padding: "20px" }} secondary={(
-											<span style={{ color: "#ccc" }}>Còn lại {(this.props.data[0].giftcodeEvent.numberGiftcode - this.props.data[0].giftcodeEvent.numberGiftcodeLost)}<span
-												onClick={this.openRatingDialog}></span></span>)} primary={(
-													<span style={{ color: "#fff" }}><b>{this.props.data[0].title}</b></span>)} />
-									</Hidden>
-									<Hidden smUp>
-										<ListItemText style={{ textAlign: "right", padding: "0px" }} secondary={(
-											<span style={{ color: "#ccc" }}>Còn lại {(this.props.data[0].giftcodeEvent.numberGiftcode - this.props.data[0].giftcodeEvent.numberGiftcodeLost)}<span
-												onClick={this.openRatingDialog}></span></span>)} primary={(
-													<span style={{ color: "#fff" }}><b>{this.props.data[0].title}</b></span>)} />
-									</Hidden>
-									<Hidden xsDown>
-										<div>
-											{(this.props.data[0].giftcodeEvent.giftcodeLost) ? (
-												<Button variant="raised" style={{
-													borderRadius: "20px",
-													background: "linear-gradient(90deg,#22cab5,#3fe28f)",
-													color: "#fff",
-													padding: "10px",
-													fontSize: "0.8em",
-													whiteSpace: "nowrap",
-													minWidth: "auto",
-													minHeight: "auto"
-												}}
-													onClick={() => this.copyText(this.props.data[0].giftcodeEvent.giftcodeLost)}>{this.props.data[0].giftcodeEvent.giftcodeLost}</Button>) : (
-													<Button style={{
-														borderRadius: "20px",
-														background: "linear-gradient(90deg,#22cab5,#3fe28f)",
-														color: "#fff",
-														padding: "10px",
-														fontSize: "0.8em",
-														whiteSpace: "nowrap",
-														minWidth: "auto",
-														minHeight: "auto"
-													}}
-														onClick={() => this.takeGiftcode(this.props.data[0].giftcodeEvent.id)}>Nhận</Button>)}
-										</div>
-									</Hidden>
-								</ListItem>
-							</Grid>
-							<Grid item xs={12}>
-								<Hidden smUp>
-									{(this.props.data[0].giftcodeEvent.giftcodeLost) ? (
-										<Button style={{
-											borderRadius: "20px",
-											background: "linear-gradient(90deg,#22cab5,#3fe28f)",
-											color: "#fff",
-											padding: "10px",
-											fontSize: "0.8em",
-											whiteSpace: "nowrap",
-											minWidth: "auto",
-											minHeight: "auto",
-											width: "100%"
-										}}
-											onClick={() => this.copyText(this.props.data[0].giftcodeEvent.giftcodeLost)}>{this.props.data[0].giftcodeEvent.giftcodeLost}</Button>) : (
-											<Button style={{
-												borderRadius: "20px",
-												background: "linear-gradient(90deg,#22cab5,#3fe28f)",
-												color: "#fff",
-												padding: "10px",
-												fontSize: "0.8em",
-												whiteSpace: "nowrap",
-												minWidth: "auto",
-												minHeight: "auto",
-												width: "100%",
-												marginBottom: "8px"
-											}}
-												onClick={() => this.takeGiftcode(this.props.data[0].giftcodeEvent.id)}>Nhận</Button>)}
-								</Hidden>
-							</Grid>
-						</Grid>
-						<Grid container style={{ backgroundColor: "#232b36", borderRadius: "5px", width: "100%", margin: "8px 0px 0px 0px" }}>
-							<Grid item xs={12}>
-								<span style={{ fontSize: "1.2em", color: "#fff" }}>Giá</span>
-							</Grid>
-							<Grid item xs={12} style={{ padding: "15px" }}>
-								{(this.props.data[0].giftcodeEvent.price > 0) ? (<span className="global-thit"><span style={{ color: "#fe8731" }} >{this.props.data[0].giftcodeEvent.price + " thịt"}</span> <img alt="just alt"
-									src="../thit.png" /></span>) : (<div style={{ color: "#fe8731" }}>Miễn phí</div>)}
-							</Grid>
-						</Grid>
-						<Grid container style={{ backgroundColor: "#232b36", borderRadius: "5px", width: "100%", margin: "8px 0px 0px 0px" }}>
-							<Grid item xs={12}>
-								<span style={{ fontSize: "1.2em", color: "#fff" }}>Điều kiện</span>
-							</Grid>
-							<Grid item xs={12}>
-								{value === 0 && <div>
-									<List className="giftcode-list-root">
-										{this.props.data[0].giftcodeEvent.giftcodeCondition.map((obj, key) => {
-											if (obj.name !== "Check UDID") {
-												if (obj.name === "Login Splay") {
-													return <ListItem style={{ padding: "5px" }} key={key}>
-														{(this.state.logged) ? (<Avatar
-															style={{ backgroundColor: green[700], width: "30px", height: "30px" }}><CheckIcon></CheckIcon></Avatar>) : (
-																<Avatar style={{ width: "30px", height: "30px" }}><CloseIcon></CloseIcon></Avatar>)}
-														<ListItemText primary={(<span style={{ color: "#fff" }}>Đăng nhập Splay</span>)} >
-														</ListItemText>
-														<ListItemText primary={(user !== null) ? 
-															"" : (<Button variant="raised" 
-																style={{
-																	borderRadius: "20px",
-																	background:"#232b36",
-																	float:"right",
-																	color: "#00948d",
-																	border: "1px solid #00948d",
-																	padding: "10px",
-																	fontSize: "0.7em",
-																	whiteSpace: "nowrap",
-																	minWidth: "auto",
-																	minHeight: "auto"
-																}}
-																onClick={this.loginAction}>THỰC HIỆN
-															</Button>)}></ListItemText>
-														<div className="giftcode-check"></div>
-													</ListItem>
-												}
-												if (obj.name === "Share link facebook") {
-													var isShared = false;
-													if (obj.shareFacebook || _this.state.shared) {
-														isShared = true;
-													}
-													return <ListItem style={{ padding: "5px" }} key={key}>
-														{(isShared) ? (<Avatar
-															style={{ backgroundColor: green[700], width: "30px", height: "30px" }}><CheckIcon></CheckIcon></Avatar>) : (
-																<Avatar style={{ width: "30px", height: "30px" }}><CloseIcon></CloseIcon></Avatar>)}
-														<span style={{ color: "#1f95e7", marginLeft:"15px" }}>Chia sẻ Link trên Facebook</span>
-														<ListItemText primary={(user !== null) ? (<FacebookShareButton
-															url={_this.props.data[0].giftcodeEvent.urlShareFB}>
-															<Button style={{
-																	borderRadius: "20px",
-																	background:"#232b36",
-																	float:"right",
-																	color: "#00948d",
-																	border: "1px solid #00948d",
-																	padding: "10px",
-																	fontSize: "0.7em",
-																	whiteSpace: "nowrap",
-																	minWidth: "auto",
-																	minHeight: "auto"
-																}}
-																onClick={this.linkClicked}>THỰC HIỆN
-															</Button></FacebookShareButton>) : (<Button style={{
-																	borderRadius: "20px",
-																	background:"#232b36",
-																	float:"right",
-																	color: "#00948d",
-																	border: "1px solid #00948d",
-																	padding: "10px",
-																	fontSize: "0.7em",
-																	whiteSpace: "nowrap",
-																	minWidth: "auto",
-																	minHeight: "auto"
-																}}
-																onClick={this.linkClicked}>THỰC HIỆN
-															</Button>)}></ListItemText>
-														<div className="giftcode-check"></div>
-													</ListItem>
-												}
-												if (obj.name === "Login Game") {
-													return <ListItem style={{ padding: "5px" }} key={key}>
-														{(obj.loginGame) ? (<Avatar
-															style={{ backgroundColor: green[700], width: "30px", height: "30px" }}><CheckIcon></CheckIcon></Avatar>) : (
-																<Avatar style={{ width: "30px", height: "30px" }}><CloseIcon></CloseIcon></Avatar>)}
-														<span style={{ color: "#1f95e7", marginLeft:"15px" }}>Đăng nhập vào game</span>
-														<ListItemText primary={(
-															<Button style={{
-																borderRadius: "20px",
-																background:"#232b36",
-																float:"right",
-																color: "#00948d",
-																border: "1px solid #00948d",
-																padding: "10px",
-																fontSize: "0.7em",
-																whiteSpace: "nowrap",
-																minWidth: "auto",
-																minHeight: "auto"
-															}}
-															href={_this.props.data[0].giftcodeEvent.scoinGameObject.website}>THỰC HIỆN
-														</Button>
-														)}></ListItemText>
-														<div className="giftcode-check"></div>
-													</ListItem>
-												}
-											}
-											return <div key={key}></div>
-										})}
-									</List>
-								</div>}
-							</Grid>
-						</Grid>
-						<Grid container style={{ backgroundColor: "#232b36", borderRadius: "5px", width: "100%", margin: "8px 0px 0px 0px" }}>
-							<Grid item xs={12}>
-								<span style={{ fontSize: "1.2em", color: "#fff" }}>Mô tả</span>
-							</Grid>
-							<Grid className="giftcode-take" item xs={12}>
-								<div style={{ padding: "10px", color: "#fff" }}
-									dangerouslySetInnerHTML={{ __html: this.props.data[0].content }}>
-								</div>
-							</Grid>
-						</Grid>
-						<Notification message={this.state.message} variant={this.state.snackVariant} openSnack={this.state.openSnack} closeSnackHandle={this.handleCloseSnack} ></Notification>
-						<LoginRequired open={this.state.dialogLoginOpen}></LoginRequired>
-					</Grid>
-					<Hidden smDown>
-						<Grid item xs={4}>
-							<RightArea></RightArea>
-						</Grid>
-					</Hidden>
-				</Grid>
+				<GiftCodeDetailComponent
+					data={this.props.data}
+					loginAction={this.loginAction}
+					copyText={this.copyText}
+					linkClicked={this.linkClicked}
+					handleCloseSnack={this.handleCloseSnack}
+					takeGiftcode={this.takeGiftcode}
+					value={this.state.value}
+					openSnack={this.state.openSnack}
+					message={this.state.message}
+					snackVariant={this.state.snackVariant}
+					dialogLoginOpen={this.state.dialogLoginOpen}
+					shared={this.state.shared}
+					logged={this.state.logged}
+					fingerprint={this.state.fingerprint}
+				/>
 			</div>
-		) : (<div className="global-loading" style={{ backgroundColor: "#232b36", marginTop: "8px" }}>
-			<CircularProgress size={50} />
-			<LoginRequired open={this.state.dialogLoginOpen}></LoginRequired>
-		</div>)
+		)
 	}
 }
 
