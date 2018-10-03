@@ -125,7 +125,7 @@ const styles = theme => ({
 		borderRadius: "20px",
 		background: "linear-gradient(90deg,#22cab5,#3fe28f)",
 		color: "#fff",
-		padding: "10px",
+		padding: "8px",
 		fontSize: "0.8em",
 		whiteSpace: "nowrap",
 		minWidth: "auto",
@@ -136,11 +136,24 @@ const styles = theme => ({
 		background:"#232b36",
 		color: "#00948d",
 		border: "1px solid #00948d",
-		padding: "10px",
+		padding: "8px",
 		fontSize: "0.8em",
 		whiteSpace: "nowrap",
 		minWidth: "auto",
 		minHeight: "auto",
+	},
+	buttonCircle:{
+		background:"#232b36",
+		color: "#12cdd4",
+		border: "1px solid #12cdd4",
+		padding: "8px 12px",
+		fontSize: "0.8em",
+		whiteSpace: "nowrap",
+		minWidth: "auto",
+		minHeight: "auto",
+		marginRight:"10px",
+		borderRadius: "50%",
+		float:"left"
 	},
 	articleTag:{
 		border: "solid 1px #fe8731",
@@ -181,7 +194,7 @@ class TitleContainer extends React.Component {
 	}
   }
 
-  class AuctionContainer extends React.Component {
+  class MissionContainer extends React.Component {
 
 	doMission=(action, id, value, objectGame)=>{
 		this.props.doMission(action, id, value, objectGame);
@@ -194,6 +207,10 @@ class TitleContainer extends React.Component {
 	reward=(id)=>{
 		this.props.reward(id);
 	}
+
+	openPopupMission(){
+		console.log("AAAAAAAA");
+	}
 		
 
 	render() {
@@ -201,9 +218,9 @@ class TitleContainer extends React.Component {
 		return (
 			<div>
 				{dataMission.slice(0, 8).map((obj, key) => (
-										<Grid key={key} item xs={12}>
+										<Grid key={key}>
 											<ListItem key={key} className={classes.giftcodeItem}>
-												<Avatar style={{ backgroundColor: "transparent", border: "1px solid #fff" }}>
+												<Avatar style={{ backgroundColor: "#00c9b7", border: "1px solid #00c9b7" }}>
 													{(obj.actionName === "1") ? (
 														<img style={{ width: "24px", height: "24px" }} src="../lucky_icon.png"
 															alt="just alt"
@@ -237,22 +254,26 @@ class TitleContainer extends React.Component {
 													secondary={(
 														<span className="global-thit" style={{ color: "#fe8731" }}><img alt="just alt"
 															src="../thit.png" /> {obj.valueAward} </span>)} />
-												{(obj.finish && !obj.received) ? (<div>
-													<Button onClick={() => this.reward(obj.missionId)}
-														classes={classes.buttonFull}
-														variant="raised">Nhận</Button>
-												</div>) : (<div></div>)}
-												{(!obj.finish && !obj.received) ? (<div>
+												<div style={{flex:"auto"}}>
 													<Button color="primary"
-														className={classes.buttonGhost}
-														onClick={() => this.doMission(obj.actionName, obj.objectId, obj.objectValue, obj.scoinGameObject)}>Thực hiện</Button>
-												</div>) : (<div></div>)}
-												{(obj.finish && obj.received) ? (<div>
-													<Button className="mission-button disabledbtn"
-														classes={{ root: classes.missionBtn, label: classes.missionBtnLabelGhost }}
-														style={{ borderRadius: "20px", color: "#fff", padding: "8px" }}
-														disabled>Đã nhận</Button>
-												</div>) : (<div></div>)}
+															className={classes.buttonCircle}
+															onClick={() => this.openPopupMission()}>?</Button>
+													{(obj.finish && !obj.received) ? (
+														<Button onClick={() => this.reward(obj.missionId)}
+															classes={classes.buttonFull}
+															variant="raised">Nhận</Button>) : (<div></div>)}
+													{(!obj.finish && !obj.received) ? (
+														<Button color="primary"
+															className={classes.buttonGhost}
+															onClick={() => this.doMission(obj.actionName, obj.objectId, obj.objectValue, obj.scoinGameObject)}>Thực hiện</Button>
+													) : (<div></div>)}
+													{(obj.finish && obj.received) ? (
+														<Button className="mission-button disabledbtn"
+															classes={{ root: classes.missionBtn, label: classes.missionBtnLabelGhost }}
+															style={{ borderRadius: "20px", color: "#fff", padding: "8px" }}
+															disabled>Đã nhận</Button>
+													) : (<div></div>)}
+												</div>
 											</ListItem>
 										</Grid>
 									))}
@@ -513,7 +534,7 @@ class HomeComponent extends React.Component {
 													borderRadius: "20px",
 													background: "transparent",
 													color: "#fff",
-													padding: "10px",
+													padding: "8px",
 													fontSize: "0.8em",
 													whiteSpace: "nowrap",
 													minWidth: "auto",
@@ -655,7 +676,7 @@ class HomeComponent extends React.Component {
 										title="Nhiệm Vụ"
 										link="/mission"
 									/>
-									<AuctionContainer
+									<MissionContainer
 										dataMission={dataMission}
 										classes={classes}
 										showDetail={this.props.showDetail}
@@ -696,7 +717,7 @@ class HomeComponent extends React.Component {
 											title="Nhiệm Vụ"
 											link="/mission"
 										/>
-										<AuctionContainer
+										<MissionContainer
 											dataMission={dataMission}
 											classes={classes}
 											showDetail={this.props.showDetail}
