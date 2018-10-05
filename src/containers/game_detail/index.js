@@ -14,6 +14,7 @@ import {
 } from '../../modules/global'
 import { getData as getArticleData } from '../../modules/article'
 import { getData as getYoutubeData } from '../../modules/youtubeApi'
+import {getMissionByGame} from '../../modules/mission'
 
 import GameDetailComponent from '../../components/page/GameDetail'
 class Game_detail extends React.Component {
@@ -44,6 +45,7 @@ class Game_detail extends React.Component {
 		this.props.getDataId(this.props.match.params.id).then(function () {
 			_this.props.changeTitle(_this.props.data[0].name);
 			_this.props.getDataByGame(_this.props.data[0].id);
+			_this.props.getMissionByGame(_this.props.data[0].id);
 			_this.props.getArticleData(6, 0, undefined, undefined, _this.props.data[0].id).then(function () {
 				_this.setState({ gameArticles: _this.props.articleData });
 			});
@@ -151,6 +153,7 @@ class Game_detail extends React.Component {
 					readMore={this.readMore}
 
 					data={this.props.data}
+					dataMission={this.props.dataMission}
 					dataGiftcode={this.props.dataGiftcode}
 					youtubeData={this.props.youtubeData}
 					youtubeWaiting={this.props.youtubeWaiting}
@@ -177,6 +180,7 @@ class Game_detail extends React.Component {
 const mapStateToProps = state => ({
 	data: state.game.dataDetail,
 	dataRating: state.game.dataRating,
+	dataMission: state.mission.dataMission,
 	waiting: state.game.waiting,
 	dataGiftcode: state.giftcode.data,
 	articleData: state.article.data,
@@ -192,6 +196,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 	getDataByGame,
 	changeTitle,
 	getArticleData,
+	getMissionByGame,
 	getYoutubeData,
 }, dispatch)
 

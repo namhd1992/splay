@@ -238,7 +238,7 @@ class GameComponent extends React.Component {
 												</div>
 												<ListItemText style={{ textAlign: "left" }} primary={(<span><b><span style={{ color: secondary.main }} >{obj.name}</span></b>{(obj.subTitle !== "" && obj.subTitle !== null) ? (<span style={{
 													"borderRadius": "5px",
-													"background": (obj.subTitle === "NEW") ? "#fe8731" : secondary.main,
+													"background": (obj.subTitle === "HOT") ? "#fe8731" : secondary.main,
 													"color": "white",
 													"padding": "0px 5px",
 													"marginLeft": "5px",

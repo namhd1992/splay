@@ -5,6 +5,7 @@ export const MISSION_REQUEST = 'mission/MISSION_REQUEST'
 export const MISSION_RESPONSE = 'mission/MISSION_RESPONSE'
 export const MISSION_FINISH = 'mission/MISSION_FINISH'
 export const MISSION_RESPONSE_MORE = 'mission/MISSION_RESPONSE_MORE'
+export const MISSION_RESPONSE_BY_ID_GAME='mission/MISSION_RESPONSE_BY_ID_GAME'
 
 const initialState = {
   data: [],
@@ -111,4 +112,23 @@ export const getMoreData = (limit, offset, token) => {
       console.log(error);
     })
   }
+}
+
+
+export const getMissionByGame = (gameId) => {
+	return dispatch => {
+		dispatch({
+			type: MISSION_REQUEST
+		})
+    var url = Ultilities.base_url() + "missionByIdGame?id=" + gameId;
+		return axios.get(url).then(function (response) {
+			dispatch({
+				type: MISSION_RESPONSE_BY_ID_GAME,
+				dataMission: response.data.dataArr,
+				totalRecords: response.data.totalRecords
+			})
+		}).catch(function (error) {
+			console.log(error);
+		})
+	}
 }

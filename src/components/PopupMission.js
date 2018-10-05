@@ -9,27 +9,25 @@ import Button from 'material-ui/Button'
 
 
 class PopupMission extends React.Component {
-	constructor(){
+
+	constructor(props){
 		super(props);
 		this.state = {
-			openDetailMission:false,
 			openBonus:false
 		};
 	}
-	componentWillMount(){
-		this.setState({openDetailMission:this.props.open})
+	handleClosePopupMission=()=>{
+		this.props.handleClosePopupMission();
 	}
-	handleCloseDetailMission(){
-		this.setState({openDetailMission:false});
-	}
-	handleCloseBonus(){
+	handleCloseBonus=()=>{
 		this.setState({openBonus:false});
 	}
-	handleOpenBonus(){
+	handleOpenBonus=()=>{
 		this.setState({openBonus:true});
 	}
-	handleReceiveBonus(){
-		this.props.handleReceiveBonus();
+	handleReceiveBonus=()=>{
+		this.setState({openBonus:true});
+		// this.props.handleReceiveBonus();
 	}
 
 	render() {
@@ -38,13 +36,13 @@ class PopupMission extends React.Component {
 			<div>
 				<Dialog
 					fullScreen={false}
-					open={this.state.openDetailMission}
+					open={this.props.openPopupMission}
 					aria-labelledby="responsive-dialog-title"
 				>
 					<DialogTitle id="responsive-dialog-title"><span style={{ color: "#23c9b6" }}>Chi tiết nhiệm vụ</span></DialogTitle>
 					<DialogContent style={{ color: "#fff" }}>
 						<div>
-							"dataMission.description"
+							description
 						</div>
 						<div>
 
@@ -56,12 +54,12 @@ class PopupMission extends React.Component {
 					</DialogContent>
 					<DialogActions>
 						<div>
-							<Button onClick={this.handleCloseDetailMission} style={{ color: "#fe8731" }}>
+							<Button onClick={this.handleClosePopupMission} style={{ color: "#fe8731" }}>
 								Đóng
 							</Button>
 						</div>
 						<div>
-							<Button onClick={this.loginAction}
+							<Button onClick={this.handleReceiveBonus}
 								style={{
 									borderRadius: "20px",
 									background: "linear-gradient(90deg,#22cab5,#3fe28f)",
@@ -71,7 +69,7 @@ class PopupMission extends React.Component {
 									whiteSpace: "nowrap",
 									minWidth: "auto",
 									minHeight: "auto",
-								}}>Đăng nhập
+								}}>Nhận
 							</Button>
 						</div>
 					</DialogActions>
