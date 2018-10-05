@@ -69,9 +69,9 @@ class Ultilities {
 		}
 		var env = window.localStorage.getItem("env");
 		if (env === "dev") {
-			return "http://localhost:9005/";
+			return "https://dev.simba-app.com/";
 		} else {
-			return "http://localhost:8080/";
+			return "https://server.splay.vn/";
 		}
 	}
 
