@@ -102,6 +102,25 @@ class MenuAppBar extends React.Component {
 	handleChange = (event, checked) => {
 		this.setState({ auth: checked });
 	};
+	componentWillMount(){
+		var user = JSON.parse(localStorage.getItem("user"));
+		if (localStorage.getItem("user") != null) {
+			var now = moment(new Date()); //todays date
+			var end = moment(user.expired); // another date
+			var duration = moment.duration(end.diff(now));
+			var millisecond = Math.floor(duration.asMilliseconds()) + 86400000;
+			if (millisecond > 0) {
+				this.setState({
+					auth: true,
+					user: JSON.parse(localStorage.getItem("user")),
+				});
+			} else {
+				this.logoutAction();
+			}
+		} else {
+			this.setState({ auth: false });
+		}
+	}
 
 	componentDidMount() {
 		var user = JSON.parse(localStorage.getItem("user"));
@@ -124,10 +143,6 @@ class MenuAppBar extends React.Component {
 			var duration = moment.duration(end.diff(now));
 			var millisecond = Math.floor(duration.asMilliseconds()) + 86400000;
 			if (millisecond > 0) {
-				this.setState({
-					auth: true,
-					user: JSON.parse(localStorage.getItem("user")),
-				});
 				_this.props.getData(user.access_token, user.scoinAccessToken).then(function () {
 					if (_this.props.data === null) {
 						_this.logoutAction();
@@ -137,7 +152,6 @@ class MenuAppBar extends React.Component {
 				this.logoutAction();
 			}
 		} else {
-			this.setState({ auth: false });
 			var code = Ultilities.parse_query_string("code", window.location.href);
 			var fb_mess = Ultilities.parse_query_string("fbmessid", window.location.href);
 			if (code != null) {

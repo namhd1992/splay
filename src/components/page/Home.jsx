@@ -25,7 +25,7 @@ import Hidden from 'material-ui/Hidden'
 import Rating from '../../components/Rating'
 import Divider from 'material-ui/Divider'
 import PopupMission from '../PopupMission'
-import '../../styles/home.css'
+import '../../styles/mission.css'
 
 const styles = theme => ({
 	gridItem: {
@@ -126,23 +126,21 @@ const styles = theme => ({
 	buttonFull:{
 		borderRadius: "20px",
 		background: "linear-gradient(90deg,#22cab5,#3fe28f)",
+		minWidth:"88px",
 		color: "#fff",
 		padding: "8px",
 		fontSize: "0.8em",
 		whiteSpace: "nowrap",
-		minWidth: "auto",
-		minHeight: "auto",
 	},
 	buttonGhost:{
 		borderRadius: "20px",
 		background:"#232b36",
+		minWidth:"88px",
 		color: "#00948d",
 		border: "1px solid #00948d",
 		padding: "8px",
 		fontSize: "0.8em",
 		whiteSpace: "nowrap",
-		minWidth: "auto",
-		minHeight: "auto",
 	},
 	buttonCircle:{
 		background:"#232b36",
@@ -240,64 +238,66 @@ class TitleContainer extends React.Component {
 			<div style={{width:"100%"}}>
 				{dataMission.slice(0, 8).map((obj, key) => (
 					<div className={(obj.actionName === "1") ? "mission": "none"}>
-						<Grid key={key}>
-							<ListItem key={key} className={classes.giftcodeItem}>
-								<Avatar style={{ backgroundColor: "#00c9b7", border: "1px solid #00c9b7" }}>
-									{(obj.actionName === "1") ? (
-										<img style={{ width: "24px", height: "24px" }} src="../lucky_icon.png"
-											alt="just alt"
-											onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
-									{(obj.actionName === "2") ? (
-										<CheckinIcon onClick={() => this.showDetail(obj.description)} />) : (
-											<div></div>)}
-									{(obj.actionName === "3") ? (
-										<img style={{ width: "24px", height: "24px" }} src="../auction_icon.png"
-											alt="just alt"
-											onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
-									{(obj.actionName === "4") ? (
-										<img style={{ width: "24px", height: "24px" }} src="../giftcode_icon.png"
-											alt="just alt"
-											onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
-									{(obj.actionName === "5") ? (
-										<img style={{ width: "24px", height: "24px" }} src="../giftcode_icon.png"
-											alt="just alt"
-											onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
-									{(obj.actionName === "6") ? (
-										<LikeIcon onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
-								</Avatar>
-								<ListItemText style={{width:"45%"}} disableTypography={true}
-									primary={(<div className="mission-title" style={{
-										fontWeight: "400",
-										color: "#fff",
-										whiteSpace: "nowrap",
-										overflow: "hidden",
-										
-									}}>{this.add3Dots(obj.missionName,20)}</div>)}
-									secondary={(
-										<span className="global-thit" style={{ color: "#fe8731" }}><img alt="just alt"
-											src="../thit.png" /> {obj.valueAward} </span>)} />
-								<div style={{flex:"auto", float:"right"}}>
-									<Button color="primary"
-											className={classes.buttonCircle}
-											onClick={() => this.openPopupMission()}>?</Button>
-									{(obj.finish && !obj.received) ? (
+						<div style={{background:"#212933", width:"99%"}}>
+							<Grid key={key}> 
+								<ListItem key={key} className={classes.giftcodeItem}>
+									<Avatar style={{ backgroundColor: "#00c9b7", border: "1px solid #00c9b7" }}>
+										{(obj.actionName === "1") ? (
+											<img style={{ width: "24px", height: "24px" }} src="../lucky_icon.png"
+												alt="just alt"
+												onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
+										{(obj.actionName === "2") ? (
+											<CheckinIcon onClick={() => this.showDetail(obj.description)} />) : (
+												<div></div>)}
+										{(obj.actionName === "3") ? (
+											<img style={{ width: "24px", height: "24px" }} src="../auction_icon.png"
+												alt="just alt"
+												onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
+										{(obj.actionName === "4") ? (
+											<img style={{ width: "24px", height: "24px" }} src="../giftcode_icon.png"
+												alt="just alt"
+												onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
+										{(obj.actionName === "5") ? (
+											<img style={{ width: "24px", height: "24px" }} src="../giftcode_icon.png"
+												alt="just alt"
+												onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
+										{(obj.actionName === "6") ? (
+											<LikeIcon onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
+									</Avatar>
+									<ListItemText style={{width:"50%", padding:"0 7px"}} disableTypography={true}
+										primary={(<div className="mission-title" style={{
+											fontWeight: "400",
+											color: "#fff",
+											whiteSpace: "nowrap",
+											overflow: "hidden",
+											
+										}}>{this.add3Dots(obj.missionName,25)}</div>)}
+										secondary={(
+											<span className="global-thit" style={{ color: "#fe8731" }}><img alt="just alt"
+												src="../thit.png" /> {obj.valueAward} </span>)} />
+									<div style={{flex:"auto", width:"25%"}}>
+										<Button
+												className={classes.buttonCircle}
+												onClick={() => this.openPopupMission()}>?</Button>
+										{(obj.finish && !obj.received) ? (
 										<Button onClick={() => this.reward(obj.missionId)}
-										className={classes.buttonFull}
-											>Nhận</Button>) : (<div></div>)}
-									{(!obj.finish && !obj.received) ? (
-										<Button color="primary"
-											className={classes.buttonGhost}
-											onClick={() => this.doMission(obj.actionName, obj.objectId, obj.objectValue, obj.scoinGameObject)}>Thực hiện</Button>
-									) : (<div></div>)}
-									{(obj.finish && obj.received) ? (
-										<Button className="mission-button disabledbtn"
-											classes={{ root: classes.missionBtn, label: classes.missionBtnLabelGhost }}
-											style={{ borderRadius: "20px", color: "#fff", padding: "8px" }}
-											disabled>Đã nhận</Button>
-									) : (<div></div>)}
-								</div>
-							</ListItem>
-						</Grid>
+											className={classes.buttonFull}
+												>Nhận</Button>) : (<div></div>)}
+										{(!obj.finish && !obj.received) ? (
+											<Button
+												className={classes.buttonGhost}
+												onClick={() => this.doMission(obj.actionName, obj.objectId, obj.objectValue, obj.scoinGameObject)}>Thực hiện</Button>
+										) : (<div></div>)}
+										{(obj.finish && obj.received) ? (
+											<Button className="mission-button disabledbtn"
+												classes={{ root: classes.missionBtn, label: classes.missionBtnLabelGhost }}
+												style={{ borderRadius: "20px", color: "#fff", padding: "8px", minWidth:"88px" }}
+												disabled>Đã nhận</Button>
+										) : (<div></div>)}
+									</div>
+								</ListItem>
+							</Grid>
+						</div>
 					</div>
 				))}
 			</div>

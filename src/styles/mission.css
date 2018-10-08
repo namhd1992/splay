@@ -1,0 +1,42 @@
+@font-face {
+	font-family: "open";
+	font-style: normal;
+	font-weight: 300;
+	src: local("Open Sans Light"), local("OpenSans-Light"), url(https://themes.googleusercontent.com/static/fonts/opensans/v6/DXI1ORHCpsQm3Vp6mXoaTZ1r3JsPcQLi8jytr04NNhU.woff) format('woff');
+}
+
+*:before, *:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+
+
+@keyframes linear {
+	
+	from {
+		background-position: 0 0;
+	}
+	to {
+		background-position: 400px 0;
+	}
+	
+}
+
+.mission {
+	content: '';
+	display: block;
+	border-radius: 3px;
+	padding: 2px;
+	transform: scale( 1.02, 1.08 );
+	background: linear-gradient( 90deg, #212933, #212933, #306a73, #212933, #212933 );
+	background-position : 55px 0;
+	top: 0;
+	animation: linear 1s infinite linear;
+	left: 0;
+	z-index: -1;
+}
+.none{
+	all: unset;
+}
