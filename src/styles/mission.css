@@ -32,7 +32,7 @@ button:hover{
 	content: '';
 	display: block;
 	border-radius: 3px;
-	padding: 2px;
+	padding: 2px 0px;
 	transform: scale( 1.02, 1.08 );
 	background: linear-gradient( 90deg, #212933, #212933, #306a73, #212933, #212933 );
 	background-position : 55px 0;
@@ -91,6 +91,9 @@ button.buttonGhost{
 	color: white;
 	border-radius: 50%;
 }
+.mission .avatar{
+	margin-left: 2px;
+}
 .img_avatar{
 	width: 24px; 
 	height: 24px;
@@ -105,7 +108,6 @@ button.buttonGhost{
 }
 .mission_content{
 	background:#212933;
-	width:99%
 }
 
 .mission_action{
@@ -114,7 +116,7 @@ button.buttonGhost{
 	float:left;
 }
 .mission .mission_action{
-	margin-right: 2px;
+	margin-right: 2px 0px;
 }
 
 @media only screen and (max-width:1280px){
@@ -122,18 +124,18 @@ button.buttonGhost{
 	   padding: 2px 0px;
    }
    button.buttonCircle{
-	padding: 6px 10px;
-	font-size: 0.7em;
-	margin-right:5px;
+		padding: 6px 10px;
+		font-size: 0.7em;
+		margin-right:5px;
 	}
 	button.buttonFull{
 		border-radius: 14px;
-		min-width:60px;
+		min-width:70px;
 		padding: 6px;
 	}
 	button.buttonGhost{
 		border-radius: 14px;
-		min-width:60px;
+		min-width:70px;
 		padding: 6px;
 	}
 	.avatar{
@@ -146,18 +148,12 @@ button.buttonGhost{
 	.mission_title{
 		font-weight: 400;
 	}
-	.mission_content{
-		width:100%
-	}
 }
  
 
 @media only screen and (max-width:960px){
  	.mission{
-		padding: 2px 0px 2px 8px;
-	}
-	.mission_content{
-		width:100%
+		padding: 2px 0px 2px 6px;
 	}
 	.mission_action{
 		flex:none;
@@ -171,9 +167,6 @@ button.buttonGhost{
 @media only screen and (max-width:600px){
 	.mission{
 		padding: 2px 0px 2px 4px;
-	}
-	.mission_content{
-		width:100%
 	}
 	.mission_action{
 		flex:auto;
