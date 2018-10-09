@@ -103,10 +103,23 @@ button.buttonGhost{
 	text-overflow: ellipsis;
 	
 }
+.mission_content{
+	background:#212933;
+	width:99%
+}
+
+.mission_action{
+	flex:auto;
+	width:27%; 
+	float:left;
+}
+.mission .mission_action{
+	margin-right: 2px;
+}
 
 @media only screen and (max-width:1280px){
 	.mission{
-	   padding: 2px;
+	   padding: 2px 0px;
    }
    button.buttonCircle{
 	padding: 6px 10px;
@@ -117,13 +130,11 @@ button.buttonGhost{
 		border-radius: 14px;
 		min-width:60px;
 		padding: 6px;
-		font-size: 0.7em;
 	}
 	button.buttonGhost{
 		border-radius: 14px;
 		min-width:60px;
 		padding: 6px;
-		font-size: 0.7em;
 	}
 	.avatar{
 		padding: 4px 7px;
@@ -134,19 +145,42 @@ button.buttonGhost{
 	}
 	.mission_title{
 		font-weight: 400;
-		font-size: 0.7em;
+	}
+	.mission_content{
+		width:100%
 	}
 }
  
 
 @media only screen and (max-width:960px){
  	.mission{
-		padding: 2px 2px 2px 8px;
+		padding: 2px 0px 2px 8px;
+	}
+	.mission_content{
+		width:100%
+	}
+	.mission_action{
+		flex:none;
+		width:15%; 
+	}
+	.mission .mission_action{
+		margin-right: 8px;
 	}
 }
   
 @media only screen and (max-width:600px){
 	.mission{
-		padding: 2px 5px;
+		padding: 2px 0px 2px 4px;
+	}
+	.mission_content{
+		width:100%
+	}
+	.mission_action{
+		flex:auto;
+		width:27%; 
+		float:left;
+	}
+	.mission .mission_action{
+		margin-right: 4px;
 	}
 }

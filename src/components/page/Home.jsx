@@ -238,7 +238,7 @@ class TitleContainer extends React.Component {
 			<div className="mission_container">
 				{dataMission.slice(0, 8).map((obj, key) => (
 					<div className={(obj.actionName === "1") ? "mission": "none"}>
-						<div style={{background:"#212933", width:"99%"}}>
+						<div className="mission_content">
 							<Grid key={key}> 
 								<ListItem key={key} className={classes.giftcodeItem}>
 									<div className="avatar">
@@ -271,7 +271,7 @@ class TitleContainer extends React.Component {
 										secondary={(
 											<span className="global-thit" style={{ color: "#fe8731" }}><img alt="just alt"
 												src="../thit.png" /> {obj.valueAward} </span>)} />
-									<div style={{flex:"auto", width:"27%"}}>
+									<div className="mission_action">
 										<button
 												className="buttonCircle"
 												onClick={() => this.openPopupMission()}>?</button>
