@@ -235,64 +235,60 @@ class TitleContainer extends React.Component {
 	render() {
 		const {classes, dataMission} = this.props;
 		return (
-			<div style={{width:"100%"}}>
+			<div className="mission_container">
 				{dataMission.slice(0, 8).map((obj, key) => (
 					<div className={(obj.actionName === "1") ? "mission": "none"}>
 						<div style={{background:"#212933", width:"99%"}}>
 							<Grid key={key}> 
 								<ListItem key={key} className={classes.giftcodeItem}>
-									<Avatar style={{ backgroundColor: "#00c9b7", border: "1px solid #00c9b7" }}>
+									<div className="avatar">
 										{(obj.actionName === "1") ? (
-											<img style={{ width: "24px", height: "24px" }} src="../lucky_icon.png"
+											<img className="img_avatar" src="../lucky_icon.png"
 												alt="just alt"
 												onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
 										{(obj.actionName === "2") ? (
-											<CheckinIcon onClick={() => this.showDetail(obj.description)} />) : (
+											<img  className="img_avatar" src="../check_icon.png"
+												alt="just alt"
+												onClick={() => this.showDetail(obj.description)} />) : (
 												<div></div>)}
 										{(obj.actionName === "3") ? (
-											<img style={{ width: "24px", height: "24px" }} src="../auction_icon.png"
+											<img className="img_avatar" src="../auction_icon.png"
 												alt="just alt"
 												onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
 										{(obj.actionName === "4") ? (
-											<img style={{ width: "24px", height: "24px" }} src="../giftcode_icon.png"
+											<img className="img_avatar" src="../giftcode_icon.png"
 												alt="just alt"
 												onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
 										{(obj.actionName === "5") ? (
-											<img style={{ width: "24px", height: "24px" }} src="../giftcode_icon.png"
+											<img className="img_avatar" src="../giftcode_icon.png"
 												alt="just alt"
 												onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
 										{(obj.actionName === "6") ? (
 											<LikeIcon onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
-									</Avatar>
+									</div>
 									<ListItemText style={{width:"50%", padding:"0 7px"}} disableTypography={true}
-										primary={(<div className="mission-title" style={{
-											fontWeight: "400",
-											color: "#fff",
-											whiteSpace: "nowrap",
-											overflow: "hidden",
-											
-										}}>{this.add3Dots(obj.missionName,25)}</div>)}
+										primary={(<div className="mission_title">{obj.missionName}</div>)}
 										secondary={(
 											<span className="global-thit" style={{ color: "#fe8731" }}><img alt="just alt"
 												src="../thit.png" /> {obj.valueAward} </span>)} />
-									<div style={{flex:"auto", width:"25%"}}>
-										<Button
-												className={classes.buttonCircle}
-												onClick={() => this.openPopupMission()}>?</Button>
+									<div style={{flex:"auto", width:"27%"}}>
+										<button
+												className="buttonCircle"
+												onClick={() => this.openPopupMission()}>?</button>
 										{(obj.finish && !obj.received) ? (
-										<Button onClick={() => this.reward(obj.missionId)}
-											className={classes.buttonFull}
-												>Nhận</Button>) : (<div></div>)}
+										<button onClick={() => this.reward(obj.missionId)}
+											className="buttonFull"
+												>Nhận</button>) : (<div></div>)}
 										{(!obj.finish && !obj.received) ? (
-											<Button
-												className={classes.buttonGhost}
-												onClick={() => this.doMission(obj.actionName, obj.objectId, obj.objectValue, obj.scoinGameObject)}>Thực hiện</Button>
+											<button
+												className="buttonGhost"
+												onClick={() => this.doMission(obj.actionName, obj.objectId, obj.objectValue, obj.scoinGameObject)}>Thực hiện</button>
 										) : (<div></div>)}
 										{(obj.finish && obj.received) ? (
-											<Button className="mission-button disabledbtn"
+											<button className="mission-button disabledbtn"
 												classes={{ root: classes.missionBtn, label: classes.missionBtnLabelGhost }}
 												style={{ borderRadius: "20px", color: "#fff", padding: "8px", minWidth:"88px" }}
-												disabled>Đã nhận</Button>
+												disabled>Đã nhận</button>
 										) : (<div></div>)}
 									</div>
 								</ListItem>
@@ -556,7 +552,7 @@ class HomeComponent extends React.Component {
 														</span>
 														</div>
 													</span>)} />
-												<Button className={classes.buttonGhost}>Chơi</Button>
+												<button className="buttonGhost">Chơi</button>
 											</ListItem>
 										</Link>
 										<Divider />
@@ -614,9 +610,9 @@ class HomeComponent extends React.Component {
 																<span style={{ color: "#666", fontSize: "0.8em" }}
 																	className="giftcode-item-left">{"Số lượng " + obj.giftcodeEvent.numberGiftcode}</span>)} />
 														<div>
-															<Button color="primary" className={classes.buttonGhost}>
+															<button color="primary" className="buttonGhost">
 																Chi tiết
-															</Button>
+															</button>
 														</div>
 													</ListItem>
 												</Link>
@@ -627,7 +623,7 @@ class HomeComponent extends React.Component {
 								<Grid container style={{ margin: "16px 0px", width: "100%" }} spacing={16}>
 									<Grid item xs={12} style={{ display: "flex", justifyContent: "space-between", borderRadius: "15px", padding: "15px", border: "solid 1px #333", color: "#fff" }}>
 										<span style={{ marginTop: "5px" }}>Thiếu <span className="global-thit" style={{ color: "#fe8731" }}> <img alt="just alt" src="../thit.png" /> Thịt </span> để tham gia hoạt động?	</span><Link to={"./article_detail/129"} >
-											<Button className={classes.buttonFull}>Nhận ngay</Button></Link>
+											<button className="buttonFull">Nhận ngay</button></Link>
 									</Grid>
 								</Grid>
 								<Grid container className={classes.homeBlock} spacing={8} justify="center">
@@ -815,7 +811,7 @@ class HomeComponent extends React.Component {
 												<img alt="just alt" src="../thit.png" /> Thịt
 											</span> để tham gia hoạt động?
 										</span>
-										<Link to={"./article_detail/129"} ><Button className={classes.buttonFull}>Nhận ngay</Button></Link>
+										<Link to={"./article_detail/129"} ><button className="buttonFull">Nhận ngay</button></Link>
 									</Grid>
 								</Grid>
 								<Grid container className={classes.homeBlock} spacing={8}>
@@ -851,9 +847,9 @@ class HomeComponent extends React.Component {
 																<span style={{ color: "#666", fontSize: "0.8em" }}
 																	className="giftcode-item-left">{"Số lượng " + obj.giftcodeEvent.numberGiftcode}</span>)} />
 														<div>
-															<Button color="primary" className={classes.buttonGhost}>
+															<button color="primary" className="buttonGhost">
 																Chi tiết
-															</Button>
+															</button>
 														</div>
 													</ListItem>
 												</Link>

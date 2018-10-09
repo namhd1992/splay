@@ -23,6 +23,10 @@
 	}
 	
 }
+button:hover{
+	background:#3c434c;
+	cursor: pointer;
+}
 
 .mission {
 	content: '';
@@ -39,4 +43,110 @@
 }
 .none{
 	all: unset;
+}
+
+
+button.buttonCircle{
+	background:#232b36;
+	color: #12cdd4;
+	border: 1px solid #12cdd4;
+	padding: 8px 14px;
+	font-size: 0.8em;
+	white-space: nowrap;
+	min-width: auto;
+	min-height: auto;
+	margin-right:10px;
+	border-radius: 50%;
+	float:left
+}
+button.buttonFull{
+	border-radius: 20px;
+	border: none;
+	background: linear-gradient(90deg,#22cab5,#3fe28f);
+	min-width:88px;
+	color: #fff;
+	padding: 8px;
+	font-size: 0.8em;
+	white-space: nowrap;
+}
+button.buttonGhost{
+	border-radius: 20px;
+	background:#232b36;
+	min-width:88px;
+	color: #00948d;
+	border: 1px solid #00948d;
+	padding: 8px;
+	font-size: 0.8em;
+	white-space: nowrap;
+}
+.mission_container{
+	width:100%;
+}
+.avatar{
+	background-color: #00c9b7;
+	border: 1px solid #00c9b7;
+	padding: 6px 9px;
+	min-width: auto;
+	min-height: auto;
+	color: white;
+	border-radius: 50%;
+}
+.img_avatar{
+	width: 24px; 
+	height: 24px;
+}
+.mission_title{
+	font-weight: 400;
+	color: #fff;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	
+}
+
+@media only screen and (max-width:1280px){
+	.mission{
+	   padding: 2px;
+   }
+   button.buttonCircle{
+	padding: 6px 10px;
+	font-size: 0.7em;
+	margin-right:5px;
+	}
+	button.buttonFull{
+		border-radius: 14px;
+		min-width:60px;
+		padding: 6px;
+		font-size: 0.7em;
+	}
+	button.buttonGhost{
+		border-radius: 14px;
+		min-width:60px;
+		padding: 6px;
+		font-size: 0.7em;
+	}
+	.avatar{
+		padding: 4px 7px;
+	}
+	.img_avatar{
+		width: 18px; 
+		height: 18px;
+	}
+	.mission_title{
+		font-weight: 400;
+		font-size: 0.7em;
+	}
+}
+ 
+
+@media only screen and (max-width:960px){
+ 	.mission{
+		padding: 2px 2px 2px 8px;
+	}
+}
+  
+@media only screen and (max-width:600px){
+	.mission{
+		padding: 2px 5px;
+	}
 }
