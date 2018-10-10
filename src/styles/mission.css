@@ -118,6 +118,13 @@ button.buttonGhost{
 .mission .mission_action{
 	margin-right: 2px 0px;
 }
+.received{
+	color: #fff;
+	padding: 8px; 
+	min-width:88px;
+	border: none;
+	background:#3c434c;
+}
 
 @media only screen and (max-width:1280px){
 	.mission{
@@ -132,6 +139,9 @@ button.buttonGhost{
 		border-radius: 14px;
 		min-width:70px;
 		padding: 6px;
+	}
+	.received{
+		min-width:70px;
 	}
 	button.buttonGhost{
 		border-radius: 14px;

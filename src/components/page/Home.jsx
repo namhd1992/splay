@@ -6,8 +6,6 @@ import Button from 'material-ui/Button'
 import Carousel from '../../components/Carousel'
 import { Link } from 'react-router-dom'
 import { ListItem, ListItemText } from 'material-ui/List'
-import Avatar from 'material-ui/Avatar'
-import CheckinIcon from 'material-ui-icons/CheckCircle'
 import KeyboardArrowRight from 'material-ui-icons/KeyboardArrowRight'
 import LikeIcon from 'material-ui-icons/ThumbUp'
 import Dialog, {
@@ -285,10 +283,7 @@ class TitleContainer extends React.Component {
 												onClick={() => this.doMission(obj.actionName, obj.objectId, obj.objectValue, obj.scoinGameObject)}>Thực hiện</button>
 										) : (<div></div>)}
 										{(obj.finish && obj.received) ? (
-											<button className="mission-button disabledbtn"
-												classes={{ root: classes.missionBtn, label: classes.missionBtnLabelGhost }}
-												style={{ borderRadius: "20px", color: "#fff", padding: "8px", minWidth:"88px" }}
-												disabled>Đã nhận</button>
+											<button className="received" disabled>Đã nhận</button>
 										) : (<div></div>)}
 									</div>
 								</ListItem>
