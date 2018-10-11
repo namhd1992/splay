@@ -23,10 +23,7 @@
 	}
 	
 }
-button:hover{
-	background:#3c434c;
-	cursor: pointer;
-}
+
 
 .mission {
 	content: '';
@@ -44,7 +41,6 @@ button:hover{
 .none{
 	all: unset;
 }
-
 
 button.buttonCircle{
 	background:#232b36;
@@ -125,12 +121,36 @@ button.buttonGhost{
 	border: none;
 	background:#3c434c;
 }
+.articleEvent{
+	border: solid 1px #fe8731;
+	display: inline-block;
+	padding: 5px;
+	margin: 2px;
+	border-radius: 5px;
+	font-size: 0.6em;
+	color: #fe8731;
+	white-space: nowrap;
+}
+.articleNew{
+	border: solid 1px #23968c;
+	display: inline-block;
+	padding: 5px;
+	margin: 2px;
+	border-radius: 5px;
+	font-size: 0.6em;
+	color: #23968c;
+	white-space: nowrap;
+}
+button:hover{
+	background:#3c434c;
+	cursor: pointer;
+}
 
 @media only screen and (max-width:1280px){
 	.mission{
 	   padding: 2px 0px;
-   }
-   button.buttonCircle{
+   	}
+   	button.buttonCircle{
 		padding: 6px 10px;
 		font-size: 0.7em;
 		margin-right:5px;
@@ -176,7 +196,7 @@ button.buttonGhost{
   
 @media only screen and (max-width:600px){
 	.mission{
-		padding: 2px 0px 2px 4px;
+		padding: 2px 0px 2px 1px;
 	}
 	.mission_action{
 		flex:auto;

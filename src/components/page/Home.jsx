@@ -121,58 +121,6 @@ const styles = theme => ({
 	paper: {
 		background: "#2b323d"
 	},
-	buttonFull:{
-		borderRadius: "20px",
-		background: "linear-gradient(90deg,#22cab5,#3fe28f)",
-		minWidth:"88px",
-		color: "#fff",
-		padding: "8px",
-		fontSize: "0.8em",
-		whiteSpace: "nowrap",
-	},
-	buttonGhost:{
-		borderRadius: "20px",
-		background:"#232b36",
-		minWidth:"88px",
-		color: "#00948d",
-		border: "1px solid #00948d",
-		padding: "8px",
-		fontSize: "0.8em",
-		whiteSpace: "nowrap",
-	},
-	buttonCircle:{
-		background:"#232b36",
-		color: "#12cdd4",
-		border: "1px solid #12cdd4",
-		padding: "8px 14px",
-		fontSize: "0.8em",
-		whiteSpace: "nowrap",
-		minWidth: "auto",
-		minHeight: "auto",
-		marginRight:"10px",
-		borderRadius: "50%",
-		float:"left"
-	},
-	articleNew:{
-		border: "solid 1px #23968c",
-		display: "inline-block",
-		padding: "5px",
-		margin: "2px",
-		borderRadius: "5px",
-		fontSize: "0.6em",
-		color: "#23968c",
-		whiteSpace: "nowrap"
-	},
-	articleEvent:{
-		border: "solid 1px #fe8731",
-		display: "inline-block",
-		padding: "5px",
-		margin: "2px",
-		borderRadius: "5px",
-		fontSize: "0.6em",
-		color: "#fe8731",
-		whiteSpace: "nowrap"
-	}
 });
 
 
@@ -635,7 +583,7 @@ class HomeComponent extends React.Component {
 										{articleData.map((obj, key) => {
 											return (
 												<ListItem key={key} style={{ padding: "10px 0px" }}>
-													{(obj.articleType == "event") ? (<div className={classes.articleEvent}>Sự kiện</div>) : (<div className={classes.articleNew}>Tin tức</div>)}
+													{(obj.articleType == "event") ? (<div className="articleEvent">Sự kiện</div>) : (<div className="articleNew">Tin tức</div>)}
 													<ListItemText style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", color: "#fff", fontSize: "0.8em" }} disableTypography={true} primary={(<span><Link style={{ color: "#fff" }} to={"/article_detail/" + obj.id} className={classes.homeBlockLink}>
 														{(obj.splayGameName !== "" && obj.splayGameName !== null) ? "[" + obj.splayGameName + "]" : ""} {obj.title}
 													</Link></span>)} ></ListItemText>

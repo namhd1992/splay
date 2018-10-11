@@ -5,7 +5,6 @@ import Hidden from 'material-ui/Hidden'
 import { CircularProgress } from 'material-ui/Progress'
 import RightArea from '../../components/RightArea'
 import HeadMenu from '../HeadMenu'
-import '../../styles/articleDetail.css'
 
 
 

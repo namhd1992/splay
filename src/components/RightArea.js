@@ -15,6 +15,7 @@ import PropTypes from 'prop-types'
 import Divider from 'material-ui/Divider'
 import { withTheme } from 'material-ui/styles'
 import { withRouter } from 'react-router-dom'
+import '../styles/rightArea.css'
 
 const styles = {
 	root: {
@@ -74,13 +75,7 @@ class RightArea extends React.Component {
 			<div>
 				<Grid container spacing={16} justify="center" style={{ margin: "0px", width: "100%" }}>
 					<Grid item xs={12}>
-						<div style={{
-							borderRadius: "5px",
-							padding: "5px",
-							overflow: "hidden",
-							color: "#fff",
-							display: "flex"
-						}}>
+						<div className="title">
 							<div className={classes.homeTitle} style={{ textAlign: "left", width: "90%" }}> Tin Tức </div>
 							<div className={classes.homeLink}><Link to="/article"><KeyboardArrowRight
 								style={{ color: "#555" }}></KeyboardArrowRight></Link></div>
@@ -90,25 +85,7 @@ class RightArea extends React.Component {
 						{this.state.allArticles.map((obj, key) => {
 							return (
 								<ListItem key={key} style={{ padding: "10px 0px" }}>
-									{(obj.articleType === "event") ? (<div style={{
-										border: "solid 1px #fe8731",
-										display: "inline-block",
-										padding: "5px",
-										margin: "2px",
-										borderRadius: "5px",
-										fontSize: "0.6em",
-										color: "#fe8731",
-										whiteSpace: "nowrap"
-									}}>Sự kiện</div>) : (<div style={{
-										border: "solid 1px #24b9a9",
-										display: "inline-block",
-										padding: "5px",
-										margin: "2px",
-										borderRadius: "5px",
-										fontSize: "0.6em",
-										color: "#24b9a9",
-										whiteSpace: "nowrap"
-									}}>Tin tức</div>)}
+									{(obj.articleType === "event") ? (<div className="articleEvent">Sự kiện</div>) : (<div className="articleNew">Tin tức</div>)}
 									<ListItemText style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", color: "#fff", fontSize: "0.8em" }} disableTypography={true} primary={(<span><Link onClick={() => { this.goToLink(obj.id) }} style={{ color: "#fff" }} to={"/article_detail/" + obj.id} className={classes.homeBlockLink}>
 										{(obj.splayGameName !== "" && obj.splayGameName !== null) ? "[" + obj.splayGameName + "]" : ""} {obj.title}
 									</Link></span>)} ></ListItemText>
@@ -127,28 +104,12 @@ class RightArea extends React.Component {
 							<span className="global-thit" style={{ color: "#fe8731" }}>
 								<img alt="just alt" src="../thit.png" /> Thịt
 							</span> để tham gia hoạt động?
-						</span><Link to={"./article_detail/129"} ><Button
-							style={{
-								borderRadius: "20px",
-								background: "linear-gradient(90deg,#22cab5,#3fe28f)",
-								color: "#fff",
-								padding: "10px",
-								fontSize: "0.8em",
-								whiteSpace: "nowrap",
-								minWidth: "auto",
-								minHeight: "auto",
-							}}>Nhận ngay</Button></Link>
+						</span><Link to={"./article_detail/129"} ><button className="buttonFull">Nhận ngay</button></Link>
 					</Grid>
 				</Grid>
 				<Grid container style={{ margin: "0px", width: "100%" }} spacing={16}>
 					<Grid item xs={12}>
-						<div style={{
-							borderRadius: "5px",
-							padding: "5px",
-							overflow: "hidden",
-							color: "#fff",
-							display: "flex"
-						}}>
+						<div className="title">
 							<div className={classes.homeTitle} style={{ textAlign: "left", width: "90%" }}> Games </div>
 							<div className={classes.homeLink}><Link to="/game"><KeyboardArrowRight
 								style={{ color: "#555" }}></KeyboardArrowRight></Link></div>
@@ -179,27 +140,12 @@ class RightArea extends React.Component {
 										secondary={(<span>{"Hơn " + obj.downloadTurns + " lượt tải"}<br />
 											<span style={{marginTop:"5px"}}>
 												<Rating point={obj.pointReview}></Rating>
-												<span style={{
-																marginLeft:"20px",
-																fontSize:"11px",
-																border: "1px solid #23c9b6",
-																padding:"1px 2px",
-																borderRadius: "20px"}}>
-																<span style={{color:"#23c9b6"}}>{this.getTheLoai(obj)}</span>
-														</span>
+												<span className="tagName">
+													<span style={{color:"#23c9b6"}}>{this.getTheLoai(obj)}</span>
+												</span>
 											</span>
 										</span>)} />
-									<Button
-										style={{
-											borderRadius: "20px",
-											background: "linear-gradient(90deg,#22cab5,#3fe28f)",
-											color: "#fff",
-											padding: "10px",
-											fontSize: "0.8em",
-											whiteSpace: "nowrap",
-											minWidth: "auto",
-											minHeight: "auto",
-										}}>Chơi</Button>
+									<button className="buttonFull">Chơi</button>
 									{/* {(obj.subTitle === "hot")
 										? (<div className="game-item-hot"><div className="game-item-new-inside"><div className="content">Hot</div></div></div>)
 										: (obj.subTitle === "suggest") ? (<div className="game-item-sug"><div className="game-item-new-inside"><div className="content">Đề cử</div></div></div>)
@@ -212,17 +158,7 @@ class RightArea extends React.Component {
 					<Grid item xs={12}>
 						<div style={{ textAlign: "center" }}>
 							<Link to="/game">
-								<Button
-									style={{
-										borderRadius: "20px",
-										background: "transparent",
-										color: "#fff",
-										padding: "10px",
-										fontSize: "0.8em",
-										whiteSpace: "nowrap",
-										minWidth: "auto",
-										minHeight: "auto"
-									}}>Xem thêm</Button>
+								<button className="moreGame">XEM THÊM</button>
 							</Link>
 						</div>
 					</Grid>

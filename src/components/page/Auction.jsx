@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom'
 import { CircularProgress } from 'material-ui/Progress'
 import { withStyles } from 'material-ui/styles'
 import { withTheme } from 'material-ui/styles'
+import '../../styles/auction.css'
 
 const styles = theme => ({
 	root: {
@@ -162,24 +163,8 @@ class AuctionComponent extends React.Component {
 												<Link to={(obj.objectType === "auction") ? "/auctiondetail/" + obj.id : "itemgiftcodedetail/" + obj.id} key={key} className={classes.gridLink}>
 													<div className={classes.gridItem}>
 														<div style={{ width: "70%", position: "relative" }}>
-															<div className="auction-name" style={{
-																textAlign: "left",
-																width: "100%",
-																overflow: "hidden",
-																textOverflow: "ellipsis",
-																whiteSpace: "nowrap",
-																color: "#fff",
-																padding: "5px"
-															}}>{obj.name}</div>
-															<div className="auction-name" style={{
-																textAlign: "left",
-																width: "100%",
-																overflow: "hidden",
-																textOverflow: "ellipsis",
-																whiteSpace: "nowrap",
-																color: "#000",
-																padding: "5px"
-															}}><img src={(obj.objectType === "auction") ? "../thit.png" : "../scoin.png"} style={{ width: "24px", verticalAlign: "text-bottom" }} /> <span style={{ color: "#fe8731" }}>{obj.price.toLocaleString()}</span></div>
+															<div className="auctionNameWhite">{obj.name}</div>
+															<div className="auctionNameBlack"><img src={(obj.objectType === "auction") ? "../thit.png" : "../scoin.png"} style={{ width: "24px", verticalAlign: "text-bottom" }} /> <span style={{ color: "#fe8731" }}>{obj.price.toLocaleString()}</span></div>
 														</div>
 														<div style={{
 															width: "80px",
@@ -217,24 +202,8 @@ class AuctionComponent extends React.Component {
 												<Link to={"/itemgiftcodedetail/" + obj.id} key={key} className={classes.gridLink}>
 													<div className={classes.gridItem}>
 														<div style={{ width: "70%", position: "relative" }}>
-															<div className="auction-name" style={{
-																textAlign: "left",
-																width: "100%",
-																overflow: "hidden",
-																textOverflow: "ellipsis",
-																whiteSpace: "nowrap",
-																color: "#fff",
-																padding: "5px"
-															}}>{obj.name}</div>
-															<div className="auction-name" style={{
-																textAlign: "left",
-																width: "100%",
-																overflow: "hidden",
-																textOverflow: "ellipsis",
-																whiteSpace: "nowrap",
-																color: "#000",
-																padding: "5px"
-															}}><img src="../scoin.png" style={{ width: "24px", verticalAlign: "text-bottom" }} /> <span style={{ color: "#fe8731" }}>{obj.priceScoin.toLocaleString()}</span></div>
+															<div className="auctionNameWhite">{obj.name}</div>
+														 	<div className="auctionNameBlack"><img src="../scoin.png" style={{ width: "24px", verticalAlign: "text-bottom" }} /> <span style={{ color: "#fe8731" }}>{obj.priceScoin.toLocaleString()}</span></div>
 														</div>
 														<div style={{
 															width: "80px",
@@ -272,24 +241,8 @@ class AuctionComponent extends React.Component {
 												<Link to={"/auctiondetail/" + obj.id} key={key} className={classes.gridLink}>
 													<div className={classes.gridItem}>
 														<div style={{ width: "70%", position: "relative" }}>
-															<div className="auction-name" style={{
-																textAlign: "left",
-																width: "100%",
-																overflow: "hidden",
-																textOverflow: "ellipsis",
-																whiteSpace: "nowrap",
-																color: "#fff",
-																padding: "5px"
-															}}>{obj.name}</div>
-															<div className="auction-name" style={{
-																textAlign: "left",
-																width: "100%",
-																overflow: "hidden",
-																textOverflow: "ellipsis",
-																whiteSpace: "nowrap",
-																color: "#000",
-																padding: "5px"
-															}}><img src="../thit.png" style={{ width: "24px", verticalAlign: "text-bottom" }} /> <span style={{ color: "#fe8731" }}>{obj.topPrice.toLocaleString()}</span></div>
+															<div className="auctionNameWhite">{obj.name}</div>
+															<div className="auctionNameBlack"><img src="../thit.png" style={{ width: "24px", verticalAlign: "text-bottom" }} /> <span style={{ color: "#fe8731" }}>{obj.topPrice.toLocaleString()}</span></div>
 															<div className="auction-name" style={{
 																	textAlign: "left",
 																	width: "100%",
@@ -337,24 +290,8 @@ class AuctionComponent extends React.Component {
 												<Link to={"/itemgiftcodedetail/" + obj.id} key={key} className={classes.gridLink}>
 													<div className={classes.gridItem}>
 														<div style={{ width: "70%", position: "relative" }}>
-															<div className="auction-name" style={{
-																textAlign: "left",
-																width: "100%",
-																overflow: "hidden",
-																textOverflow: "ellipsis",
-																whiteSpace: "nowrap",
-																color: "#fff",
-																padding: "5px"
-															}}>{obj.name}</div>
-															<div className="auction-name" style={{
-																textAlign: "left",
-																width: "100%",
-																overflow: "hidden",
-																textOverflow: "ellipsis",
-																whiteSpace: "nowrap",
-																color: "#000",
-																padding: "5px"
-															}}><img src="../scoin.png" style={{ width: "24px", verticalAlign: "text-bottom" }} /> <span style={{ color: "#fe8731" }}>{obj.priceScoin.toLocaleString()}</span></div>
+															<div className="auctionNameWhite">{obj.name}</div>
+															<div className="auctionNameBlack"><img src="../scoin.png" style={{ width: "24px", verticalAlign: "text-bottom" }} /> <span style={{ color: "#fe8731" }}>{obj.priceScoin.toLocaleString()}</span></div>
 														</div>
 														<div style={{
 															width: "80px",

@@ -19,6 +19,7 @@ import PropTypes from 'prop-types'
 import { withStyles } from "material-ui/styles/index"
 import Notification from '../../components/Notification'
 import LoginRequired from '../../components/LoginRequired'
+import '../../styles/mission.css'
 
 const styles = {
 	paper: {
@@ -88,33 +89,13 @@ class MissionComponent extends React.Component {
 										<ListItemText primary={(<span style={{ color: "#fff" }}>{obj.missionName}</span>)}
 											secondary={(<span className="global-thit"><img alt="just alt" src="../thit.png" /> <span style={{ color: "#ff6126" }}>{obj.valueAward}</span> </span>)} />
 										{(obj.finish && !obj.received) ? (<div>
-											<Button onClick={() => this.reward(obj.missionId)} style={{
-												borderRadius: "20px",
-												background: "linear-gradient(90deg,#22cab5,#3fe28f)",
-												color: "#fff",
-												padding: "10px",
-												fontSize: "0.8em",
-												whiteSpace: "nowrap",
-												minWidth: "auto",
-												minHeight: "auto"
-											}} variant="raised">Nhận</Button>
+											<button onClick={() => this.reward(obj.missionId)} className="buttonFull" variant="raised">Nhận</button>
 										</div>) : (<div></div>)}
 										{(!obj.finish && !obj.received) ? (<div>
-											<Button style={{
-												borderRadius: "20px",
-												background: "transparent",
-												color: "#23c9b6",
-												border: "solid 1px #23c9b6",
-												padding: "10px",
-												fontSize: "0.8em",
-												whiteSpace: "nowrap",
-												minWidth: "auto",
-												minHeight: "auto"
-											}} onClick={() => this.doMission(obj.actionName, obj.objectId, obj.objectValue, obj.scoinGameObject)}>Thực
-				  hiện</Button>
+											<button className="buttonGhost" onClick={() => this.doMission(obj.actionName, obj.objectId, obj.objectValue, obj.scoinGameObject)}>Thực hiện</button>
 										</div>) : (<div></div>)}
 										{(obj.finish && obj.received) ? (<div>
-											<Button className="mission-button disabledbtn" color="primary" disabled>Đã nhận</Button>
+											<button className="received" disabled>Đã nhận</button>
 										</div>) : (<div></div>)}
 									</ListItem>
 								))}

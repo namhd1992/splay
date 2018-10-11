@@ -18,7 +18,7 @@ button.buttonGhost{
 	font-size: 0.8em;
 	white-space: nowrap;
 }
-button.moreArticle{
+button.moreGame{
 	border-radius: 20px;
 	background: transparent;
 	border: none;
@@ -49,8 +49,11 @@ button.moreArticle{
 	white-space: nowrap;
 }
 .title{
-    color: gray;
-    margin-top: 10px;
+	border-radius: 5px;
+	padding: 5px;
+	overflow: hidden;
+	color: #fff;
+	display: flex;
 }
 .tagName{
 	margin-left: 20px;

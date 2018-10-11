@@ -14,7 +14,7 @@ import SearchIcon from 'material-ui-icons/Search'
 import Chip from 'material-ui/Chip'
 import TextField from 'material-ui/TextField'
 import { withTheme } from 'material-ui/styles'
-import article from  '../../styles/article.css'
+import '../../styles/article.css'
 
 
 
@@ -97,7 +97,7 @@ class ArticleComponent extends React.Component {
 							<Collapse in={(expand === true)} timeout="auto" unmountOnExit>
 								<Grid container style={{ width: "100%", margin: "0" }} spacing={8}>
 									<Grid item xs={12}>
-										<div style={{ color: "gray", marginTop: "10px" }}>Game</div>
+										<div className="title">Game</div>
 										<Chip style={{
 											margin: "5px",
 											border: "solid 1px",
@@ -117,7 +117,7 @@ class ArticleComponent extends React.Component {
 												label={obj.name} onClick={() => this.handleChangeGame(obj.id)} />)
 										}) : (<div></div>)}
 										<Divider style={{ marginTop: "10px" }} />
-										<div style={{ color: "gray", marginTop: "10px" }}>Thể loại</div>
+										<div className="title">Thể loại</div>
 										<Category
 											handleChangeType={this.props.handleChangeType}
 											articleType={articleType}
@@ -125,16 +125,7 @@ class ArticleComponent extends React.Component {
 										/>
 									</Grid>
 									<Grid item xs={12} style={{ textAlign: "right" }}>
-										<Button onClick={() => this.handleApplyFilter()} style={{
-											borderRadius: "20px",
-											background: "linear-gradient(90deg,#22cab5,#3fe28f)",
-											color: "#fff",
-											padding: "10px",
-											fontSize: "0.8em",
-											whiteSpace: "nowrap",
-											minWidth: "auto",
-											minHeight: "auto"
-										}}>Xác nhận</Button>
+										<button onClick={() => this.handleApplyFilter()} className="buttonFull">Xác nhận</button>
 									</Grid>
 								</Grid>
 							</Collapse>
@@ -150,25 +141,7 @@ class ArticleComponent extends React.Component {
 								<Grid key={key} item xs={12}>
 									<Link to={"/article_detail/" + obj.id} style={{ textDecoration: "none" }}>
 										<ListItem key={key} style={{ padding: "10px 0px" }}>
-											{(obj.articleType == "event") ? (<div style={{
-												border: "solid 1px #fe8731",
-												display: "inline-block",
-												padding: "5px",
-												margin: "2px",
-												borderRadius: "5px",
-												fontSize: "0.6em",
-												color: "#fe8731",
-												whiteSpace: "nowrap"
-											}}>Sự kiện</div>) : (<div style={{
-												border: "solid 1px #24b9a9",
-												display: "inline-block",
-												padding: "5px",
-												margin: "2px",
-												borderRadius: "5px",
-												fontSize: "0.6em",
-												color: "#24b9a9",
-												whiteSpace: "nowrap"
-											}}>Tin tức</div>)}
+											{(obj.articleType == "event") ? (<div className="articleEvent">Sự kiện</div>) : (<div className="articleNew">Tin tức</div>)}
 											<ListItemText style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", color: "#fff", fontSize: "0.8em" }} disableTypography={true} primary={(<span><Link style={{ color: "#fff" }} to={"/article_detail/" + obj.id}>
 												{(obj.splayGameName !== "" && obj.splayGameName !== null) ? "[" + obj.splayGameName + "]" : ""} {obj.title}
 											</Link></span>)} ></ListItemText>
@@ -187,7 +160,7 @@ class ArticleComponent extends React.Component {
 							</Grid>) : (totalRecords > loadedRecords) ? (
 								<Grid item xs={12} >
 									<div className="global-loadmore">
-										<a onClick={this.loadMoreAction} style={{ color: primary.main }}>Xem thêm</a>
+										<a onClick={this.loadMoreAction} style={{ color: primary.main }}>XEM THÊM</a>
 									</div>
 								</Grid>
 							) : (<div></div>)}
@@ -202,7 +175,7 @@ class ArticleComponent extends React.Component {
 									<Button style={{ verticalAlign: "bottom", width: "10%", minWidth: "50px", background: "linear-gradient(90deg, rgb(34, 202, 181), rgb(63, 226, 143))", borderRadius: "0px 20px 20px 0px", padding: "0px" }} ><SearchIcon style={{ margin: "5px", float: "left" }} onClick={this.searchAction} /></Button>
 								</Grid>
 								<Grid item xs={12}>
-									<div style={{ color: "gray", marginTop: "10px" }}>Game</div>
+									<div className="title">Game</div>
 									<Chip style={{
 										margin: "5px",
 										border: "solid 1px",
@@ -222,7 +195,7 @@ class ArticleComponent extends React.Component {
 											label={obj.name} onClick={() => this.handleChangeGame(obj.id)} />)
 									}) : (<div></div>)}
 									<Divider style={{ marginTop: "10px" }} />
-									<div style={{ color: "gray", marginTop: "10px" }}>Thể loại</div>
+									<div className="title">Thể loại</div>
 									<Category
 											handleChangeType={this.props.handleChangeType}
 											articleType={articleType}
@@ -230,16 +203,7 @@ class ArticleComponent extends React.Component {
 										/>
 								</Grid>
 								<Grid item xs={12} style={{ textAlign: "right" }}>
-									<Button onClick={() => this.handleApplyFilter()} style={{
-										borderRadius: "20px",
-										background: "linear-gradient(90deg,#22cab5,#3fe28f)",
-										color: "#fff",
-										padding: "10px",
-										fontSize: "0.8em",
-										whiteSpace: "nowrap",
-										minWidth: "auto",
-										minHeight: "auto"
-									}}>Xác nhận</Button>
+									<button onClick={() => this.handleApplyFilter()} className="buttonFull">Xác nhận</button>
 								</Grid>
 							</Grid>
 						</Grid>
