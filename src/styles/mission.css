@@ -209,3 +209,17 @@ button:hover{
 		margin-right: 4px;
 	}
 }
+
+@media only screen and (max-width:320px){
+	.mission{
+		padding: 2px 0px 2px 1px;
+	}
+	.mission_action{
+		flex:auto;
+		width:47%; 
+		float:left;
+	}
+	.mission .mission_action{
+		margin-right: 4px;
+	}
+}
