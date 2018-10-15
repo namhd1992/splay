@@ -38,9 +38,6 @@
 	left: 0;
 	z-index: -1;
 }
-.none{
-	all: unset;
-}
 
 button.buttonCircle{
 	background:#232b36;

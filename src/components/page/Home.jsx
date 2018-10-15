@@ -183,7 +183,7 @@ class TitleContainer extends React.Component {
 		return (
 			<div className="mission_container">
 				{dataMission.slice(0, 8).map((obj, key) => (
-					<div className={(obj.actionName === "1") ? "mission": "none"}>
+					<div className={(obj.actionName === "1") ? "mission": ""}>
 						<div className="mission_content">
 							<Grid key={key}> 
 								<ListItem key={key} className={classes.giftcodeItem}>
