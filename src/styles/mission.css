@@ -181,6 +181,14 @@ button:hover{
 		font-weight: 400;
 	}
 }
+
+@media only screen and (max-width:1024px){
+	.mission_action{
+		flex:auto;
+		width:33%; 
+		float:left;
+	}
+}
  
 
 @media only screen and (max-width:960px){
@@ -195,7 +203,7 @@ button:hover{
 		margin-right: 8px;
 	}
 }
-  
+
 @media only screen and (max-width:600px){
 	.mission{
 		padding: 2px 0px 2px 1px;
