@@ -50,7 +50,8 @@ button.buttonCircle{
 	min-height: auto;
 	margin-right:10px;
 	border-radius: 50%;
-	float:left
+	float:left;
+	display: none;
 }
 button.buttonFull{
 	border-radius: 20px;
@@ -78,7 +79,7 @@ button.buttonGhost{
 .avatar{
 	background-color: #00c9b7;
 	border: 1px solid #00c9b7;
-	padding: 6px 9px;
+	padding: 6px 10px;
 	min-width: auto;
 	min-height: auto;
 	color: white;
@@ -109,7 +110,7 @@ button.buttonGhost{
 	float:left;
 }
 .mission .mission_action{
-	margin-right: 2px 0px;
+	margin-right: 5px 0px;
 }
 .received{
 	color: #fff;
@@ -137,6 +138,11 @@ button.buttonGhost{
 	font-size: 0.6em;
 	color: #23968c;
 	white-space: nowrap;
+}
+span.numberBonus{
+	color: #cee43b;
+	font-size: 0.8em;
+	margin-left: 5px;
 }
 button:hover{
 	background:#3c434c;
@@ -180,6 +186,14 @@ button:hover{
 	.mission_title{
 		font-weight: 400;
 	}
+	span.valueBonus{
+		font-size: 0.7em;
+	}
+	span.numberBonus{
+		font-size: 0.7em;
+		margin-left: 3px;
+	}
+
 }
 
 @media only screen and (max-width:1024px){
@@ -202,6 +216,13 @@ button:hover{
 	.mission .mission_action{
 		margin-right: 8px;
 	}
+	span.valueBonus{
+		font-size: 0.8em;
+	}
+	span.numberBonus{
+		font-size: 0.8em;
+		margin-left: 5px;
+	}
 }
 
 @media only screen and (max-width:600px){
@@ -216,6 +237,13 @@ button:hover{
 	.mission .mission_action{
 		margin-right: 4px;
 	}
+	span.valueBonus{
+		font-size: 0.7em;
+	}
+	span.numberBonus{
+		font-size: 0.7em;
+		margin-left: 3px;
+	}
 }
 
 @media only screen and (max-width:320px){
@@ -229,5 +257,12 @@ button:hover{
 	}
 	.mission .mission_action{
 		margin-right: 4px;
+	}
+	span.valueBonus{
+		font-size: 0.7em;
+	}
+	span.numberBonus{
+		font-size: 0.7em;
+		margin-left: 3px;
 	}
 }
