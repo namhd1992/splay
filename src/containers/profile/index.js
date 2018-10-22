@@ -29,14 +29,14 @@ class Profile extends React.Component {
 	componentDidMount() {
 		var user = JSON.parse(localStorage.getItem("user"));
 		var _this = this;
-		// this.props.getData(user.access_token, user.scoinAccessToken).then(function () {
-		// 	_this.props.changeTitle("Hồ sơ cá nhân");
-		// 	_this.setState({
-		// 		phone: _this.props.data.phoneNumber,
-		// 		fullname: _this.props.data.fullName,
-		// 		email: _this.props.data.email,
-		// 	});
-		// });
+		this.props.getData(user.access_token, user.scoinAccessToken).then(function () {
+			_this.props.changeTitle("Hồ sơ cá nhân");
+			_this.setState({
+				phone: _this.props.data.phoneNumber,
+				fullname: _this.props.data.fullName,
+				email: _this.props.data.email,
+			});
+		});
 		_this.props.changeTitle("Hồ sơ cá nhân");
 			_this.setState({
 				phone: _this.props.data.phoneNumber,
