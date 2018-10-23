@@ -39,21 +39,21 @@ class Account extends React.Component {
 
 	render() {
 		var notif = 0;
-		if (this.props.data !== null && this.props.data.fullName !== undefined) {
-			notif = this.props.data.numberInboxUnread + this.props.data.numberMissionUnFinish;
-			if (!this.props.data.checkinToday) {
+		if (this.props.dataProfile !== null && this.props.dataProfile.fullName !== undefined) {
+			notif = this.props.dataProfile.numberInboxUnread + this.props.dataProfile.numberMissionUnFinish;
+			if (!this.props.dataProfile.checkinToday) {
 				notif++;
 			}
 		}
-		return (this.props.data !== null && this.props.data.fullName !== undefined) ? (
+		return (
 			<div>
 				<Badge style={{ display: (this.props.compact) ? "none" : "block" }} classes={{ root: this.props.classes.root, badge: this.props.classes.badge }} badgeContent={notif} color="error">
 					<span></span>
 				</Badge>
-				{(this.props.data.urlAvatar !== undefined && this.props.data.urlAvatar !== null) ? (<Avatar style={(this.props.compact) ? { display: "none" } : { display: "block" }} src={"../default_ava.png"} ></Avatar>) : (<Avatar style={(this.props.compact) ? { display: "none" } : { display: "block" }} src="../default_ava.png" ></Avatar>)}
-				{(this.props.compact) ? (<span style={{ color: "#fff" }}>{this.props.data.fullName}</span>) : (<span></span>)}
+				{(this.props.dataProfile.urlAvatar !== undefined && this.props.dataProfile.urlAvatar !== null) ? (<Avatar style={(this.props.compact) ? { display: "none" } : { display: "block" }} src={"../default_ava.png"} ></Avatar>) : (<Avatar style={(this.props.compact) ? { display: "none" } : { display: "block" }} src="../default_ava.png" ></Avatar>)}
+				{(this.props.compact) ? (<span style={{ color: "#fff" }}>{this.props.dataProfile.fullName}</span>) : (<span></span>)}
 			</div>
-		) : (<div></div>);
+		)
 	}
 }
 

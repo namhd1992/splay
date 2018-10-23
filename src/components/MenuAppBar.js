@@ -102,25 +102,6 @@ class MenuAppBar extends React.Component {
 	handleChange = (event, checked) => {
 		this.setState({ auth: checked });
 	};
-	componentWillMount(){
-		var user = JSON.parse(localStorage.getItem("user"));
-		if (localStorage.getItem("user") != null) {
-			var now = moment(new Date()); //todays date
-			var end = moment(user.expired); // another date
-			var duration = moment.duration(end.diff(now));
-			var millisecond = Math.floor(duration.asMilliseconds()) + 86400000;
-			if (millisecond > 0) {
-				this.setState({
-					auth: true,
-					user: JSON.parse(localStorage.getItem("user")),
-				});
-			} else {
-				this.logoutAction();
-			}
-		} else {
-			this.setState({ auth: false });
-		}
-	}
 
 	componentDidMount() {
 		var user = JSON.parse(localStorage.getItem("user"));
@@ -148,10 +129,15 @@ class MenuAppBar extends React.Component {
 						_this.logoutAction();
 					}
 				});
+				this.setState({
+					auth: true,
+					user: JSON.parse(localStorage.getItem("user")),
+				});
 			} else {
 				this.logoutAction();
 			}
 		} else {
+			this.setState({ auth: false });
 			var code = Ultilities.parse_query_string("code", window.location.href);
 			var fb_mess = Ultilities.parse_query_string("fbmessid", window.location.href);
 			if (code != null) {
@@ -349,7 +335,10 @@ class MenuAppBar extends React.Component {
 										</div>
 									</a>
 									<div onClick={this.toggleDrawer('right', true)} style={{ marginTop: (this.props.compact && this.props.scrolling) ? "4px" : "0px" }}>
-										<Account compact={this.props.compact && this.props.scrolling}></Account>
+										<Account 
+											compact={this.props.compact && this.props.scrolling}
+											dataProfile={this.props.data}
+										/>
 									</div>
 								</div>
 							)}
