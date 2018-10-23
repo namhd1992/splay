@@ -88,6 +88,12 @@ class MenuAppBar extends React.Component {
 	}
 
 	loginAction = () => {
+		if (typeof(Storage) !== "undefined") {
+			var currentPath = window.location.pathname;
+			localStorage.setItem("currentPath", currentPath);
+		} else {
+			console.log("Trình duyệt không hỗ trợ localStorage");
+		}
 		window.location.replace(`http://graph.vtcmobile.vn/oauth/authorize?client_id=707fece431a0948c498d43e881acd2c5&agencyid=0&redirect_uri=${window.location.protocol}//${window.location.host}/`);
 	}
 
@@ -104,6 +110,7 @@ class MenuAppBar extends React.Component {
 	};
 
 	componentDidMount() {
+		
 		var user = JSON.parse(localStorage.getItem("user"));
 		var _this = this;
 		if (this.props.pathname === "/game") {
@@ -140,6 +147,7 @@ class MenuAppBar extends React.Component {
 			this.setState({ auth: false });
 			var code = Ultilities.parse_query_string("code", window.location.href);
 			var fb_mess = Ultilities.parse_query_string("fbmessid", window.location.href);
+			var currentPath=localStorage.getItem("currentPath");
 			if (code != null) {
 				if (fb_mess === null) {
 					var url = Ultilities.base_url() + "/anonymous/loginScoin";
@@ -149,11 +157,12 @@ class MenuAppBar extends React.Component {
 						"redirect_uri": redirect
 					};
 					axios.post(url, params).then(function (response) {
+						
 						var user_save = response.data.data;
 						user_save.expired = new Date();
 						localStorage.setItem("user", JSON.stringify(user_save));
 						_this.setState({ user: response.data.data });
-						window.location.replace(`${window.location.protocol}//${window.location.host}`);
+						window.location.replace(`${window.location.protocol}//${window.location.host}${currentPath}`);
 						// _this.props.getData(user_save.access_token, user_save.scoinAccessToken).then(function () {
 						// 	window.location.replace(`${window.location.protocol}//${window.location.host}`);
 						// });
