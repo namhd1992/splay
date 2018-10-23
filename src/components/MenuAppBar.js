@@ -153,9 +153,10 @@ class MenuAppBar extends React.Component {
 						user_save.expired = new Date();
 						localStorage.setItem("user", JSON.stringify(user_save));
 						_this.setState({ user: response.data.data });
-						_this.props.getData(user_save.access_token, user_save.scoinAccessToken).then(function () {
-							window.location.replace(`${window.location.protocol}//${window.location.host}`);
-						});
+						window.location.replace(`${window.location.protocol}//${window.location.host}`);
+						// _this.props.getData(user_save.access_token, user_save.scoinAccessToken).then(function () {
+						// 	window.location.replace(`${window.location.protocol}//${window.location.host}`);
+						// });
 					}).catch(function (error) {
 						localStorage.removeItem("user");
 						localStorage.removeItem("userInfo");
