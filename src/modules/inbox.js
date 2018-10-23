@@ -74,8 +74,8 @@ export const getMoreData = (limit, offset, token, service) => {
 		return axios.get(url, header).then(function (response) {
 			dispatch({
 				type: INBOX_RESPONSE_MORE,
-				data: response.data.dataArr,
-        totalRecords: response.data.totalRecords
+				data: response.data.data,
+        		totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
 			console.log(error);

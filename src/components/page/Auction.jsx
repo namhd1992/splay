@@ -13,6 +13,7 @@ import { Avatar } from 'material-ui'
 import { ListItem } from 'material-ui/List'
 import { Link } from 'react-router-dom'
 import { CircularProgress } from 'material-ui/Progress'
+import PopupDetailBonus from '../../components/PopupDetailBonus'
 import { withStyles } from 'material-ui/styles'
 import { withTheme } from 'material-ui/styles'
 import '../../styles/auction.css'
@@ -46,6 +47,12 @@ function TabContainer(props) {
 }
 
 class AuctionComponent extends React.Component {
+	constructor(props){
+		super(props);
+		this.state = {
+			openDetailBonus:false,
+		};
+	}
 
 	handleChange=(event, value)=>{
 		this.props.handleChange(event,value);
@@ -65,6 +72,12 @@ class AuctionComponent extends React.Component {
 
 	loadMoreAction=()=>{
 		this.props.loadMoreAction()
+	}
+	handleCloseBonus=()=>{
+		this.setState({openDetailBonus:false});
+	}
+	handleOpenBonus=()=>{
+		this.setState({openDetailBonus:true});
 	}
 	getStatusAuction=(obj)=>{
 		var status="";
@@ -89,6 +102,12 @@ class AuctionComponent extends React.Component {
 	}
 
 	render() {
+		const arrayMission=[
+			"Chúc mừng abc vừa giành được 500 thịt từ sự kiệm Login game Truy Kích",
+			"Chúc mừng def vừa giành được 500 thịt từ sự kiệm Login game Phong Vân",
+			"Chúc mừng khg vừa giành được 100 thịt từ sự kiệm Điểm danh hàng ngày",
+			"Chúc mừng pqw vừa giành được 100 thịt từ sự kiệm Lật thẻ"
+		];
 		const { classes } = this.props;
 		const { secondary } = this.props.theme.palette;
 		const {dialogLoginOpen, value, waiting, loadedRecordsAll, loadedRecordsShopItem, loadedRecordsShopItemGiftcode,loadedRecords,
@@ -137,6 +156,24 @@ class AuctionComponent extends React.Component {
 								<Link className={classes.link} to='/history'>
 									<img src="../homthu_new.png" style={{ width: "100%", maxWidth: "128px" }} />
 								</Link>
+							</Grid>
+						</Grid>
+						<Grid container spacing={8} justify="center" style={{ borderTop: ".75rem solid #232b36" }}>
+							<Grid item xs={12}>
+								{arrayMission.map((obj, key) => (
+									<div className="bonus" onClick={this.handleOpenBonus}>
+										<div key={key} className="marquee">
+											<div>
+												<span>{obj}</span>
+												<span>{obj}</span>
+											</div>
+										</div>
+										<div className="detail">
+											<label>Chi tiết</label>
+											<img className="img_avatar" src="../play_arrow_black.png"/>
+										</div>
+									</div>
+								))}
 							</Grid>
 						</Grid>
 						<Grid container spacing={8} justify="center" style={{ borderTop: ".75rem solid #232b36" }}>
@@ -329,6 +366,10 @@ class AuctionComponent extends React.Component {
 					</Hidden>
 				</Grid>
 				<LoginRequired open={dialogLoginOpen}></LoginRequired>
+				<PopupDetailBonus
+					handleCloseBonus={this.handleCloseBonus}
+					openDetailBonus={this.state.openDetailBonus}
+				/>
 			</div>
 		)
 	}

@@ -86,9 +86,25 @@ class MissionComponent extends React.Component {
 												onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
 											{(obj.actionName === "6") ? (<LikeIcon onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
 										</Avatar>
-										<ListItemText primary={(<span style={{ color: "#fff" }}>{obj.missionName}</span>)}
-											secondary={(<span className="global-thit"><img alt="just alt" src="../thit.png" /> <span style={{ color: "#ff6126" }}>{obj.valueAward}</span> </span>)} />
-										{(obj.finish && !obj.received) ? (<div>
+										{(obj.award === "Thịt") ? (
+										<ListItemText style={{width:"50%", padding:"0 7px"}} disableTypography={true}
+											primary={(<div className="mission_title">{obj.missionName}</div>)}
+											secondary={(
+												<span className="global-thit" style={{ color: "#fe8731" }}><img alt="just alt"
+													src="../thit.png" /> <span style={{ color: "#ff6126" }}>{obj.valueAward}</span> </span>)} />) : (<div></div>)}
+										{(obj.award === "giftcode") ? (
+										<ListItemText style={{width:"50%", padding:"0 7px"}} disableTypography={true}
+											primary={(<div className="mission_title">{obj.missionName}</div>)}
+											secondary={(
+												<span className="global-thit" style={{ color: "#fe8731" }}><span style={{ color: "#ff6126" }}>giftcode</span> </span>)} />) : (<div></div>)}
+										{(obj.award === "XO") ? (
+										<ListItemText style={{width:"50%", padding:"0 7px"}} disableTypography={true}
+											primary={(<div className="mission_title">{obj.missionName}</div>)}
+											secondary={(
+												<span className="global-thit" style={{ color: "#fe8731" }}><img alt="just alt"
+													src="../XO.png" /> <span style={{ color: "#ff6126" }}>{obj.valueAward}</span> </span>)} />) : (<div></div>)}
+
+										{(obj.finish && !obj.received && obj.awardAvailable !==0) ? (<div>
 											<button onClick={() => this.reward(obj.missionId)} className="buttonFull" variant="raised">Nhận</button>
 										</div>) : (<div></div>)}
 										{(!obj.finish && !obj.received) ? (<div>
@@ -97,6 +113,9 @@ class MissionComponent extends React.Component {
 										{(obj.finish && obj.received) ? (<div>
 											<button className="received" disabled>Đã nhận</button>
 										</div>) : (<div></div>)}
+										{(obj.finish && !obj.received && obj.awardAvailable ===0) ? (
+											<button className="received" disabled>Đã hết</button>
+										) : (<div></div>)}
 									</ListItem>
 								))}
 							</List>

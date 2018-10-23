@@ -212,16 +212,29 @@ class TitleContainer extends React.Component {
 										{(obj.actionName === "6") ? (
 											<LikeIcon onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
 									</div>
+									{(obj.award === "Thịt") ? (
 									<ListItemText style={{width:"50%", padding:"0 7px"}} disableTypography={true}
 										primary={(<div className="mission_title">{obj.missionName}</div>)}
 										secondary={(
 											<span className="global-thit" style={{ color: "#fe8731" }}><img alt="just alt"
-												src="../thit.png" /> {obj.valueAward} </span>)} />
+												src="../thit.png" /> <span className="valueBonus">{obj.valueAward}</span>{(obj.awardAvailable !== null) ? ( <span className="numberBonus">Còn lại hôm nay: {obj.awardAvailable}</span>) : (<div></div>)} </span>)} />) : (<div></div>)}
+									{(obj.award === "giftcode") ? (
+									<ListItemText style={{width:"50%", padding:"0 7px"}} disableTypography={true}
+										primary={(<div className="mission_title">{obj.missionName}</div>)}
+										secondary={(
+											<span className="global-thit" style={{ color: "#fe8731" }}><span className="valueBonus">giftcode</span>{(obj.awardAvailable !== null) ? ( <span className="numberBonus">Còn lại hôm nay: {obj.awardAvailable}</span>) : (<div></div>)} </span>)} />) : (<div></div>)}
+									{(obj.award === "XO") ? (
+									<ListItemText style={{width:"50%", padding:"0 7px"}} disableTypography={true}
+										primary={(<div className="mission_title">{obj.missionName}</div>)}
+										secondary={(
+											<span className="global-thit" style={{ color: "#fe8731" }}><img alt="just alt"
+												src="../XO.png" /> <span className="valueBonus">{obj.valueAward}</span>{(obj.awardAvailable !== null) ? ( <span className="numberBonus">Còn lại hôm nay: {obj.awardAvailable}</span>) : (<div></div>)} </span>)} />) : (<div></div>)}
+								
 									<div className="mission_action">
 										<button
 												className="buttonCircle"
 												onClick={() => this.openPopupMission()}>?</button>
-										{(obj.finish && !obj.received) ? (
+										{(obj.finish && !obj.received && obj.awardAvailable !=0) ? (
 										<button onClick={() => this.reward(obj.missionId)}
 											className="buttonFull"
 												>Nhận</button>) : (<div></div>)}
@@ -232,6 +245,9 @@ class TitleContainer extends React.Component {
 										) : (<div></div>)}
 										{(obj.finish && obj.received) ? (
 											<button className="received" disabled>Đã nhận</button>
+										) : (<div></div>)}
+										{(obj.finish && !obj.received && obj.awardAvailable ==0) ? (
+											<button className="received" disabled>Đã hết</button>
 										) : (<div></div>)}
 									</div>
 								</ListItem>
