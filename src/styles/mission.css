@@ -51,7 +51,7 @@ button.buttonCircle{
 	margin-right:10px;
 	border-radius: 50%;
 	float:left;
-	/* visibility: hidden; */
+	visibility: hidden;
 }
 button.buttonFull{
 	border-radius: 20px;
