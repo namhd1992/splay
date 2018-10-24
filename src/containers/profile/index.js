@@ -23,26 +23,31 @@ class Profile extends React.Component {
 			openSnack: false,
 			message: "",
 			snackVariant: "info",
+			dialogLoginOpen: false,
 		};
 	}
 
 	componentDidMount() {
 		var user = JSON.parse(localStorage.getItem("user"));
 		var _this = this;
-		this.props.getData(user.access_token, user.scoinAccessToken).then(function () {
+		if (user !== null) {
+			this.props.getData(user.access_token, user.scoinAccessToken).then(function () {
+				_this.props.changeTitle("Hồ sơ cá nhân");
+				_this.setState({
+					phone: _this.props.data.phoneNumber,
+					fullname: _this.props.data.fullName,
+					email: _this.props.data.email,
+				});
+			});
 			_this.props.changeTitle("Hồ sơ cá nhân");
 			_this.setState({
 				phone: _this.props.data.phoneNumber,
 				fullname: _this.props.data.fullName,
 				email: _this.props.data.email,
 			});
-		});
-		_this.props.changeTitle("Hồ sơ cá nhân");
-			_this.setState({
-				phone: _this.props.data.phoneNumber,
-				fullname: _this.props.data.fullName,
-				email: _this.props.data.email,
-			});
+		} else {
+			_this.setState({ dialogLoginOpen: true });
+		}
 	}
 
 	responseFacebook = (response) => {
@@ -129,6 +134,7 @@ class Profile extends React.Component {
 					openSnack={this.state.openSnack}
 					message={this.state.message}
 					snackVariant={this.state.snackVariant}
+					dialogLoginOpen={this.state.dialogLoginOpen}
 
 				/>
 			</div>

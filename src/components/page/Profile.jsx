@@ -17,6 +17,7 @@ import PropTypes from 'prop-types'
 import Notification from '../../components/Notification'
 import { withTheme } from 'material-ui/styles'
 import { withStyles } from 'material-ui/styles'
+import LoginRequired from '../../components/LoginRequired'
 
 
 
@@ -83,7 +84,7 @@ class ProfileComponent extends React.Component {
 	}
 
 	render() {
-		const {data, waiting,dialogUpdateOpen,openSnack,message,snackVariant}=this.props;
+		const {data, waiting,dialogUpdateOpen,openSnack,message,snackVariant,dialogLoginOpen}=this.props;
 		const { theme } = this.props;
 		const { secondary } = theme.palette;
 		const { classes } = this.props;
@@ -252,6 +253,7 @@ class ProfileComponent extends React.Component {
 				</DialogActions>
 			</Dialog>
 			<Notification message={message} variant={snackVariant} openSnack={openSnack} closeSnackHandle={this.handleCloseSnack} ></Notification>
+			<LoginRequired open={dialogLoginOpen}></LoginRequired>
 		</div>)
 	}
 }

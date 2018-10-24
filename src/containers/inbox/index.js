@@ -30,6 +30,7 @@ import MissionIcon from 'material-ui-icons/ContentPaste'
 import Notification from '../../components/Notification'
 import Hidden from 'material-ui/Hidden'
 import RightArea from '../../components/RightArea'
+import LoginRequired from '../../components/LoginRequired'
 
 const styles = theme => ({
 	root: {
@@ -57,16 +58,21 @@ class Inbox extends React.Component {
 			message: "",
 			snackVariant: "info",
 			loadedRecords: 0,
+			dialogLoginOpen: false,
 		};
 	}
 
 	componentDidMount() {
 		var _this = this;
 		var user = JSON.parse(localStorage.getItem("user"));
-		this.props.getData(this.state.limit, this.state.offset, user.access_token, this.state.service).then(function () {
-			_this.props.changeTitle("INBOX");
-			_this.setState({ loadedRecords: _this.state.limit + _this.state.offset });
-		});
+		if (user !== null) {
+			this.props.getData(this.state.limit, this.state.offset, user.access_token, this.state.service).then(function () {
+				_this.props.changeTitle("INBOX");
+				_this.setState({ loadedRecords: _this.state.limit + _this.state.offset });
+			});
+		}else {
+			_this.setState({ dialogLoginOpen: true });
+		}
 		// this.props.getDataProfile(user.access_token, user.scoinAccessToken);
 	}
 
@@ -173,6 +179,7 @@ class Inbox extends React.Component {
 					</Hidden>
 				</Grid>
 				<Notification message={this.state.message} variant={this.state.snackVariant} openSnack={this.state.openSnack} closeSnackHandle={this.handleCloseSnack} ></Notification>
+				<LoginRequired open={this.state.dialogLoginOpen}></LoginRequired>
 			</div>
 		)
 	}
