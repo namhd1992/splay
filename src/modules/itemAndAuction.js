@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Ultilities from '../Ultilities/global'
+import {SERVER_ERROR} from './server'
 export const ITEMANDAUCTION_REQUEST = 'itemandauction/ITEMANDAUCTION_REQUEST'
 export const ITEMANDAUCTION_RESPONSE = 'itemandauction/ITEMANDAUCTION_RESPONSE'
 export const ITEMANDAUCTION_RESPONSE_MORE = 'itemandauction/ITEMANDAUCTION_RESPONSE_MORE'
@@ -48,7 +49,9 @@ export const getData = (limit, offset) => {
 				totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }
@@ -66,7 +69,9 @@ export const getMoreData = (limit, offset) => {
 				totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }

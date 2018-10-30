@@ -1,7 +1,9 @@
 import axios from 'axios'
 import Ultilities from '../Ultilities/global'
+import {SERVER_ERROR} from './server'
 export const HOME_REQUEST = 'home/HOME_REQUEST'
 export const HOME_RESPONSE = 'home/HOME_RESPONSE'
+
 
 const initialState = {
 	data: [],
@@ -40,10 +42,14 @@ export const getData = (limit,offset) => {
 					data: contentResponse.data
 				})
 			}).catch(function(error){
-				console.log(error);
+				dispatch({
+					type: SERVER_ERROR
+				})
 			});
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }

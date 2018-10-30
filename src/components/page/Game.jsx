@@ -23,7 +23,7 @@ import Dialog, {
 	withMobileDialog,
 } from 'material-ui/Dialog'
 
-import game from '../../styles/game.css'
+import '../../styles/imageServerError.css'
 
 class TagList extends React.Component {
 	constructor(props) {
@@ -136,7 +136,7 @@ class GameComponent extends React.Component {
 
 
 	render() {
-		const {data, waiting, totalRecords, loadedRecords,tagList, sort, searchValue, tagDialogOpen, selectedTag, hover, expand}=this.props;
+		const {data, waiting, totalRecords, loadedRecords,tagList, sort, searchValue, tagDialogOpen, selectedTag, hover, expand,server}=this.props;
 		const { theme } = this.props;
 		const { primary, secondary } = theme.palette;
 		const { fullScreen } = this.props;
@@ -327,7 +327,9 @@ class GameComponent extends React.Component {
 							</Hidden>
 							{(waiting) ? (<Grid item xs={12}>
 								<div className="global-loadmore">
-									<CircularProgress size={50} />
+								{(server !== true) ? (												
+								<CircularProgress style={{ color: "#fff" }} size={50} />):(<img className="error" alt="just alt"
+								src="../baotri.png" />)}
 								</div>
 							</Grid>) : (totalRecords > loadedRecords) ? (
 								<Grid item xs={12}>

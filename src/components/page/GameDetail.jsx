@@ -31,6 +31,7 @@ import moment from 'moment'
 import LoginRequired from '../../components/LoginRequired'
 import YouTube from 'react-youtube'
 import { withStyles } from 'material-ui/styles'
+import '../../styles/imageServerError.css'
 
 const styles = {
 	paper: {
@@ -119,7 +120,7 @@ class GameDetailComponent extends React.Component {
 
 	render() {
 		const {data, dataGiftcode, youtubeData, dialogLoginOpen, dialogRatingOpen, videoId, pointSubmit, showMore, message,
-			 snackVariant, openSnack,lightBoxOpen, lightBoxIndex, youtubeOpen, gameArticles, gameData}=this.props;
+			 snackVariant, openSnack,lightBoxOpen, lightBoxIndex, youtubeOpen, gameArticles, gameData,server}=this.props;
 
 		const { classes } = this.props;
 		const { theme } = this.props;
@@ -588,7 +589,11 @@ class GameDetailComponent extends React.Component {
 					</Hidden>
 				</Grid>
 			</div>
-		) : (<div className="global-loading" style={{ backgroundColor: "transparent", marginTop: "8px" }}><CircularProgress size={50}/></div>)
+		) : (<div className="global-loading" style={{ backgroundColor: "transparent", marginTop: "8px" }}>
+		{(server !== true) ? (												
+			<CircularProgress style={{ color: "#fff" }} size={50} />):(<img className="error" alt="just alt"
+			src="../baotri.png" />)}
+		</div>)
 	}
 }
 

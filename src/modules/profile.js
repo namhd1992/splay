@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Ultilities from '../Ultilities/global'
+import {SERVER_ERROR} from './server'
 export const PROFILE_REQUEST = 'profile/PROFILE_REQUEST'
 export const PROFILE_RESPONSE = 'profile/PROFILE_RESPONSE'
 export const PROFILE_UPDATE = 'profile/PROFILE_UPDATE'
@@ -58,7 +59,9 @@ export const getData = (token, scoinToken) => {
 				data: response.data.dataObj
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }
@@ -94,7 +97,9 @@ export const updateProfile = (token, profile) => {
 				data: response
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }

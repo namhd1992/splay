@@ -21,6 +21,7 @@ import shopItemGiftcode from './shopItemGiftcode'
 import itemAndAuction from './itemAndAuction'
 import youtubeApi from './youtubeApi'
 import login from './login'
+import server from './server'
 
 export default combineReducers({
 	routing: routerReducer,
@@ -45,4 +46,5 @@ export default combineReducers({
 	itemAndAuction,
 	youtubeApi,
 	login,
+	server
 })

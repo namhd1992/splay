@@ -18,6 +18,7 @@ import PropTypes from 'prop-types'
 import List, { ListItem, ListItemText } from 'material-ui/List'
 import Notification from '../../components/Notification'
 import LoginRequired from '../../components/LoginRequired'
+import '../../styles/imageServerError.css'
 
 const styles = {
 	paper: {
@@ -126,7 +127,7 @@ class LuckyDetailComponent extends React.Component {
 
 	render() {
 		const {dataDetail, dataProfile,message,cardWidth,cardHeight,flippedArr,collapse,cardArr,
-			dialogOpen,highLightCard,openSnack,snackVariant,dialogLoginOpen,dialogItemOpen,fontSize,dialogMoreTurnOpen }=this.props;
+			dialogOpen,highLightCard,openSnack,snackVariant,dialogLoginOpen,dialogItemOpen,fontSize,dialogMoreTurnOpen,server }=this.props;
 
 					
 		const { classes } = this.props;
@@ -298,9 +299,9 @@ class LuckyDetailComponent extends React.Component {
 				<Notification message={message} variant={snackVariant} openSnack={openSnack} closeSnackHandle={this.handleCloseSnack} ></Notification>
 			</div>
 		) : (<div className="global-loading">
-			<CircularProgress
-				size={50}
-			/>
+			{(server !== true) ? (												
+					<CircularProgress style={{ color: "#fff" }} size={50} />):(<img className="error" alt="just alt"
+					src="../baotri.png" />)}
 			<LoginRequired open={dialogLoginOpen}></LoginRequired>
 		</div>)
 	}

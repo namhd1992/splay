@@ -17,6 +17,7 @@ import PopupDetailBonus from '../../components/PopupDetailBonus'
 import { withStyles } from 'material-ui/styles'
 import { withTheme } from 'material-ui/styles'
 import '../../styles/auction.css'
+import '../../styles/imageServerError.css'
 
 const styles = theme => ({
 	root: {
@@ -112,7 +113,7 @@ class AuctionComponent extends React.Component {
 		const { secondary } = this.props.theme.palette;
 		const {dialogLoginOpen, value, waiting, loadedRecordsAll, loadedRecordsShopItem, loadedRecordsShopItemGiftcode,loadedRecords,
 			data, totalRecords, profileData, dataShopItemGiftcode, waitingShopItemGiftcode, totalRecordsShopItemGiftcode,
-			dataShopItem, waitingShopItem, totalRecordsShopItem, dataAll, waitingAll, totalRecordsAll}=this.props;
+			dataShopItem, waitingShopItem, totalRecordsShopItem, dataAll, waitingAll, totalRecordsAll,server}=this.props;
 		return (
 			<div className={classes.root}>
 				<HeadMenu></HeadMenu>
@@ -217,9 +218,11 @@ class AuctionComponent extends React.Component {
 											</Grid>
 										))}
 										{(waitingAll) ? (<Grid item xs={12}>
-											<div className="global-loading"><CircularProgress
-												size={50}
-											/></div>
+											<div className="global-loading">
+											{(server !== true) ? (												
+												<CircularProgress style={{ color: "#fff" }} size={50} />):(<img className="error" alt="just alt"
+												src="../baotri.png" />)}
+											</div>
 										</Grid>) : (totalRecordsAll > loadedRecordsAll) ? (
 											<Grid item xs={12}>
 												<div className="global-loadmore">
@@ -256,9 +259,11 @@ class AuctionComponent extends React.Component {
 											</Grid>
 										))}
 										{(waitingShopItemGiftcode) ? (<Grid item xs={12}>
-											<div className="global-loading"><CircularProgress
-												size={50}
-											/></div>
+											<div className="global-loading">
+											{(server !== true) ? (												
+												<CircularProgress style={{ color: "#fff" }} size={50} />):(<img className="error" alt="just alt"
+												src="../baotri.png" />)}
+											</div>
 										</Grid>) : (totalRecordsShopItemGiftcode > loadedRecordsShopItemGiftcode) ? (
 											<Grid item xs={12}>
 												<div className="global-loadmore">
@@ -305,9 +310,11 @@ class AuctionComponent extends React.Component {
 											</Grid>
 										))}
 										{(waiting) ? (<Grid item xs={12}>
-											<div className="global-loading"><CircularProgress
-												size={50}
-											/></div>
+											<div className="global-loading">
+											{(server !== true) ? (												
+												<CircularProgress style={{ color: "#fff" }} size={50} />):(<img className="error" alt="just alt"
+												src="../baotri.png" />)}
+											</div>
 										</Grid>) : (totalRecords > loadedRecords) ? (
 											<Grid item xs={12}>
 												<div className="global-loadmore">
@@ -344,9 +351,11 @@ class AuctionComponent extends React.Component {
 											</Grid>
 										))}
 										{(waitingShopItem) ? (<Grid item xs={12}>
-											<div className="global-loading"><CircularProgress
-												size={50}
-											/></div>
+											<div className="global-loading">
+											{(server !== true) ? (												
+												<CircularProgress style={{ color: "#fff" }} size={50} />):(<img className="error" alt="just alt"
+												src="../baotri.png" />)}
+											</div>
 										</Grid>) : (totalRecordsShopItem > loadedRecordsShopItem) ? (
 											<Grid item xs={12}>
 												<div className="global-loadmore">

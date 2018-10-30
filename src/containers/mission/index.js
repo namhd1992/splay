@@ -112,6 +112,7 @@ class Mission extends React.Component {
 					loadMoreAction={this.loadMoreAction}
 
 					data={this.props.data}
+					server={this.props.server}
 					dataFinish={this.props.dataFinish}
 					totalRecords={this.props.totalRecords}
 					waiting={this.props.waiting}
@@ -133,7 +134,8 @@ const mapStateToProps = state => ({
 	data: state.mission.data,
 	dataFinish: state.mission.dataFinish,
 	totalRecords: state.mission.totalRecords,
-	waiting: state.mission.waiting
+	waiting: state.mission.waiting,
+	server:state.server.serverError
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

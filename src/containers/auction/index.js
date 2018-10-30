@@ -149,6 +149,7 @@ class Auction extends React.Component {
 					loadedRecords={this.state.loadedRecords}
 
 					data={this.props.data}
+					server={this.props.server}
 					waiting={this.props.waiting}
 					totalRecords={this.props.totalRecords}
 					profileData={this.props.profileData}
@@ -185,6 +186,7 @@ const mapStateToProps = state => ({
 	dataAll: state.itemAndAuction.data,
 	waitingAll: state.itemAndAuction.waiting,
 	totalRecordsAll: state.itemAndAuction.totalRecords,
+	server:state.server.serverError
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

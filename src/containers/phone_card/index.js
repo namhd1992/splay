@@ -91,6 +91,7 @@ class Phone_card extends React.Component {
 					handleChangeIndex={this.handleChangeIndex}
 
 					data={this.props.data}
+					server={this.props.server}
 					waiting={this.props.waiting}
 					dataHistory={this.props.dataHistory}
 					waitingHistory={this.props.waitingHistory}
@@ -112,6 +113,7 @@ const mapStateToProps = state => ({
 	dataHistory: state.history.data,
 	waitingHistory: state.history.waiting,
 	totalRecords: state.history.totalRecords,
+	server:state.server.serverError
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

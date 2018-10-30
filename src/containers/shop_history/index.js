@@ -73,6 +73,7 @@ class Shop_history extends React.Component {
 					handleCloseDialogLogin={this.handleCloseDialogLogin}
 
 					data={this.props.data}
+					server={this.props.server}
 					waiting={this.props.waiting}
 					totalRecords={this.props.totalRecords}
 					profileData={this.props.profileData}
@@ -93,6 +94,7 @@ const mapStateToProps = state => ({
 	totalRecords: state.history.totalRecords,
 	profileData: state.profile.data,
 	profileWaiting: state.profile.waiting,
+	server:state.server.serverError
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

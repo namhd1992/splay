@@ -132,6 +132,7 @@ class Giftcode_detail extends React.Component {
 			<div>
 				<GiftCodeDetailComponent
 					data={this.props.data}
+					server={this.props.server}
 					loginAction={this.loginAction}
 					copyText={this.copyText}
 					linkClicked={this.linkClicked}
@@ -154,7 +155,8 @@ class Giftcode_detail extends React.Component {
 const mapStateToProps = state => ({
 	data: state.giftcode.data,
 	dataTake: state.giftcode.dataTake,
-	waiting: state.giftcode.waiting
+	waiting: state.giftcode.waiting,
+	server:state.server.serverError
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

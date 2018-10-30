@@ -1,6 +1,7 @@
 import axios from 'axios'
 import ReduxThunk from 'redux-thunk'
 import Ultilities from '../Ultilities/global'
+import {SERVER_ERROR} from './server'
 export const GAME_REQUEST = 'game/GAME_REQUEST'
 export const GAME_RESPONSE = 'game/GAME_RESPONSE'
 export const GAME_DETAIL_RESPONSE = 'game/GAME_DETAIL_RESPONSE'
@@ -72,7 +73,9 @@ export const getData = (limit, offset, orderBy, searchValue, tagList) => {
         totalRecords: response.data.totalRecords
       })
     }).catch(function (error) {
-      console.log(error);
+      dispatch({
+				type: SERVER_ERROR
+			})
     })
   }
 }
@@ -89,7 +92,9 @@ export const getDataId = (id) => {
         dataDetail: [response.data.dataArr[0]]
       })
     }).catch(function (error) {
-      console.log(error);
+      dispatch({
+				type: SERVER_ERROR
+			})
     })
   }
 }
@@ -113,7 +118,9 @@ export const rating = (id, point, token) => {
         data: response.data
       })
     }).catch(function (error) {
-      console.log(error);
+      dispatch({
+				type: SERVER_ERROR
+			})
     })
   }
 }
@@ -140,7 +147,9 @@ export const getMoreData = (limit, offset, orderBy, searchValue, tagList) => {
         totalRecords: response.data.totalRecords
       })
     }).catch(function (error) {
-      console.log(error);
+      dispatch({
+				type: SERVER_ERROR
+			})
     })
   }
 }

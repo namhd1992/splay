@@ -18,6 +18,7 @@ import Notification from '../../components/Notification'
 import { withTheme } from 'material-ui/styles'
 import { withStyles } from 'material-ui/styles'
 import LoginRequired from '../../components/LoginRequired'
+import '../../styles/imageServerError.css'
 
 
 
@@ -84,7 +85,7 @@ class ProfileComponent extends React.Component {
 	}
 
 	render() {
-		const {data, waiting,dialogUpdateOpen,openSnack,message,snackVariant,dialogLoginOpen}=this.props;
+		const {data, waiting,dialogUpdateOpen,openSnack,message,snackVariant,dialogLoginOpen,server}=this.props;
 		const { theme } = this.props;
 		const { secondary } = theme.palette;
 		const { classes } = this.props;
@@ -165,9 +166,11 @@ class ProfileComponent extends React.Component {
 								</ListItem>
 							</List>
 						</Grid>
-						{(waiting) ? (<div className="global-loading"><CircularProgress
-							size={50}
-						/></div>) : (
+						{(waiting) ? (<div className="global-loading">
+						{(server !== true) ? (												
+							<CircularProgress style={{ color: "#fff" }} size={50} />):(<img className="error" alt="just alt"
+							src="../baotri.png" />)}
+						</div>) : (
 								<div></div>
 							)}
 					</Grid>

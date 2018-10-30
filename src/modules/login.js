@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Ultilities from '../Ultilities/global'
+import {SERVER_ERROR} from './server'
 export const LOGIN_REQUEST = 'login/LOGIN_REQUEST'
 export const LOGIN_RESPONSE = 'login/LOGIN_RESPONSE'
 
@@ -36,13 +37,15 @@ export const login = (sign) => {
 		})
 		var url = SERVICE_URL + "server/check_device.aspx?api_key=" + api_key + "&sign=" + sign;
 		return axios.get(url).then(function (response) {
-			console.log(response);
+			console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",response);
 			dispatch({
 				type: LOGIN_RESPONSE,
 				data: response
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }

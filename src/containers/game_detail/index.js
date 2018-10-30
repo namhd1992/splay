@@ -45,7 +45,7 @@ class Game_detail extends React.Component {
 		this.props.getDataId(this.props.match.params.id).then(function () {
 			_this.props.changeTitle(_this.props.data[0].name);
 			_this.props.getDataByGame(_this.props.data[0].id);
-			_this.props.getMissionByGame(_this.props.data[0].id);
+			// _this.props.getMissionByGame(_this.props.data[0].id);
 			_this.props.getArticleData(6, 0, undefined, undefined, _this.props.data[0].id).then(function () {
 				_this.setState({ gameArticles: _this.props.articleData });
 			});
@@ -153,6 +153,7 @@ class Game_detail extends React.Component {
 					readMore={this.readMore}
 
 					data={this.props.data}
+					server={this.props.server}
 					dataMission={this.props.dataMission}
 					dataGiftcode={this.props.dataGiftcode}
 					youtubeData={this.props.youtubeData}
@@ -187,6 +188,7 @@ const mapStateToProps = state => ({
 	articleWaiting: state.article.waiting,
 	youtubeData: state.youtubeApi.data,
 	youtubeWaiting: state.youtubeApi.waiting,
+	server:state.server.serverError
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

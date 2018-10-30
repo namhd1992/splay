@@ -97,6 +97,7 @@ class Game extends React.Component {
 				<HeadMenu></HeadMenu>
 				<ArticleComponent
 				data={this.props.data}
+				server={this.props.server}
 				gameData={this.props.gameData}
 				waiting={this.props.waiting}
 				totalRecords={this.props.totalRecords}
@@ -126,6 +127,7 @@ const mapStateToProps = state => ({
 	waiting: state.article.waiting,
 	totalRecords: state.article.totalRecords,
 	tagData: state.tag.data,
+	server:state.server.serverError
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

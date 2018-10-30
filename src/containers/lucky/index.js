@@ -47,6 +47,7 @@ class Lucky extends React.Component {
 					waiting={this.props.waiting}
 					totalRecords={this.props.totalRecords}
 					loadedRecords={this.state.loadedRecords}
+					server={this.props.server}
 				/>
 			</div>
 		)
@@ -56,7 +57,8 @@ class Lucky extends React.Component {
 const mapStateToProps = state => ({
 	data: state.lucky.data,
 	waiting: state.lucky.waiting,
-	totalRecords: state.lucky.totalRecords
+	totalRecords: state.lucky.totalRecords,
+	server:state.server.serverError
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Ultilities from '../Ultilities/global'
+import {SERVER_ERROR} from './server'
 export const CHECKIN_REQUEST = 'checkin/CHECKIN_REQUEST'
 export const CHECKIN_RESPONSE = 'checkin/CHECKIN_RESPONSE'
 export const CHECKIN_ACTION = 'checkin/CHECKIN_ACTION'
@@ -51,7 +52,9 @@ export const getData = (token) => {
 				data: [response.data.dataArr, response.data.dataObj]
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }
@@ -74,7 +77,9 @@ export const checkin = (token) => {
 				data: response
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }

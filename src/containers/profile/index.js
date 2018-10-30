@@ -127,6 +127,7 @@ class Profile extends React.Component {
 					responseFacebook={this.responseFacebook}
 
 					data={this.props.data}
+					server={this.props.server}
 					waiting={this.props.waiting}
 					dataUpdateProfile={this.props.dataUpdateProfile}
 					dialogUpdateOpen={this.state.dialogUpdateOpen}
@@ -146,6 +147,7 @@ const mapStateToProps = state => ({
 	data: state.profile.data,
 	waiting: state.profile.waiting,
 	dataUpdateProfile: state.profile.dataUpdate,
+	server:state.server.serverError
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

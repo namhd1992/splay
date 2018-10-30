@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Ultilities from '../Ultilities/global'
+import {SERVER_ERROR} from './server'
 export const GIFTCODE_REQUEST = 'giftcode/GIFTCODE_REQUEST'
 export const GIFTCODE_RESPONSE = 'giftcode/GIFTCODE_RESPONSE'
 export const TAKE_GIFTCODE_RESPONSE = 'giftcode/TAKE_GIFTCODE_RESPONSE'
@@ -48,7 +49,9 @@ export const getData = (id, token) => {
 				totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }
@@ -70,7 +73,9 @@ export const takeGiftcode = (eventId, scoinToken) => {
 				data: response
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }

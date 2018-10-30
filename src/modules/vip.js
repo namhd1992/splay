@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Ultilities from '../Ultilities/global'
+import {SERVER_ERROR} from './server'
 export const VIP_REQUEST = 'vip/VIP_REQUEST'
 export const VIP_RESPONSE = 'vip/VIP_RESPONSE'
 
@@ -38,7 +39,9 @@ export const getData = () => {
 				data: [response.data.dataObj]
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }

@@ -18,6 +18,7 @@ import Dialog, {
 	withMobileDialog,
 } from 'material-ui/Dialog'
 import { withStyles } from "material-ui/styles/index"
+import '../../styles/imageServerError.css'
 
 const styles = {
 	paper: {
@@ -86,7 +87,7 @@ class AuctionDetailComponent extends React.Component {
 	
 	render() {
 		const {dialogLoginOpen, value, waiting,loadedRecords, dataHistory, totalHistoryRecords,
-			 dialogOpen, price, message, snackVariant, openSnack, itemImage, data, dataProfile}=this.props;
+			 dialogOpen, price, message, snackVariant, openSnack, itemImage, data, dataProfile, server}=this.props;
 		
 		var lengthHistory=0;
 		if(dataHistory){
@@ -227,9 +228,11 @@ class AuctionDetailComponent extends React.Component {
 											</ListItem>
 										))}
 									</List>
-									{(waiting) ? (<div className="global-loading"><CircularProgress
-										size={50} style={{ color: secondary.main }}
-									/></div>) : (totalHistoryRecords > loadedRecords) ? (
+									{(waiting) ? (<div className="global-loading">
+									{(server !== true) ? (												
+												<CircularProgress style={{ color: "#fff" }} size={50} />):(<img className="error" alt="just alt"
+												src="../baotri.png" />)}
+									</div>) : (totalHistoryRecords > loadedRecords) ? (
 										<Grid item xs={12} className="global-loadmore">
 											<a onClick={this.loadMoreAction} style={{ color: secondary.main }}>Xem thêm</a>
 										</Grid>
@@ -332,9 +335,10 @@ class AuctionDetailComponent extends React.Component {
 				<Notification message={message} variant={snackVariant} openSnack={openSnack} closeSnackHandle={this.handleCloseSnack} ></Notification>
 				<LoginRequired open={dialogLoginOpen}></LoginRequired>
 			</div>
-		) : (<div className="global-loading" style={{ marginTop: "8px" }}><CircularProgress
-			size={50}
-		/>
+		) : (<div className="global-loading" style={{ marginTop: "8px" }}>
+			{(server !== true) ? (												
+				<CircularProgress style={{ color: "#fff" }} size={50} />):(<img className="error" alt="just alt"
+				src="../baotri.png" />)}
 			<LoginRequired open={dialogLoginOpen}></LoginRequired>
 		</div>)
 	}

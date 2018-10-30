@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Ultilities from '../Ultilities/global'
+import {SERVER_ERROR} from './server'
 export const SHOPITEMGIFTCODE_REQUEST = 'shopitemgiftcode/SHOPITEMGIFTCODE_REQUEST'
 export const SHOPITEMGIFTCODE_RESPONSE = 'shopitemgiftcode/SHOPITEMGIFTCODE_RESPONSE'
 export const SHOPITEMGIFTCODE_RESPONSE_BUY = 'shopitemgiftcode/SHOPITEMGIFTCODE_RESPONSE_BUY'
@@ -55,7 +56,9 @@ export const getData = (limit, offset, type) => {
 				totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }
@@ -73,7 +76,9 @@ export const getMoreData = (limit, offset, type) => {
 				totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }
@@ -90,7 +95,9 @@ export const getDataId = (id) => {
 				data: response.data.dataArr
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }
@@ -117,7 +124,9 @@ export const buyItem = (token, scoinToken, id) => {
 				data: response.data
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }

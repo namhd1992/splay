@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Ultilities from '../Ultilities/global'
+import {SERVER_ERROR} from './server'
 export const INBOX_REQUEST = 'inbox/INBOX_REQUEST'
 export const INBOX_RESPONSE = 'inbox/INBOX_RESPONSE'
 export const INBOX_RESPONSE_MORE = 'inbox/INBOX_RESPONSE_MORE'
@@ -54,7 +55,9 @@ export const getData = (limit, offset, token, service) => {
         		totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }
@@ -78,7 +81,9 @@ export const getMoreData = (limit, offset, token, service) => {
         		totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }

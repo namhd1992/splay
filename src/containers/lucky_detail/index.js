@@ -233,6 +233,7 @@ class Lucky_detail extends React.Component {
 					handleCloseSnack={this.handleCloseSnack}
 
 					dataDetail={this.props.dataDetail}
+					server={this.props.server}
 					dataPick={this.props.dataPick}
 					waiting={this.props.waiting}
 					dataProfile={this.props.dataProfile}
@@ -263,7 +264,8 @@ const mapStateToProps = state => ({
 	dataPick: state.lucky.dataPick,
 	waiting: state.lucky.waiting,
 	dataProfile: state.profile.data,
-	dataTurn: state.lucky.dataTurn
+	dataTurn: state.lucky.dataTurn,
+	server:state.server.serverError
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

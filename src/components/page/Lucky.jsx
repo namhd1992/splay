@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom'
 import moment from 'moment'
 import { withStyles } from 'material-ui/styles'
 import { withTheme } from 'material-ui/styles'
+import '../../styles/imageServerError.css'
 
 
 const styles = theme => ({
@@ -31,7 +32,7 @@ class LuckyComponent extends React.Component {
 	}
 
 	render() {
-		const {data, waiting, totalRecords, loadedRecords}=this.props;
+		const {data, waiting, totalRecords, loadedRecords, server}=this.props;
 		const { classes } = this.props;
 		return (<div className={classes.root}>
 			<Grid container spacing={8}>
@@ -80,9 +81,11 @@ class LuckyComponent extends React.Component {
 						}
 						)}
 						{(waiting) ? (<Grid item xs={12}>
-							<div className="global-loading"><CircularProgress
-								size={50}
-							/></div>
+							<div className="global-loading">
+							{(server !== true) ? (												
+								<CircularProgress style={{ color: "#fff" }} size={50} />):(<img className="error" alt="just alt"
+								src="../baotri.png" />)}
+							</div>
 						</Grid>) : (totalRecords > loadedRecords) ? (
 							<Grid item xs={12}>
 								<div className="global-loadmore">

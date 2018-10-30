@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Ultilities from '../Ultilities/global'
-
+import {SERVER_ERROR} from './server'
 export const MISSION_REQUEST = 'mission/MISSION_REQUEST'
 export const MISSION_RESPONSE = 'mission/MISSION_RESPONSE'
 export const MISSION_FINISH = 'mission/MISSION_FINISH'
@@ -66,11 +66,13 @@ export const getData = (limit, offset, token) => {
     return axios.get(url, header).then(function (response) {
       dispatch({
         type: MISSION_RESPONSE,
-        data: response.data.dataArr,
+        data: response.data.data,
         totalRecords: response.data.totalRecords
       })
     }).catch(function (error) {
-      console.log(error);
+      dispatch({
+				type: SERVER_ERROR
+			})
     })
   }
 }
@@ -93,7 +95,9 @@ export const finishData = (id, scoin, token) => {
         data: response
       })
     }).catch(function (error) {
-      console.log(error);
+      dispatch({
+				type: SERVER_ERROR
+			})
     })
   }
 }
@@ -113,11 +117,13 @@ export const getMoreData = (limit, offset, token) => {
     return axios.get(url, header).then(function (response) {
       dispatch({
         type: MISSION_RESPONSE_MORE,
-        data: response.data.dataArr,
+        data: response.data.data,
         totalRecords: response.data.totalRecords
       })
     }).catch(function (error) {
-      console.log(error);
+      dispatch({
+				type: SERVER_ERROR
+			})
     })
   }
 }
@@ -138,11 +144,13 @@ export const getMissionByGame = (gameId, token) => {
 		return axios.get(url,header).then(function (response) {
 			dispatch({
 				type: MISSION_RESPONSE_BY_ID_GAME,
-				dataMission: response.data.dataArr,
+				dataMission: response.data.data,
 				totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }
@@ -156,10 +164,12 @@ export const getInfoMission = (missionId) => {
 		return axios.get(url).then(function (response) {
 			dispatch({
 				type: MISSION_RESPONSE_INFO,
-				dataInfoMission: response.data.dataArr
+				dataInfoMission: response.data.data
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }

@@ -93,7 +93,6 @@ class Home extends React.Component {
 	}
 	
 	render() {
-		
 		return (
 			<div>
 				<HomeComponent
@@ -107,6 +106,7 @@ class Home extends React.Component {
 					loginAction={this.loginAction}
 
 					data={this.props.data}
+					server={this.props.server}
 					articleData={this.props.articleData}
 					waiting={this.props.waiting}
 					articleWaiting={this.props.articleWaiting}
@@ -128,7 +128,8 @@ const mapStateToProps = state => ({
 	waiting: state.home.waiting,
 	articleWaiting: state.article.waiting,
 	dataFinish: state.mission.dataFinish,
-	dataMission: state.mission.data
+	dataMission: state.mission.data,
+	server:state.server.serverError
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

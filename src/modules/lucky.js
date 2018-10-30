@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Ultilities from '../Ultilities/global'
+import {SERVER_ERROR} from './server'
 export const LUCKY_REQUEST = 'lucky/LUCKY_REQUEST'
 export const LUCKY_RESPONSE = 'lucky/LUCKY_RESPONSE'
 export const LUCKY_DETAIL_RESPONSE = 'lucky/LUCKY_DETAIL_RESPONSE'
@@ -69,7 +70,9 @@ export const getData = (limit, offset) => {
 				totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }
@@ -87,7 +90,9 @@ export const getMoreData = (limit, offset) => {
 				totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }
@@ -110,7 +115,9 @@ export const getDetailData = (token, id) => {
 				data: response.data.dataObj
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }
@@ -132,7 +139,9 @@ export const pickCard = (token, scoinToken, id) => {
 				data: response.data.dataObj
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }
@@ -160,7 +169,9 @@ export const buyTurn = (token, scoinToken, id, turn) => {
 				data: response.data
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }

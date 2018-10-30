@@ -17,6 +17,7 @@ import {
 	FacebookShareButton,
 } from 'react-share'
 import RightArea from '../../components/RightArea'
+import '../../styles/imageServerError.css'
 
 const styles = theme => ({
 	root: {
@@ -51,7 +52,7 @@ class GiftCodeDetailComponent extends React.Component {
 
 	render() {
 		var user = JSON.parse(localStorage.getItem("user"));
-		const {data, value, openSnack, message, snackVariant, dialogLoginOpen, shared, logged}=this.props;
+		const {data, value, openSnack, message, snackVariant, dialogLoginOpen, shared, logged, server}=this.props;
 		return (this.props.data.length === 1) ? (
 			<div>
 				<Grid container spacing={8}>
@@ -271,7 +272,9 @@ class GiftCodeDetailComponent extends React.Component {
 				</Grid>
 			</div>
 		) : (<div className="global-loading" style={{ backgroundColor: "#232b36", marginTop: "8px" }}>
-			<CircularProgress size={50} />
+			{(server !== true) ? (												
+				<CircularProgress style={{ color: "#fff" }} size={50} />):(<img className="error" alt="just alt"
+				src="../baotri.png" />)}
 			<LoginRequired open={dialogLoginOpen}></LoginRequired>
 		</div>)
 		

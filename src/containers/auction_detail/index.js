@@ -337,8 +337,8 @@ class Auction_detail extends React.Component {
 											</ListItem>
 										))}
 									</List>
-									{(this.props.waiting) ? (<div className="global-loading"><CircularProgress
-										size={50} style={{ color: secondary.main }}
+									{(this.props.waiting) ? (<div className="global-loading">{(this.props.server !== true) ? (												
+												<CircularProgress style={{ color: "#fff" }} size={50} />):(<span>Hệ thống đang bảo trì, nâng cấp. xin vui lòng quay lại sau!</span>)}
 									/></div>) : (this.props.totalHistoryRecords > this.state.loadedRecords) ? (
 										<Grid item xs={12} className="global-loadmore">
 											<a onClick={this.loadMoreAction} style={{ color: secondary.main }}>Xem thêm</a>
@@ -432,21 +432,22 @@ class Auction_detail extends React.Component {
 							<Button onClick={this.handleCloseDialog} style={{ color: "#fe8731" }}>
 								Đóng
               				</Button>
-							<Button variant="raised" style={{
-								margin: "auto",
-								maxWidth: "320px",
-								borderRadius: "20px",
-								background: "linear-gradient(90deg,#22cab5,#3fe28f)",
-								color: "#fff",
-								padding: "10px",
-								fontSize: "0.8em",
-								whiteSpace: "nowrap",
-								minHeight: "auto"
-							}}
-								onClick={() => this.handleOnAuction(this.props.data[0].id, this.state.price)}
-								color="primary" autoFocus>
-								Đấu giá
-              				</Button>
+							  {(duration>0) ? (												
+								<Button variant="raised" style={{
+									margin: "auto",
+									maxWidth: "320px",
+									borderRadius: "20px",
+									background: "linear-gradient(90deg,#22cab5,#3fe28f)",
+									color: "#fff",
+									padding: "10px",
+									fontSize: "0.8em",
+									whiteSpace: "nowrap",
+									minHeight: "auto"
+								}}
+									onClick={() => this.handleOnAuction(this.props.data[0].id, this.state.price)}
+									color="primary" autoFocus>
+									Đấu giá
+								</Button>):(<Button style={{padding:"8px", color:"#fff"}} disabled>Đấu giá</Button>)}
 						</div>
 					</DialogActions>
 				
@@ -456,9 +457,8 @@ class Auction_detail extends React.Component {
 				<Notification message={this.state.message} variant={this.state.snackVariant} openSnack={this.state.openSnack} closeSnackHandle={this.handleCloseSnack} ></Notification>
 				<LoginRequired open={this.state.dialogLoginOpen}></LoginRequired>
 			</div>
-		) : (<div className="global-loading" style={{ marginTop: "8px" }}><CircularProgress
-			size={50}
-		/>
+		) : (<div className="global-loading" style={{ marginTop: "8px" }}>{(this.props.server !== true) ? (												
+			<CircularProgress style={{ color: "#fff" }} size={50} />):(<span>Hệ thống đang bảo trì, nâng cấp. xin vui lòng quay lại sau!</span>)}
 			<LoginRequired open={this.state.dialogLoginOpen}></LoginRequired>
 		</div>)
 	}
@@ -471,7 +471,8 @@ const mapStateToProps = state => ({
 	dataAuction: state.auction.dataAuction,
 	dataHistory: state.auction.dataHistory,
 	waiting: state.auction.waiting,
-	totalHistoryRecords: state.auction.totalHistoryRecords
+	totalHistoryRecords: state.auction.totalHistoryRecords,
+	server:state.server.serverError
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

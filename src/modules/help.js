@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {SERVER_ERROR} from './server'
 import Ultilities from '../Ultilities/global'
 export const HELP_REQUEST = 'help/HELP_REQUEST'
 export const HELP_RESPONSE = 'help/HELP_RESPONSE'
@@ -38,7 +39,9 @@ export const getData = () => {
 				data: [response.data.dataObj]
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }

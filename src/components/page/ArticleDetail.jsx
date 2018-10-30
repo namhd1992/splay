@@ -5,13 +5,14 @@ import Hidden from 'material-ui/Hidden'
 import { CircularProgress } from 'material-ui/Progress'
 import RightArea from '../../components/RightArea'
 import HeadMenu from '../HeadMenu'
+import '../../styles/imageServerError.css'
 
 
 
 class ArticleDetailComponent extends React.Component {
 
 	render() {
-		const {data, waiting}=this.props;
+		const {data, waiting,server}=this.props;
 		return (data!== undefined && data.length > 0) ? (
 				<div style={{ marginTop: "8px", marginBottom: "5px", borderRadius: "5px", padding: "5px" }}>
 					<HeadMenu></HeadMenu>
@@ -28,7 +29,9 @@ class ArticleDetailComponent extends React.Component {
 								</Grid>
 								{(waiting) ? (<Grid item xs={12} md={8}>
 									<div className="global-loadmore">
-										<CircularProgress size={50} />
+									{(server !== true) ? (												
+									<CircularProgress style={{ color: "#fff" }} size={50} />):(<img className="error" alt="just alt"
+									src="../baotri.png" />)}
 									</div>
 								</Grid>) : (<div></div>)}
 							</Grid>

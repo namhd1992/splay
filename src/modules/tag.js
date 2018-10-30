@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Ultilities from '../Ultilities/global'
+import {SERVER_ERROR} from './server'
 export const TAG_REQUEST = 'tag/TAG_REQUEST'
 export const TAG_RESPONSE = 'tag/TAG_RESPONSE'
 export const TAG_RESPONSE_MORE = 'tag/TAG_RESPONSE_MORE'
@@ -51,7 +52,9 @@ export const getData = (limit, offset, searchValue) => {
 				totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }
@@ -72,7 +75,9 @@ export const getMoreData = (limit, offset, searchValue) => {
 				totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }

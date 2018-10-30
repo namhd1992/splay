@@ -17,6 +17,7 @@ import ExpandLess from 'material-ui-icons/ExpandLess'
 import ExpandMore from 'material-ui-icons/ExpandMore'
 import Collapse from 'material-ui/transitions/Collapse'
 import LoginRequired from '../../components/LoginRequired'
+import '../../styles/imageServerError.css'
 
 
 
@@ -59,7 +60,7 @@ class ShopHistoryComponent extends React.Component {
 	}
 
 	render() {
-		const {data, waiting,totalRecords,profileData,loadedRecords,dialogLoginOpen,expand}=this.props;
+		const {data, waiting,totalRecords,profileData,loadedRecords,dialogLoginOpen,expand,server}=this.props;
 		const { classes } = this.props;
 		const { theme } = this.props;
 		const { secondary } = theme.palette;
@@ -127,9 +128,11 @@ class ShopHistoryComponent extends React.Component {
 										</Collapse>
 									</div>
 								))}
-								{(waiting) ? (<div className="global-loading"><CircularProgress
-									size={50}
-								/></div>) : (totalRecords > loadedRecords) ? (
+								{(waiting) ? (<div className="global-loading">
+								{(server !== true) ? (												
+									<CircularProgress style={{ color: "#fff" }} size={50} />):(<img className="error" alt="just alt"
+									src="../baotri.png" />)}
+								</div>) : (totalRecords > loadedRecords) ? (
 									<ListItem className="global-loadmore" style={{ textAlign: "center", background: "#232b36", borderRadius: "5px", margin: "5px", width: "auto" }}>
 										<a onClick={this.loadMoreAction} style={{ color: secondary.main, margin: "auto" }}>Xem thêm</a>
 									</ListItem>

@@ -24,6 +24,11 @@ import Badge from 'material-ui/Badge'
 import {
 	getData
 } from '../modules/profile'
+
+import {
+	setStatusServer
+} from '../modules/server'
+
 import {
 	changeTitle
 } from '../modules/global'
@@ -32,6 +37,7 @@ import { connect } from 'react-redux'
 import Avatar from 'material-ui/Avatar'
 import { withTheme } from 'material-ui/styles'
 import { withRouter } from 'react-router-dom'
+import {SERVER_ERROR} from '../modules/server'
 
 const styles = {
 	root: {
@@ -110,7 +116,7 @@ class MenuAppBar extends React.Component {
 	};
 
 	componentDidMount() {
-		
+		var {dispatch}=this.props;
 		var user = JSON.parse(localStorage.getItem("user"));
 		var _this = this;
 		if (this.props.pathname === "/game") {
@@ -167,6 +173,7 @@ class MenuAppBar extends React.Component {
 						// 	window.location.replace(`${window.location.protocol}//${window.location.host}`);
 						// });
 					}).catch(function (error) {
+						_this.props.setStatusServer();
 						localStorage.removeItem("user");
 						localStorage.removeItem("userInfo");
 						_this.setState({ auth: false });
@@ -191,6 +198,7 @@ class MenuAppBar extends React.Component {
 							});
 						});
 					}).catch(function (error) {
+						_this.props.setStatusServer();
 						localStorage.removeItem("user");
 						localStorage.removeItem("userInfo");
 						_this.setState({ auth: false });
@@ -377,7 +385,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
 	getData,
-	changeTitle
+	changeTitle,
+	setStatusServer
 }, dispatch)
 
 MenuAppBar.propTypes = {

@@ -9,6 +9,7 @@ import LoginRequired from '../../components/LoginRequired'
 import Button from 'material-ui/Button'
 import List, { ListItem, ListItemText } from 'material-ui/List'
 import { withTheme } from 'material-ui/styles'
+import '../../styles/imageServerError.css'
 
 
 class CheckinComponent extends React.Component {
@@ -18,7 +19,7 @@ class CheckinComponent extends React.Component {
 	}
 
 	render() {
-		const {data, dialogLoginOpen, waiting}=this.props;
+		const {data, dialogLoginOpen, waiting,server}=this.props;
 		var toDay = data[1];
 		var award = 0;
 		if (data[0] !== undefined) {
@@ -89,9 +90,11 @@ class CheckinComponent extends React.Component {
 									</div>
 								</Grid>
 							))}
-							{(waiting) ? (<div className="global-loading"><CircularProgress
-								size={50}
-							/></div>) : (
+							{(waiting) ? (<div className="global-loading">
+							{(server !== true) ? (												
+								<CircularProgress style={{ color: "#fff" }} size={50} />):(<img className="error" alt="just alt"
+								src="../baotri.png" />)}
+							</div>) : (
 									<div></div>
 								)}
 						</Grid>
@@ -104,9 +107,10 @@ class CheckinComponent extends React.Component {
 				</Grid>
 				<LoginRequired open={dialogLoginOpen}></LoginRequired>
 			</div>
-		) : (<div className="global-loading"><CircularProgress
-			size={50}
-		/>
+		) : (<div className="global-loading">
+			{(server !== true) ? (												
+			<CircularProgress style={{ color: "#fff" }} size={50} />):(<img className="error" alt="just alt"
+			src="../baotri.png" />)}
 			<LoginRequired open={dialogLoginOpen}></LoginRequired>
 		</div>)
 	}

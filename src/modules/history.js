@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Ultilities from '../Ultilities/global'
+import {SERVER_ERROR} from './server'
 export const HISTORY_REQUEST = 'history/HISTORY_REQUEST'
 export const HISTORY_RESPONSE = 'history/HISTORY_RESPONSE'
 export const HISTORY_RESPONSE_MORE = 'history/HISTORY_RESPONSE_MORE'
@@ -54,7 +55,9 @@ export const getData = (token, limit, offset) => {
 				totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }
@@ -78,7 +81,9 @@ export const getMoreData = (token, limit, offset) => {
 				totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }

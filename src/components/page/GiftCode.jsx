@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 import { ListItem, ListItemText } from 'material-ui/List'
 import { CircularProgress } from 'material-ui/Progress'
 import Button from 'material-ui/Button'
+import '../../styles/imageServerError.css'
 
 
 const styles = theme => ({
@@ -33,6 +34,7 @@ class GiftCodeComponent extends React.Component {
 
 	render() {
 		const { classes } = this.props;
+		const { server,loadedRecords ,totalRecords,waiting} = this.props;
 		return (
 			<div>
 				<Grid container spacing={8}>
@@ -75,11 +77,11 @@ class GiftCodeComponent extends React.Component {
 									</div>
 								</Grid>
 							))}
-							{(this.props.waiting) ? (<Grid item xs={12} style={{ textAlign: "center" }}>
-								<CircularProgress style={{ color: "#23c9b6" }}
-									size={50}
-								/>
-							</Grid>) : (this.props.totalRecords > this.props.loadedRecords) ? (
+							{(waiting) ? (<Grid item xs={12} style={{ textAlign: "center" }}>
+							{(server !== true) ? (												
+								<CircularProgress style={{ color: "#fff" }} size={50} />):(<img className="error" alt="just alt"
+								src="../baotri.png" />)}
+							</Grid>) : (totalRecords > loadedRecords) ? (
 								<Grid item xs={12} style={{ textAlign: "center", color: "#23c9b6" }}>
 									<a onClick={this.loadMoreAction}>Xem thêm</a>
 								</Grid>

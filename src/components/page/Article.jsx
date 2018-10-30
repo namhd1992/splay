@@ -79,7 +79,7 @@ class ArticleComponent extends React.Component {
 	}
 
 	render() {
-		const {data, gameData, waiting, totalRecords, loadedRecords, searchValue, gameId, articleType, expand}=this.props;
+		const {data, gameData, waiting, totalRecords, loadedRecords, searchValue, gameId, articleType, expand, server}=this.props;
 		const { theme } = this.props;
 		const { primary, secondary } = theme.palette;
 
@@ -155,7 +155,9 @@ class ArticleComponent extends React.Component {
 							))}
 							{(waiting) ? (<Grid item xs={12}>
 								<div className="global-loadmore">
-									<CircularProgress size={50} />
+								{(server !== true) ? (												
+								<CircularProgress style={{ color: "#fff" }} size={50} />):(<img alt="just alt"
+									src="../baotri.png" />)}
 								</div>
 							</Grid>) : (totalRecords > loadedRecords) ? (
 								<Grid item xs={12} >

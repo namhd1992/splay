@@ -66,6 +66,9 @@ class Giftcode extends React.Component {
 					loadedRecords={this.state.loadedRecords}
 					totalRecords={this.props.totalRecords}
 					loadMoreAction={this.loadMoreAction}
+					server={this.props.server}
+					waiting={this.props.waiting}
+
 				/>
 			</div>
 		)
@@ -75,7 +78,8 @@ class Giftcode extends React.Component {
 const mapStateToProps = state => ({
 	data: state.giftcode.data,
 	waiting: state.giftcode.waiting,
-	totalRecords: state.giftcode.totalRecords
+	totalRecords: state.giftcode.totalRecords,
+	server:state.server.serverError
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

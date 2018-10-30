@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Ultilities from '../Ultilities/global'
-
+import {SERVER_ERROR} from './server'
 export const GIFTCODE_REQUEST = 'giftcode/GIFTCODE_REQUEST'
 export const GIFTCODE_RESPONSE = 'giftcode/GIFTCODE_RESPONSE'
 export const TAKE_GIFTCODE_RESPONSE = 'giftcode/TAKE_GIFTCODE_RESPONSE'
@@ -63,7 +63,9 @@ export const getDataByGame = (gameId) => {
 				totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }
@@ -81,7 +83,9 @@ export const getData = (limit, offset) => {
 				totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }
@@ -99,7 +103,9 @@ export const getMoreData = (limit, offset) => {
 				totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }
@@ -126,7 +132,9 @@ export const getDataId = (id, token) => {
 				data: response.data.dataArr
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }
@@ -149,7 +157,9 @@ export const takeGiftcode = (id, token, scoinToken, deviceId) => {
 				data: response
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }
@@ -173,7 +183,9 @@ export const share = (id, token) => {
 				data: response
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }

@@ -36,6 +36,7 @@ class Article_detail extends React.Component {
 			<div>
 				<ArticleDetailComponent
 					data={this.props.data}
+					server={this.props.server}
 					waiting={this.props.waiting}
 				/>
 			</div>
@@ -48,6 +49,7 @@ const mapStateToProps = state => ({
 	data: state.article.dataDetail,
 	waiting: state.article.waiting,
 	totalRecords: state.article.totalRecords,
+	server:state.server.serverError
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

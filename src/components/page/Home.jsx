@@ -24,6 +24,7 @@ import Rating from '../../components/Rating'
 import Divider from 'material-ui/Divider'
 import PopupMission from '../PopupMission'
 import '../../styles/mission.css'
+import '../../styles/imageServerError.css'
 
 const styles = theme => ({
 	gridItem: {
@@ -335,7 +336,7 @@ class HomeComponent extends React.Component {
 	}
 
 	render() {
-		const {data,articleData,dataMission,logged,dialogDetailOpen,dialogContent}=this.props;
+		const {data,articleData,dataMission,logged,dialogDetailOpen,dialogContent,server}=this.props;
 		const { theme } = this.props;
 		const { secondary } = theme.palette;
 		const { classes } = this.props;
@@ -927,7 +928,9 @@ class HomeComponent extends React.Component {
 			) :
 				(<Grid item xs={12} style={{ marginTop: "8px" }}>
 					<div className="global-loadmore">
-						<CircularProgress style={{ color: "#fff" }} size={50} />
+					{(server !== true) ? (												
+						<CircularProgress style={{ color: "#fff" }} size={50} />):(<img className="error" alt="just alt"
+						src="../baotri.png" />)}
 					</div>
 					<PopupMission
 						handleClosePopupMission={this.handleClosePopupMission}

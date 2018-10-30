@@ -20,6 +20,7 @@ import { withStyles } from "material-ui/styles/index"
 import Notification from '../../components/Notification'
 import LoginRequired from '../../components/LoginRequired'
 import '../../styles/mission.css'
+import '../../styles/imageServerError.css'
 
 const styles = {
 	paper: {
@@ -58,7 +59,7 @@ class MissionComponent extends React.Component {
 
 	render() {
 		const {data,totalRecords, waiting,dialogDetailOpen,dialogContent,loadedRecords
-		, message,openSnack,dialogLoginOpen,snackVariant}=this.props;
+		, message,openSnack,dialogLoginOpen,snackVariant,server}=this.props;
 		const { theme } = this.props;
 		const { classes } = this.props;
 		const { secondary } = theme.palette;
@@ -120,9 +121,11 @@ class MissionComponent extends React.Component {
 								))}
 							</List>
 						</Grid>
-						{(waiting) ? (<Grid item xs={12} style={{ textAlign: "center" }}><CircularProgress
-							size={50} style={{ color: secondary.main }}
-						/></Grid>) : (totalRecords > loadedRecords) ? (
+						{(waiting) ? (<Grid item xs={12} style={{ textAlign: "center" }}>
+						{(server !== true) ? (												
+								<CircularProgress style={{ color: "#fff" }} size={50} />):(<img className="error" alt="just alt"
+								src="../baotri.png" />)}
+						</Grid>) : (totalRecords > loadedRecords) ? (
 							<Grid item xs={12} style={{ textAlign: "center", color: secondary.main }}>
 								<a onClick={this.loadMoreAction}>Xem thêm</a>
 							</Grid>

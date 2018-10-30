@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Ultilities from '../Ultilities/global'
+import {SERVER_ERROR} from './server'
 export const ARTICLE_REQUEST = 'article/ARTICLE_REQUEST'
 export const ARTICLE_RESPONSE = 'article/ARTICLE_RESPONSE'
 export const ARTICLE_DETAIL_RESPONSE = 'article/ARTICLE_DETAIL_RESPONSE'
@@ -68,7 +69,9 @@ export const getData = (limit, offset, id, searchValue, gameId, articleType) => 
 				totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }
@@ -89,7 +92,9 @@ export const getDataDetail = ( id) => {
 				totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }
@@ -116,7 +121,9 @@ export const getMoreData = (limit, offset, searchValue, gameId, articleType) => 
 				totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }

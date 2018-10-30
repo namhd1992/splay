@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Ultilities from '../Ultilities/global'
+import {SERVER_ERROR} from './server'
 export const AUCTION_REQUEST = 'auction/AUCTION_REQUEST'
 export const AUCTION_ACTION = 'auction/AUCTION_ACTION'
 export const AUCTION_RESPONSE = 'auction/AUCTION_RESPONSE'
@@ -71,7 +72,9 @@ export const getData = (limit, offset) => {
 				totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }
@@ -89,7 +92,9 @@ export const getMoreData = (limit, offset) => {
 				totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }
@@ -107,7 +112,9 @@ export const getHistoryData = (id, limit, offset) => {
 				totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }
@@ -125,7 +132,9 @@ export const getMoreHistoryData = (id, limit, offset) => {
 				totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }
@@ -142,7 +151,9 @@ export const getDataId = (id) => {
 				data: [response.data.dataArr[0]]
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }
@@ -170,7 +181,9 @@ export const auction = (token, scoinToken, id, price) => {
 				data: response
 			})
 		}).catch(function (error) {
-			console.log(error);
+			dispatch({
+				type: SERVER_ERROR
+			})
 		})
 	}
 }

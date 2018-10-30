@@ -48,6 +48,7 @@ class Checkin extends React.Component {
 			<div>
 				<CheckinComponent
 					checkin={this.checkin}
+					server={this.props.server}
 					data={this.props.data}
 					waiting={this.props.waiting}
 					dialogLoginOpen={this.state.dialogLoginOpen}
@@ -60,7 +61,8 @@ class Checkin extends React.Component {
 const mapStateToProps = state => ({
 	data: state.checkin.data,
 	actiondata: state.checkin.actiondata,
-	waiting: state.checkin.waiting
+	waiting: state.checkin.waiting,
+	server:state.server.serverError
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

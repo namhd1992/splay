@@ -146,6 +146,7 @@ class Game extends React.Component {
 					handleCloseTagDialog={this.handleCloseTagDialog}
 
 					data={this.props.data}
+					server={this.props.server}
 					waiting={this.props.waiting}
 					totalRecords={this.props.totalRecords}
 					tagData={this.props.tagData}
@@ -168,6 +169,7 @@ const mapStateToProps = state => ({
 	waiting: state.game.waiting,
 	totalRecords: state.game.totalRecords,
 	tagData: state.tag.data,
+	server:state.server.serverError
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

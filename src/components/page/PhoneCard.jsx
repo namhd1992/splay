@@ -21,6 +21,7 @@ import Dialog, {
 	DialogContent,
 	DialogTitle,
 } from 'material-ui/Dialog'
+import '../../styles/imageServerError.css'
 
 
 
@@ -67,7 +68,7 @@ class PhoneCardComponent extends React.Component {
 	}
 
 	render() {
-		const {data,dataHistory,waitingHistory,totalRecords,expand,value,dialogLoginOpen,loadedRecords}=this.props;
+		const {data,dataHistory,waitingHistory,totalRecords,expand,value,dialogLoginOpen,loadedRecords,server}=this.props;
 		const { theme } = this.props;
 		const { secondary } = theme.palette;
 		return (<div>
@@ -159,9 +160,11 @@ class PhoneCardComponent extends React.Component {
 														</Collapse>
 													</div>
 												))}
-												{(waitingHistory) ? (<div className="global-loading"><CircularProgress
-													size={50}
-												/></div>) : (totalRecords > loadedRecords) ? (
+												{(waitingHistory) ? (<div className="global-loading">
+												{(server !== true) ? (												
+													<CircularProgress style={{ color: "#fff" }} size={50} />):(<img className="error" alt="just alt"
+													src="../baotri.png" />)}
+												</div>) : (totalRecords > loadedRecords) ? (
 													<ListItem className="global-loadmore" style={{ textAlign: "center", background: "#232b36", borderRadius: "5px", margin: "5px", width: "auto" }}>
 														<a onClick={this.loadMoreAction} style={{ color: secondary.main, margin: "auto" }}>Xem thêm</a>
 													</ListItem>
@@ -175,7 +178,9 @@ class PhoneCardComponent extends React.Component {
 					</Grid>
 				</div>
 			) : (<div className="global-loading">
-				<CircularProgress size={50} />
+				{(server !== true) ? (												
+					<CircularProgress style={{ color: "#fff" }} size={50} />):(<img className="error" alt="just alt"
+					src="../baotri.png" />)}
 			</div>)}
 			<Dialog
 				fullScreen={false}
