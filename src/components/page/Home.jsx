@@ -202,11 +202,7 @@ class TitleContainer extends React.Component {
 											<img className="img_avatar" src="../auction_icon.png"
 												alt="just alt"
 												onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
-										{(obj.actionName === "4") ? (
-											<img className="img_avatar" src="../giftcode_icon.png"
-												alt="just alt"
-												onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
-										{(obj.actionName === "5") ? (
+										{(obj.actionName === "4" || obj.actionName === "5" || obj.actionName === "9") ? (
 											<img className="img_avatar" src="../giftcode_icon.png"
 												alt="just alt"
 												onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}

@@ -79,11 +79,11 @@ class MissionComponent extends React.Component {
 											{(obj.actionName === "2") ? (<CheckinIcon onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
 											{(obj.actionName === "3") ? (<img style={{ width: "24px", height: "24px" }} src="../auction_icon.png" alt="just alt"
 												onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
-											{(obj.actionName === "4") ? (<img style={{ width: "24px", height: "24px" }} src="../giftcode_icon.png" alt="just alt"
+											{/* {(obj.actionName === "4") ? (<img style={{ width: "24px", height: "24px" }} src="../giftcode_icon.png" alt="just alt"
 												onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
 											{(obj.actionName === "5") ? (<img style={{ width: "24px", height: "24px" }} src="../giftcode_icon.png" alt="just alt"
-												onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
-											{(obj.actionName === "8") ? (<img style={{ width: "24px", height: "24px" }} src="../giftcode_icon.png" alt="just alt"
+												onClick={() => this.showDetail(obj.description)} />) : (<div></div>)} */}
+											{(obj.actionName === "8" || obj.actionName === "9" || obj.actionName === "4" || obj.actionName === "5") ? (<img style={{ width: "24px", height: "24px" }} src="../giftcode_icon.png" alt="just alt"
 												onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
 											{(obj.actionName === "6") ? (<LikeIcon onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
 										</Avatar>
