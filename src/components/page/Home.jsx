@@ -219,7 +219,7 @@ class TitleContainer extends React.Component {
 									<ListItemText style={{width:"50%", padding:"0 7px"}} disableTypography={true}
 										primary={(<div className="mission_title">{obj.missionName}</div>)}
 										secondary={(
-											<span className="global-thit" style={{ color: "#fe8731" }}><span className="valueBonus">giftcode</span>{(obj.awardAvailable !== null) ? ( <span className="numberBonus">Còn lại hôm nay: {obj.awardAvailable}</span>) : (<div></div>)} </span>)} />) : (<div></div>)}
+											<span className="global-thit" style={{ color: "#fe8731" }}><span className="valueBonus">Giftcode</span>{(obj.awardAvailable !== null) ? ( <span className="numberBonus">Còn lại hôm nay: {obj.awardAvailable}</span>) : (<div></div>)} </span>)} />) : (<div></div>)}
 									{(obj.award === "XO") ? (
 									<ListItemText style={{width:"50%", padding:"0 7px"}} disableTypography={true}
 										primary={(<div className="mission_title">{obj.missionName}</div>)}

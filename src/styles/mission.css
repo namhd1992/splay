@@ -51,6 +51,7 @@ button.buttonCircle{
 	margin-right:10px;
 	border-radius: 50%;
 	float:left;
+	cursor: pointer;
 	visibility: hidden;
 }
 button.buttonFull{
@@ -62,6 +63,7 @@ button.buttonFull{
 	padding: 8px;
 	font-size: 0.8em;
 	white-space: nowrap;
+	cursor: pointer;
 }
 button.buttonGhost{
 	border-radius: 20px;
@@ -72,6 +74,7 @@ button.buttonGhost{
 	padding: 8px;
 	font-size: 0.8em;
 	white-space: nowrap;
+	cursor: pointer;
 }
 .mission_container{
 	width:100%;
@@ -113,11 +116,15 @@ button.buttonGhost{
 	margin-right: 5px 0px;
 }
 .received{
+	border-radius: 20px;
+	background:#a6a6a6;
+	width:88px;
 	color: #fff;
-	padding: 8px; 
-	min-width:88px;
-	border: none;
-	background:#3c434c;
+	border: 1px solid #00948d;
+	padding: 8px;
+	font-size: 0.8em;
+	white-space: nowrap;
+	cursor: default;
 }
 .articleEvent{
 	border: solid 1px #fe8731;
@@ -146,7 +153,9 @@ span.numberBonus{
 }
 button:hover{
 	background:#3c434c;
-	cursor: pointer;
+}
+button.received:hover{
+	background:#a6a6a6;
 }
 
 @media only screen and (max-width:1280px){
@@ -199,9 +208,13 @@ button:hover{
 @media only screen and (max-width:1024px){
 	.mission_action{
 		flex:auto;
-		width:33%; 
+		width:37%; 
 		float:left;
 	}
+	.avatar{
+		padding: 3px 8px;
+	}
+
 }
  
 
@@ -216,12 +229,36 @@ button:hover{
 	.mission .mission_action{
 		margin-right: 8px;
 	}
+	.mission .avatar{
+		padding: 4px 10px;
+	}
 	span.valueBonus{
 		font-size: 0.8em;
 	}
 	span.numberBonus{
 		font-size: 0.8em;
 		margin-left: 5px;
+	}
+}
+
+@media only screen and (max-width:667px){
+	.mission{
+		padding: 2px 0px 2px 1px;
+	}
+	.mission_action{
+		flex:auto;
+		width:32%; 
+		float:left;
+	}
+	.mission .mission_action{
+		margin-right: 4px;
+	}
+	span.valueBonus{
+		font-size: 0.7em;
+	}
+	span.numberBonus{
+		font-size: 0.7em;
+		margin-left: 3px;
 	}
 }
 
@@ -246,7 +283,7 @@ button:hover{
 	}
 }
 
-@media only screen and (max-width:320px){
+@media only screen and (max-width:375px){
 	.mission{
 		padding: 2px 0px 2px 1px;
 	}
@@ -264,5 +301,43 @@ button:hover{
 	span.numberBonus{
 		font-size: 0.7em;
 		margin-left: 3px;
+	}
+}
+
+@media only screen and (max-width:320px){
+	.mission{
+		padding: 2px 0px 2px 1px;
+	}
+	.mission_action{
+		flex:auto;
+		width:50%; 
+		float:left;
+	}
+	.mission .mission_action{
+		margin-right: 4px;
+	}
+	span.valueBonus{
+		font-size: 0.7em;
+	}
+	span.numberBonus{
+		font-size: 0.7em;
+		margin-left: 3px;
+	}
+	button.buttonFull{
+		width:60px;
+		color: #fff;
+		padding: 4px;
+		font-size: 0.7em;
+	}
+	button.buttonGhost{
+		width:60px;
+		padding: 4px;
+		font-size: 0.7em;
+	}
+	.avatar{
+		padding: 3px 8px;
+	}
+	.mission .avatar{
+		padding: 2px 8px;
 	}
 }
