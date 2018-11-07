@@ -113,7 +113,7 @@ class AuctionComponent extends React.Component {
 		const { secondary } = this.props.theme.palette;
 		const {dialogLoginOpen, value, waiting, loadedRecordsAll, loadedRecordsShopItem, loadedRecordsShopItemGiftcode,loadedRecords,
 			data, totalRecords, profileData, dataShopItemGiftcode, waitingShopItemGiftcode, totalRecordsShopItemGiftcode,
-			dataShopItem, waitingShopItem, totalRecordsShopItem, dataAll, waitingAll, totalRecordsAll,server}=this.props;
+			dataShopItem, waitingShopItem, totalRecordsShopItem, dataAll, waitingAll, totalRecordsAll,server,dataAutionAndLucky}=this.props;
 		return (
 			<div className={classes.root}>
 				<HeadMenu></HeadMenu>
@@ -378,6 +378,7 @@ class AuctionComponent extends React.Component {
 				<PopupDetailBonus
 					handleCloseBonus={this.handleCloseBonus}
 					openDetailBonus={this.state.openDetailBonus}
+					dataAutionAndLucky={dataAutionAndLucky}
 				/>
 			</div>
 		)

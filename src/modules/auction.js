@@ -7,6 +7,7 @@ export const AUCTION_RESPONSE = 'auction/AUCTION_RESPONSE'
 export const AUCTION_RESPONSE_HISTORY = 'auction/AUCTION_RESPONSE_HISTORY'
 export const AUCTION_RESPONSE_HISTORY_MORE = 'auction/AUCTION_RESPONSE_HISTORY_MORE'
 export const AUCTION_RESPONSE_MORE = 'auction/AUCTION_RESPONSE_MORE'
+export const MISSION_AUCTION_LUCKY_RESPONSE = 'auction/MISSION_AUCTION_LUCKY_RESPONSE'
 
 const initialState = {
 	data: [],
@@ -98,6 +99,34 @@ export const getMoreData = (limit, offset) => {
 		})
 	}
 }
+
+
+export const getMissionByLuckyAndAution = (token) => {
+	var header = {
+	  headers: {
+		"Content-Type": "application/json",
+		"Authorization": "bearer " + token,
+	  }
+	}
+	return dispatch => {
+	  dispatch({
+		type: AUCTION_REQUEST
+	  })
+	  var url = Ultilities.base_url() + "missionByAutionAndLucky";
+	  return axios.get(url, header).then(function (response) {
+		dispatch({
+		  type: MISSION_AUCTION_LUCKY_RESPONSE,
+		  dataAutionAndLucky: response.data.data,
+		  totalRecords: response.data.totalRecords
+		})
+	  }).catch(function (error) {
+		dispatch({
+				  type: SERVER_ERROR
+			  })
+	  })
+	}
+  }
+
 
 export const getHistoryData = (id, limit, offset) => {
 	return dispatch => {

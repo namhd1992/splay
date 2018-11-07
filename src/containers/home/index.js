@@ -37,7 +37,7 @@ class Home extends React.Component {
 		window.location.replace(`http://graph.vtcmobile.vn/oauth/authorize?client_id=707fece431a0948c498d43e881acd2c5&agencyid=0&redirect_uri=${window.location.protocol}//${window.location.host}/`);
 	}
 
-	doMission = (action, id, value, objectGame) => {
+	doMission = (action, id, value, scoinGameId) => {
 		switch (parseInt(action.substring(action.length - 1), 10)) {
 			case 1:
 				window.location.href = '/lucky';
@@ -52,13 +52,13 @@ class Home extends React.Component {
 				window.location.href = '/giftcodedetail/' + id;
 				break;
 			case 5:
-				window.location.href = '/gamedetail/' + objectGame.id;
+				window.location.href = '/gamedetail/' + scoinGameId;
 				break;
 			case 8:
-				window.location.href = '/gamedetail/' + objectGame.id;
+				window.location.href = '/gamedetail/' + scoinGameId;
 				break;
 			case 9:
-				window.location.href = '/gamedetail/' + objectGame.id;
+				window.location.href = '/gamedetail/' + scoinGameId;
 			break;
 			default:
 				window.location.assign(value);

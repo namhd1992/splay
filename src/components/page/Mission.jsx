@@ -48,8 +48,8 @@ class MissionComponent extends React.Component {
 		this.props.reward(id);
 	}
 	
-	doMission=(action, id, value, objectGame)=>{
-		this.props.doMission(action, id, value, objectGame);
+	doMission=(action, id, value, scoinGameId)=>{
+		this.props.doMission(action, id, value, scoinGameId);
 	}
 	
 	loadMoreAction=()=>{
@@ -105,17 +105,20 @@ class MissionComponent extends React.Component {
 												<span className="global-thit" style={{ color: "#fe8731" }}><img alt="just alt"
 													src="../XO.png" /> <span style={{ color: "#ff6126" }}>{obj.valueAward}</span> </span>)} />) : (<div></div>)}
 
-										{(obj.finish && !obj.received && obj.awardAvailable !==0) ? (<div>
+										{(obj.finish && !obj.received && obj.awardAvailable !==0 && obj.missionStatus ==="active") ? (<div>
 											<button onClick={() => this.reward(obj.missionId)} className="buttonFull" variant="raised">Nhận</button>
 										</div>) : (<div></div>)}
-										{(!obj.finish && !obj.received) ? (<div>
-											<button className="buttonGhost" onClick={() => this.doMission(obj.actionName, obj.objectId, obj.objectValue, obj.scoinGameObject)}>Thực hiện</button>
+										{(!obj.finish && !obj.received && obj.missionStatus ==="active") ? (<div>
+											<button className="buttonGhost" onClick={() => this.doMission(obj.actionName, obj.objectId, obj.objectValue, obj.scoinGameId)}>Thực hiện</button>
 										</div>) : (<div></div>)}
-										{(obj.finish && obj.received) ? (<div>
+										{(obj.finish && obj.received && obj.missionStatus ==="active") ? (<div>
 											<button className="received" disabled>Đã nhận</button>
 										</div>) : (<div></div>)}
-										{(obj.finish && !obj.received && obj.awardAvailable ===0) ? (
+										{(obj.finish && !obj.received && obj.awardAvailable ===0 && obj.missionStatus ==="active") ? (
 											<button className="received" disabled>Đã hết</button>
+										) : (<div></div>)}
+										{(obj.missionStatus ==="inactive") ? (
+											<button className="received" disabled>Hết hạn</button>
 										) : (<div></div>)}
 									</ListItem>
 								))}

@@ -43,7 +43,7 @@ button.buttonCircle{
 	background:#232b36;
 	color: #12cdd4;
 	border: 1px solid #12cdd4;
-	padding: 8px 14px;
+	padding: 9px 14px;
 	font-size: 0.8em;
 	white-space: nowrap;
 	min-width: auto;
@@ -52,7 +52,7 @@ button.buttonCircle{
 	border-radius: 50%;
 	float:left;
 	cursor: pointer;
-	visibility: hidden;
+	/* visibility: hidden; */
 }
 button.buttonFull{
 	border-radius: 20px;
@@ -90,6 +90,7 @@ button.buttonGhost{
 }
 .mission .avatar{
 	margin-left: 2px;
+	padding: 5px 10px;
 }
 .img_avatar{
 	width: 24px; 
@@ -120,7 +121,7 @@ button.buttonGhost{
 	background:#a6a6a6;
 	width:88px;
 	color: #fff;
-	border: 1px solid #00948d;
+	border: 0px solid #00948d;
 	padding: 8px;
 	font-size: 0.8em;
 	white-space: nowrap;
@@ -294,6 +295,10 @@ button.received:hover{
 	}
 	.mission .mission_action{
 		margin-right: 4px;
+	}
+	.mission .avatar{
+		padding: 3px 8px;
+		margin-right: 2px;
 	}
 	span.valueBonus{
 		font-size: 0.7em;

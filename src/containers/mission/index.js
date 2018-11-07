@@ -52,7 +52,7 @@ class Mission extends React.Component {
 		});
 	}
 
-	doMission = (action, id, value, objectGame) => {
+	doMission = (action, id, value, scoinGameId) => {
 		switch (parseInt(action.substring(action.length - 1), 10)) {
 			case 1:
 				window.location.href = '/lucky';
@@ -67,13 +67,13 @@ class Mission extends React.Component {
 				window.location.href = '/giftcodedetail/' + id;
 				break;
 			case 5:
-				window.location.href = '/gamedetail/' + objectGame.id;
+				window.location.href = '/gamedetail/' + scoinGameId;
 				break;
 			case 8:
-				window.location.href = '/gamedetail/' + objectGame.id;
+				window.location.href = '/gamedetail/' + scoinGameId;
 				break;
 			case 9:
-				window.location.href = '/gamedetail/' + objectGame.id;
+				window.location.href = '/gamedetail/' + scoinGameId;
 			break;
 			default:
 				window.location.assign(value);

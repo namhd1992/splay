@@ -18,8 +18,8 @@ import {
 	getMoreData as getMoreAllData
 } from '../../modules/itemAndAuction'
 import {
-	getData as getProfileData
-} from '../../modules/profile'
+	getData as getMissionByLuckyAndAution
+} from '../../modules/auction'
 import {
 	getData as getGameData,
 } from '../../modules/game'
@@ -63,7 +63,7 @@ class Auction extends React.Component {
 		this.props.changeTitle("SHOP");
 		var user = JSON.parse(localStorage.getItem("user"));
 		if (user !== null) {
-			// this.props.getProfileData(user.access_token, user.scoinAccessToken);
+			// this.props.getMissionByLuckyAndAution(user.access_token, user.scoinAccessToken);
 			this.props.getData(this.state.limit, this.state.offset).then(function () {
 				_this.setState({ loadedRecords: _this.state.limit + _this.state.offset });
 			});
@@ -149,6 +149,7 @@ class Auction extends React.Component {
 					loadedRecords={this.state.loadedRecords}
 
 					data={this.props.data}
+					dataAutionAndLucky={this.props.dataAutionAndLucky}
 					server={this.props.server}
 					waiting={this.props.waiting}
 					totalRecords={this.props.totalRecords}
@@ -173,6 +174,7 @@ const mapStateToProps = state => ({
 	gameData: state.game.data,
 	articleData: state.article.data,
 	data: state.auction.data,
+	dataAutionAndLucky:state.auction.dataAutionAndLucky,
 	waiting: state.auction.waiting,
 	totalRecords: state.auction.totalRecords,
 	profileData: state.profile.data,
@@ -200,7 +202,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 	getMoreShopItemData,
 	getAllData,
 	getMoreAllData,
-	getProfileData,
+	getMissionByLuckyAndAution,
 	changeTitle
 }, dispatch)
 

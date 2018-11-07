@@ -349,7 +349,8 @@ class MenuAppBar extends React.Component {
 										<div style={{ backgroundColor: "#000", minWidth: "100px", height: "20px", borderRadius: "15px", paddingRight: "10px" }}>
 											<img style={{ verticalAlign: "middle", height: "24px", marginRight: "5px", marginTop: "-5px", marginLeft: "-10px" }} src="/../scoin.png" />
 											<span>{this.props.data.scoinBalance ? this.props.data.scoinBalance.toLocaleString(): "0"}</span>
-											<span style={{ float: "right" }}>+</span>
+											<img style={{float:"right", border:"1px solid", borderRadius:"50%", marginTop:"2px"}} src="../add.png"
+												alt="just alt"/>
 										</div>
 									</a>
 									<div onClick={this.toggleDrawer('right', true)} style={{ marginTop: (this.props.compact && this.props.scrolling) ? "4px" : "0px" }}>

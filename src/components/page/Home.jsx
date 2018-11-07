@@ -153,8 +153,8 @@ class TitleContainer extends React.Component {
 
   class MissionContainer extends React.Component {
 
-	doMission=(action, id, value, objectGame)=>{
-		this.props.doMission(action, id, value, objectGame);
+	doMission=(action, id, value, scoinGameId)=>{
+		this.props.doMission(action, id, value, scoinGameId);
 	}
 
 	showDetail=(detail)=>{
@@ -165,8 +165,8 @@ class TitleContainer extends React.Component {
 		this.props.reward(id);
 	}
 
-	openPopupMission=()=>{
-		this.props.handleOpenPopupMission();
+	openPopupMission=(obj)=>{
+		this.props.handleOpenPopupMission(obj);
 	}
 	add3Dots=(string, limit)=>{
 		var dots = "...";
@@ -184,7 +184,7 @@ class TitleContainer extends React.Component {
 		return (
 			<div className="mission_container">
 				{dataMission.slice(0, 8).map((obj, key) => (
-					<div className={(obj.actionName === "1") ? "mission": ""}>
+					<div className={(obj.highLights === true) ? "mission": ""}>
 						<div className="mission_content">
 							<Grid key={key}> 
 								<ListItem key={key} className={classes.giftcodeItem}>
@@ -230,21 +230,24 @@ class TitleContainer extends React.Component {
 									<div className="mission_action">
 										<button
 												className="buttonCircle"
-												onClick={() => this.openPopupMission()}>?</button>
-										{(obj.finish && !obj.received && obj.awardAvailable !=0) ? (
+												onClick={() => this.openPopupMission(obj)}>?</button>
+										{(obj.finish && !obj.received && obj.awardAvailable !=0 && obj.missionStatus ==="active") ? (
 										<button onClick={() => this.reward(obj.missionId)}
 											className="buttonFull"
 												>Nhận</button>) : (<div></div>)}
-										{(!obj.finish && !obj.received) ? (
+										{(!obj.finish && !obj.received && obj.missionStatus ==="active") ? (
 											<button
 												className="buttonGhost"
-												onClick={() => this.doMission(obj.actionName, obj.objectId, obj.objectValue, obj.scoinGameObject)}>Thực hiện</button>
+												onClick={() => this.doMission(obj.actionName, obj.objectId, obj.objectValue, obj.scoinGameId)}>Thực hiện</button>
 										) : (<div></div>)}
-										{(obj.finish && obj.received) ? (
+										{(obj.finish && obj.received && obj.missionStatus ==="active") ? (
 											<button className="received" disabled>Đã nhận</button>
 										) : (<div></div>)}
-										{(obj.finish && !obj.received && obj.awardAvailable ==0) ? (
+										{(obj.finish && !obj.received && obj.awardAvailable ===0 && obj.missionStatus ==="active") ? (
 											<button className="received" disabled>Đã hết</button>
+										) : (<div></div>)}
+										{(obj.missionStatus ==="inactive") ? (
+											<button className="received" disabled>Hết hạn</button>
 										) : (<div></div>)}
 									</div>
 								</ListItem>
@@ -264,7 +267,7 @@ class HomeComponent extends React.Component {
 	constructor(){
 		super();
 		this.state = {
-			openPopupMission:false
+			openPopupMission:false,
 		};
 	}
 
@@ -284,8 +287,8 @@ class HomeComponent extends React.Component {
 		this.props.handleCloseDialogDetail();
 	}
 
-	handleOpenPopupMission=()=>{
-		this.setState({openPopupMission:true});
+	handleOpenPopupMission=(obj)=>{
+		this.setState({openPopupMission:true, dataMission:obj});
 	}
 	handleClosePopupMission=()=>{
 		this.setState({openPopupMission:false});
@@ -919,6 +922,7 @@ class HomeComponent extends React.Component {
 					<PopupMission
 						handleClosePopupMission={this.handleClosePopupMission}
 						openPopupMission={this.state.openPopupMission}
+						dataMission={this.state.dataMission}
 					/>
 				</div >
 			) :
@@ -931,6 +935,7 @@ class HomeComponent extends React.Component {
 					<PopupMission
 						handleClosePopupMission={this.handleClosePopupMission}
 						openPopupMission={this.state.openPopupMission}
+						dataMission={this.state.dataMission}
 					/>
 				</Grid>
 		)
