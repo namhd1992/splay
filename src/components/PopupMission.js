@@ -46,7 +46,8 @@ class PopupMission extends React.Component {
 					fullScreen={false}
 					open={openPopupMission}
 					aria-labelledby="responsive-dialog-title"
-				>
+				>	
+				<div style={{background:"#212833"}}>
 					<DialogTitle id="responsive-dialog-title"><span style={{ color: "#23c9b6" }}>Chi tiết nhiệm vụ</span></DialogTitle>
 					<DialogContent style={{ color: "#fff" }}>
 					{(dataMission !==undefined) ? (
@@ -119,6 +120,7 @@ class PopupMission extends React.Component {
 										) : (<div></div>)}
 						</div>):(<div></div>)}
 					</DialogActions>
+					</div>
 				</Dialog>
 				<Dialog
 					fullScreen={false}
