@@ -118,7 +118,7 @@ button.buttonGhost{
 }
 .received{
 	border-radius: 20px;
-	background:#a6a6a6;
+	/* background:#a6a6a6; */
 	width:88px;
 	color: #fff;
 	border: 0px solid #00948d;
@@ -155,8 +155,8 @@ span.numberBonus{
 button:hover{
 	background:#3c434c;
 }
-button.received:hover{
-	background:#a6a6a6;
+button.buttonFull:hover{
+	background: linear-gradient(90deg,#51e1d1,#7aebb1);
 }
 
 @media only screen and (max-width:1280px){

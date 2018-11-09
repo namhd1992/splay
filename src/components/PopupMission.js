@@ -107,16 +107,25 @@ class PopupMission extends React.Component {
 							{(!dataMission.finish && !dataMission.received && dataMission.missionStatus ==="active" && dataMission.awardAvailable !==0) ? (
 											<button
 												className="buttonGhost"
-												onClick={() => this.doMission(dataMission)}>Thực hiện</button>
+												onClick={() => this.doMission(dataMission)}>Thực Hiện</button>
 										) : (<div></div>)}
 							{(dataMission.finish && dataMission.received && dataMission.missionStatus ==="active") ? (
-												<button className="received" disabled>Đã nhận</button>
+								<Button style={{ color: "#fff", textTransform:"none" }} disabled>
+									Đã Nhận
+								</Button>
+												// <button className="received" disabled>Đã nhận</button>
 											) : (<div></div>)}
 							{(dataMission.awardAvailable ===0 && dataMission.missionStatus ==="active") ? (
-							<button className="received" disabled>Đã hết</button>
+								<Button style={{ color: "#fff", textTransform:"none" }} disabled>
+									Đã Hết
+								</Button>
+							// <button className="received" disabled>Đã hết</button>
 							) : (<div></div>)}
 							{(dataMission.missionStatus ==="inactive") ? (
-											<button className="received" disabled>Hết hạn</button>
+								<Button style={{ color: "#fff", textTransform:"none" }} disabled>
+									Hết Hạn
+								</Button>
+											// <button className="received" disabled>Hết hạn</button>
 										) : (<div></div>)}
 						</div>):(<div></div>)}
 					</DialogActions>

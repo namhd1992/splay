@@ -120,16 +120,25 @@ class MissionComponent extends React.Component {
 											<button onClick={() => this.reward(obj.missionId)} className="buttonFull" variant="raised">Nhận</button>
 										</div>) : (<div></div>)}
 										{(!obj.finish && !obj.received && obj.missionStatus ==="active") ? (<div>
-											<button className="buttonGhost" onClick={() => this.doMission(obj.actionName, obj.objectId, obj.objectValue, obj.scoinGameId)}>Thực hiện</button>
+											<button className="buttonGhost" onClick={() => this.doMission(obj.actionName, obj.objectId, obj.objectValue, obj.scoinGameId)}>Thực Hiện</button>
 										</div>) : (<div></div>)}
-										{(obj.finish && obj.received && obj.missionStatus ==="active") ? (<div>
-											<button className="received" disabled>Đã nhận</button>
-										</div>) : (<div></div>)}
+										{(obj.finish && obj.received && obj.missionStatus ==="active") ? (
+											<Button style={{ color: "#fff", textTransform:"none" }} disabled>
+												Đã Nhận
+											</Button>
+											// <button className="received" disabled>Đã nhận</button>
+										) : (<div></div>)}
 										{(obj.finish && !obj.received && obj.awardAvailable ===0 && obj.missionStatus ==="active") ? (
-											<button className="received" disabled>Đã hết</button>
+											<Button style={{ color: "#fff", textTransform:"none" }} disabled>
+												Đã Hết
+											</Button>
+											// <button className="received" disabled>Đã hết</button>
 										) : (<div></div>)}
 										{(obj.missionStatus ==="inactive") ? (
-											<button className="received" disabled>Hết hạn</button>
+											<Button style={{ color: "#fff", textTransform:"none" }} disabled>
+												Hết Hạn
+											</Button>
+											// <button className="received" disabled>Hết hạn</button>
 										) : (<div></div>)}
 									</ListItem>
 								))}
