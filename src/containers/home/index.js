@@ -60,7 +60,10 @@ class Home extends React.Component {
 				break;
 			case 9:
 				window.location.href = '/gamedetail/' + scoinGameId;
-			break;
+				break;
+			case 10:
+				window.location.href = '/gamedetail/' + scoinGameId;
+				break;
 			default:
 				window.location.assign(value);
 				break;
