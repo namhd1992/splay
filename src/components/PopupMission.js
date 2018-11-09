@@ -51,7 +51,7 @@ class PopupMission extends React.Component {
 					<DialogContent style={{ color: "#fff" }}>
 					{(dataMission !==undefined) ? (
 						<div>		
-							<div>
+							<div style={{minWidth:"200px"}}>
 								{dataMission.description}
 							</div>
 								<div>

@@ -153,8 +153,12 @@ class TitleContainer extends React.Component {
 
   class MissionContainer extends React.Component {
 
-	doMission=(action, id, value, scoinGameId)=>{
+	doMission=(action, id, value, scoinGameId,condition)=>{
+		if(condition===false){
+			this.props.showDetail("Rất tiếc bạn không đủ điều kiện nhận thưởng.", "");
+		}else{
 		this.props.doMission(action, id, value, scoinGameId);
+		}
 	}
 
 	showDetail=(detail, title)=>{
@@ -238,7 +242,7 @@ class TitleContainer extends React.Component {
 										{(!obj.finish && !obj.received && obj.missionStatus ==="active" && obj.awardAvailable !==0) ? (
 											<button
 												className="buttonGhost"
-												onClick={() => this.doMission(obj.actionName, obj.objectId, obj.objectValue, obj.scoinGameId)}>Thực hiện</button>
+												onClick={() => this.doMission(obj.actionName, obj.objectId, obj.objectValue, obj.scoinGameId,obj.condition)}>Thực hiện</button>
 										) : (<div></div>)}
 										{(obj.finish && obj.received && obj.missionStatus ==="active") ? (
 											<button className="received" disabled>Đã nhận</button>
