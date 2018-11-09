@@ -123,19 +123,19 @@ class MissionComponent extends React.Component {
 											<button className="buttonGhost" onClick={() => this.doMission(obj.actionName, obj.objectId, obj.objectValue, obj.scoinGameId)}>Thực Hiện</button>
 										</div>) : (<div></div>)}
 										{(obj.finish && obj.received && obj.missionStatus ==="active") ? (
-											<Button style={{ color: "#fff", textTransform:"none" }} disabled>
+											<Button style={{ color: "#888787", textTransform:"none" }} disabled>
 												Đã Nhận
 											</Button>
 											// <button className="received" disabled>Đã nhận</button>
 										) : (<div></div>)}
 										{(obj.finish && !obj.received && obj.awardAvailable ===0 && obj.missionStatus ==="active") ? (
-											<Button style={{ color: "#fff", textTransform:"none" }} disabled>
+											<Button style={{ color: "#888787", textTransform:"none" }} disabled>
 												Đã Hết
 											</Button>
 											// <button className="received" disabled>Đã hết</button>
 										) : (<div></div>)}
 										{(obj.missionStatus ==="inactive") ? (
-											<Button style={{ color: "#fff", textTransform:"none" }} disabled>
+											<Button style={{ color: "#888787", textTransform:"none" }} disabled>
 												Hết Hạn
 											</Button>
 											// <button className="received" disabled>Hết hạn</button>
