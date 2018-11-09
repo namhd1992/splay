@@ -24,6 +24,7 @@ class Mission extends React.Component {
 			message: "",
 			openSnack: false,
 			dialogLoginOpen: false,
+			title_dialog:"",
 			snackVariant: "info",
 		};
 	}
@@ -86,6 +87,9 @@ class Mission extends React.Component {
 		var user = JSON.parse(localStorage.getItem("user"));
 		this.props.finishData(id, user.scoinAccessToken, user.access_token).then(function (response) {
 			_this.props.getData(_this.state.limit, _this.state.offset, user.access_token);
+			if(_this.props.status==="03"){
+				_this.setState({ dialogDetailOpen: true, dialogContent: _this.props.message_server, title_dialog:"Error"});
+			}
 		}).catch(function (err) {
 			console.log(err);
 		});
@@ -95,8 +99,8 @@ class Mission extends React.Component {
 		this.setState({ openSnack: false });
 	}
 
-	showDetail = (detail) => {
-		this.setState({ dialogDetailOpen: true, dialogContent: detail });
+	showDetail = (detail,title) => {
+		this.setState({ dialogDetailOpen: true, dialogContent: detail, title_dialog: title});
 	}
 
 	handleCloseDialogDetail = () => {
@@ -121,6 +125,7 @@ class Mission extends React.Component {
 					waiting={this.props.waiting}
 					dialogDetailOpen={this.state.dialogDetailOpen}
 					dialogContent={this.state.dialogContent}
+					title_dialog={this.state.title_dialog}
 					loadedRecords={this.state.loadedRecords}
 					message={this.state.message}
 					openSnack={this.state.openSnack}
@@ -138,6 +143,8 @@ const mapStateToProps = state => ({
 	dataFinish: state.mission.dataFinish,
 	totalRecords: state.mission.totalRecords,
 	waiting: state.mission.waiting,
+	status: state.mission.status,
+	message_server: state.mission.message_server,
 	server:state.server.serverError
 })
 

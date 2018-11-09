@@ -24,20 +24,27 @@ import '../../styles/imageServerError.css'
 
 const styles = {
 	paper: {
-		background: "#2b323d"
+		background: "#2b323d",
 	},
 };
 
 
 
 class MissionComponent extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			title_popup:""
+		};
+	}
+
 
 	handleCloseDialogDetail=()=>{
 		this.props.handleCloseDialogDetail();
 	}
 	
-	showDetail=(detail)=>{
-		this.props.showDetail(detail);
+	showDetail=(detail, title_dialog)=>{
+		this.props.showDetail(detail,title_dialog);
 	}
 	
 	handleCloseSnack=()=>{
@@ -59,10 +66,18 @@ class MissionComponent extends React.Component {
 
 	render() {
 		const {data,totalRecords, waiting,dialogDetailOpen,dialogContent,loadedRecords
-		, message,openSnack,dialogLoginOpen,snackVariant,server}=this.props;
+		, message,openSnack,dialogLoginOpen,snackVariant,server,title_dialog}=this.props;
 		const { theme } = this.props;
 		const { classes } = this.props;
 		const { secondary } = theme.palette;
+		// if(status !==undefined){
+		// 	if(status ==="03"){
+		// 		console.log("AAAAAAAAAAAAA")
+		// 		this.showDetail(message_server);
+		// 	}
+			
+		// }
+
 		return (<div>
 			<Grid container style={{ width: "100%", margin: "0px" }}>
 				<Grid item xs={12} md={8} >
@@ -74,18 +89,14 @@ class MissionComponent extends React.Component {
 										<Avatar style={{ backgroundColor: secondary.main }}>
 											{(obj.actionName === "1") ? (
 												<img style={{ width: "24px", height: "24px" }} src="../lucky_icon.png" alt="just alt"
-													onClick={() => this.showDetail(obj.description)} />) : (
+													onClick={() => this.showDetail(obj.description,"Chi tiết nhiệm vụ")} />) : (
 													<div></div>)}
-											{(obj.actionName === "2") ? (<CheckinIcon onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
+											{(obj.actionName === "2") ? (<CheckinIcon onClick={() => this.showDetail(obj.description,"Chi tiết nhiệm vụ")} />) : (<div></div>)}
 											{(obj.actionName === "3") ? (<img style={{ width: "24px", height: "24px" }} src="../auction_icon.png" alt="just alt"
-												onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
-											{/* {(obj.actionName === "4") ? (<img style={{ width: "24px", height: "24px" }} src="../giftcode_icon.png" alt="just alt"
-												onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
-											{(obj.actionName === "5") ? (<img style={{ width: "24px", height: "24px" }} src="../giftcode_icon.png" alt="just alt"
-												onClick={() => this.showDetail(obj.description)} />) : (<div></div>)} */}
+												onClick={() => this.showDetail(obj.description,"Chi tiết nhiệm vụ")} />) : (<div></div>)}
 											{(obj.actionName === "8" || obj.actionName === "9" || obj.actionName === "4" || obj.actionName === "5") ? (<img style={{ width: "24px", height: "24px" }} src="../giftcode_icon.png" alt="just alt"
-												onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
-											{(obj.actionName === "6") ? (<LikeIcon onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
+												onClick={() => this.showDetail(obj.description,"Chi tiết nhiệm vụ")} />) : (<div></div>)}
+											{(obj.actionName === "6") ? (<LikeIcon onClick={() => this.showDetail(obj.description,"Chi tiết nhiệm vụ")} />) : (<div></div>)}
 										</Avatar>
 										{(obj.award === "Thịt") ? (
 										<ListItemText style={{width:"50%", padding:"0 7px"}} disableTypography={true}
@@ -149,7 +160,7 @@ class MissionComponent extends React.Component {
 				aria-labelledby="responsive-dialog-title"
 				classes={{ paper: classes.paper }}
 			>
-				<DialogTitle id="responsive-dialog-title"><span style={{ color: secondary.main }}>Chi tiết nhiệm vụ</span></DialogTitle>
+				<DialogTitle id="responsive-dialog-title"><span style={{ color: secondary.main }}>{title_dialog}</span></DialogTitle>
 				<DialogContent>
 					<div style={{ color: "#fff" }}>
 						{dialogContent}

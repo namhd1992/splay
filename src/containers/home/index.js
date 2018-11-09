@@ -16,6 +16,7 @@ class Home extends React.Component {
 			logged: false,
 			dialogDetailOpen: false,
 			dialogContent: "",
+			title_dialog:"",
 			canClick: true
 		};
 	}
@@ -66,8 +67,8 @@ class Home extends React.Component {
 		}
 	}
 
-	showDetail = (detail) => {
-		this.setState({ dialogDetailOpen: true, dialogContent: detail });
+	showDetail = (detail,title) => {
+		this.setState({ dialogDetailOpen: true, dialogContent: detail,title_dialog: title });
 	}
 
 
@@ -80,6 +81,9 @@ class Home extends React.Component {
 		var user = JSON.parse(localStorage.getItem("user"));
 		this.props.finishData(id, user.scoinAccessToken, user.access_token).then(function (response) {
 			_this.props.getMissionData(6, 0, user.access_token);
+			if(_this.props.status==="03"){
+				_this.setState({ dialogDetailOpen: true, dialogContent: _this.props.message_server, title_dialog:"Error"});
+			}
 		}).catch(function (err) {
 			console.log(err);
 		});
@@ -113,6 +117,8 @@ class Home extends React.Component {
 
 					data={this.props.data}
 					server={this.props.server}
+					status={this.props.status}
+					title_dialog={this.state.title_dialog}
 					articleData={this.props.articleData}
 					waiting={this.props.waiting}
 					articleWaiting={this.props.articleWaiting}
@@ -135,6 +141,8 @@ const mapStateToProps = state => ({
 	articleWaiting: state.article.waiting,
 	dataFinish: state.mission.dataFinish,
 	dataMission: state.mission.data,
+	status: state.mission.status,
+	message_server: state.mission.message_server,
 	server:state.server.serverError
 })
 

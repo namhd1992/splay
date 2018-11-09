@@ -157,8 +157,8 @@ class TitleContainer extends React.Component {
 		this.props.doMission(action, id, value, scoinGameId);
 	}
 
-	showDetail=(detail)=>{
-		this.props.showDetail(detail);
+	showDetail=(detail, title)=>{
+		this.props.showDetail(detail, title);
 	}
 
 	reward=(id)=>{
@@ -192,22 +192,22 @@ class TitleContainer extends React.Component {
 										{(obj.actionName === "1") ? (
 											<img className="img_avatar" src="../lucky_icon.png"
 												alt="just alt"
-												onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
+												onClick={() => this.showDetail(obj.description,"Chi tiết nhiệm vụ")} />) : (<div></div>)}
 										{(obj.actionName === "2") ? (
 											<img  className="img_avatar" src="../check_icon.png"
 												alt="just alt"
-												onClick={() => this.showDetail(obj.description)} />) : (
+												onClick={() => this.showDetail(obj.description,"Chi tiết nhiệm vụ")} />) : (
 												<div></div>)}
 										{(obj.actionName === "3") ? (
 											<img className="img_avatar" src="../auction_icon.png"
 												alt="just alt"
-												onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
+												onClick={() => this.showDetail(obj.description,"Chi tiết nhiệm vụ")} />) : (<div></div>)}
 										{(obj.actionName === "4" || obj.actionName === "5" || obj.actionName === "9") ? (
 											<img className="img_avatar" src="../giftcode_icon.png"
 												alt="just alt"
-												onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
+												onClick={() => this.showDetail(obj.description,"Chi tiết nhiệm vụ")} />) : (<div></div>)}
 										{(obj.actionName === "6") ? (
-											<LikeIcon onClick={() => this.showDetail(obj.description)} />) : (<div></div>)}
+											<LikeIcon onClick={() => this.showDetail(obj.description,"Chi tiết nhiệm vụ")} />) : (<div></div>)}
 									</div>
 									{(obj.award === "Thịt") ? (
 									<ListItemText style={{width:"50%", padding:"0 7px"}} disableTypography={true}
@@ -231,11 +231,11 @@ class TitleContainer extends React.Component {
 										<button
 												className="buttonCircle"
 												onClick={() => this.openPopupMission(obj)}>?</button>
-										{(obj.finish && !obj.received && obj.awardAvailable !=0 && obj.missionStatus ==="active") ? (
+										{(obj.finish && !obj.received && obj.missionStatus ==="active" && obj.awardAvailable !==0) ? (
 										<button onClick={() => this.reward(obj.missionId)}
 											className="buttonFull"
 												>Nhận</button>) : (<div></div>)}
-										{(!obj.finish && !obj.received && obj.missionStatus ==="active") ? (
+										{(!obj.finish && !obj.received && obj.missionStatus ==="active" && obj.awardAvailable !==0) ? (
 											<button
 												className="buttonGhost"
 												onClick={() => this.doMission(obj.actionName, obj.objectId, obj.objectValue, obj.scoinGameId)}>Thực hiện</button>
@@ -243,7 +243,7 @@ class TitleContainer extends React.Component {
 										{(obj.finish && obj.received && obj.missionStatus ==="active") ? (
 											<button className="received" disabled>Đã nhận</button>
 										) : (<div></div>)}
-										{(obj.finish && !obj.received && obj.awardAvailable ===0 && obj.missionStatus ==="active") ? (
+										{(obj.awardAvailable ===0 && obj.missionStatus ==="active") ? (
 											<button className="received" disabled>Đã hết</button>
 										) : (<div></div>)}
 										{(obj.missionStatus ==="inactive") ? (
@@ -335,7 +335,7 @@ class HomeComponent extends React.Component {
 	}
 
 	render() {
-		const {data,articleData,dataMission,logged,dialogDetailOpen,dialogContent,server}=this.props;
+		const {data,articleData,dataMission,logged,dialogDetailOpen,dialogContent,server,title_dialog}=this.props;
 		const { theme } = this.props;
 		const { secondary } = theme.palette;
 		const { classes } = this.props;
@@ -683,7 +683,7 @@ class HomeComponent extends React.Component {
 										aria-labelledby="responsive-dialog-title"
 										classes={{ paper: classes.paper }}
 									>
-										<DialogTitle id="responsive-dialog-title"><span style={{ color: secondary.main }}>Chi tiết nhiệm vụ</span></DialogTitle>
+										<DialogTitle id="responsive-dialog-title"><span style={{ color: secondary.main }}>{title_dialog}</span></DialogTitle>
 										<DialogContent>
 											<div style={{ color: "#fff" }}>
 												{dialogContent}
@@ -724,7 +724,7 @@ class HomeComponent extends React.Component {
 											aria-labelledby="responsive-dialog-title"
 											classes={{ paper: classes.paper }}
 										>
-											<DialogTitle id="responsive-dialog-title"><span style={{ color: secondary.main }}>Chi tiết nhiệm vụ</span></DialogTitle>
+											<DialogTitle id="responsive-dialog-title"><span style={{ color: secondary.main }}>{title_dialog}</span></DialogTitle>
 											<DialogContent>
 												<div style={{ color: "#fff" }}>
 													{dialogContent}
@@ -923,6 +923,8 @@ class HomeComponent extends React.Component {
 						handleClosePopupMission={this.handleClosePopupMission}
 						openPopupMission={this.state.openPopupMission}
 						dataMission={this.state.dataMission}
+						reward={this.props.reward}
+						doMission={this.props.doMission}
 					/>
 				</div >
 			) :
@@ -936,6 +938,8 @@ class HomeComponent extends React.Component {
 						handleClosePopupMission={this.handleClosePopupMission}
 						openPopupMission={this.state.openPopupMission}
 						dataMission={this.state.dataMission}
+						reward={this.props.reward}
+						doMission={this.props.doMission}
 					/>
 				</Grid>
 		)

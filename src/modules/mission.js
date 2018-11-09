@@ -11,7 +11,9 @@ export const MISSION_RESPONSE_INFO='mission/MISSION_RESPONSE_INFO'
 const initialState = {
   data: [],
   dataMission:[],
-  waiting: false
+  waiting: false,
+  status:'',
+  message_server:''
 }
 
 export default (state = initialState, action) => {
@@ -31,7 +33,9 @@ export default (state = initialState, action) => {
     case MISSION_FINISH:
       return {
         ...state,
-        dataFinish: action.data
+        dataFinish: action.data,
+        status:action.status,
+        message_server:action.message_server
       }
     case MISSION_RESPONSE_MORE:
       return {
@@ -92,7 +96,9 @@ export const finishData = (id, scoin, token) => {
     return axios.post(url, {scoinToken: scoin}, header).then(function (response) {
       dispatch({
         type: MISSION_FINISH,
-        data: response
+        data: response,
+        status:response.data.status,
+        message_server:response.data.message
       })
     }).catch(function (error) {
       dispatch({

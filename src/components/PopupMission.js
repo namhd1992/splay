@@ -28,15 +28,16 @@ class PopupMission extends React.Component {
 	handleOpenBonus=()=>{
 		this.setState({openBonus:true});
 	}
-	handleReceiveBonus=(id)=>{
-		this.setState({openBonus:true, message:"Rất tiếc phần thưởng đã được nhận hết."});
-		// this.props.handleReceiveBonus();
+	doMission=(obj)=>{
+		if(obj.condition===false){
+			this.setState({openBonus:true, message:"Rất tiếc bạn không đủ điều kiện nhận thưởng."});
+		}else{
+			this.props.doMission(obj.actionName, obj.objectId, obj.objectValue, obj.scoinGameId);
+		}
 	}
-	doMission=(action, id, value, scoinGameId)=>{
-		this.setState({openBonus:true, message:"Rất tiếc bạn không đủ điều kiện nhận thưởng."});
-		// this.props.doMission(action, id, value, scoinGameId);
+	reward=(id)=>{
+		this.props.reward(id);
 	}
-
 	render() {
 		const {dataMission,openPopupMission}=this.props;
 		return (
@@ -53,43 +54,40 @@ class PopupMission extends React.Component {
 							<div>
 								{dataMission.description}
 							</div>
-							{(dataMission.actionName === "4" || dataMission.actionName === "5" || dataMission.actionName === "9") ? (
 								<div>
 									<div style={{background:"#2b313b", marginTop:"15px", marginBottom:"15px", height:"50px"}}>
+										
+										{(dataMission.missionProgress === dataMission.missionSatisfying) ? (
 										<div style={{padding:"15px"}}>
-											<div style={{width:"18px", height:"18px", border:"1px solid #779796", float:"left", marginRight:"15px"}}></div>
-											<span>0/5</span>
-										</div>
-										{/* <div style={{padding:"15px"}}>
 											<img style={{background:"#47ac2c", marginRight:"15px"}} src="../check.png"
 													alt="just alt"/>
-											<span>5/5</span>
-										</div> */}
+											<span>{dataMission.missionProgress}/{dataMission.missionSatisfying}</span>
+										</div>):(
+										<div style={{padding:"15px"}}>
+											<div style={{width:"18px", height:"18px", border:"1px solid #779796", float:"left", marginRight:"15px"}}></div>
+											<span>{dataMission.missionProgress}/{dataMission.missionSatisfying}</span>
+										</div>)}
 									</div>
 									<div>
 										<div style={{float:"left", paddingRight:"15px"}}>Phần thưởng: </div>
 										<div>
 											{(dataMission.award === "Thịt") ? (
-											<ListItemText style={{width:"50%", padding:"0 7px"}} disableTypography={true}
+											<ListItemText style={{width:"100%", padding:"0 7px"}} disableTypography={true}
 												secondary={(
 													<span className="global-thit" style={{ color: "#fe8731" }}><img alt="just alt"
 														src="../thit.png" /> <span className="valueBonus">{dataMission.valueAward}</span></span>)} />) : (<div></div>)}
 											{(dataMission.award === "giftcode") ? (
-											<ListItemText style={{width:"50%", padding:"0 7px"}} disableTypography={true}
+											<ListItemText style={{width:"100%", padding:"0 7px"}} disableTypography={true}
 												secondary={(
 													<span className="global-thit" style={{ color: "#fe8731" }}><span className="valueBonus">Giftcode</span></span>)} />) : (<div></div>)}
 											{(dataMission.award === "XO") ? (
-											<ListItemText style={{width:"50%", padding:"0 7px"}} disableTypography={true}
+											<ListItemText style={{width:"100%", padding:"0 7px"}} disableTypography={true}
 												secondary={(
 													<span className="global-thit" style={{ color: "#fe8731" }}><img alt="just alt"
 														src="../XO.png" /> <span className="valueBonus">{dataMission.valueAward}</span></span>)} />) : (<div></div>)}
 										</div>
 									</div>
-										
-									<div>
-										
-									</div>
-								</div>):(<div></div>)}
+								</div>
 						</div>
 					):(<div></div>)}
 					</DialogContent>
@@ -101,19 +99,19 @@ class PopupMission extends React.Component {
 						</div>
 						{(dataMission !==undefined) ? (
 						<div>
-							{(dataMission.finish && !dataMission.received && dataMission.awardAvailable !=0 && dataMission.missionStatus ==="active") ? (
-											<button onClick={() => this.handleReceiveBonus(dataMission.missionId)}
+							{(dataMission.finish && !dataMission.received && dataMission.awardAvailable !==0 && dataMission.missionStatus ==="active") ? (
+											<button onClick={() => this.reward(dataMission.missionId)}
 												className="buttonFull"
 													>Nhận</button>) : (<div></div>)}
-							{(!dataMission.finish && !dataMission.received && dataMission.missionStatus ==="active") ? (
+							{(!dataMission.finish && !dataMission.received && dataMission.missionStatus ==="active" && dataMission.awardAvailable !==0) ? (
 											<button
 												className="buttonGhost"
-												onClick={() => this.doMission(dataMission.actionName, dataMission.objectId, dataMission.objectValue, dataMission.scoinGameId)}>Thực hiện</button>
+												onClick={() => this.doMission(dataMission)}>Thực hiện</button>
 										) : (<div></div>)}
 							{(dataMission.finish && dataMission.received && dataMission.missionStatus ==="active") ? (
 												<button className="received" disabled>Đã nhận</button>
 											) : (<div></div>)}
-							{(dataMission.finish && !dataMission.received && dataMission.awardAvailable ===0 && dataMission.missionStatus ==="active") ? (
+							{(dataMission.awardAvailable ===0 && dataMission.missionStatus ==="active") ? (
 							<button className="received" disabled>Đã hết</button>
 							) : (<div></div>)}
 							{(dataMission.missionStatus ==="inactive") ? (
