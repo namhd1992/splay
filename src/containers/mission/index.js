@@ -54,7 +54,7 @@ class Mission extends React.Component {
 	}
 
 	doMission = (action, id, value, scoinGameId) => {
-		switch (parseInt(action.substring(action.length - 1), 10)) {
+		switch (+action) {
 			case 1:
 				window.location.href = '/lucky';
 				break;
