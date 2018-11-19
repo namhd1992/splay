@@ -27,6 +27,11 @@ class Phone_card extends React.Component {
 			loadedRecords:0
 		};
 	}
+	componentWillMount(){
+		for(let i=0; i<100; i++){
+			window.clearInterval(i);
+		}
+	}
 
 	componentDidMount() {
 		var _this = this;

@@ -65,6 +65,9 @@ class RightArea extends React.Component {
 		}
 		return theloai;
 	}
+	// activeNow=()=>{
+	// 	window.location.replace(`${window.location.protocol}//${window.location.host}/article_detail/129`);
+	// }
 
 	render() {
 		const { classes } = this.props;

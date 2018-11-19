@@ -44,24 +44,25 @@
 }
 
 .marquee {
-    height: 35px;
-    line-height: 35px;
+    height: 40px;
+    line-height: 40px;
     width: 100%;
     color: #fff;
     overflow: hidden;
     position: relative;
 }
-
+/* 
 .marquee div {
     display: block;
     width: 200%;
     height: 30px;
     position: absolute;
     overflow: hidden;
-    animation: marquee 5s linear infinite;
-}
+    animation: marquee 10s linear infinite;
+} */
   
-.marquee span {
+marquee p {
+    margin: 0px;
     float: left;
     width: 50%;
 }
@@ -69,12 +70,12 @@
     display: block;
     cursor: pointer;
 }
-.marquee div:hover {
+.marquee marquee:hover {
     cursor: pointer;
     animation-play-state: paused
 }
 
-@keyframes marquee {
+/* @keyframes marquee {
     0% { left: 0; }
     100% { left: -100%; }
-}
+} */

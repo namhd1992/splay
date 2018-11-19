@@ -117,14 +117,13 @@ class PopupDetailBonus extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			rows: [
-			].sort((a, b) => (a.calories < b.calories ? -1 : 1)),
 			rowsPerPageOptions:[10,20,30],
 			page: 0,
 			rowsPerPage: 10,
 			value: 0,
 		};
 	}
+
 	handleCloseBonus=()=>{
 		this.props.handleCloseBonus();
 	}
@@ -139,9 +138,20 @@ class PopupDetailBonus extends React.Component {
     this.setState({ rowsPerPage: event.target.value });
   };
 	render() {
+		var rows;
+		var length;
+		var emptyRows;
 		const { classes } = this.props;
-		const { rows, rowsPerPage, page, rowsPerPageOptions } = this.state;
-    const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+		const {rowsPerPage, page, rowsPerPageOptions, value } = this.state; 
+		if(this.props.dataAutionAndLucky !==undefined && this.props.dataAutionAndLucky!==null){
+			if(value===0){
+				rows=this.props.dataAutionAndLucky.filter(obj => obj.typeEvent===1).sort((a, b) => (a.receiveTime < b.receiveTime ? -1 : 1));
+			}else if(value===1){
+				rows=this.props.dataAutionAndLucky.filter(obj => obj.typeEvent===2).sort((a, b) => (a.receiveTime < b.receiveTime ? -1 : 1));
+			}
+			length=rows.length;
+			emptyRows = rowsPerPage - Math.min(rowsPerPage, length - page * rowsPerPage);
+		}
 		return (
 			<div>
 				<Dialog
@@ -175,10 +185,10 @@ class PopupDetailBonus extends React.Component {
 								{rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {
 									return (
 									<TableRow key={row.id}>
-										<TableCell>{row.name}</TableCell>
-										<TableCell>{row.calories}</TableCell>
-										<TableCell>{row.fat}</TableCell>
-										<TableCell>{row.fat}</TableCell>
+										<TableCell>{row.itemName}</TableCell>
+										<TableCell>{row.eventName}</TableCell>
+										<TableCell>{row.userName}</TableCell>
+										<TableCell>{row.receiveTime}</TableCell>
 									</TableRow>
 									);
 								})}

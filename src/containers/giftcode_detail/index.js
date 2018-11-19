@@ -43,6 +43,12 @@ class Giftcode_detail extends React.Component {
 		};
 	}
 
+	componentWillMount(){
+		for(let i=0; i<100; i++){
+			window.clearInterval(i);
+		}
+	}
+
 	componentDidMount() {
 		var user = JSON.parse(localStorage.getItem("user"));
 		var _this = this;
@@ -113,7 +119,7 @@ class Giftcode_detail extends React.Component {
 
 				});
 				this.setState({ shared: true });
-			}, 10000);
+			}, 100);
 		} else {
 			_this.setState({ dialogLoginOpen: true });
 		}

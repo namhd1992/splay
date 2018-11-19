@@ -38,7 +38,11 @@ class Game_detail extends React.Component {
 		};
 	}
 
-	
+	componentWillMount(){
+		for(let i=0; i<100; i++){
+			window.clearInterval(i);
+		}
+	}
 
 	componentDidMount() {
 		var _this = this;

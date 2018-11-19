@@ -1,0 +1,214 @@
+select {
+
+    /* styling */
+    background-color: white;
+    border: thin solid blue;
+    border-radius: 4px;
+    display: inline-block;
+    font: inherit;
+    line-height: 1.5em;
+    padding: 0.5em 3.5em 0.5em 1em;
+  
+    /* reset */
+  
+    margin: 0;      
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+  
+  
+  /* arrows */
+  
+  select.selectGame {
+    text-align: center;
+    text-align-last: center;
+    background-image:
+      linear-gradient(45deg, transparent 50%, blue 50%),
+      linear-gradient(135deg, blue 50%, transparent 50%),
+      linear-gradient(to right, skyblue, skyblue);
+    background-position:
+      calc(100% - 20px) calc(1em + 2px),
+      calc(100% - 15px) calc(1em + 2px),
+      100% 0;
+    background-size:
+      5px 5px,
+      5px 5px,
+      2.5em 2.5em;
+    background-repeat: no-repeat;
+  }
+  
+  select.selectGame:focus {
+    background-image:
+      linear-gradient(45deg, white 50%, transparent 50%),
+      linear-gradient(135deg, transparent 50%, white 50%),
+      linear-gradient(to right, gray, gray);
+    background-position:
+      calc(100% - 15px) 1em,
+      calc(100% - 20px) 1em,
+      100% 0;
+    background-size:
+      5px 5px,
+      5px 5px,
+      2.5em 2.5em;
+    background-repeat: no-repeat;
+    border-color: grey;
+    outline: 0;
+  }
+  select.selectOptionCoin {
+    background-image:
+      linear-gradient(45deg, transparent 50%, blue 50%),
+      linear-gradient(135deg, blue 50%, transparent 50%),
+      linear-gradient(to right, skyblue, skyblue);
+    background-position:
+      calc(100% - 20px) calc(1em + 2px),
+      calc(100% - 15px) calc(1em + 2px),
+      100% 0;
+    background-size:
+      5px 5px,
+      5px 5px,
+      2.5em 2.5em;
+    background-repeat: no-repeat;
+  }
+  
+  select.selectOptionCoin:focus {
+    background-image:
+      linear-gradient(45deg, white 50%, transparent 50%),
+      linear-gradient(135deg, transparent 50%, white 50%),
+      linear-gradient(to right, gray, gray);
+    background-position:
+      calc(100% - 15px) 1em,
+      calc(100% - 20px) 1em,
+      100% 0;
+    background-size:
+      5px 5px,
+      5px 5px,
+      2.5em 2.5em;
+    background-repeat: no-repeat;
+    border-color: grey;
+    outline: 0;
+  }
+  
+
+
+
+.selectGame{
+    width:100%;
+    text-align:center;
+    height:40px;
+    color: #e6e6e6;
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+    background: #212933;
+}
+.infoUser{
+    color: #fff;
+    width:50%;
+    float:left
+}
+.titleUser{
+    color: #fff;
+    width:50%;
+    float:left
+}
+.contentUser{
+    color: #fff;
+    width:50%;
+    float:left
+}
+.imgGame{
+    color: #fff;
+    width:50%;
+    float:left;
+    line-height:100px
+}
+.selectOptionCoin{
+    width:100%;
+    text-align:center;
+    height:40px;
+    border: 1px solid #12cdd4;
+    border-radius: 5px;
+    color: #12cdd4;
+    background: #212933;
+}
+.verifyPhone{
+    width:48%;
+    height:40px;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background: #1f3439;
+}
+.verifyNow{
+    width:48%;
+    height:40px;
+    float: right;
+    color: #fff;
+    border-radius: 5px;
+    border: 0px;
+    background: #f24726;
+}
+.btnChange{
+    width:100%;
+    height:40px;
+    color: #fff;
+    border-radius: 5px;
+    border: 0px;
+    background: #12cdd4;
+}
+.valueXu{
+    text-align:center;
+    margin:0px;
+    margin-top:7px;
+    float:right;
+    width:95%
+}
+/* .xu.icon{
+  position: absolute;
+  margin-top: -2px;
+  width: 25px;
+  height: 25px;
+  background: #c8c8c8;
+  border-radius: 50%;
+}
+.xu.icon:before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    width: 9px;
+    height: 9px;
+    background:#1f3439;
+} */
+
+@media only screen and (max-width:600px){
+	.valueXu{
+        width:88%
+    }
+}
+
+@media only screen and (max-width:375px){
+	.infoUser{
+        width:60%;
+    }
+    .imgGame{
+        width:40%;
+    }
+    .valueXu{
+        width:85%
+    }
+}
+
+@media only screen and (max-width:320px){
+	.infoUser{
+        width:70%;
+    }
+    .imgGame{
+        width:30%;
+    }
+    .valueXu{
+        width:85%
+    }
+}

@@ -124,6 +124,18 @@ const styles = theme => ({
 	},
 });
 
+function intervalTrigger(arr, key){
+	var count = 0;
+	var arrColor=['#b92e2e','#00c9b7'];
+	return setInterval(function() {
+		if (count >= arr.length) count = 0;
+		var rand = arr[count];
+		var color=arrColor[count];
+		document.getElementById(key).src = rand;
+		document.getElementById("img"+key).style.backgroundColor=color
+		count=count+1;
+	}, 1000); 
+}
 
 class TitleContainer extends React.Component {
 
@@ -152,7 +164,8 @@ class TitleContainer extends React.Component {
   }
 
   class MissionContainer extends React.Component {
-
+	
+	
 	doMission=(action, id, value, scoinGameId,condition)=>{
 		if(condition===false){
 			this.props.showDetail("Rất tiếc bạn không đủ điều kiện nhận thưởng.", "");
@@ -181,6 +194,57 @@ class TitleContainer extends React.Component {
 
 		return string;
 	}
+	getSrcImage(obj, key){
+		var arr=["../hot_1.png" ,"../lucky_icon.png", "../check_icon.png", "../auction_icon.png", "../giftcode_icon.png", "../check_level_icon.png", "../like_icon.png", "../share_icon.png"];
+		var src="";
+		if(obj.highLights === true){
+			
+			if(obj.actionName === "1"){
+				var list=[arr[0],arr[1]];
+				intervalTrigger(list, key);
+			}else if(obj.actionName === "2"){
+				var list=[arr[0],arr[2]];
+				intervalTrigger(list, key);
+			}else if(obj.actionName === "3"){
+				var list=[arr[0],arr[3]];
+				intervalTrigger(list, key);
+			}else if(obj.actionName === "6"){
+				var list=[arr[0],arr[6]];
+				intervalTrigger(list, key);
+			}else if(obj.actionName === "7"){
+				var list=[arr[0],arr[7]];
+				intervalTrigger(list, key);
+			}else if(obj.actionName === "8"){
+				var list=[arr[0],arr[5]];
+				intervalTrigger(list, key);
+			}else if(obj.actionName === "4" || obj.actionName === "5" || obj.actionName === "9" || obj.actionName === "10"){
+				var list=[arr[0],arr[4]];
+				intervalTrigger(list, key);
+			}
+			
+		}else{
+			if(obj.actionName === "1"){
+				src=arr[1];
+			}else if(obj.actionName === "2"){
+				src=arr[2];
+			}else if(obj.actionName === "3"){
+				src=arr[3];
+			}else if(obj.actionName === "6"){
+				src=arr[6];
+			}else if(obj.actionName === "7"){
+				src=arr[7];
+			}else if(obj.actionName === "8"){
+				src=arr[5];
+			}else if(obj.actionName === "4" || obj.actionName === "5" || obj.actionName === "9" || obj.actionName === "10"){
+				src=arr[4];
+			}
+			return src;
+		}
+		
+	}
+	setId(key){
+		return "img"+key;
+	}
 		
 
 	render() {
@@ -188,31 +252,34 @@ class TitleContainer extends React.Component {
 		return (
 			<div className="mission_container">
 				{dataMission.slice(0, 8).map((obj, key) => (
-					<div className={(obj.highLights === true) ? "mission": ""}>
+					// <div className={(obj.highLights === true) ? "mission": ""}>
 						<div className="mission_content">
 							<Grid key={key}> 
 								<ListItem key={key} className={classes.giftcodeItem}>
-									<div className="avatar">
-										{(obj.actionName === "1") ? (
-											<img className="img_avatar" src="../lucky_icon.png"
-												alt="just alt"
-												onClick={() => this.showDetail(obj.description,"Chi tiết nhiệm vụ")} />) : (<div></div>)}
-										{(obj.actionName === "2") ? (
-											<img  className="img_avatar" src="../check_icon.png"
-												alt="just alt"
-												onClick={() => this.showDetail(obj.description,"Chi tiết nhiệm vụ")} />) : (
-												<div></div>)}
-										{(obj.actionName === "3") ? (
-											<img className="img_avatar" src="../auction_icon.png"
-												alt="just alt"
-												onClick={() => this.showDetail(obj.description,"Chi tiết nhiệm vụ")} />) : (<div></div>)}
-										{(obj.actionName === "4" || obj.actionName === "5" || obj.actionName === "9" || obj.actionName === "10") ? (
-											<img className="img_avatar" src="../giftcode_icon.png"
-												alt="just alt"
-												onClick={() => this.showDetail(obj.description,"Chi tiết nhiệm vụ")} />) : (<div></div>)}
-										{(obj.actionName === "6") ? (
-											<LikeIcon onClick={() => this.showDetail(obj.description,"Chi tiết nhiệm vụ")} />) : (<div></div>)}
-									</div>
+									{/* <div className={(obj.highLights === true) ? "highLights": ""}> */}
+										<div id={this.setId(key)} className="avatar">
+											{/* {(obj.actionName === "1") ? ( */}
+												<img className="img_avatar" src={this.getSrcImage(obj,key)}
+													id={key}
+													onClick={() => this.showDetail(obj.description,"Chi tiết nhiệm vụ")} />
+													{/* ) : (<div></div>)} */}
+											{/* {(obj.actionName === "2") ? (
+												<img  className="img_avatar" src="../check_icon.png"
+													alt="just alt"
+													onClick={() => this.showDetail(obj.description,"Chi tiết nhiệm vụ")} />) : (
+													<div></div>)}
+											{(obj.actionName === "3") ? (
+												<img className="img_avatar" src="../auction_icon.png"
+													alt="just alt"
+													onClick={() => this.showDetail(obj.description,"Chi tiết nhiệm vụ")} />) : (<div></div>)}
+											{(obj.actionName === "4" || obj.actionName === "5" || obj.actionName === "9" || obj.actionName === "10") ? (
+												<img className="img_avatar" src="../giftcode_icon.png"
+													alt="just alt"
+													onClick={() => this.showDetail(obj.description,"Chi tiết nhiệm vụ")} />) : (<div></div>)}
+											{(obj.actionName === "6") ? (
+												<LikeIcon onClick={() => this.showDetail(obj.description,"Chi tiết nhiệm vụ")} />) : (<div></div>)} */}
+										</div>
+									{/* </div> */}
 									{(obj.award === "Thịt") ? (
 									<ListItemText style={{width:"50%", padding:"0 7px"}} disableTypography={true}
 										primary={(<div className="mission_title">{obj.missionName}</div>)}
@@ -266,7 +333,7 @@ class TitleContainer extends React.Component {
 								</ListItem>
 							</Grid>
 						</div>
-					</div>
+					// </div>
 				))}
 			</div>
 			
@@ -346,7 +413,6 @@ class HomeComponent extends React.Component {
 		}
 		return {status,color};
 	}
-
 	render() {
 		const {data,articleData,dataMission,logged,dialogDetailOpen,dialogContent,server,title_dialog}=this.props;
 		const { theme } = this.props;
@@ -370,6 +436,27 @@ class HomeComponent extends React.Component {
 								<Grid item xs={12}>
 									<Carousel data={data.carousel[1]}></Carousel>
 									<HeadMenu></HeadMenu>
+								</Grid>
+								<Grid item xs={12} style={{border:"1px solid #f23b32", borderRadius:"5px", cursor: "pointer"}}>
+									<Link to={"./coin"} >
+										<p style={{textAlign:"center"}}><span style={{color:"#f23b32"}}>[ĐẶC BIỆT]</span><span  style={{color:"#ffffff"}}> Đổi XO TOPGAME  </span><img src="../arrow_red.png" style={{ width: "24px", height:"20px", paddingTop:"7px" }}/><span style={{color:"#ffffff"}}> Xu</span></p>
+									</Link>
+								</Grid>
+								<Grid container className={classes.homeBlock} spacing={8}>
+									<Hidden smDown>
+										<Grid item xs={12}>
+											<Link to={"./article_detail/129"}>
+												<img src="/../1.gif" style={{ width: "100%", borderRadius: "5px" }} />
+											</Link>
+										</Grid>
+									</Hidden>
+									<Hidden mdUp>
+										<Grid item xs={12}>
+											<Link to={"./article_detail/129"}>
+												<img src="/../2.gif" style={{ width: "100%", borderRadius: "5px" }} />
+											</Link>
+										</Grid>
+									</Hidden>
 								</Grid>
 								<TitleContainer
 									classes={classes}
@@ -444,22 +531,7 @@ class HomeComponent extends React.Component {
 									</div>
 								</Grid>
 							</Grid>
-							<Grid container className={classes.homeBlock} spacing={8}>
-								<Hidden smDown>
-									<Grid item xs={12}>
-										<Link to={"./article_detail/129"} >
-											<img src="/../1.gif" style={{ width: "100%", borderRadius: "5px" }} />
-										</Link>
-									</Grid>
-								</Hidden>
-								<Hidden mdUp>
-									<Grid item xs={12}>
-										<Link to={"./article_detail/129"} >
-											<img src="/../2.gif" style={{ width: "100%", borderRadius: "5px" }} />
-										</Link>
-									</Grid>
-								</Hidden>
-							</Grid>
+							
 							<Grid container className={classes.homeBlock} spacing={8} justify="center">
 								<TitleContainer
 									classes={classes}

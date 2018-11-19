@@ -22,6 +22,7 @@ import itemAndAuction from './itemAndAuction'
 import youtubeApi from './youtubeApi'
 import login from './login'
 import server from './server'
+import coin from './coin'
 
 export default combineReducers({
 	routing: routerReducer,
@@ -46,5 +47,6 @@ export default combineReducers({
 	itemAndAuction,
 	youtubeApi,
 	login,
-	server
+	server,
+	coin
 })

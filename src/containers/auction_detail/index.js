@@ -87,6 +87,9 @@ class Auction_detail extends React.Component {
 		};
 	}
 	componentWillUnmount() {
+		for(let i=0; i<100; i++){
+			window.clearInterval(i);
+		}
 		var user = JSON.parse(localStorage.getItem("user"));
 		if (user !== null) {
 			this.state.socket.disconnect();

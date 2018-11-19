@@ -349,7 +349,15 @@ class MenuAppBar extends React.Component {
 										<div style={{ backgroundColor: "#000", minWidth: "100px", height: "20px", borderRadius: "15px", paddingRight: "10px" }}>
 											<img style={{ verticalAlign: "middle", height: "24px", marginRight: "5px", marginTop: "-5px", marginLeft: "-10px" }} src="/../scoin.png" />
 											<span>{this.props.data.scoinBalance ? this.props.data.scoinBalance.toLocaleString(): "0"}</span>
-											<img style={{float:"right", border:"1px solid", borderRadius:"50%", marginTop:"2px"}} src="../add.png"
+											<img style={{float:"right", border:"1px solid", borderRadius:"50%", marginTop:"2px"}} src="../addScoin.png"
+												alt="just alt"/>
+										</div>
+									</a>
+									<a target="_blank" style={{ textDecoration: "none", color: "#515151", marginRight: "20px", padding: "5px" }}>
+										<div style={{ backgroundColor: "#000", minWidth: "100px", height: "20px", borderRadius: "15px", paddingRight: "10px" }}>
+											<img style={{ verticalAlign: "middle", height: "24px", marginRight: "5px", marginTop: "-5px", marginLeft: "-10px" }} src="/../Xu.png" />
+											<span>{this.props.data.scoinBalance ? this.props.data.scoinBalance.toLocaleString(): "0"}</span>
+											<img style={{float:"right", border:"1px solid", borderRadius:"50%", marginTop:"2px"}} src="../addXu.png"
 												alt="just alt"/>
 										</div>
 									</a>

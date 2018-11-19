@@ -10,6 +10,12 @@ import { CircularProgress } from 'material-ui/Progress'
 
 class Vip extends React.Component {
 
+	componentWillMount(){
+		for(let i=0; i<100; i++){
+			window.clearInterval(i);
+		}
+	}
+
 	componentDidMount() {
 		this.props.getData();
 	}

@@ -31,6 +31,12 @@ class Giftcode_plugin extends React.Component {
 		};
 	}
 
+	componentWillMount(){
+		for(let i=0; i<100; i++){
+			window.clearInterval(i);
+		}
+	}
+
 	componentDidMount() {
 		var id = Ultilities.parse_query_string("id", window.location.href);
 		var user = JSON.parse(localStorage.getItem("user"));

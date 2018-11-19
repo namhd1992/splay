@@ -26,6 +26,11 @@ class Profile extends React.Component {
 			dialogLoginOpen: false,
 		};
 	}
+	componentWillMount(){
+		for(let i=0; i<100; i++){
+			window.clearInterval(i);
+		}
+	}
 
 	componentDidMount() {
 		var user = JSON.parse(localStorage.getItem("user"));

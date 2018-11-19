@@ -37,6 +37,7 @@ class PopupMission extends React.Component {
 	}
 	reward=(id)=>{
 		this.props.reward(id);
+		this.props.handleClosePopupMission();
 	}
 	render() {
 		const {dataMission,openPopupMission}=this.props;

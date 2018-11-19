@@ -24,13 +24,16 @@ class Article_detail extends React.Component {
 		};
 	}
 
-	componentDidMount() {
-		var _this = this;
-		_this.props.getDataDetail( _this.props.match.params.id).then(function () {
-			_this.props.changeTitle(_this.props.data[0].title);
-		});
+	componentWillMount(){
+		for(let i=0; i<100; i++){
+			window.clearInterval(i);
+		}
 	}
 
+	componentDidMount() {
+		var _this = this;
+		_this.props.getDataDetail( _this.props.match.params.id);
+	}
 	render() {
 		return (
 			<div>

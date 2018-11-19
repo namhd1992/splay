@@ -11,6 +11,7 @@ export const MISSION_AUCTION_LUCKY_RESPONSE = 'auction/MISSION_AUCTION_LUCKY_RES
 
 const initialState = {
 	data: [],
+	dataAutionAndLucky:[],
 	waiting: false
 }
 
@@ -47,6 +48,12 @@ export default (state = initialState, action) => {
 				...state,
 				dataHistory: state.dataHistory.concat(action.dataHistory),
 				totalHistoryRecords: action.totalRecords,
+				waiting: false
+			}
+		case MISSION_AUCTION_LUCKY_RESPONSE:
+			return {
+				...state,
+				dataAutionAndLucky: action.dataAutionAndLucky,
 				waiting: false
 			}
 		case AUCTION_ACTION:
@@ -112,7 +119,7 @@ export const getMissionByLuckyAndAution = (token) => {
 	  dispatch({
 		type: AUCTION_REQUEST
 	  })
-	  var url = Ultilities.base_url() + "missionByAutionAndLucky";
+	  var url = Ultilities.base_url() + "/show-special-gifts";
 	  return axios.get(url, header).then(function (response) {
 		dispatch({
 		  type: MISSION_AUCTION_LUCKY_RESPONSE,

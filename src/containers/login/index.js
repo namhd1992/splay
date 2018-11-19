@@ -3,6 +3,12 @@ import { connect } from 'react-redux'
 import { CircularProgress } from 'material-ui/Progress'
 
 class Home extends React.Component{
+	componentWillMount(){
+		for(let i=0; i<100; i++){
+			window.clearInterval(i);
+		}
+	}
+
 	render() {
 		return(
 			<div>

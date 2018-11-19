@@ -81,7 +81,6 @@ button.buttonGhost{
 }
 .avatar{
 	background-color: #00c9b7;
-	border: 1px solid #00c9b7;
 	padding: 6px 10px;
 	min-width: auto;
 	min-height: auto;
@@ -116,6 +115,7 @@ button.buttonGhost{
 .mission .mission_action{
 	margin-right: 5px 0px;
 }
+
 .received{
 	border-radius: 20px;
 	/* background:#a6a6a6; */

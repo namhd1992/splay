@@ -68,6 +68,11 @@ class Item_giftcode_detail extends React.Component {
 			snackVariant: "info",
 		};
 	}
+	componentWillMount(){
+		for(let i=0; i<100; i++){
+			window.clearInterval(i);
+		}
+	}
 
 	loginAction = () => {
 		window.location.replace(`http://graph.vtcmobile.vn/oauth/authorize?client_id=707fece431a0948c498d43e881acd2c5&redirect_uri=${window.location.protocol}//${window.location.host}/login&agencyid=0`)

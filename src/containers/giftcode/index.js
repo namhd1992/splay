@@ -37,6 +37,12 @@ class Giftcode extends React.Component {
 		};
 	}
 
+	componentWillMount(){
+		for(let i=0; i<100; i++){
+			window.clearInterval(i);
+		}
+	}
+
 	componentDidMount() {
 		var _this = this;
 		this.props.changeTitle("GIFTCODE");

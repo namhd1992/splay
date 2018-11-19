@@ -18,7 +18,7 @@ import {
 	getMoreData as getMoreAllData
 } from '../../modules/itemAndAuction'
 import {
-	getData as getMissionByLuckyAndAution
+	getMissionByLuckyAndAution
 } from '../../modules/auction'
 import {
 	getData as getGameData,
@@ -57,13 +57,20 @@ class Auction extends React.Component {
 			allArticles: [],
 		};
 	}
+	componentWillMount(){
+		for(let i=0; i<100; i++){
+			window.clearInterval(i);
+		}
+	}
 
 	componentDidMount() {
 		var _this = this;
 		this.props.changeTitle("SHOP");
 		var user = JSON.parse(localStorage.getItem("user"));
 		if (user !== null) {
-			// this.props.getMissionByLuckyAndAution(user.access_token, user.scoinAccessToken);
+			this.props.getMissionByLuckyAndAution(user.access_token, user.scoinAccessToken).then(function(){
+				console.log("success");
+			});
 			this.props.getData(this.state.limit, this.state.offset).then(function () {
 				_this.setState({ loadedRecords: _this.state.limit + _this.state.offset });
 			});

@@ -10,6 +10,11 @@ class Giftcode_plugin_login extends React.Component {
 		this.state = {
 		};
 	}
+	componentWillMount(){
+		for(let i=0; i<100; i++){
+			window.clearInterval(i);
+		}
+	}
 
 	componentDidMount() {
 		var code = Ultilities.parse_query_string("code", window.location.href);

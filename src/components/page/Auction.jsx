@@ -52,6 +52,7 @@ class AuctionComponent extends React.Component {
 		super(props);
 		this.state = {
 			openDetailBonus:false,
+			speed:10
 		};
 	}
 
@@ -101,19 +102,32 @@ class AuctionComponent extends React.Component {
 		}
 		return {status,color};
 	}
+	getStringBonus=(obj)=> {
+		var output = document.getElementById("bonus");
+		var bonus="";
+		for (let i = 0; i < obj.length; i++) {
+			bonus+='<span>Chúc mừng <span style="color:#00bf98">'+ obj[i].userName+'</span>'+' vừa giành được '+ '<span style="color:#ff9d42">'+ obj[i].itemName+'</span>'+' từ sự kiện ' +'<span style="color:#00bf98">'+ obj[i].eventName+'.'+'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;'
+		}
+		if(output!==null){
+			output.insertAdjacentHTML('beforeend',bonus)
+		}
+	}
+	handleMouseOut=()=>{
+		this.setState({speed:10});
+	}
+	handleMouseOver=()=>{
+		this.setState({speed:0});
+	}
 
 	render() {
-		const arrayMission=[
-			"Chúc mừng abc vừa giành được 500 thịt từ sự kiệm Login game Truy Kích",
-			"Chúc mừng def vừa giành được 500 thịt từ sự kiệm Login game Phong Vân",
-			"Chúc mừng khg vừa giành được 100 thịt từ sự kiệm Điểm danh hàng ngày",
-			"Chúc mừng pqw vừa giành được 100 thịt từ sự kiệm Lật thẻ"
-		];
 		const { classes } = this.props;
 		const { secondary } = this.props.theme.palette;
 		const {dialogLoginOpen, value, waiting, loadedRecordsAll, loadedRecordsShopItem, loadedRecordsShopItemGiftcode,loadedRecords,
 			data, totalRecords, profileData, dataShopItemGiftcode, waitingShopItemGiftcode, totalRecordsShopItemGiftcode,
 			dataShopItem, waitingShopItem, totalRecordsShopItem, dataAll, waitingAll, totalRecordsAll,server,dataAutionAndLucky}=this.props;
+		if(dataAutionAndLucky!==null && dataAutionAndLucky.length>0){
+			this.getStringBonus(dataAutionAndLucky)
+		}
 		return (
 			<div className={classes.root}>
 				<HeadMenu></HeadMenu>
@@ -161,20 +175,21 @@ class AuctionComponent extends React.Component {
 						</Grid>
 						<Grid container spacing={8} justify="center" style={{ borderTop: ".75rem solid #232b36" }}>
 							<Grid item xs={12}>
-								{arrayMission.map((obj, key) => (
+								
 									<div className="bonus" onClick={this.handleOpenBonus}>
-										<div key={key} className="marquee">
-											<div>
-												<span>{obj}</span>
-												<span>{obj}</span>
-											</div>
+										<div className="marquee">
+											{/* <div > */}				
+												<marquee id="bonus" behavior="scroll" scrollamount={this.state.speed} direction="left">
+												</marquee>
+											{/* </div> */}
+											
 										</div>
 										<div className="detail">
 											<label>Chi tiết</label>
 											<img className="img_avatar" src="../play_arrow_black.png"/>
 										</div>
 									</div>
-								))}
+								
 							</Grid>
 						</Grid>
 						<Grid container spacing={8} justify="center" style={{ borderTop: ".75rem solid #232b36" }}>

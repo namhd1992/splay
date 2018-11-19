@@ -26,6 +26,12 @@ class Shop_history extends React.Component {
 		};
 	}
 
+	componentWillMount(){
+		for(let i=0; i<100; i++){
+			window.clearInterval(i);
+		}
+	}
+
 	componentDidMount() {
 		var _this = this;
 		this.props.changeTitle("SHOP");

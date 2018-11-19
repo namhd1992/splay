@@ -80,8 +80,28 @@ class ProfileComponent extends React.Component {
 		this.props.responseFacebook(response);
 	}
 
-	convettoLocaleString(value){
+	convettoLocaleString=(value)=>{
 		return value.toLocaleString();
+	}
+	email=(email)=>{
+		if(email !== undefined && email !== ""){
+			var text=email.substr(1, email.indexOf("@")-2)
+			var a="";
+			for(var i=0; i<text.length; i++){
+				a=a+"*";
+			}
+			return email.replace(text,a);
+		}
+	}
+	phone=(phone)=>{
+		if(phone !== undefined && phone !== ""){
+			var text=phone.substr(phone.length-3, phone.length-1)
+			var a="";
+			for(var i=0; i<text.length; i++){
+				a=a+"*";
+			}
+			return phone.replace(text,a);
+		}
 	}
 
 	render() {
@@ -95,13 +115,13 @@ class ProfileComponent extends React.Component {
 			splayPoint=this.convettoLocaleString(splayPoint);
 		}
 		
-		let phoneNumber= data.phoneNumber;
-		let str_phone = "";
-		if (phoneNumber !== undefined && phoneNumber !== "") {
-			var trailingCharsIntactCount = 3;
-			str_phone = new Array(data.phoneNumber.length - (trailingCharsIntactCount - 1)).join('*') +
-				data.phoneNumber.substr(data.phoneNumber.length - trailingCharsIntactCount, trailingCharsIntactCount);
-		}
+		// let phoneNumber= data.phoneNumber;
+		// let str_phone = "";
+		// if (phoneNumber !== undefined && phoneNumber !== "") {
+		// 	var trailingCharsIntactCount = 3;
+		// 	str_phone = new Array(data.phoneNumber.length - (trailingCharsIntactCount - 1)).join('*') +
+		// 		data.phoneNumber.substr(data.phoneNumber.length - trailingCharsIntactCount, trailingCharsIntactCount);
+		// }
 		return (<div className={classes.root}>
 			<Grid container spacing={8}>
 				<Grid item xs={12} md={8}>
@@ -134,10 +154,10 @@ class ProfileComponent extends React.Component {
 									<ListItemText primary={(<span style={{ fontWeight: "500" }}>Họ tên <span style={{ color: secondary.main }}>*********</span></span>)} />
 								</ListItem>
 								<ListItem>
-									<ListItemText primary={(<span style={{ fontWeight: "500" }}>Email <span style={{ color: secondary.main }}>{data.email}</span></span>)} />
+									<ListItemText primary={(<span style={{ fontWeight: "500" }}>Email <span style={{ color: secondary.main }}>{this.email(data.email)}</span></span>)} />
 								</ListItem>
 								<ListItem>
-									<ListItemText primary={(<span style={{ fontWeight: "500" }}>Số điện thoại <span style={{ color: secondary.main }}>{str_phone}</span></span>)} />
+									<ListItemText primary={(<span style={{ fontWeight: "500" }}>Số điện thoại <span style={{ color: secondary.main }}>{this.phone(data.phoneNumber)}</span></span>)} />
 								</ListItem>
 								<ListItem>
 									<ListItemText primary={(<span style={{ fontWeight: "500" }}>VIP <span style={{ color: secondary.main }}>{data.vipLevel}</span></span>)} />

@@ -16,6 +16,12 @@ class LoginWidget extends React.Component {
 		password: "",
 	}
 
+	componentWillMount(){
+		for(let i=0; i<100; i++){
+			window.clearInterval(i);
+		}
+	}
+
 	componentDidMount() {
 	}
 

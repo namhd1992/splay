@@ -28,7 +28,7 @@ const styles = {
 		borderRadius: "20px",
 		background: "linear-gradient(90deg,#ff5f27,#ff9019)",
 		color: "#fff",
-		padding: "10px",
+		padding: "10px", height:"40px",
 		fontSize: "0.8em",
 		whiteSpace: "nowrap",
 		minWidth: "auto",
@@ -38,7 +38,7 @@ const styles = {
 		borderRadius: "20px",
 		background: "linear-gradient(90deg,#22cab5,#3fe28f)",
 		color: "#fff",
-		padding: "10px",
+		padding: "10px", height:"40px",
 		fontSize: "0.8em",
 		whiteSpace: "nowrap",
 		minWidth: "auto",
@@ -50,7 +50,13 @@ const styles = {
 
 class LuckyDetailComponent extends React.Component {
 
-
+	constructor(){
+		super();
+		this.state = {
+			intValue:null,
+			whenSelect:null,
+		};
+	}
 	showItem=()=>{
 		this.props.showItem();
 	}
@@ -75,8 +81,9 @@ class LuckyDetailComponent extends React.Component {
 		this.props.handleCloseDialog();
 	}
 	
-	buyTurn=(turn)=>{
-		this.props.buyTurn(turn);
+	buyTurn=()=>{
+		this.props.buyTurn(this.state.intValue);
+		this.setState({whenSelect:""});
 	}
 	
 	pick=(key)=>{
@@ -119,6 +126,10 @@ class LuckyDetailComponent extends React.Component {
 	
 	handleCloseSnack=()=>{
 		this.props.handleCloseSnack();
+	}
+
+	selectPackage(value){
+		this.setState({intValue:value, whenSelect:"1px solid #00ccd4"});
 	}
 
 	convettoLocaleString(value){
@@ -244,29 +255,72 @@ class LuckyDetailComponent extends React.Component {
 					aria-labelledby="responsive-dialog-title"
 					classes={{ paper: classes.paper }}
 				>
-					<DialogTitle id="responsive-dialog-title"><span style={{ color: secondary.main }} >Mua lượt</span></DialogTitle>
-					<DialogContent>
-						<List className="lucky-detail-root">
+					<DialogContent style={{minWidth:"600px", background:"#232936"}}>
+						<div style={{width:"100%"}}>
+							<div style={{height:"70px"}}>
+								<div style={{width:"50%", color:"#00b4bd", float:"left"}}>
+									<span>Mua lượt quay</span>
+								</div>
+								<div style={{width:"50%", float:"left", paddingLeft:"15px"}}>
+									<span className="global-thit" style={{color:"#fff"}}>Còn &nbsp;&nbsp;<img alt="just alt"src="../thit.png" /> <span style={{ color: "#fff" }} >{this.convettoLocaleString(dataDetail.userSpinInfo.rewardPoint) + " Thịt"}</span >&nbsp;&nbsp; {dataDetail.userSpinInfo.turnsBuy + dataDetail.userSpinInfo.turnsFree} lượt quay</span>
+								</div>
+							</div>
+							<div>
+								<div style={{width:"48%", float:"left"}}>
+									<div style={{background:"#2b303b", borderRadius:"10px", height:"60px", marginBottom:"15px", cursor:"pointer", border:(this.state.intValue === 1)?this.state.whenSelect:""}} onClick={()=>this.selectPackage(1)}>
+										<div style={{color:"#fff", padding:"5px 10px"}}>1 lượt</div>
+										<div style={{color:"#fff", padding:"5px 10px", textAlign:"right"}}><span className="global-thit"><img alt="just alt" src="../thit.png" /> <span style={{ color: "#fff" }} > 2,000 Thịt</span></span></div>
+									</div>
+									<div style={{background:"#2b303b", borderRadius:"10px", height:"60px", marginBottom:"15px", cursor:"pointer",  border:(this.state.intValue === 5)?this.state.whenSelect:""}} onClick={()=>this.selectPackage(5)}>
+										<div style={{color:"#fff", padding:"5px 10px"}}>5 lượt</div>
+										<div style={{color:"#fff", padding:"5px 10px", textAlign:"right"}}><span className="global-thit"><img alt="just alt" src="../thit.png" /> <span style={{ color: "#fff" }} > 10,000 Thịt</span></span></div>
+									</div>
+									<div style={{background:"#2b303b", borderRadius:"10px", height:"60px", marginBottom:"15px", cursor:"pointer",  border:(this.state.intValue === 10)?this.state.whenSelect:""}} onClick={()=>this.selectPackage(10)}>
+										<div style={{color:"#fff", padding:"5px 10px"}}>10 lượt</div>
+										<div style={{color:"#fff", padding:"5px 10px", textAlign:"right"}}><span className="global-thit"><img alt="just alt" src="../thit.png" /> <span style={{ color: "#fff" }} > 20,000 Thịt</span></span></div>
+									</div>
+								</div>
+								<div style={{width:"48%", float:"right"}}>
+									<div style={{background:"#2b303b", borderRadius:"10px", height:"60px", marginBottom:"15px", cursor:"pointer",  border:(this.state.intValue === 20)?this.state.whenSelect:""}} onClick={()=>this.selectPackage(20)}>
+										<div style={{color:"#fff", padding:"5px 10px"}}>20 lượt</div>
+										<div style={{color:"#fff", padding:"5px 10px", textAlign:"right"}}><span className="global-thit"><img alt="just alt" src="../thit.png" /> <span style={{ color: "#fff" }} > 40,000 Thịt</span></span></div>
+									</div>
+									<div style={{background:"#2b303b", borderRadius:"10px", height:"60px", marginBottom:"15px", cursor:"pointer",  border:(this.state.intValue === 50)?this.state.whenSelect:""}} onClick={()=>this.selectPackage(50)}>
+										<div style={{color:"#fff", padding:"5px 10px"}}>50 lượt</div>
+										<div style={{color:"#fff", padding:"5px 10px", textAlign:"right"}}><span className="global-thit"><img alt="just alt" src="../thit.png" /> <span style={{ color: "#fff" }} > 100,000 Thịt</span></span></div>
+									</div>
+									<div style={{background:"#2b303b", borderRadius:"10px", height:"60px", marginBottom:"15px", cursor:"pointer",  border:(this.state.intValue === 100)?this.state.whenSelect:""}} onClick={()=>this.selectPackage(100)}>
+										<div style={{color:"#fff", padding:"5px 10px"}}>100 lượt</div>
+										<div style={{color:"#fff", padding:"5px 10px", textAlign:"right"}}><span className="global-thit"><img alt="just alt" src="../thit.png" /> <span style={{ color: "#fff" }} > 200,000 Thịt</span></span></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						{/* <List className="lucky-detail-root">
 							{dataDetail.settings.map((obj, key) => (
 								<ListItem key={key}>
 									<ListItemText primary={obj.intValue + " Lượt"} secondary={(
 										<span className="global-thit"><span style={{ color: "#fe8731" }} >{obj.intValue * dataDetail.luckyspin.pricePerSpin + " thịt"}</span> <img alt="just alt"
-											src="../thit.png" /></span>)} />
+											src="../thit.png" /></span>
 									<div className="lucky-button">
 										<Button className={classes.buttonGreen} onClick={() => this.buyTurn(obj.intValue)}>Mua</Button>
 									</div>
 								</ListItem>
 							))}
-						</List>
-					</DialogContent>
-					<DialogActions>
-						<div><span className="global-thit"><span style={{ color: "#fe8731" }} >{splayPoint + " thịt"}</span> <img alt="just alt" src="../thit.png" /></span></div>
-						<div>
-							<Button onClick={this.handleCloseDialog} style={{ color: "#fe8731" }}>
+						</List> */}
+						<div style={{float:"right", marginTop:"20px"}}>
+							<Button onClick={this.handleCloseDialog} style={{ color: "#fe8731", marginRight:"20px" }}>
 								Đóng
-              </Button>
+							</Button>
+							<Button onClick={() => this.buyTurn()} style={{ color: "#fff", background:"#00ccd4",borderRadius:"5px"}}>
+								Mua
+							</Button>
 						</div>
-					</DialogActions>
+					</DialogContent>
+					{/* <DialogActions style={{background:"#232936"}}> */}
+						{/* <div><span className="global-thit"><span style={{ color: "#fe8731" }} >{splayPoint + " thịt"}</span> <img alt="just alt" src="../thit.png" /></span></div> */}
+						
+					{/* </DialogActions> */}
 				</Dialog>
 				<LoginRequired open={dialogLoginOpen}></LoginRequired>
 				<Dialog

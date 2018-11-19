@@ -34,6 +34,13 @@ class Game extends React.Component {
 		};
 	}
 
+	componentWillMount(){
+		for(let i=0; i<100; i++){
+			window.clearInterval(i);
+		}
+	}
+
+
 	handleCloseTagDialog = () => {
 		this.setState({ tagDialogOpen: false });
 	}

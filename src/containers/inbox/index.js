@@ -61,6 +61,12 @@ class Inbox extends React.Component {
 			dialogLoginOpen: false,
 		};
 	}
+	componentWillMount(){
+		for(let i=0; i<100; i++){
+			window.clearInterval(i);
+		}
+	}
+
 
 	componentDidMount() {
 		var _this = this;

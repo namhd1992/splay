@@ -11,6 +11,12 @@ import Hidden from 'material-ui/Hidden'
 
 class Help extends React.Component {
 
+	componentWillMount(){
+		for(let i=0; i<100; i++){
+			window.clearInterval(i);
+		}
+	}
+
 	componentDidMount() {
 		this.props.getData();
 	}

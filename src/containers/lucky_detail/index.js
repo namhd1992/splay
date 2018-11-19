@@ -38,6 +38,11 @@ class Lucky_detail extends React.Component {
 			dialogMoreTurnOpen: false
 		};
 	}
+	componentWillMount(){
+		for(let i=0; i<100; i++){
+			window.clearInterval(i);
+		}
+	}
 
 	componentDidMount() {
 		var _this = this;

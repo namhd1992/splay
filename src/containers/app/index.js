@@ -6,33 +6,34 @@ import Login from '../login'
 import Game from '../game'
 import Auction from '../auction'
 import Giftcode from '../giftcode'
-import Lucky from '../lucky'
-import Game_detail from '../game_detail'
-import Auction_detail from '../auction_detail'
-import Lucky_detail from '../lucky_detail'
-import Help from '../help'
-import Dieukhoan from '../dieukhoan'
-import Vip from '../vip'
-import LoginWidget from '../loginWidget'
-import LoginWidget1 from '../loginWidget1'
-import History from '../shop_history'
-import Mission from '../mission'
-import Profile from '../profile'
-import Article from '../article'
-import Article_detail from '../article_detail'
-import Item_giftcode_detail from '../item_giftcode_detail'
-import Checkin from '../checkin'
-import Inbox from '../inbox'
-import Giftcode_detail from '../giftcode_detail'
-import Giftcode_plugin from '../giftcode_plugin'
-import Giftcode_plugin_login from '../giftcode_plugin_login'
-import MenuAppBar from '../../components/MenuAppBar'
-import Footer from '../../components/Footer'
-import '../../styles/main.css'
-import ScrollToTop from 'react-scroll-up'
-import KeyboardArrowUp from 'material-ui-icons/KeyboardArrowUp'
-import Avatar from 'material-ui/Avatar'
+import Lucky from '../lucky';
+import Game_detail from '../game_detail';
+import Auction_detail from '../auction_detail';
+import Lucky_detail from '../lucky_detail';
+import Help from '../help';
+import Dieukhoan from '../dieukhoan';
+import Vip from '../vip';
+import LoginWidget from '../loginWidget';
+import LoginWidget1 from '../loginWidget1';
+import History from '../shop_history';
+import Mission from '../mission';
+import Profile from '../profile';
+import Article from '../article';
+import Article_detail from '../article_detail';
+import Item_giftcode_detail from '../item_giftcode_detail';
+import Checkin from '../checkin';
+import Inbox from '../inbox';
+import Giftcode_detail from '../giftcode_detail';
+import Giftcode_plugin from '../giftcode_plugin';
+import Giftcode_plugin_login from '../giftcode_plugin_login';
+import MenuAppBar from '../../components/MenuAppBar';
+import Footer from '../../components/Footer';
+import '../../styles/main.css';
+import ScrollToTop from 'react-scroll-up';
+import KeyboardArrowUp from 'material-ui-icons/KeyboardArrowUp';
+import Avatar from 'material-ui/Avatar';
 import Phone_card from '../phone_card';
+import Coin from '../coin';
 
 class App extends React.Component {
 
@@ -62,6 +63,9 @@ class App extends React.Component {
 	}
 
 	componentWillUnmount() {
+		for(let i=0; i<100; i++){
+			window.clearInterval(i);
+		}
 		window.removeEventListener('scroll', this.handleScroll);
 	}
 
@@ -118,6 +122,7 @@ class App extends React.Component {
 						<Route exact path="/giftcodeplugin" component={Giftcode_plugin} />
 						<Route exact path="/giftcodepluginlogin" component={Giftcode_plugin_login} />
 						<Route exact path="/phonecard" component={Phone_card} />
+						<Route exact path="/coin" component={Coin} />
 					</main>
 					{(!this.state.fullscreen) ? (<Footer></Footer>) : (<div></div>)}
 					<ScrollToTop style={{ bottom: 90, right: "10px" }} showUnder={160}>
