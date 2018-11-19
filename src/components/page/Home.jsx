@@ -437,11 +437,11 @@ class HomeComponent extends React.Component {
 									<Carousel data={data.carousel[1]}></Carousel>
 									<HeadMenu></HeadMenu>
 								</Grid>
-								<Grid item xs={12} style={{border:"1px solid #f23b32", borderRadius:"5px", cursor: "pointer"}}>
+								{/* <Grid item xs={12} style={{border:"1px solid #f23b32", borderRadius:"5px", cursor: "pointer"}}>
 									<Link to={"./coin"} >
 										<p style={{textAlign:"center"}}><span style={{color:"#f23b32"}}>[ĐẶC BIỆT]</span><span  style={{color:"#ffffff"}}> Đổi XO TOPGAME  </span><img src="../arrow_red.png" style={{ width: "24px", height:"20px", paddingTop:"7px" }}/><span style={{color:"#ffffff"}}> Xu</span></p>
 									</Link>
-								</Grid>
+								</Grid> */}
 								<Grid container className={classes.homeBlock} spacing={8}>
 									<Hidden smDown>
 										<Grid item xs={12}>
