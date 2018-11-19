@@ -1,10 +1,8 @@
 import axios from 'axios'
 import Ultilities from '../Ultilities/global'
 import {SERVER_ERROR} from './server'
-export const ARTICLE_REQUEST = 'article/ARTICLE_REQUEST'
-export const ARTICLE_RESPONSE = 'article/ARTICLE_RESPONSE'
-export const ARTICLE_DETAIL_RESPONSE = 'article/ARTICLE_DETAIL_RESPONSE'
-export const ARTICLE_RESPONSE_MORE = 'article/ARTICLE_RESPONSE_MORE'
+export const COIN_REQUEST = 'coin/COIN_REQUEST'
+export const COIN_RESPONSE = 'coin/COIN_RESPONSE'
 
 const initialState = {
 	data: [],
@@ -13,29 +11,15 @@ const initialState = {
 
 export default (state = initialState, action) => {
 	switch (action.type) {
-		case ARTICLE_REQUEST:
+		case COIN_REQUEST:
 			return {
 				...state,
 				waiting: true
 			}
-		case ARTICLE_RESPONSE:
+		case COIN_RESPONSE:
 			return {
 				...state,
 				data: action.data,
-				totalRecords: action.totalRecords,
-				waiting: false
-			}
-		case ARTICLE_DETAIL_RESPONSE:
-			return {
-				...state,
-				dataDetail: action.data,
-				totalRecords: action.totalRecords,
-				waiting: false
-			}
-		case ARTICLE_RESPONSE_MORE:
-			return {
-				...state,
-				data: state.data.concat(action.data),
 				totalRecords: action.totalRecords,
 				waiting: false
 			}
@@ -44,29 +28,22 @@ export default (state = initialState, action) => {
 	}
 }
 
-export const getData = (limit, offset, id, searchValue, gameId, articleType) => {
+export const getData = (token) => {
+	var header = {
+		headers: {
+			"Content-Type": "application/json",
+			"Authorization": "bearer " + token,
+		}
+	}
 	return dispatch => {
 		dispatch({
-			type: ARTICLE_REQUEST
+			type: COIN_REQUEST
 		})
-		var url = Ultilities.base_url() + "/anonymous/splayArticle?limit=" + limit + "&offset=" + offset;
-		if (id !== undefined) {
-			url += "&id=" + id;
-		}
-		if (searchValue !== undefined) {
-			url += "&searchValue=" + searchValue;
-		}
-		if (gameId !== undefined) {
-			url += "&splayGameId=" + gameId;
-		}
-		if (articleType !== undefined) {
-			url += "&articleType=" + articleType;
-		}
-		return axios.get(url).then(function (response) {
+		var url = Ultilities.base_url() + "scoin/deposit";
+		return axios.get(url, header).then(function (response) {
 			dispatch({
-				type: ARTICLE_RESPONSE,
-				data: response.data.dataArr,
-				totalRecords: response.data.totalRecords
+				type: COIN_RESPONSE,
+				data: response.data.data
 			})
 		}).catch(function (error) {
 			dispatch({

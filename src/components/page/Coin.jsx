@@ -39,6 +39,10 @@ class CoinComponent extends React.Component {
 
 	render() {
 		const {data, waiting,server,dialogLoginOpen}=this.props;
+		var packageDeposit=["10","20","30","40"]
+		// if(data!==null && data.packageDeposit!==null){
+		// 	packageDeposit=data.packageDeposit;
+		// }
 		return (
 				<div style={{ marginTop: "8px", marginBottom: "5px", borderRadius: "5px", padding: "5px" }}>
 					<HeadMenu></HeadMenu>
@@ -62,7 +66,7 @@ class CoinComponent extends React.Component {
 											</div>
 											<div className="contentUser">
 												<p>@abc123</p>
-												<p>9.999 XO</p>
+												<p>{data.userBalance} XO</p>
 											</div>
 										</div>
 										<div className="imgGame">
@@ -72,10 +76,10 @@ class CoinComponent extends React.Component {
 								</Grid>
 								<Grid item xs={12}>
 									<select className="selectOptionCoin" onClick={this.selectOptionCoin()}>
-										<option value="" selected disabled hidden>Chọn số XO chuyển đổi</option>
-										<option value="1">10</option>
-										<option value="2">100</option>
-										<option value="3">1000</option>
+										{/* <option value="" selected disabled hidden>Chọn số XO chuyển đổi</option> */}
+										{packageDeposit.map((obj, key) => {
+											<option value={key}>{obj}</option>
+										})}
 									</select>
 								</Grid>
 								<Grid item xs={12}>

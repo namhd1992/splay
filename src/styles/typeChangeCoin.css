@@ -19,9 +19,7 @@ select {
   }
   
   
-  /* arrows */
-  
-  select.selectGame {
+  select.listGame {
     text-align: center;
     text-align-last: center;
     background-image:
@@ -38,22 +36,9 @@ select {
     background-repeat: no-repeat;
   }
 
-  select.selectOptionCoin {
-    background-image:
-      linear-gradient(45deg, transparent 50%, #fff 50%),
-      linear-gradient(135deg, #fff 50%, transparent 50%);
-      background-position:
-      calc(100% - 20px) calc(1em),
-      calc(100% - 10px) calc(1em),
-      100% 0;
-    background-size:
-      10px 10px,
-      10px 10px,
-      2.5em 2.5em;
-    background-repeat: no-repeat;
-  }
-  
-.selectGame{
+
+
+.listGame{
     width:100%;
     text-align:center;
     height:40px;

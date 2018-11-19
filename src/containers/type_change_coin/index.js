@@ -6,10 +6,10 @@ import {
 } from '../../modules/coin'
 
 import { withRouter } from 'react-router-dom'
-import CoinComponent from '../../components/page/Coin'
+import CoinComponent from '../../components/page/TypeChangeCoin'
 
 
-class Coin extends React.Component {
+class TypeChangeCoin extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -27,7 +27,7 @@ class Coin extends React.Component {
 		var user = JSON.parse(localStorage.getItem("user"));
 		var _this = this;
 		if (user !== null) {
-			this.props.getData(user.access_token, user.scoinAccessToken)
+			// this.props.getData(user.access_token, user.scoinAccessToken)
 		} else {
 			_this.setState({ dialogLoginOpen: true });
 		}
@@ -62,4 +62,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 export default withRouter(connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(Coin))
+)(TypeChangeCoin))
