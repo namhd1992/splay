@@ -23,7 +23,7 @@ import Hidden from 'material-ui/Hidden'
 import Rating from '../../components/Rating'
 import Divider from 'material-ui/Divider'
 import PopupMission from '../PopupMission'
-import '../../styles/mission.css'
+import '../../styles/home.css'
 import '../../styles/imageServerError.css'
 
 const styles = theme => ({
@@ -170,7 +170,7 @@ class TitleContainer extends React.Component {
 		if(condition===false){
 			this.props.showDetail("Rất tiếc bạn không đủ điều kiện nhận thưởng.", "");
 		}else{
-		this.props.doMission(action, id, value, scoinGameId);
+			this.props.doMission(action, id, value, scoinGameId);
 		}
 	}
 
@@ -250,10 +250,10 @@ class TitleContainer extends React.Component {
 	render() {
 		const {classes, dataMission} = this.props;
 		return (
-			<div className="mission_container">
+			<div className="mission_home_container">
 				{dataMission.slice(0, 8).map((obj, key) => (
 					// <div className={(obj.highLights === true) ? "mission": ""}>
-						<div className="mission_content">
+						<div className="mission_home_content">
 							<Grid key={key}> 
 								<ListItem key={key} className={classes.giftcodeItem}>
 									{/* <div className={(obj.highLights === true) ? "highLights": ""}> */}
@@ -282,23 +282,23 @@ class TitleContainer extends React.Component {
 									{/* </div> */}
 									{(obj.award === "Thịt") ? (
 									<ListItemText style={{width:"50%", padding:"0 7px"}} disableTypography={true}
-										primary={(<div className="mission_title">{obj.missionName}</div>)}
+										primary={(<div className="mission_home_title">{obj.missionName}</div>)}
 										secondary={(
 											<span className="global-thit" style={{ color: "#fe8731" }}><img alt="just alt"
 												src="../thit.png" /> <span className="valueBonus">{obj.valueAward}</span>{(obj.awardAvailable !== null) ? ( <span className="numberBonus">Còn lại hôm nay: {obj.awardAvailable}</span>) : (<div></div>)} </span>)} />) : (<div></div>)}
 									{(obj.award === "giftcode") ? (
 									<ListItemText style={{width:"50%", padding:"0 7px"}} disableTypography={true}
-										primary={(<div className="mission_title">{obj.missionName}</div>)}
+										primary={(<div className="mission_home_title">{obj.missionName}</div>)}
 										secondary={(
 											<span className="global-thit" style={{ color: "#fe8731" }}><span className="valueBonus">Giftcode</span>{(obj.awardAvailable !== null) ? ( <span className="numberBonus">Còn lại hôm nay: {obj.awardAvailable}</span>) : (<div></div>)} </span>)} />) : (<div></div>)}
 									{(obj.award === "XO") ? (
 									<ListItemText style={{width:"50%", padding:"0 7px"}} disableTypography={true}
-										primary={(<div className="mission_title">{obj.missionName}</div>)}
+										primary={(<div className="mission_home_title">{obj.missionName}</div>)}
 										secondary={(
 											<span className="global-thit" style={{ color: "#fe8731" }}><img alt="just alt"
 												src="../XO.png" /> <span className="valueBonus">{obj.valueAward}</span>{(obj.awardAvailable !== null) ? ( <span className="numberBonus">Còn lại hôm nay: {obj.awardAvailable}</span>) : (<div></div>)} </span>)} />) : (<div></div>)}
 								
-									<div className="mission_action">
+									<div className="mission_home_action">
 										<button
 												className="buttonCircle"
 												onClick={() => this.openPopupMission(obj)}>?</button>

@@ -17,8 +17,12 @@ class TypeChangeCoinComponent extends React.Component {
 	findGame=()=>{
 		
     }
-    next=()=>{
-		
+    nextToCoin=(value)=>{
+		if (typeof(Storage) !== "undefined") {
+			localStorage.setItem("Coin", value);
+		} else {
+			console.log("Trình duyệt không hỗ trợ localStorage");
+		}
 	}
 
 	render() {
@@ -29,7 +33,7 @@ class TypeChangeCoinComponent extends React.Component {
 					<Grid container style={{ width: "100%", margin: "0" }} spacing={8}>
 						<Grid item xs={12} md={8}>
 							<Grid container style={{ width: "100%", margin: "0"}} spacing={8} justify="center">
-                                <p>Chọn hình thức đổi</p>
+                                <p style={{color:"#12cdd4"}}>Chọn hình thức đổi</p>
                                 <Grid item xs={12}>
 									<select className="listGame" onClick={this.findGame()}>
 										<option value="0">TOP GAME</option>
@@ -37,13 +41,13 @@ class TypeChangeCoinComponent extends React.Component {
 								</Grid>
                                 <Grid item xs={12}>
                                     <Link to={"./coin"}>
-                                        <button style={{width:"100%", height:"45px",border:"1px solid #12cdd4", background:"#212933"}}><span style={{color:"#12cdd4"}}>ĐỔI XO </span><img src="../arrow_green.png" style={{ width: "24px", height:"20px", paddingTop:"10px"}}/><span style={{color:"#12cdd4"}}> Xu</span><img style={{float:"right"}} alt="just alt"
+                                        <button style={{width:"100%", height:"45px",border:"1px solid #12cdd4", background:"#212933"}} onClick={()=>this.nextToCoin(2)}><span style={{color:"#12cdd4"}}>ĐỔI XO </span><img src="../arrow_green.png" style={{ width: "24px", height:"20px", paddingTop:"10px"}}/><span style={{color:"#12cdd4"}}> Xu</span><img style={{float:"right"}} alt="just alt"
 									src="../keyboard_arrow_right.png" /></button>
                                     </Link>
                                 </Grid>    
                                 <Grid item xs={12}>
                                     <Link to={"./coin"}>
-                                        <button style={{width:"100%", height:"45px",border:"1px solid #12cdd4", background:"#212933"}}><span style={{color:"#12cdd4"}}>ĐỔI Xu </span><img src="../arrow_green.png" style={{ width: "24px", height:"20px", paddingTop:"10px"}}/><span style={{color:"#12cdd4"}}> XO</span><img style={{float:"right"}} alt="just alt"
+                                        <button style={{width:"100%", height:"45px",border:"1px solid #12cdd4", background:"#212933"}} onClick={()=>this.nextToCoin(1)}><span style={{color:"#12cdd4"}}>ĐỔI Xu </span><img src="../arrow_green.png" style={{ width: "24px", height:"20px", paddingTop:"10px"}}/><span style={{color:"#12cdd4"}}> XO</span><img style={{float:"right"}} alt="just alt"
 									src="../keyboard_arrow_right.png" /></button>						
                                     </Link>
                                 </Grid>

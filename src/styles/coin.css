@@ -100,6 +100,9 @@ select {
     border-radius: 5px;
     background: #1f3439;
 }
+.verifyPhone:hover{
+    background: #477885;
+}
 .verifyNow{
     width:48%;
     height:40px;
@@ -109,6 +112,9 @@ select {
     border: 0px;
     background: #f24726;
 }
+.verifyNow:hover{
+    background: #f57156;
+}
 .btnChange{
     width:100%;
     height:40px;
@@ -116,6 +122,10 @@ select {
     border-radius: 5px;
     border: 0px;
     background: #12cdd4;
+}
+.btnChange:hover{
+
+    background: #43e9ef;
 }
 .valueXu{
     text-align:center;

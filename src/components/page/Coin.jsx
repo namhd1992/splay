@@ -15,16 +15,32 @@ class CoinComponent extends React.Component {
 	constructor(){
 		super();
 		this.state = {
-			value:"Số Xu tương ứng nhận được",
+			value:"",
+			from:"",
+			to:"",
+			pakage:null,
+			srcImg:null,
+			type:""
 		};
+	}
+	componentWillMount(){
+		var coin=localStorage.getItem("Coin");
+		if(coin===1){
+			this.setState({value:"Số XO tương ứng nhận được",from:"Xu", to:"XO",srcImg:"../Xu.png"})
+		}else if(coin===2){
+			this.setState({value:"Số Xu tương ứng nhận được",from:"XO", to:"Xu",srcImg:"../Xu.png"})
+		}else{
+			this.setState({value:"Số Xu tương ứng nhận được",from:"XO", to:"Xu",srcImg:"../Xu.png"})
+		}
 	}
 
 	selectGame=()=>{
 		
 	}
 
-	selectOptionCoin=()=>{
-		
+	selectOptionCoin= (event) =>{
+		var coin=event.target.value
+		this.setState({pakage:event.target.value, value:coin});
 	}
 
 	verifyPhone=()=>{
@@ -34,15 +50,19 @@ class CoinComponent extends React.Component {
 		
 	}
 	changeCoin=()=>{
-		
+		var coin=localStorage.getItem("Coin");
+		if(coin===1){
+			this.setState({type:"scoinToGame"})
+		}else if(coin===2){
+			this.setState({type:"gameToScoin"})
+		}else{
+			this.setState({type:"gameToScoin"})
+		}
+		// this.props.changeCoin(type);
 	}
 
 	render() {
-		const {data, waiting,server,dialogLoginOpen}=this.props;
-		var packageDeposit=["10","20","30","40"]
-		// if(data!==null && data.packageDeposit!==null){
-		// 	packageDeposit=data.packageDeposit;
-		// }
+		const {data, waiting,server,dialogLoginOpen, dataProfile}=this.props;
 		return (
 				<div style={{ marginTop: "8px", marginBottom: "5px", borderRadius: "5px", padding: "5px" }}>
 					<HeadMenu></HeadMenu>
@@ -50,7 +70,7 @@ class CoinComponent extends React.Component {
 						<Grid item xs={12} md={8}>
 							<Grid container style={{ width: "100%", margin: "0"}} spacing={8} justify="center">
 								<Grid item xs={12}>
-									<p style={{textAlign:"center", color:"#fff", paddingRight:"40px"}}><span style={{color:"#12cdd4"}}>ĐỔI XO </span><img src="../arrow_green.png" style={{ width: "24px", height:"20px", paddingTop:"5px"}}/><span style={{color:"#12cdd4"}}> Xu</span></p>
+									<p style={{textAlign:"center", color:"#fff", paddingRight:"40px"}}><span style={{color:"#12cdd4"}}>ĐỔI {this.state.from} </span><img src="../arrow_green.png" style={{ width: "24px", height:"20px", paddingTop:"5px"}}/><span style={{color:"#12cdd4"}}> {this.state.to}</span></p>
 								</Grid>
 								<Grid item xs={12}>
 									<select className="selectGame" onClick={this.selectGame()}>
@@ -75,11 +95,12 @@ class CoinComponent extends React.Component {
 									</div>
 								</Grid>
 								<Grid item xs={12}>
-									<select className="selectOptionCoin" onClick={this.selectOptionCoin()}>
-										{/* <option value="" selected disabled hidden>Chọn số XO chuyển đổi</option> */}
-										{packageDeposit.map((obj, key) => {
-											<option value={key}>{obj}</option>
-										})}
+									<select className="selectOptionCoin" onChange={(event)=>this.selectOptionCoin(event)}>
+										<option value="" selected disabled hidden>Chọn số XO chuyển đổi</option>
+										{(data.packageExchangeXUs !== undefined) ? data.packageExchangeXUs.map((obj,key) => {
+												return <option key={key}
+												value={obj}>{obj}</option>;
+											}) : (<div></div>)}
 									</select>
 								</Grid>
 								<Grid item xs={12}>
@@ -90,11 +111,12 @@ class CoinComponent extends React.Component {
 									
 								</Grid>
 								<Grid item xs={12}>
-									<div>
+									{(dataProfile.phoneNumber!=="" || dataProfile.phoneNumber!==undefined || dataProfile.phoneNumber!==null)?(<div></div>):(<div><div>
 										<button className="verifyPhone" onClick={this.verifyPhone()}>Chưa xác thực số điện thoại</button>
 										<button className="verifyNow" onClick={this.verifyNow()}>Xác thực ngay</button>
 									</div>
-									<p><span style={{color:"red"}}>(*)</span> <span style={{color:"#fff"}}>Bạn cần xác thực để chuyển ra Xu</span></p>
+									<p><span style={{color:"red"}}>(*)</span> <span style={{color:"#fff"}}>Bạn cần xác thực để chuyển ra Xu</span></p></div>)}
+									
 								</Grid>
 								<Grid item xs={12}>
 									<button className="btnChange" onClick={this.changeCoin()}>ĐỔI</button>

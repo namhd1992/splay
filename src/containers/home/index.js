@@ -1,8 +1,8 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { getData } from '../../modules/home'
-import { getData as getMissionData, finishData } from '../../modules/mission'
+import { getData, getDataMission } from '../../modules/home'
+import { finishData } from '../../modules/mission'
 import { getData as getArticleData } from '../../modules/article'
 import { changeTitle } from '../../modules/global'
 
@@ -26,7 +26,7 @@ class Home extends React.Component {
 		this.props.changeTitle("");
 		if (user !== null) {
 			this.setState({ logged: true });
-			this.props.getMissionData(6, 0, user.access_token);
+			this.props.getDataMission(6, 0, user.access_token);
 		} else {
 			this.setState({ logged: false });
 		}
@@ -39,7 +39,6 @@ class Home extends React.Component {
 	}
 
 	doMission = (action, id, value, scoinGameId) => {
-		console.log("assssssss")
 		switch (+action) {
 			case 1:
 				window.location.href = '/lucky';
@@ -84,7 +83,7 @@ class Home extends React.Component {
 		var _this = this;
 		var user = JSON.parse(localStorage.getItem("user"));
 		this.props.finishData(id, user.scoinAccessToken, user.access_token).then(function (response) {
-			_this.props.getMissionData(6, 0, user.access_token);
+			_this.props.getDataMission(6, 0, user.access_token);
 			if(_this.props.status==="03"){
 				_this.setState({ dialogDetailOpen: true, dialogContent: _this.props.message_server, title_dialog:"Error"});
 			}
@@ -126,7 +125,6 @@ class Home extends React.Component {
 					articleData={this.props.articleData}
 					waiting={this.props.waiting}
 					articleWaiting={this.props.articleWaiting}
-					dataFinish={this.props.dataFinish}
 					dataMission={this.props.dataMission}
 					logged={this.state.logged}
 					dialogDetailOpen={this.state.dialogDetailOpen}
@@ -143,8 +141,7 @@ const mapStateToProps = state => ({
 	articleData: state.article.data,
 	waiting: state.home.waiting,
 	articleWaiting: state.article.waiting,
-	dataFinish: state.mission.dataFinish,
-	dataMission: state.mission.data,
+	dataMission: state.home.dataMission,
 	status: state.mission.status,
 	message_server: state.mission.message_server,
 	server:state.server.serverError
@@ -152,7 +149,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
 	getData,
-	getMissionData,
+	getDataMission,
 	finishData,
 	changeTitle,
 	getArticleData,

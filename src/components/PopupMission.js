@@ -41,6 +41,9 @@ class PopupMission extends React.Component {
 	}
 	render() {
 		const {dataMission,openPopupMission}=this.props;
+		if(dataMission!==undefined){
+			console.log("AAAAAAA",dataMission)
+		}
 		return (
 			<div>
 				<Dialog

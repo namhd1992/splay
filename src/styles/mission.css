@@ -109,7 +109,7 @@ button.buttonGhost{
 
 .mission_action{
 	flex:auto;
-	width:27%; 
+	width:1%; 
 	float:left;
 }
 .mission .mission_action{
@@ -165,7 +165,7 @@ button.buttonFull:hover{
 	   }
 	.mission_action{
 		flex:auto;
-		width:33%; 
+		width:1%; 
 		float:left;
 	}
    	button.buttonCircle{
@@ -209,7 +209,7 @@ button.buttonFull:hover{
 @media only screen and (max-width:1024px){
 	.mission_action{
 		flex:auto;
-		width:37%; 
+		width:1%; 
 		float:left;
 	}
 	.avatar{
@@ -225,7 +225,7 @@ button.buttonFull:hover{
 	}
 	.mission_action{
 		flex:none;
-		width:18%; 
+		width:20%; 
 	}
 	.mission .mission_action{
 		margin-right: 8px;
@@ -248,7 +248,7 @@ button.buttonFull:hover{
 	}
 	.mission_action{
 		flex:auto;
-		width:32%; 
+		width:10%; 
 		float:left;
 	}
 	.mission .mission_action{
@@ -269,7 +269,7 @@ button.buttonFull:hover{
 	}
 	.mission_action{
 		flex:auto;
-		width:32%; 
+		width:10%; 
 		float:left;
 	}
 	.mission .mission_action{
@@ -284,6 +284,14 @@ button.buttonFull:hover{
 	}
 }
 
+@media only screen and (max-width:450px){
+	.mission_action{
+		flex:auto;
+		width:32%; 
+		float:left;
+	}
+
+}
 @media only screen and (max-width:375px){
 	.mission{
 		padding: 2px 0px 2px 1px;
@@ -315,7 +323,7 @@ button.buttonFull:hover{
 	}
 	.mission_action{
 		flex:auto;
-		width:50%; 
+		width:70%; 
 		float:left;
 	}
 	.mission .mission_action{
