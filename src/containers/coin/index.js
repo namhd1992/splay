@@ -46,7 +46,14 @@ class Coin extends React.Component {
 		var user = JSON.parse(localStorage.getItem("user"));
 		if (user !== null) {
 			this.props.changeCoin(user.access_token, packageXO, packageXu, coin).then(function () {
-				_this.setState({ openSnack: true, message: "Đổi thành công", snackVariant: "success" });
+				if(_this.props.status==="01"){
+					_this.setState({ openSnack: true, message: "Đổi thành công", snackVariant: "success" });
+				}else if(_this.props.status==="08"){
+					_this.setState({ openSnack: true, message: "Quá hạn quy đổi", snackVariant: "info" });
+				}else if(_this.props.status==="00"){
+					_this.setState({ openSnack: true, message: "Lỗi hệ thống", snackVariant: "error" });
+				}
+				
 			});
 		} else {
 			this.setState({ dialogLoginOpen: true });

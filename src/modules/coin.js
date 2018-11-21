@@ -27,8 +27,8 @@ export default (state = initialState, action) => {
 		case CHANGE_COIN_RESPONSE:
 			return {
 				...state,
-				status:action.status,
-				totalRecords: action.totalRecords,
+				status:action.data.status,
+				totalRecords: action.data.totalRecords,
 				waiting: false
 			}
 		default:
