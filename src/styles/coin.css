@@ -62,7 +62,7 @@ select {
     border-radius: 5px;
     background: #212933;
 }
-.infoUser{
+.infoUserCoin{
     color: #fff;
     width:50%;
     float:left
@@ -76,12 +76,6 @@ select {
     color: #fff;
     width:50%;
     float:left
-}
-.imgGame{
-    color: #fff;
-    width:50%;
-    float:left;
-    line-height:100px
 }
 .selectOptionCoin{
     width:100%;
@@ -134,6 +128,18 @@ select {
     float:right;
     width:95%
 }
+.divOptionCoin{
+    width:50%;
+    float:left
+}
+.divPrice{
+    width:50%;
+    float:right;
+    text-align:right;
+    color:#fff;
+    padding-right:15px;
+    line-height:40px;
+}
 /* .xu.icon{
   position: absolute;
   margin-top: -2px;
@@ -153,55 +159,71 @@ select {
 } */
 
 @media only screen and (max-width:600px){
-	.infoUser{
-        width:70%;
+	.infoUserCoin{
+        width:100%;
     }
-    .imgGame{
-        width:30%;
+    .divOptionCoin{
+        width:100%;
     }
-    .titleUser{
-        width: 40%;
+    .divPrice{
+        width:100%;
+        float:none;
+        text-align:left;
     }
-    .contentUser{
-        width: 60%;
+    .btnChange{
+        margin-top: 20px;
     }
+
 }
 @media only screen and (max-width:414px){
-	.infoUser{
-        width:70%;
+	.infoUserCoin{
+        width:100%;
     }
-    .imgGame{
-        width:30%;
+    .divOptionCoin{
+        width:100%;
     }
-    .titleUser{
-        width: 40%;
+    .divPrice{
+        width:100%;
+        float:none;
+        text-align:left;
     }
-    .contentUser{
-        width: 60%;
+    .btnChange{
+        margin-top: 20px;
     }
+
 }
 
 @media only screen and (max-width:375px){
-	.infoUser{
-        width:70%;
+	.infoUserCoin{
+        width:100%;
     }
-    .imgGame{
-        width:30%;
+    .divOptionCoin{
+        width:100%;
     }
-    .titleUser{
-        width: 40%;
+    .divPrice{
+        width:100%;
+        float:none;
+        text-align:left;
     }
-    .contentUser{
-        width: 60%;
+    .btnChange{
+        margin-top: 20px;
     }
-
 }
 
 @media only screen and (max-width:320px){
-	.infoUser{
-        width:70%;
+	.infoUserCoin{
+        width:100%;
+        font-size: 15px;
     }
-    .imgGame{
-        width:30%;
+    .divOptionCoin{
+        width:100%;
+    }
+    .divPrice{
+        width:100%;
+        float:none;
+        text-align:left;
+    }
+    .btnChange{
+        margin-top: 20px;
     }
 }

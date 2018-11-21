@@ -50,7 +50,7 @@ class CoinComponent extends React.Component {
 		var pakageCoin=event.target.value;
         var ratioExchange=this.props.data.ratioExchange;
         if(+coin===1){
-            this.setState({pakage:pakageCoin, value:pakageCoin, price:(pakageCoin/ratioExchange), type:"scoinToGame",packageXU:pakageCoin, packageXO:(pakageCoin/ratioExchange)});
+            this.setState({pakage:pakageCoin, value:pakageCoin, price:(pakageCoin/ratioExchange), type:"scoinToGame",packageXO:pakageCoin, packageXU:(pakageCoin/ratioExchange)});
         }else if(+coin===2){
             this.setState({pakage:pakageCoin, value:pakageCoin, price:ratioExchange*pakageCoin, type:"gameToScoin",packageXU:pakageCoin, packageXO:pakageCoin*ratioExchange});
         }else{
@@ -82,7 +82,7 @@ class CoinComponent extends React.Component {
     render() {
         const {data, waiting,server,dialogLoginOpen, dataProfile,message, snackVariant, openSnack}=this.props;
         var pakageCoin;
-        if(data.packageExchangeXUs !== undefined){
+        if(data!==null && data.packageExchangeXUs !== undefined && data.packageExchangeXUs!==null){
             if(this.state.from==="Xu"){
                 pakageCoin=data.packageExchangeXUs.map(v=>{
                     return v*data.ratioExchange
@@ -108,35 +108,30 @@ class CoinComponent extends React.Component {
                                     </select>
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <div style={{ overflow: "hidden", height:"100px"}}>
-                                        <div className="infoUser">
-                                            <div className="titleUser">
-                                                <p>Topgame ID:</p>
-                                                <p>Số dư XO:</p>
-                                            </div>
-                                            <div className="contentUser">
-                                                <p>@abc123</p>
-                                                <p><img src="../XO.png" style={{ width: "24px", height:"24px",margin:"0px 5px -4px 0px"}}/>{data.userBalance} XO</p>
-                                            </div>
-                                        </div>
-                                        <div className="imgGame">
-                                            <img src="../lg-topgame.png" style={{ width: "100%"}}/>
-                                        </div>
-                                    </div>
+									{(data!==null)?(<div className="infoUserCoin">
+											<div className="titleUser">
+												<p>Topgame ID:</p>
+												<p>Số dư XO:</p>
+											</div>
+											<div className="contentUser">
+												<p>@abc123</p>
+												<p><img src="../XO.png" style={{ width: "24px", height:"24px",margin:"0px 5px -4px 0px"}}/>{this.props.data.userBalance ? this.props.data.userBalance.toLocaleString(): "0"} XO</p>
+											</div>
+										</div>):(<div></div>)}
                                 </Grid>
                                 <Grid item xs={12}>
 									<div style={{height:"40px"}}>
-										<div style={{width:"50%", float:"left"}}>
+										<div className="divOptionCoin">
 											<select className="selectOptionCoin" onChange={(event)=>this.selectOptionCoin(event)}>
 												<option value="" selected disabled hidden>{this.state.value}</option>
 												{(pakageCoin !== undefined) ? pakageCoin.map((obj,key) => {
 														return <option key={key}
-														value={obj}>{obj}</option>;
+														value={obj}>{obj.toLocaleString()}</option>;
 													}) : (<div></div>)}
 											</select>
 										</div>
-										<div style={{width:"50%", float:"right", textAlign:"right", color:"#fff", paddingRight:"15px",lineHeight:"40px"}}>
-											<span>Giá:</span> <div style={{display:"inline"}}><img src={this.state.srcImg} style={{ width: "24px", height:"24px", margin:"0px 5px -5px 8px"}}/></div> <span>{this.state.price} {this.state.from}</span>
+										<div className="divPrice">
+											<span>Giá:</span> <div style={{display:"inline"}}><img src={this.state.srcImg} style={{ width: "24px", height:"24px", margin:"0px 5px -5px 8px"}}/></div> <span>{this.state.price ? this.state.price.toLocaleString(): ""} {this.state.from}</span>
 										</div>
 									</div>
                                     
