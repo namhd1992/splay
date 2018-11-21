@@ -9,7 +9,6 @@ import LoginRequired from '../../components/LoginRequired'
 import Notification from '../../components/Notification'
 import '../../styles/imageServerError.css'
 import '../../styles/coin.css'
-import { type } from 'os';
 
 
 

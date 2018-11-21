@@ -48,6 +48,7 @@ class Coin extends React.Component {
 			this.props.changeCoin(user.access_token, packageXO, packageXu, coin).then(function () {
 				if(_this.props.status==="01"){
 					_this.setState({ openSnack: true, message: "Đổi thành công", snackVariant: "success" });
+					window.location.reload();
 				}else if(_this.props.status==="08"){
 					_this.setState({ openSnack: true, message: "Quá hạn quy đổi", snackVariant: "info" });
 				}else if(_this.props.status==="00"){

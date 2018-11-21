@@ -36,6 +36,13 @@ class Account extends React.Component {
 		// var _this = this;
 		// _this.props.getData(user.access_token, user.scoinAccessToken);
 	}
+	getUserName=(value)=>{
+		
+		if(value.length>3){
+			return value.substr(0,3).concat("...")
+		}
+		return value
+	}
 
 	render() {
 		var notif = 0;
@@ -47,10 +54,10 @@ class Account extends React.Component {
 		}
 		return (
 			<div>
-				<Badge style={{ display: (this.props.compact) ? "none" : "block" }} classes={{ root: this.props.classes.root, badge: this.props.classes.badge }} badgeContent={notif} color="error">
+				<Badge style={{ display: (this.props.compact) ? "none" : "block" }} badgeContent={notif} color="error">
 				</Badge>
 				{(this.props.dataProfile.urlAvatar !== undefined && this.props.dataProfile.urlAvatar !== null) ? (<Avatar style={(this.props.compact) ? { display: "none" } : { display: "block" }} src={"../default_ava.png"} ></Avatar>) : (<Avatar style={(this.props.compact) ? { display: "none" } : { display: "block" }} src="../default_ava.png" ></Avatar>)}
-				{(this.props.compact) ? (<span style={{ color: "#fff" }}>{this.props.dataProfile.fullName}</span>) : (<span></span>)}
+				{(this.props.compact) ? (<span style={{ color: "#fff" }}>{this.props.dataProfile.fullName ? this.getUserName(this.props.dataProfile.fullName):""}</span>) : (<span></span>)}
 			</div>
 		)
 	}
