@@ -131,8 +131,8 @@ function intervalTrigger(arr, key){
 		if (count >= arr.length) count = 0;
 		var rand = arr[count];
 		var color=arrColor[count];
-		document.getElementById(key).src = rand;
-		document.getElementById("img"+key).style.backgroundColor=color
+		document.getElementById("home"+key).src = rand;
+		document.getElementById("imgHome"+key).style.backgroundColor=color
 		count=count+1;
 	}, 1000); 
 }
@@ -243,7 +243,10 @@ class TitleContainer extends React.Component {
 		
 	}
 	setId(key){
-		return "img"+key;
+		return "imgHome"+key;
+	}
+	setIdImg(key){
+		return "home"+key;
 	}
 		
 
@@ -260,7 +263,7 @@ class TitleContainer extends React.Component {
 										<div id={this.setId(key)} className="avatar">
 											{/* {(obj.actionName === "1") ? ( */}
 												<img className="img_avatar" src={this.getSrcImage(obj,key)}
-													id={key}
+													id={this.setIdImg(key)}
 													onClick={() => this.showDetail(obj.description,"Chi tiết nhiệm vụ")} />
 													{/* ) : (<div></div>)} */}
 											{/* {(obj.actionName === "2") ? (
@@ -439,7 +442,14 @@ class HomeComponent extends React.Component {
 								</Grid>
 								<Grid item xs={12} style={{border:"1px solid #f23b32", borderRadius:"5px", cursor: "pointer"}}>
 									<Link to={"./typechangecoin"} >
-										<p style={{textAlign:"center"}}><span style={{color:"#f23b32"}}>[ĐẶC BIỆT]</span><span  style={{color:"#ffffff"}}> Đổi XO TOPGAME  </span><img src="../arrow_red.png" style={{ width: "24px", height:"20px", paddingTop:"7px" }}/><span style={{color:"#ffffff"}}> Xu</span></p>
+										<div style={{height:"40px"}}>
+											<div style={{width:"40%", float:"left"}}>
+												<img className="imgLogoGame" src="../lg-topgame.png"/>
+											</div>
+											<div style={{width:"60%", float:"left", lineHeight:"40px"}}>
+												<p style={{display:"inline"}}><span style={{color:"#f23b32"}}>[ĐẶC BIỆT]</span><span  style={{color:"#ffffff"}}> Đổi XO / Xu</span></p>
+											</div>
+										</div>
 									</Link>
 								</Grid>
 								<Grid container className={classes.homeBlock} spacing={8}>

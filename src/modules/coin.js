@@ -7,7 +7,7 @@ export const CHANGE_COIN_RESPONSE = 'coin/CHANGE_COIN_RESPONSE'
 
 const initialState = {
 	data: [],
-	waiting: false
+	waiting: false,
 }
 
 export default (state = initialState, action) => {
@@ -21,6 +21,13 @@ export default (state = initialState, action) => {
 			return {
 				...state,
 				data: action.data,
+				totalRecords: action.totalRecords,
+				waiting: false
+			}
+		case CHANGE_COIN_RESPONSE:
+			return {
+				...state,
+				status:action.status,
 				totalRecords: action.totalRecords,
 				waiting: false
 			}

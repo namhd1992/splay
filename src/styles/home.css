@@ -24,6 +24,9 @@
 	
 }
 
+.imgLogoGame{
+	width: 50%;
+}
 
 .mission_home {
 	content: '';
@@ -264,6 +267,9 @@ button.buttonFull:hover{
 }
 
 @media only screen and (max-width:600px){
+	.imgLogoGame{
+		width: 100%;
+	}
 	.mission_home{
 		padding: 2px 0px 2px 1px;
 	}
@@ -285,6 +291,9 @@ button.buttonFull:hover{
 }
 
 @media only screen and (max-width:375px){
+	.imgLogoGame{
+		width: 100%;
+	}
 	.mission_home{
 		padding: 2px 0px 2px 1px;
 	}
@@ -310,6 +319,9 @@ button.buttonFull:hover{
 }
 
 @media only screen and (max-width:320px){
+	.imgLogoGame{
+		width: 100%;
+	}
 	.mission_home{
 		padding: 2px 0px 2px 1px;
 	}

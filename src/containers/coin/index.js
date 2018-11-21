@@ -14,6 +14,9 @@ class Coin extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			message: "",
+			openSnack: false,
+			snackVariant: "info",
 			dialogLoginOpen: false,
 		};
 	}
@@ -38,13 +41,19 @@ class Coin extends React.Component {
 			_this.setState({ dialogLoginOpen: true });
 		}
 	}
-	changeCoin(packageXO, packageXu, coin){
+	changeCoin=(packageXO, packageXu, coin)=>{
+		var _this = this;
 		var user = JSON.parse(localStorage.getItem("user"));
 		if (user !== null) {
-			this.props.changeCoin(user.access_token, packageXO, packageXu, coin)
+			this.props.changeCoin(user.access_token, packageXO, packageXu, coin).then(function () {
+				_this.setState({ openSnack: true, message: "Đổi thành công", snackVariant: "success" });
+			});
 		} else {
 			this.setState({ dialogLoginOpen: true });
 		}
+	}
+	handleCloseSnack = () => {
+		this.setState({ openSnack: false });
 	}
 
 	render() {
@@ -57,6 +66,11 @@ class Coin extends React.Component {
 					waiting={this.props.waiting}
 					dialogLoginOpen={this.state.dialogLoginOpen}
 					changeCoin={this.changeCoin}
+					handleCloseSnack={this.handleCloseSnack}
+
+					message={this.state.message}
+					openSnack={this.state.openSnack}
+					snackVariant={this.state.snackVariant}
 				/>
 			</div>
 		)
@@ -68,6 +82,7 @@ const mapStateToProps = state => ({
 	data: state.coin.data,
 	dataProfile: state.profile.data,
 	waiting: state.coin.waiting,
+	status: state.coin.status,
 	server:state.server.serverError,
 })
 
