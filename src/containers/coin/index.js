@@ -4,6 +4,9 @@ import { connect } from 'react-redux'
 import {
 	getData, changeCoin
 } from '../../modules/coin'
+import {
+	closePopup
+} from '../../modules/server'
 
 import {
 	getData as getDataProfile
@@ -22,6 +25,7 @@ class Coin extends React.Component {
 			openSnack: false,
 			snackVariant: "info",
 			dialogLoginOpen: false,
+			messageServer:"Đã có lỗi từ hệ thống.",
 		};
 	}
 	componentWillMount(){
@@ -69,6 +73,9 @@ class Coin extends React.Component {
 	handleCloseSnack = () => {
 		this.setState({ openSnack: false });
 	}
+	handleCloseErrorServer = () => {
+		this.props.closePopup();
+	}
 
 	render() {
 		return (
@@ -77,14 +84,18 @@ class Coin extends React.Component {
 					data={this.props.data}
 					dataProfile={this.props.dataProfile}
 					server={this.props.server}
+					serverChange={this.props.serverChange}
 					waiting={this.props.waiting}
 					dialogLoginOpen={this.state.dialogLoginOpen}
 					changeCoin={this.changeCoin}
 					handleCloseSnack={this.handleCloseSnack}
-
+				
 					message={this.state.message}
 					openSnack={this.state.openSnack}
 					snackVariant={this.state.snackVariant}
+					openSnackErrorServer={this.props.serverChange}
+					handleCloseErrorServer={this.handleCloseErrorServer}
+					messageServer={this.state.messageServer}
 				/>
 			</div>
 		)
@@ -98,12 +109,14 @@ const mapStateToProps = state => ({
 	waiting: state.coin.waiting,
 	status: state.coin.status,
 	server:state.server.serverError,
+	serverChange:state.server.serverErrorOther,
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
 	getData,
 	changeCoin,
-	getDataProfile
+	getDataProfile,
+	closePopup
 }, dispatch)
 
 

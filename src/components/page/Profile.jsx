@@ -84,7 +84,7 @@ class ProfileComponent extends React.Component {
 		return value.toLocaleString();
 	}
 	email=(email)=>{
-		if(email !== undefined && email !== ""){
+		if(email !== undefined && email !== "" && email !== null){
 			var text=email.substr(1, email.indexOf("@")-2)
 			var a="";
 			for(var i=0; i<text.length; i++){
@@ -94,7 +94,8 @@ class ProfileComponent extends React.Component {
 		}
 	}
 	phone=(phone)=>{
-		if(phone !== undefined && phone !== ""){
+		if(phone !== undefined && phone !== "" && phone !== null){
+			console.log("AAAAAAAAAA", phone)
 			var text=phone.substr(phone.length-3, phone.length-1)
 			var a="";
 			for(var i=0; i<text.length; i++){
@@ -154,10 +155,10 @@ class ProfileComponent extends React.Component {
 									<ListItemText primary={(<span style={{ fontWeight: "500" }}>Họ tên <span style={{ color: secondary.main }}>*********</span></span>)} />
 								</ListItem>
 								<ListItem>
-									<ListItemText primary={(<span style={{ fontWeight: "500" }}>Email <span style={{ color: secondary.main }}>{this.email(data.email)}</span></span>)} />
+									<ListItemText primary={(<span style={{ fontWeight: "500" }}>Email <span style={{ color: secondary.main }}>{data.email ? this.email(data.email) : ""}</span></span>)} />
 								</ListItem>
 								<ListItem>
-									<ListItemText primary={(<span style={{ fontWeight: "500" }}>Số điện thoại <span style={{ color: secondary.main }}>{this.phone(data.phoneNumber)}</span></span>)} />
+									<ListItemText primary={(<span style={{ fontWeight: "500" }}>Số điện thoại <span style={{ color: secondary.main }}>{data.phoneNumber ? this.phone(data.phoneNumber): ""}</span></span>)} />
 								</ListItem>
 								<ListItem>
 									<ListItemText primary={(<span style={{ fontWeight: "500" }}>VIP <span style={{ color: secondary.main }}>{data.vipLevel}</span></span>)} />

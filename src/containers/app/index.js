@@ -1,7 +1,5 @@
 import React from 'react';
 import { Route } from 'react-router-dom'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
 import Notification from '../../components/Notification'
 import Home from '../home'
 import About from '../about'
@@ -38,9 +36,6 @@ import Avatar from 'material-ui/Avatar';
 import Phone_card from '../phone_card';
 import Coin from '../coin';
 import TypeChangeCoin from '../type_change_coin';
-import {
-	closePopup
-} from '../../modules/server'
 
 
 class App extends React.Component {
@@ -56,7 +51,8 @@ class App extends React.Component {
 			isMobile: false,
 			scrollPos: 0,
 			message:"Đã có lỗi từ hệ thống.",
-			snackVariant: "info"
+			snackVariant: "info",
+			server:null
 		};
 	}
 
@@ -109,9 +105,6 @@ class App extends React.Component {
 		// 	this.setState({ scrolling: false });
 		// }
 	}
-	handleCloseSnack = () => {
-		this.props.closePopup();
-	}
 	render() {
 		return (
 			<div style={{ backgroundColor: "#212933" }}>
@@ -155,21 +148,10 @@ class App extends React.Component {
 							style={{ color: "#fff" }}></KeyboardArrowUp></Avatar>
 					</ScrollToTop>
 				</div>
-				<Notification message={this.state.message} variant={this.state.snackVariant} openSnack={this.props.server} closeSnackHandle={this.handleCloseSnack} ></Notification>
 			</div>
 		)
 	}
 }
-const mapStateToProps = state => ({
-	server:state.server.serverErrorOther
-})
-
-const mapDispatchToProps = dispatch => bindActionCreators({
-	closePopup,
-}, dispatch)
 
 
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(App);
+export default App;
