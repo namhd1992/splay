@@ -1,0 +1,55 @@
+.infoTitle{
+    width: 570px;
+    padding-bottom:50px;
+}
+.takeTurn{
+    width:50%;
+    color:#00b4bd;
+    float:left
+}
+.valueUser{
+    width:50%;
+    float:left;
+    padding-left:15px
+}
+.optionLeft{
+    width:48%;
+    float:left;
+}
+.optionRight{
+    width:48%;
+    float:right;
+}
+
+@media only screen and (max-width:600px){
+    .infoTitle{
+        width: auto;
+        text-align: center;
+        padding-bottom:0px;
+    }
+    .takeTurn{
+        width:100%;
+    }
+    .valueUser{
+        width:100%;
+        padding: 20px 0px;
+    }
+    .optionLeft{
+        width:100%;
+    }
+    .optionRight{
+        width:100%;
+    }
+}
+@media only screen and (max-width:414px){
+
+
+}
+
+@media only screen and (max-width:375px){
+
+}
+
+@media only screen and (max-width:320px){
+
+}

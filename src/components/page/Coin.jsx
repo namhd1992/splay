@@ -2,6 +2,14 @@ import React from 'react'
 import Grid from 'material-ui/Grid'
 import { connect } from 'react-redux'
 import Hidden from 'material-ui/Hidden'
+import Dialog, {
+	DialogActions,
+	DialogContent,
+	withMobileDialog
+} from 'material-ui/Dialog'
+
+import { withStyles } from 'material-ui/styles'
+import Button from 'material-ui/Button'
 import { CircularProgress } from 'material-ui/Progress'
 import RightArea from '../../components/RightArea'
 import HeadMenu from '../HeadMenu'
@@ -10,7 +18,11 @@ import Notification from '../../components/Notification'
 import '../../styles/imageServerError.css'
 import '../../styles/coin.css'
 
-
+const styles = {
+	paper: {
+		background: "#2b323d"
+    }
+}
 
 class CoinComponent extends React.Component {
     constructor(){
@@ -26,7 +38,9 @@ class CoinComponent extends React.Component {
 			price:null,
 			message: "",
 			openSnack: false,
-			snackVariant: "info",
+            snackVariant: "info",
+            dialogItemOpen: false,
+            contentDialog:""
         };
     }
     componentWillMount(){
@@ -46,7 +60,7 @@ class CoinComponent extends React.Component {
 
     selectOptionCoin= (event) =>{
 		var coin=localStorage.getItem("Coin");
-		var pakageCoin=event.target.value;
+        var pakageCoin=+event.target.value;
         var ratioExchange=this.props.data.ratioExchange;
         if(+coin===1){
             this.setState({pakage:pakageCoin, value:pakageCoin, price:(pakageCoin/ratioExchange), type:"scoinToGame",packageXO:pakageCoin, packageXU:(pakageCoin/ratioExchange)});
@@ -64,22 +78,37 @@ class CoinComponent extends React.Component {
         
     }
     changeCoin=()=>{
+        var coin=localStorage.getItem("Coin");
+        if(this.props.dataProfile.phoneNumber===""){
+            this.setState({ openSnack: true, message: "Bạn cần xác thực số điện thoại", snackVariant: "info" });
+            return;
+        }
+        if(+coin===1 && this.props.dataProfile.userBalance < this.state.price){
+            this.setState({dialogItemOpen: true, contentDialog:"Không đủ Xu, vui lòng chọn lại hoặc nạp thêm."});
+            return;
+        }else if(+coin===2 && this.props.dataProfile.userBalance < this.state.price){
+            this.setState({dialogItemOpen: true, contentDialog:"Không đủ XO, vui lòng chọn lại."});
+            return;
+        }
 		if(this.state.price!==null){
 			this.props.changeCoin(this.state.packageXO, this.state.packageXU, this.state.type);
 		}else{
-			this.setState({ openSnack: true, message: "Bạn chưa chọn gói", snackVariant: "success" });
-		}
-        
+			this.setState({ openSnack: true, message: "Bạn chưa chọn gói", snackVariant: "info" });
+        }
 	}
 	handleCloseSnack=()=>{
 		this.props.handleCloseSnack();
 	}
 	closeSnack=()=>{
 		this.setState({ openSnack: false });
-	}
+    }
+    handleCloseDialogItem = () => {
+		this.setState({ dialogItemOpen: false });
+	};
 
     render() {
         const {data, waiting,server,dialogLoginOpen, dataProfile,message, snackVariant, openSnack}=this.props;
+        const { classes } = this.props;
         var pakageCoin;
         if(data!==null && data.packageExchangeXUs !== undefined && data.packageExchangeXUs!==null){
             if(this.state.from==="Xu"){
@@ -118,8 +147,8 @@ class CoinComponent extends React.Component {
 											</div>
 										</div>):(<div></div>)}
                                 </Grid>
-                                <Grid item xs={12}>
-									<div style={{height:"40px"}}>
+                                <Grid item xs={12} style={{marginBottom:"40px"}}>
+									<div className="pakageCoin">
 										<div className="divOptionCoin">
 											<select className="selectOptionCoin" onChange={(event)=>this.selectOptionCoin(event)}>
 												<option value="" selected disabled hidden>{this.state.value}</option>
@@ -143,11 +172,14 @@ class CoinComponent extends React.Component {
                                     
                                 </Grid> */}
                                 <Grid item xs={12}>
-                                    {(dataProfile.phoneNumber!=="" || dataProfile.phoneNumber!==undefined || dataProfile.phoneNumber!==null)?(<div></div>):(<div><div>
-                                        <button className="verifyPhone" onClick={this.verifyPhone()}>Chưa xác thực số điện thoại</button>
-                                        <button className="verifyNow" onClick={this.verifyNow()}>Xác thực ngay</button>
-                                    </div>
-                                    <p><span style={{color:"red"}}>(*)</span> <span style={{color:"#fff"}}>Bạn cần xác thực để chuyển ra Xu</span></p></div>)}
+                                    {(dataProfile.phoneNumber!=="")?(<div></div>):(
+                                        <div>	
+                                            <div className="btnVerify">
+                                                <div className="verifyPhoneCoin" onClick={this.verifyPhone()}>Chưa xác thực số điện thoại</div>
+                                                <div className="verifyNow" onClick={this.verifyNow()}>Xác thực ngay</div>
+                                            </div>
+                                        <div className="notePhone"><span style={{color:"red"}}>(*)</span> <span style={{color:"#fff"}}>Bạn cần xác thực để chuyển ra Xu</span></div></div>
+								    )}
                                     
                                 </Grid>
                                 <Grid item xs={12} style={{marginTop:"20px"}}>
@@ -168,6 +200,27 @@ class CoinComponent extends React.Component {
                             </Grid>
                         </Hidden>
                     </Grid>
+                    <Dialog
+                        open={this.state.dialogItemOpen}
+                        onClose={this.handleCloseDialogItem}
+                        aria-labelledby="responsive-dialog-title"
+                        classes={{ paper: classes.paper }}
+                    >
+                        <DialogContent>
+                          
+                        </DialogContent>
+                        <DialogActions>
+                            <div>
+                                <Button onClick={this.handleCloseDialogItem} style={{ color: "#fe8731" }}>
+                                    Đóng
+                                </Button>
+                                {(this.state.from === "Xu") ? (<Button style={{ color: "#fff", background:"#00ccd4",borderRadius:"5px"}}>
+								    Nap xu
+							    </Button>):(<div></div>)}
+                                
+                            </div>
+                        </DialogActions>
+                    </Dialog>
 					<Notification message={message} variant={snackVariant} openSnack={openSnack} closeSnackHandle={this.handleCloseSnack} ></Notification>
 					<Notification message={this.state.message} variant={this.state.snackVariant} openSnack={this.state.openSnack} closeSnackHandle={this.closeSnack} ></Notification>
                     <LoginRequired open={dialogLoginOpen}></LoginRequired>
@@ -176,4 +229,4 @@ class CoinComponent extends React.Component {
     }
 }
 
-export default connect()(CoinComponent)
+export default connect()(withMobileDialog()(withStyles(styles, { withTheme: true })(CoinComponent)))

@@ -1,5 +1,8 @@
 import React from 'react';
 import { Route } from 'react-router-dom'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import Notification from '../../components/Notification'
 import Home from '../home'
 import About from '../about'
 import Login from '../login'
@@ -35,6 +38,10 @@ import Avatar from 'material-ui/Avatar';
 import Phone_card from '../phone_card';
 import Coin from '../coin';
 import TypeChangeCoin from '../type_change_coin';
+import {
+	closePopup
+} from '../../modules/server'
+
 
 class App extends React.Component {
 
@@ -46,7 +53,10 @@ class App extends React.Component {
 			scrolling: false,
 			fullscreen: false,
 			title: "",
-			isMobile: false
+			isMobile: false,
+			scrollPos: 0,
+			message:"Đã có lỗi từ hệ thống.",
+			snackVariant: "info"
 		};
 	}
 
@@ -71,6 +81,7 @@ class App extends React.Component {
 	}
 
 	handleScroll = (event) => {
+
 		let supportPageOffset = window.pageXOffset !== undefined;
 		let isCSS1Compat = ((document.compatMode || '') === 'CSS1Compat');
 		let scroll = {
@@ -82,13 +93,25 @@ class App extends React.Component {
 		} else {
 			this.setState({ compact: false });
 		}
-		if (scroll.y > 0) {
-			this.setState({ scrolling: true });
-		} else {
-			this.setState({ scrolling: false });
-		}
-	}
 
+		if (document.body.getBoundingClientRect().top > this.state.scrollPos){
+			// console.log("UP")
+			this.setState({ scrolling: false });
+		}else{
+			// console.log('DOWN');
+			this.setState({ scrolling: true });
+		}
+			
+		this.setState({scrollPos: document.body.getBoundingClientRect().top});
+		// if (scroll.y > 0) {
+		// 	this.setState({ scrolling: true });
+		// } else {
+		// 	this.setState({ scrolling: false });
+		// }
+	}
+	handleCloseSnack = () => {
+		this.props.closePopup();
+	}
 	render() {
 		return (
 			<div style={{ backgroundColor: "#212933" }}>
@@ -132,9 +155,21 @@ class App extends React.Component {
 							style={{ color: "#fff" }}></KeyboardArrowUp></Avatar>
 					</ScrollToTop>
 				</div>
+				<Notification message={this.state.message} variant={this.state.snackVariant} openSnack={this.props.server} closeSnackHandle={this.handleCloseSnack} ></Notification>
 			</div>
 		)
 	}
 }
+const mapStateToProps = state => ({
+	server:state.server.serverErrorOther
+})
 
-export default App;
+const mapDispatchToProps = dispatch => bindActionCreators({
+	closePopup,
+}, dispatch)
+
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(App);

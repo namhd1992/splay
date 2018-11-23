@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Ultilities from '../Ultilities/global'
-import {SERVER_ERROR} from './server'
+import {SERVER_ERROR, SERVER_ERROR_OTHER} from './server'
 export const COIN_REQUEST = 'coin/COIN_REQUEST'
 export const COIN_RESPONSE = 'coin/COIN_RESPONSE'
 export const CHANGE_COIN_RESPONSE = 'coin/CHANGE_COIN_RESPONSE'
@@ -29,6 +29,10 @@ export default (state = initialState, action) => {
 				...state,
 				status:action.data.status,
 				totalRecords: action.data.totalRecords,
+			}
+		case SERVER_ERROR_OTHER:
+			return {
+				...state,
 				waiting: false
 			}
 		default:
@@ -85,7 +89,7 @@ export const changeCoin = (token, packageXO, packageXu, coin) => {
 			})
 		}).catch(function (error) {
 			dispatch({
-				type: SERVER_ERROR
+				type: SERVER_ERROR_OTHER
 			})
 		})
 	}

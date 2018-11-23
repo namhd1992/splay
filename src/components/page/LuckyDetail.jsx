@@ -19,6 +19,7 @@ import List, { ListItem, ListItemText } from 'material-ui/List'
 import Notification from '../../components/Notification'
 import LoginRequired from '../../components/LoginRequired'
 import '../../styles/imageServerError.css'
+import '../../styles/luckyDetail.css'
 
 const styles = {
 	paper: {
@@ -142,7 +143,6 @@ class LuckyDetailComponent extends React.Component {
 
 					
 		const { classes } = this.props;
-		const { fullScreen } = this.props;
 		const { theme } = this.props;
 		const { secondary } = theme.palette;
 		var splayPoint=dataProfile.splayPoint;
@@ -255,18 +255,18 @@ class LuckyDetailComponent extends React.Component {
 					aria-labelledby="responsive-dialog-title"
 					classes={{ paper: classes.paper }}
 				>
-					<DialogContent style={{minWidth:"600px", background:"#232936"}}>
+					<DialogContent style={{background:"#232936"}}>
 						<div style={{width:"100%"}}>
-							<div style={{height:"70px"}}>
-								<div style={{width:"50%", color:"#00b4bd", float:"left"}}>
+							<div className="infoTitle">
+								<div className="takeTurn">
 									<span>Mua lượt quay</span>
 								</div>
-								<div style={{width:"50%", float:"left", paddingLeft:"15px"}}>
+								<div className="valueUser">
 									<span className="global-thit" style={{color:"#fff"}}>Còn &nbsp;&nbsp;<img alt="just alt"src="../thit.png" /> <span style={{ color: "#fff" }} >{this.convettoLocaleString(dataDetail.userSpinInfo.rewardPoint) + " Thịt"}</span >&nbsp;&nbsp; {dataDetail.userSpinInfo.turnsBuy + dataDetail.userSpinInfo.turnsFree} lượt quay</span>
 								</div>
 							</div>
 							<div>
-								<div style={{width:"48%", float:"left"}}>
+								<div className="optionLeft">
 									<div style={{background:"#2b303b", borderRadius:"10px", height:"60px", marginBottom:"15px", cursor:"pointer", border:(this.state.intValue === 1)?this.state.whenSelect:""}} onClick={()=>this.selectPackage(1)}>
 										<div style={{color:"#fff", padding:"5px 10px"}}>1 lượt</div>
 										<div style={{color:"#fff", padding:"5px 10px", textAlign:"right"}}><span className="global-thit"><img alt="just alt" src="../thit.png" /> <span style={{ color: "#fff" }} > 2,000 Thịt</span></span></div>
@@ -280,7 +280,7 @@ class LuckyDetailComponent extends React.Component {
 										<div style={{color:"#fff", padding:"5px 10px", textAlign:"right"}}><span className="global-thit"><img alt="just alt" src="../thit.png" /> <span style={{ color: "#fff" }} > 20,000 Thịt</span></span></div>
 									</div>
 								</div>
-								<div style={{width:"48%", float:"right"}}>
+								<div className="optionRight">
 									<div style={{background:"#2b303b", borderRadius:"10px", height:"60px", marginBottom:"15px", cursor:"pointer",  border:(this.state.intValue === 20)?this.state.whenSelect:""}} onClick={()=>this.selectPackage(20)}>
 										<div style={{color:"#fff", padding:"5px 10px"}}>20 lượt</div>
 										<div style={{color:"#fff", padding:"5px 10px", textAlign:"right"}}><span className="global-thit"><img alt="just alt" src="../thit.png" /> <span style={{ color: "#fff" }} > 40,000 Thịt</span></span></div>
@@ -296,18 +296,6 @@ class LuckyDetailComponent extends React.Component {
 								</div>
 							</div>
 						</div>
-						{/* <List className="lucky-detail-root">
-							{dataDetail.settings.map((obj, key) => (
-								<ListItem key={key}>
-									<ListItemText primary={obj.intValue + " Lượt"} secondary={(
-										<span className="global-thit"><span style={{ color: "#fe8731" }} >{obj.intValue * dataDetail.luckyspin.pricePerSpin + " thịt"}</span> <img alt="just alt"
-											src="../thit.png" /></span>
-									<div className="lucky-button">
-										<Button className={classes.buttonGreen} onClick={() => this.buyTurn(obj.intValue)}>Mua</Button>
-									</div>
-								</ListItem>
-							))}
-						</List> */}
 						<div style={{float:"right", marginTop:"20px"}}>
 							<Button onClick={this.handleCloseDialog} style={{ color: "#fe8731", marginRight:"20px" }}>
 								Đóng
@@ -317,10 +305,6 @@ class LuckyDetailComponent extends React.Component {
 							</Button>
 						</div>
 					</DialogContent>
-					{/* <DialogActions style={{background:"#232936"}}> */}
-						{/* <div><span className="global-thit"><span style={{ color: "#fe8731" }} >{splayPoint + " thịt"}</span> <img alt="just alt" src="../thit.png" /></span></div> */}
-						
-					{/* </DialogActions> */}
 				</Dialog>
 				<LoginRequired open={dialogLoginOpen}></LoginRequired>
 				<Dialog

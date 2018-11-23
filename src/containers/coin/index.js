@@ -5,6 +5,10 @@ import {
 	getData, changeCoin
 } from '../../modules/coin'
 
+import {
+	getData as getDataProfile
+} from '../../modules/profile'
+
 import { withRouter } from 'react-router-dom'
 import CoinComponent from '../../components/page/Coin'
 
@@ -41,14 +45,16 @@ class Coin extends React.Component {
 			_this.setState({ dialogLoginOpen: true });
 		}
 	}
-	changeCoin=(packageXO, packageXu, coin)=>{
+	changeCoin=(packageXO, packageXu, type)=>{
 		var _this = this;
 		var user = JSON.parse(localStorage.getItem("user"));
+		var coin=localStorage.getItem("Coin");
 		if (user !== null) {
-			this.props.changeCoin(user.access_token, packageXO, packageXu, coin).then(function () {
+			this.props.changeCoin(user.access_token, packageXO, packageXu, type).then(function () {
 				if(_this.props.status==="01"){
 					_this.setState({ openSnack: true, message: "Đổi thành công", snackVariant: "success" });
-					window.location.reload();
+					_this.props.getData(user.access_token, coin)
+					_this.props.getDataProfile(user.access_token, user.scoinAccessToken)
 				}else if(_this.props.status==="08"){
 					_this.setState({ openSnack: true, message: "Quá hạn quy đổi", snackVariant: "info" });
 				}else if(_this.props.status==="00"){
@@ -96,7 +102,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
 	getData,
-	changeCoin
+	changeCoin,
+	getDataProfile
 }, dispatch)
 
 

@@ -86,17 +86,22 @@ select {
     color: #12cdd4;
     background: #212933;
 }
-.verifyPhone{
+.pakageCoin{
+    height: 40px;
+}
+.verifyPhoneCoin{
     width:48%;
     height:40px;
     color: #fff;
     border: 1px solid #fff;
     border-radius: 5px;
-    background: #1f3439;
+    background: #212933;
+    text-align: center;
+    line-height: 40px;
+    float: left;
+    
 }
-.verifyPhone:hover{
-    background: #477885;
-}
+
 .verifyNow{
     width:48%;
     height:40px;
@@ -105,9 +110,12 @@ select {
     border-radius: 5px;
     border: 0px;
     background: #f24726;
+    text-align: center;
+    line-height: 40px;
 }
 .verifyNow:hover{
     background: #f57156;
+    cursor: pointer;
 }
 .btnChange{
     width:100%;
@@ -129,7 +137,7 @@ select {
     width:95%
 }
 .divOptionCoin{
-    width:50%;
+    width:48%;
     float:left
 }
 .divPrice{
@@ -140,23 +148,11 @@ select {
     padding-right:15px;
     line-height:40px;
 }
-/* .xu.icon{
-  position: absolute;
-  margin-top: -2px;
-  width: 25px;
-  height: 25px;
-  background: #c8c8c8;
-  border-radius: 50%;
+.notePhone{
+    display: inline-block;
+    margin-top: 10px;
 }
-.xu.icon:before {
-    content: '';
-    position: absolute;
-    left: 8px;
-    top: 8px;
-    width: 9px;
-    height: 9px;
-    background:#1f3439;
-} */
+
 
 @media only screen and (max-width:600px){
 	.infoUserCoin{
@@ -173,57 +169,32 @@ select {
     .btnChange{
         margin-top: 20px;
     }
+    .verifyPhoneCoin{
+        width:100% !important;
+        margin-bottom: 10px;
+    }
 
+    .verifyNow{
+        width:100% !important;
+    }
+    .pakageCoin{
+        height: 60px;
+    }
 }
 @media only screen and (max-width:414px){
-	.infoUserCoin{
-        width:100%;
-    }
-    .divOptionCoin{
-        width:100%;
-    }
-    .divPrice{
-        width:100%;
-        float:none;
-        text-align:left;
-    }
-    .btnChange{
-        margin-top: 20px;
-    }
+
 
 }
 
 @media only screen and (max-width:375px){
-	.infoUserCoin{
-        width:100%;
-    }
-    .divOptionCoin{
-        width:100%;
-    }
-    .divPrice{
-        width:100%;
-        float:none;
-        text-align:left;
-    }
-    .btnChange{
-        margin-top: 20px;
-    }
+
 }
 
 @media only screen and (max-width:320px){
-	.infoUserCoin{
-        width:100%;
-        font-size: 15px;
+    .titleUser{
+        width:40% !important;
     }
-    .divOptionCoin{
-        width:100%;
-    }
-    .divPrice{
-        width:100%;
-        float:none;
-        text-align:left;
-    }
-    .btnChange{
-        margin-top: 20px;
+    .contentUser{
+        width:60% !important;
     }
 }

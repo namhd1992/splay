@@ -17,6 +17,7 @@ import CloseIcon from 'material-ui-icons/KeyboardArrowRight'
 import HelpIcon from 'material-ui-icons/Help'
 import Account from './Account'
 import Ultilities from '../Ultilities/global'
+import Hidden from 'material-ui/Hidden'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
@@ -324,19 +325,22 @@ class MenuAppBar extends React.Component {
 			<div className={classes.root}>
 				<AppBar className={(this.props.scrolling) ? classes.appbarScrolling : classes.appbar} >
 					<Toolbar className={classes.toolbar} style={{ maxWidth: "1280px", padding: "0px 8px" }}>
-						{(this.props.pathname !== "/") ? (<div style={{ float: "left", padding: (this.props.compact && this.props.scrolling) ? "4px 0px 0px 0px" : "14px 0px 14px 0px" }}>
-							<Avatar onClick={() => {
-								this.props.history.goBack()
-							}} style={{ backgroundColor: "transparent", width: "24px", height: "24px" }}>
-								<KeyboardArrowLeft style={{ color: "#fff" }}></KeyboardArrowLeft>
-							</Avatar>
-						</div>
-						) : (<div></div>)}
-						<div style={{ float: "left", marginTop: (this.props.compact && this.props.scrolling) ? "4px" : "4px" }}>
-							<Link className={classes.link} to='/'>
-								<img alt="logo splay" className={(this.props.compact && this.props.scrolling) ? classes.logoCompact : classes.logo} src="../logo_demo.png" />
-							</Link>
-						</div>
+					<Hidden smDown>
+							{(this.props.pathname !== "/") ? (<div style={{ float: "left", padding: (this.props.compact && this.props.scrolling) ? "4px 0px 0px 0px" : "14px 0px 14px 0px" }}>
+								<Avatar onClick={() => {
+									this.props.history.goBack()
+								}} style={{ backgroundColor: "transparent", width: "24px", height: "24px" }}>
+									<KeyboardArrowLeft style={{ color: "#fff" }}></KeyboardArrowLeft>
+								</Avatar>
+							</div>
+							) : (<div></div>)}
+							<div style={{ float: "left", marginTop: (this.props.compact && this.props.scrolling) ? "4px" : "4px" }}>
+								<Link className={classes.link} to='/'>
+									<img alt="logo splay" className={(this.props.compact && this.props.scrolling) ? classes.logoCompact : classes.logo} src="../logo_demo.png" />
+								</Link>
+							</div>
+							</Hidden>
+						
 						{(!auth) ? (
 							<div style={{ display: "flex", float: "right", marginTop: (this.props.compact && this.props.scrolling) ? "0px" : "10px" }}>
 								<Button style={{ color: "#f8b03c", padding: "5px", fontWeight: "bold", minHeight: "auto", fontSize: "0.8em" }}>
@@ -348,7 +352,7 @@ class MenuAppBar extends React.Component {
                   </Button>
 							</div>
 						) : (
-								<div style={{ marginTop: (this.props.compact && this.props.scrolling) ? "0px" : "12px", display: "flex", float: "right" }} >
+								<div style={{ display: (this.props.compact && this.props.scrolling) ? "none" : "flex", margin:"12px 3px 0px 0px", float:"right"}} >
 									<a href="https://scoin.vn/nap-game" target="_blank" style={{ textDecoration: "none", color: "#f8b03c", marginRight: "20px", padding: "5px" }}>
 										<div className="valueCoin">
 											<img className="imgScoin" src="/../scoin.png" />
