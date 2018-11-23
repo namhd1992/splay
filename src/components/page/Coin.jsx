@@ -79,10 +79,10 @@ class CoinComponent extends React.Component {
     }
     changeCoin=()=>{
         var coin=localStorage.getItem("Coin");
-        // if(this.props.dataProfile.phoneNumber===""){
-        //     this.setState({ openSnack: true, message: "Bạn cần xác thực số điện thoại", snackVariant: "info" });
-        //     return;
-        // }
+        if(this.props.dataProfile.phoneNumber===""){
+            this.setState({ openSnack: true, message: "Bạn cần xác thực số điện thoại", snackVariant: "info" });
+            return;
+        }
         if(+coin===1 && this.props.dataProfile.userBalance < this.state.price){
             this.setState({dialogItemOpen: true, contentDialog:"Không đủ Xu, vui lòng chọn lại hoặc nạp thêm."});
             return;
@@ -179,7 +179,9 @@ class CoinComponent extends React.Component {
                                         <div>	
                                             <div className="btnVerify">
                                                 <div className="verifyPhoneCoin" onClick={this.verifyPhone()}>Chưa xác thực số điện thoại</div>
-                                                <div className="verifyNow" onClick={this.verifyNow()}>Xác thực ngay</div>
+                                                <a href="http://sandbox.scoin.vn/thong-tin-ca-nhan/" target="_blank">
+                                                    <div className="verifyNow" onClick={this.verifyNow()}>Xác thực ngay</div>
+                                                </a>
                                             </div>
                                         <div className="notePhone"><span style={{color:"red"}}>(*)</span> <span style={{color:"#fff"}}>Bạn cần xác thực để chuyển ra Xu</span></div></div>
 								    )}
