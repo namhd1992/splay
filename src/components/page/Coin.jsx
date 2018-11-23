@@ -178,7 +178,7 @@ class CoinComponent extends React.Component {
                                     {(dataProfile.phoneNumber!=="" && dataProfile.phoneNumber!==null && dataProfile.phoneNumber!==undefined)?(<div></div>):(
                                         <div>	
                                             <div className="btnVerify">
-                                                <div className="verifyPhoneCoin" onClick={this.verifyPhone()}>Chưa xác thực số điện thoại</div>
+                                                <div className="verifyPhoneCoin">Chưa xác thực số điện thoại</div>
                                                 <a href="http://sandbox.scoin.vn/thong-tin-ca-nhan/" target="_blank">
                                                     <div className="verifyNow" onClick={this.verifyNow()}>Xác thực ngay</div>
                                                 </a>

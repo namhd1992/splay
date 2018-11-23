@@ -24,6 +24,7 @@ import Dialog, {
 } from 'material-ui/Dialog'
 
 import '../../styles/imageServerError.css'
+import '../../styles/game.css'
 
 class TagList extends React.Component {
 	constructor(props) {
@@ -225,11 +226,9 @@ class GameComponent extends React.Component {
 									<Grid key={key} item xs={12}>
 										<Link to={"/gamedetail/" + obj.id} style={{ textDecoration: "none" }}>
 											<ListItem style={{ padding: "10px" }}>
-												<div style={{
+												<div className="logoGame" style={{
 													backgroundImage: "url(" + obj.defaultImage + ")",
 													backgroundSize: "contain",
-													width: "64px",
-													height: "64px",
 													backgroundPosition: "center",
 													backgroundRepeat: "no-repeat",
 													position: "relative",
@@ -261,7 +260,7 @@ class GameComponent extends React.Component {
 														borderRadius: "20px",
 														background: "linear-gradient(90deg,#22cab5,#3fe28f)",
 														color: "#fff",
-														padding: "10px",
+														padding: "8px",
 														fontSize: "0.8em",
 														whiteSpace: "nowrap",
 														minWidth: "auto",

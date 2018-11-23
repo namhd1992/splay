@@ -1,4 +1,16 @@
+.logoGame{
+    width: 64px;
+    height: 64px
+}
 .girl_container{
     width: "100%";
     margin: "0"
+}
+
+
+@media only screen and (max-width:320px){
+    .logoGame{
+        width: 40px;
+        height: 40px
+    }
 }

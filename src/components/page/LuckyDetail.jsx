@@ -296,13 +296,13 @@ class LuckyDetailComponent extends React.Component {
 								</div>
 							</div>
 						</div>
-						<div style={{float:"right", marginTop:"20px"}}>
-							<Button onClick={this.handleCloseDialog} style={{ color: "#fe8731", marginRight:"20px" }}>
+						<div className="action">
+							<button className="closeBuy" onClick={this.handleCloseDialog}>
 								Đóng
-							</Button>
-							<Button onClick={() => this.buyTurn()} style={{ color: "#fff", background:"#00ccd4",borderRadius:"5px"}}>
+							</button>
+							<button className="buy" onClick={() => this.buyTurn()}>
 								Mua
-							</Button>
+							</button>
 						</div>
 					</DialogContent>
 				</Dialog>

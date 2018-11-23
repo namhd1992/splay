@@ -21,6 +21,28 @@
     float:right;
 }
 
+.closeBuy{
+    color: #808080;
+    border: 0px solid;
+    background: #232936;
+    padding: 10px 25px;
+    margin-right: 20px;
+}
+.action{
+    float:right;
+     margin-top:20px;
+}
+.buy{
+    color: #fff;
+    border: 0px solid;
+    background: #00ccd4;
+    padding: 10px 25px;
+    border-radius: 5px;
+}
+.buy:hover{
+    background: #1af7ff;
+}
+
 @media only screen and (max-width:600px){
     .infoTitle{
         width: auto;
@@ -39,6 +61,16 @@
     }
     .optionRight{
         width:100%;
+    }
+    .closeBuy{
+        margin-bottom: 15px;
+        width: 100%;
+    }
+    .buy{
+        width: 100%;
+    }
+    .action{
+       width: 100%;
     }
 }
 @media only screen and (max-width:414px){
