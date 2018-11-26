@@ -53,26 +53,26 @@ class Ultilities {
 	}
 
 	static base_url = () => {
-		var end = null;
-		var name = "env".replace(/[[\]]/g, "\\$&");
-		var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-			results = regex.exec(window.location.href);
-		if (!results) { end = null } else {
-			if (!results[2]) { end = '' } else {
-				end = decodeURIComponent(results[2].replace(/\+/g, " "));
-			}
-		}
-		if (end === "dev") {
-			window.localStorage.setItem("env", "dev");
-		} else if (end === "pro") {
-			window.localStorage.removeItem("env");
-		}
-		var env = window.localStorage.getItem("env");
-		if (env === "dev") {
-			return "https://dev.splay.vn/";
-		} else {
+		// var end = null;
+		// var name = "env".replace(/[[\]]/g, "\\$&");
+		// var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+		// 	results = regex.exec(window.location.href);
+		// if (!results) { end = null } else {
+		// 	if (!results[2]) { end = '' } else {
+		// 		end = decodeURIComponent(results[2].replace(/\+/g, " "));
+		// 	}
+		// }
+		// if (end === "dev") {
+		// 	window.localStorage.setItem("env", "dev");
+		// } else if (end === "pro") {
+		// 	window.localStorage.removeItem("env");
+		// }
+		// var env = window.localStorage.getItem("env");
+		// if (env === "dev") {
+		// 	return "https://dev.splay.vn/";
+		// } else {
 			return "https://server.splay.vn/";
-		}
+		// }
 	}
 
 	static splay_api_key = () => {
