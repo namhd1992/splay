@@ -195,7 +195,7 @@ class PhoneCardComponent extends React.Component {
 				<DialogActions>
 					<div>
 						<Link to="../">
-							<Button onClick={this.handleCloseDialogLogin} style={{ color: "#fe8731" }}>
+							<Button onClick={this.handleCloseDialogLogin} style={{ color: "#fe8731", borderRadius:"20px" }}>
 								Đóng
                 </Button>
 						</Link>

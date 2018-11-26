@@ -4,8 +4,6 @@ import Dialog, {
 	DialogContent,
 	DialogTitle,
 } from 'material-ui/Dialog'
-import { Link } from 'react-router-dom'
-import Button from 'material-ui/Button'
 
 class LoginWidget extends React.Component {
 

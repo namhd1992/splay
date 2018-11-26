@@ -68,9 +68,7 @@ class Auction extends React.Component {
 		this.props.changeTitle("SHOP");
 		var user = JSON.parse(localStorage.getItem("user"));
 		if (user !== null) {
-			this.props.getMissionByLuckyAndAution(user.access_token, user.scoinAccessToken).then(function(){
-				console.log("success");
-			});
+			this.props.getMissionByLuckyAndAution(user.access_token, user.scoinAccessToken);
 			this.props.getData(this.state.limit, this.state.offset).then(function () {
 				_this.setState({ loadedRecords: _this.state.limit + _this.state.offset });
 			});

@@ -41,9 +41,6 @@ class PopupMission extends React.Component {
 	}
 	render() {
 		const {dataMission,openPopupMission}=this.props;
-		if(dataMission!==undefined){
-			console.log("AAAAAAA",dataMission)
-		}
 		return (
 			<div>
 				<Dialog
@@ -98,7 +95,7 @@ class PopupMission extends React.Component {
 					</DialogContent>
 					<DialogActions>
 						<div>
-							<Button onClick={this.handleClosePopupMission} style={{ color: "#fe8731" }}>
+							<Button onClick={this.handleClosePopupMission} style={{ color: "#fe8731", borderRadius:"20px" }}>
 								Đóng
 							</Button>
 						</div>
@@ -144,7 +141,7 @@ class PopupMission extends React.Component {
 					</DialogContent>
 					<DialogActions>
 						<div>
-							<Button onClick={this.handleCloseBonus} style={{ color: "#fe8731" }}>
+							<Button onClick={this.handleCloseBonus} style={{ color: "#fe8731", borderRadius:"20px"}}>
 								Đóng
 							</Button>
 						</div>

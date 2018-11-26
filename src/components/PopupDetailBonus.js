@@ -217,7 +217,7 @@ class PopupDetailBonus extends React.Component {
 					</DialogContent>
 					<DialogActions>
 						<div>
-							<Button onClick={this.handleCloseBonus} style={{ color: "#fe8731" }}>
+							<Button onClick={this.handleCloseBonus} style={{ color: "#fe8731", borderRadius:"20px" }}>
 								Đóng
 							</Button>
 						</div>

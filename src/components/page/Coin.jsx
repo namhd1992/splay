@@ -216,7 +216,7 @@ class CoinComponent extends React.Component {
                         </DialogContent>
                         <DialogActions>
                             <div>
-                                <Button onClick={this.handleCloseDialogItem} style={{ color: "#fe8731" }}>
+                                <Button onClick={this.handleCloseDialogItem} style={{ color: "#fe8731", borderRadius:"20px" }}>
                                     Đóng
                                 </Button>
                                 {(this.state.from === "Xu") ? (<Button style={{ color: "#fff", background:"#00ccd4",borderRadius:"5px"}}>

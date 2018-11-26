@@ -27,6 +27,7 @@
     background: #232936;
     padding: 10px 25px;
     margin-right: 20px;
+    border-radius: 20px;
 }
 .action{
     float:right;
@@ -36,8 +37,8 @@
     color: #fff;
     border: 0px solid;
     background: #00ccd4;
-    padding: 10px 25px;
-    border-radius: 5px;
+    padding: 10px 30px;
+    border-radius: 20px;
 }
 .buy:hover{
     background: #1af7ff;

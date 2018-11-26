@@ -272,7 +272,7 @@ class Item_giftcode_detail extends React.Component {
 					</DialogContent>
 					<DialogActions>
 						<div className="popup-button">
-							<Button onClick={this.handleCloseDialog} style={{ color: "#fe8731" }}>
+							<Button onClick={this.handleCloseDialog} style={{ color: "#fe8731", borderRadius:"20px" }}>
 								Đóng
               </Button>
 							<Button variant="raised" style={{

@@ -247,7 +247,7 @@ class GameDetailComponent extends React.Component {
 													}}
 												>Chơi</Button></a>
 											<a className="game-button-wrap" href={gameData[0].fanpageFB} style={{ clear: "both" }}>
-												<Button style={{ color: "#fe8731" }}>Fanpage</Button>
+												<Button style={{ color: "#fe8731", borderRadius:"20px" }}>Fanpage</Button>
 											</a>
 										</div>
 									</Hidden>
@@ -270,7 +270,7 @@ class GameDetailComponent extends React.Component {
 													margin: "auto"
 												}}>Chơi</Button></a>
 										<a className="game-button-wrap" href={gameData[0].fanpageFB}>
-											<Button style={{ color: "#fe8731" }}>Fanpage</Button>
+											<Button style={{ color: "#fe8731", borderRadius:"20px" }}>Fanpage</Button>
 										</a>
 									</div>
 								</Hidden>
@@ -551,7 +551,7 @@ class GameDetailComponent extends React.Component {
 							</DialogContent>
 							<DialogActions>
 								<div>
-									<Button onClick={this.dialogRatingClose} style={{ color: "#fe8731", borderRadius: "30px" }}>
+									<Button onClick={this.dialogRatingClose} style={{ color: "#fe8731", borderRadius: "20px" }}>
 										Hủy bỏ
               </Button>
 									<Button onClick={this.ratingAction}

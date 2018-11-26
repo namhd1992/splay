@@ -256,7 +256,7 @@ class ProfileComponent extends React.Component {
 				</DialogContent>
 				<DialogActions>
 					<div>
-						<Button onClick={this.handleCloseDialogUpdate} color="primary">
+						<Button onClick={this.handleCloseDialogUpdate} style={{color:"primary", borderRadius:"20px"}}>
 							Đóng
 		  </Button>
 					</div>

@@ -252,9 +252,13 @@ class TitleContainer extends React.Component {
 
 	render() {
 		const {classes, dataMission} = this.props;
+		var data;
+		if(dataMission!==undefined){
+			data=dataMission.sort((a, b) => (a.fromDate > b.fromDate ? -1 : 1));
+		}
 		return (
 			<div className="mission_home_container">
-				{dataMission.slice(0, 8).map((obj, key) => (
+				{data.slice(0, 8).map((obj, key) => (
 					// <div className={(obj.highLights === true) ? "mission": ""}>
 						<div className="mission_home_content">
 							<Grid key={key}> 
@@ -786,7 +790,7 @@ class HomeComponent extends React.Component {
 										</DialogContent>
 										<DialogActions>
 											<div>
-												<Button onClick={this.handleCloseDialogDetail} style={{ color: "#fe8731" }}>
+												<Button onClick={this.handleCloseDialogDetail} style={{ color: "#fe8731", borderRadius:"20px" }}>
 													Đóng
 					  							</Button>
 											</div>
@@ -827,7 +831,7 @@ class HomeComponent extends React.Component {
 											</DialogContent>
 											<DialogActions>
 												<div>
-													<Button onClick={this.handleCloseDialogDetail} style={{ color: "#fe8731" }}>
+													<Button onClick={this.handleCloseDialogDetail} style={{ color: "#fe8731", borderRadius:"20px" }}>
 														Đóng
 													</Button>
 												</div>
