@@ -95,7 +95,6 @@ class ProfileComponent extends React.Component {
 	}
 	phone=(phone)=>{
 		if(phone !== undefined && phone !== "" && phone !== null){
-			console.log("AAAAAAAAAA", phone)
 			var text=phone.substr(phone.length-3, phone.length-1)
 			var a="";
 			for(var i=0; i<text.length; i++){
