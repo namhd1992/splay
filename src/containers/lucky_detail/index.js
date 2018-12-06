@@ -49,12 +49,15 @@ class Lucky_detail extends React.Component {
 		var user = JSON.parse(localStorage.getItem("user"));
 		if (user !== null) {
 			this.props.getDetailData(user.access_token, this.props.match.params.id).then(function () {
-				_this.props.changeTitle(_this.props.dataDetail.luckyspin.name);
-				var new_arr = [];
-				_this.props.dataDetail.itemOfSpin.forEach(function (item, key) {
-					new_arr.push({ id: item.item.id, status: true });
-				});
-				_this.setState({ cardArr: _this.props.dataDetail.itemOfSpin, flippedArr: new_arr });
+				if(_this.props.dataDetail!==null){
+					_this.props.changeTitle(_this.props.dataDetail.luckyspin.name);
+					var new_arr = [];
+					_this.props.dataDetail.itemOfSpin.forEach(function (item, key) {
+						new_arr.push({ id: item.item.id, status: true });
+					});
+					_this.setState({ cardArr: _this.props.dataDetail.itemOfSpin, flippedArr: new_arr });
+				}
+			
 			});
 			// this.props.getData(user.access_token, user.scoinAccessToken);
 		} else {

@@ -139,7 +139,7 @@ class LuckyDetailComponent extends React.Component {
 
 	render() {
 		const {dataDetail, dataProfile,message,cardWidth,cardHeight,flippedArr,collapse,cardArr,
-			dialogOpen,highLightCard,openSnack,snackVariant,dialogLoginOpen,dialogItemOpen,fontSize,dialogMoreTurnOpen,server }=this.props;
+			dialogOpen,highLightCard,openSnack,snackVariant,dialogLoginOpen,dialogItemOpen,fontSize,dialogMoreTurnOpen,server, waiting }=this.props;
 
 					
 		const { classes } = this.props;
@@ -338,9 +338,13 @@ class LuckyDetailComponent extends React.Component {
 				<Notification message={message} variant={snackVariant} openSnack={openSnack} closeSnackHandle={this.handleCloseSnack} ></Notification>
 			</div>
 		) : (<div className="global-loading">
-			{(server !== true) ? (												
+			{/* {(waiting === true) ? (												
 					<CircularProgress style={{ color: "#fff" }} size={50} />):(<img className="error" alt="just alt"
-					src="../baotri.png" />)}
+					src="../baotri.png" />)} */}
+
+				{(waiting === true) ? (												
+				<CircularProgress style={{ color: "#fff" }} size={50} />):((server===true)?(<img className="error" alt="just alt"
+				src="../baotri.png" />):(<div style={{color:"#fff", fontSize:"20px"}}>Không có dữ liệu!</div>))}
 			<LoginRequired open={dialogLoginOpen}></LoginRequired>
 		</div>)
 	}
