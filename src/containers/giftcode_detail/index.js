@@ -77,7 +77,7 @@ class Giftcode_detail extends React.Component {
 		var _this = this;
 		var canTake = true;
 		this.props.data[0].giftcodeEvent.giftcodeCondition.forEach(element => {
-			if (element.name === "Share link facebook" && !this.state.shared) {
+			if (element.name === "Share link facebook" && !element.shareFacebook && !this.state.shared) {
 				this.setState({
 					openSnack: true,
 					message: "Chia sẻ Link trên Facebook để nhận giftcode",
