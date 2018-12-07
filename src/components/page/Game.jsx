@@ -32,6 +32,7 @@ class TagList extends React.Component {
 	}
 	handleAddTag=(obj)=>{
 		this.props.handleAddTag(obj);
+		this.forceUpdate();
 	}
 	render() {
 		const { tagList, name, selectedTag, secondary } = this.props;

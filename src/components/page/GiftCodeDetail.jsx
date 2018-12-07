@@ -186,7 +186,7 @@ class GiftCodeDetailComponent extends React.Component {
 														{(isShared) ? (<Avatar
 															style={{ backgroundColor: green[700], width: "30px", height: "30px" }}><CheckIcon></CheckIcon></Avatar>) : (
 																<Avatar style={{ width: "30px", height: "30px" }}><CloseIcon></CloseIcon></Avatar>)}
-														<span style={{ color: "#1f95e7", marginLeft:"15px" }}>Chia sẻ Link trên Facebook</span>
+														<span style={{ color: "#fff", marginLeft:"15px" }}>Chia sẻ Link trên Facebook</span>
 														<ListItemText primary={(user !== null) ? (<FacebookShareButton
 															url={data[0].giftcodeEvent.urlShareFB}>
 															<Button style={{
@@ -224,7 +224,7 @@ class GiftCodeDetailComponent extends React.Component {
 														{(obj.loginGame) ? (<Avatar
 															style={{ backgroundColor: green[700], width: "30px", height: "30px" }}><CheckIcon></CheckIcon></Avatar>) : (
 																<Avatar style={{ width: "30px", height: "30px" }}><CloseIcon></CloseIcon></Avatar>)}
-														<span style={{ color: "#1f95e7", marginLeft:"15px" }}>Đăng nhập vào game</span>
+														<span style={{ color: "#fff", marginLeft:"15px" }}>Đăng nhập vào game</span>
 														<ListItemText primary={(
 															<Button style={{
 																borderRadius: "20px",
@@ -244,7 +244,33 @@ class GiftCodeDetailComponent extends React.Component {
 														<div className="giftcode-check"></div>
 													</ListItem>
 												}
+												if (obj.name === "Phone number validated") {
+													return <ListItem style={{ padding: "5px" }} key={key}>
+														{(obj.validatedPhone) ? (<Avatar
+															style={{ backgroundColor: green[700], width: "30px", height: "30px" }}><CheckIcon></CheckIcon></Avatar>) : (
+																<Avatar style={{ width: "30px", height: "30px" }}><CloseIcon></CloseIcon></Avatar>)}
+														<span style={{ color: "#fff", marginLeft:"15px" }}>Xác thực số điện thoại</span>
+														<ListItemText primary={(
+															<Button style={{
+																borderRadius: "20px",
+																background:"#232b36",
+																float:"right",
+																color: "#00948d",
+																border: "1px solid #00948d",
+																padding: "10px",
+																fontSize: "0.7em",
+																whiteSpace: "nowrap",
+																minWidth: "auto",
+																minHeight: "auto"
+															}}
+															href="https://scoin.vn/thong-tin-ca-nhan">THỰC HIỆN
+														</Button>
+														)}></ListItemText>
+														<div className="giftcode-check"></div>
+													</ListItem>
+												}
 											}
+											
 											return <div key={key}></div>
 										})}
 									</List>
