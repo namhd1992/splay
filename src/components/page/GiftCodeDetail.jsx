@@ -183,13 +183,13 @@ class GiftCodeDetailComponent extends React.Component {
 														isShared = true;
 													}
 													return <ListItem style={{ padding: "5px" }} key={key}>
-														{(isShared) ? (<Avatar
-															style={{ backgroundColor: green[700], width: "30px", height: "30px" }}><CheckIcon></CheckIcon></Avatar>) : (
-																<Avatar style={{ width: "30px", height: "30px" }}><CloseIcon></CloseIcon></Avatar>)}
-														<span style={{ color: "#fff", marginLeft:"15px" }}>Chia sẻ Link trên Facebook</span>
-														<ListItemText primary={(user !== null) ? (<FacebookShareButton
+														{(isShared) ? (<div><Avatar style={{ backgroundColor: green[700], width: "30px", height: "30px", float:"left" }}><CheckIcon></CheckIcon></Avatar><div style={{ color: "#fff", marginLeft:"15px", marginTop:"5px", float:"left" }}>Chia sẻ Link trên Facebook</div></div>) : (
+																<div style={{width:"100%"}}><Avatar style={{ width: "30px", height: "30px", float:"left" }}><CloseIcon></CloseIcon></Avatar>
+														<div style={{ color: "#fff", marginLeft:"15px",marginTop:"5px", float:"left" }}>Chia sẻ Link trên Facebook</div>
+														<div style={{float:"right"}}>
+														<FacebookShareButton
 															url={data[0].giftcodeEvent.urlShareFB}>
-															<Button style={{
+															<button style={{
 																	borderRadius: "20px",
 																	background:"#232b36",
 																	float:"right",
@@ -202,70 +202,50 @@ class GiftCodeDetailComponent extends React.Component {
 																	minHeight: "auto"
 																}}
 																onClick={this.linkClicked}>THỰC HIỆN
-															</Button></FacebookShareButton>) : (<Button style={{
-																	borderRadius: "20px",
-																	background:"#232b36",
-																	float:"right",
-																	color: "#00948d",
-																	border: "1px solid #00948d",
-																	padding: "10px",
-																	fontSize: "0.7em",
-																	whiteSpace: "nowrap",
-																	minWidth: "auto",
-																	minHeight: "auto"
-																}}
-																onClick={this.linkClicked}>THỰC HIỆN
-															</Button>)}></ListItemText>
+														</button></FacebookShareButton></div></div>)}
 														<div className="giftcode-check"></div>
 													</ListItem>
 												}
 												if (obj.name === "Login Game") {
 													return <ListItem style={{ padding: "5px" }} key={key}>
-														{(obj.loginGame) ? (<Avatar
-															style={{ backgroundColor: green[700], width: "30px", height: "30px" }}><CheckIcon></CheckIcon></Avatar>) : (
-																<Avatar style={{ width: "30px", height: "30px" }}><CloseIcon></CloseIcon></Avatar>)}
-														<span style={{ color: "#fff", marginLeft:"15px" }}>Đăng nhập vào game</span>
-														<ListItemText primary={(
-															<Button style={{
+														{(obj.loginGame) ? (<div><Avatar style={{ backgroundColor: green[700], width: "30px", height: "30px", float:"left" }}><CheckIcon></CheckIcon></Avatar><div style={{ color: "#fff", marginLeft:"15px", marginTop:"5px", float:"left" }}>Đăng nhập vào game</div></div>) : (
+																<div style={{width:"100%"}}><Avatar style={{ width: "30px", height: "30px", float:"left" }}><CloseIcon></CloseIcon></Avatar>
+														<div style={{ color: "#fff", marginLeft:"15px", marginTop:"5px", float:"left" }}>Đăng nhập vào game</div>
+															<buton style={{
 																borderRadius: "20px",
 																background:"#232b36",
-																float:"right",
 																color: "#00948d",
 																border: "1px solid #00948d",
 																padding: "10px",
 																fontSize: "0.7em",
 																whiteSpace: "nowrap",
 																minWidth: "auto",
-																minHeight: "auto"
+																minHeight: "auto",
+																float:"right"
 															}}
 															href={data[0].giftcodeEvent.scoinGameObject.website}>THỰC HIỆN
-														</Button>
-														)}></ListItemText>
+														</buton></div>)}
 														<div className="giftcode-check"></div>
 													</ListItem>
 												}
 												if (obj.name === "Phone number validated") {
 													return <ListItem style={{ padding: "5px" }} key={key}>
-														{(obj.validatedPhone) ? (<Avatar
-															style={{ backgroundColor: green[700], width: "30px", height: "30px" }}><CheckIcon></CheckIcon></Avatar>) : (
-																<Avatar style={{ width: "30px", height: "30px" }}><CloseIcon></CloseIcon></Avatar>)}
-														<span style={{ color: "#fff", marginLeft:"15px" }}>Xác thực số điện thoại</span>
-														<ListItemText primary={(
-															<Button style={{
-																borderRadius: "20px",
-																background:"#232b36",
-																float:"right",
-																color: "#00948d",
-																border: "1px solid #00948d",
-																padding: "10px",
-																fontSize: "0.7em",
-																whiteSpace: "nowrap",
-																minWidth: "auto",
-																minHeight: "auto"
-															}}
-															href="https://scoin.vn/thong-tin-ca-nhan">THỰC HIỆN
-														</Button>
-														)}></ListItemText>
+														{(obj.validatedPhone) ? (<div><Avatar style={{ backgroundColor: green[700], width: "30px", height: "30px", float:"left" }}><CheckIcon></CheckIcon></Avatar> <div style={{ color: "#fff", marginLeft:"15px", marginTop:"5px", float:"left"}}>Xác thực số điện thoại</div></div>) : (
+																<div  style={{width:"100%"}}><Avatar style={{ width: "30px", height: "30px" }}><CloseIcon></CloseIcon></Avatar><div style={{ color: "#fff", marginLeft:"15px",float:"left" }}>Xác thực số điện thoại</div>
+																	<button style={{
+																		borderRadius: "20px",
+																		background:"#232b36",
+																		float:"right",
+																		color: "#00948d",
+																		border: "1px solid #00948d",
+																		padding: "10px",
+																		fontSize: "0.7em",
+																		whiteSpace: "nowrap",
+																		minWidth: "auto",
+																		minHeight: "auto"
+																	}}
+																	href="https://scoin.vn/thong-tin-ca-nhan">THỰC HIỆN
+																</button></div>)}
 														<div className="giftcode-check"></div>
 													</ListItem>
 												}

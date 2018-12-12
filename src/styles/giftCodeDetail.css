@@ -1,23 +1,4 @@
-button.buttonFull{
-	border-radius: 20px;
-	border: none;
-	background: linear-gradient(90deg,#22cab5,#3fe28f);
-	min-width:88px;
-	color: #fff;
-	padding: 8px;
-	font-size: 0.8em;
-	white-space: nowrap;
-}
-button.buttonGhost{
-	border-radius: 20px;
-	background:#232b36;
-	min-width:88px;
-	color: #00948d;
-	border: 1px solid #00948d;
-	padding: 8px;
-	font-size: 0.8em;
-	white-space: nowrap;
-}
+
 button.moreGame{
 	border-radius: 20px;
 	background: transparent;

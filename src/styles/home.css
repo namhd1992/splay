@@ -343,12 +343,12 @@ button.buttonFull:hover{
 	button.buttonFull{
 		width:60px;
 		color: #fff;
-		padding: 4px;
+		padding: 8px 6px;
 		font-size: 0.7em;
 	}
 	button.buttonGhost{
 		width:60px;
-		padding: 4px;
+		padding: 8px 6px;
 		font-size: 0.7em;
 	}
 	.avatar{
