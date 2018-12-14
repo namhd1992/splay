@@ -68,16 +68,18 @@ class GameDetailComponent extends React.Component {
 				}
 			}
 			var link=arrScreenShot[0];
-			var img = new Image();
-			img.onload = function() {
-				if(this.width>this.height){
-					_this.setState({numberImgDestop:2, numberImgTablet: 2, numberImgMoble: 1, height:"200px", margin:"0px 2px"})
-				}else{
-					_this.setState({numberImgDestop:5, numberImgTablet: 4, numberImgMoble: 3, paddingBottom:"160%"})	
+			if(link!=="" && link !== undefined){
+				var img = new Image();
+				img.onload = function() {
+					if(this.width>this.height){
+						_this.setState({numberImgDestop:2, numberImgTablet: 2, numberImgMoble: 1, height:"200px", margin:"0px 2px"})
+					}else{
+						_this.setState({numberImgDestop:5, numberImgTablet: 4, numberImgMoble: 3, paddingBottom:"160%"})	
+					}
+					// _this.setState({width:this.width, height: this.height})
 				}
-				// _this.setState({width:this.width, height: this.height})
+				img.src = link.replace("=download","");
 			}
-			img.src = link.replace("=download","");
 		}
 	}
 
@@ -180,7 +182,6 @@ class GameDetailComponent extends React.Component {
 			return 0;
 		});
 		var settings = {
-			dots: true,
 			infinite: true,
 			speed: 500,
 			slidesToShow: this.state.numberImgDestop,
