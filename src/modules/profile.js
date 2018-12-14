@@ -56,7 +56,7 @@ export const getData = (token, scoinToken) => {
 		return axios.get(url, header).then(function (response) {
 			dispatch({
 				type: PROFILE_RESPONSE,
-				data: response.data.dataObj
+				data: response.data.data
 			})
 		}).catch(function (error) {
 			dispatch({
