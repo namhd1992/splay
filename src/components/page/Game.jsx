@@ -87,6 +87,13 @@ class TagList extends React.Component {
 
 class GameComponent extends React.Component {
 
+	constructor(props){
+		super(props);
+		this.state={
+			showTagMobile: false,
+		}
+	}
+
 	getTheLoai=(obj)=>{
 		this.props.getTheLoai(obj);
 	}
@@ -100,6 +107,7 @@ class GameComponent extends React.Component {
 	}
 
 	handleExpandItem=()=>{
+		this.setState({showTagMobile: !this.state.showTagMobile});
 		this.props.handleExpandItem();
 	}
 
@@ -145,6 +153,7 @@ class GameComponent extends React.Component {
 		var tagListTheloai = [];
 		var tagListChude = [];
 		var tagListHedieuhanh = [];
+		var link=this.state.showTagMobile?"../play_arrow_up.png":"../play_arrow_down.png";
 		if (tagList !== undefined) {
 			tagList.forEach((element) => {
 				if (element.typeName === "chude") {
@@ -171,7 +180,7 @@ class GameComponent extends React.Component {
 											{/* <TextField InputProps={{ disableUnderline: true }} style={{ width: "85%", border: "solid 1px #666", borderRight: "0px", padding: "1px 1px 1px 20px", borderRadius: "20px", background: "#151c24" }} placeholder="Tên game" onChange={this.handleChange('searchValue')}
 												defaultValue={searchValue}></TextField> */}
 											<div style={{ marginLeft: "-40px",  marginTop:"5px"}} onClick={this.searchAction}><img style={{width:"32px", height:"32px"}} src="../search.png"/></div>
-											<div style={{ marginLeft: "20px", width:"35px", height:"35px", border:"2px solid #04b7a9", borderRadius:"50%"}}  onClick={() => this.handleExpandItem()}><img style={{width:"30px", height:"30px"}} src="../play_arrow_down.png"/></div>
+											<div style={{ marginLeft: "20px", width:"35px", height:"35px", border:"2px solid #04b7a9", borderRadius:"50%"}}  onClick={() => this.handleExpandItem()}><img style={{width:"30px", height:"30px"}} src={link}/></div>
 											{/* <FilterIcon style={{ color: "#fff" }} onClick={() => this.handleExpandItem()}></FilterIcon> */}
 										</ListItem>
 										<Collapse in={(expand === true)} timeout="auto" unmountOnExit>
