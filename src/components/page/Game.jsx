@@ -167,10 +167,12 @@ class GameComponent extends React.Component {
 								<Grid item xs={12}>
 									<List className="inbox-list-root">
 										<ListItem style={{ padding: "8px" }}>
-											<TextField InputProps={{ disableUnderline: true }} style={{ width: "70%", border: "solid 1px #666", borderRight: "0px", padding: "1px 1px 1px 20px", borderRadius: "20px 0px 0px 20px", background: "#151c24" }} placeholder="Tên game" onChange={this.handleChange('searchValue')}
-												defaultValue={searchValue}></TextField>
-											<Button style={{ width: "10%", minWidth: "50px", background: "linear-gradient(90deg, rgb(34, 202, 181), rgb(63, 226, 143))", borderRadius: "0px 20px 20px 0px", padding: "0px" }} ><SearchIcon style={{ margin: "5px", float: "left" }} onClick={this.searchAction} /></Button>
-											<Button onClick={() => this.handleExpandItem()} style={{ backgroundColor: "#232b36", borderRadius: "5px", margin: "5px", width: "20%" }} ><FilterIcon style={{ color: "#fff" }} ></FilterIcon></Button>
+											<input type="text" style={{ width: "85%", height:"40px", fontSize:"16px", border: "solid 1px #666", borderRight: "0px", padding: "1px 1px 1px 20px", borderRadius: "20px", background: "#fff", paddingRight:"50px" }} placeholder="Tên game" onChange={this.handleChange('searchValue')} />
+											{/* <TextField InputProps={{ disableUnderline: true }} style={{ width: "85%", border: "solid 1px #666", borderRight: "0px", padding: "1px 1px 1px 20px", borderRadius: "20px", background: "#151c24" }} placeholder="Tên game" onChange={this.handleChange('searchValue')}
+												defaultValue={searchValue}></TextField> */}
+											<div style={{ marginLeft: "-40px",  marginTop:"5px"}} onClick={this.searchAction}><img style={{width:"32px", height:"32px"}} src="../search.png"/></div>
+											<div style={{ marginLeft: "20px", width:"35px", height:"35px", border:"2px solid #04b7a9", borderRadius:"50%"}}  onClick={() => this.handleExpandItem()}><img style={{width:"30px", height:"30px"}} src="../play_arrow_down.png"/></div>
+											{/* <FilterIcon style={{ color: "#fff" }} onClick={() => this.handleExpandItem()}></FilterIcon> */}
 										</ListItem>
 										<Collapse in={(expand === true)} timeout="auto" unmountOnExit>
 											<Grid container style={{ width: "100%", margin: "0" }}>
@@ -436,7 +438,7 @@ class GameComponent extends React.Component {
 					</DialogContent>
 					<DialogActions>
 						<div>
-							<Button onClick={this.searchAction} color="primary">
+							<Button onClick={this.searchAction} style={{color:"primary", borderRadius:"20px"}}>
 								Tìm kiếm
               </Button>
 						</div>
