@@ -29,6 +29,28 @@
     margin-right: 20px;
     border-radius: 20px;
 }
+.buttonOrange{
+    border-radius: 20px;
+    background: linear-gradient(90deg,#ff5f27,#ff9019);
+    color: #fff;
+    border: 0px solid;
+    padding: 10px; height:40px;
+    font-size: 0.8em;
+    white-space: nowrap;
+    min-width: auto;
+    min-height: auto
+}
+.buttonGreen{
+    border-radius: 20px;
+    background: linear-gradient(90deg,#22cab5,#3fe28f);
+    color: #fff;
+    border: 0px solid;
+    padding: 10px; height:40px;
+    font-size: 0.8em;
+    white-space: nowrap;
+    min-width: auto;
+    min-height: auto;
+}
 .action{
     float:right;
      margin-top:20px;
@@ -43,6 +65,13 @@
 .buy:hover{
     background: #1af7ff;
 }
+.buttonOrange:hover{
+    background: linear-gradient(90deg,#ff7c4d,#ffa94d);
+}
+.buttonGreen:hover{
+    background: linear-gradient(90deg,#3bdecb,#64e8a4);
+}
+
 
 @media only screen and (max-width:600px){
     .infoTitle{

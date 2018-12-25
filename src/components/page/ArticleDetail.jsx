@@ -1,11 +1,11 @@
-import React from 'react'
-import Grid from 'material-ui/Grid'
-import { connect } from 'react-redux'
-import Hidden from 'material-ui/Hidden'
-import { CircularProgress } from 'material-ui/Progress'
-import RightArea from '../../components/RightArea'
-import HeadMenu from '../HeadMenu'
-import '../../styles/imageServerError.css'
+import React from 'react';
+import Grid from 'material-ui/Grid';
+import { connect } from 'react-redux';
+import Hidden from 'material-ui/Hidden';
+import { CircularProgress } from 'material-ui/Progress';
+import RightArea from '../../components/RightArea';
+import HeadMenu from '../HeadMenu';
+import '../../styles/imageServerError.css';
 
 
 

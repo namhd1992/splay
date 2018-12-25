@@ -49,10 +49,9 @@ class GiftCodeDetailComponent extends React.Component {
 	takeGiftcode=(id)=>{
 		this.props.takeGiftcode(id);
 	}
-
 	render() {
 		var user = JSON.parse(localStorage.getItem("user"));
-		const {data, value, openSnack, message, snackVariant, dialogLoginOpen, shared, logged, server}=this.props;
+		const {data, value, openSnack, message, snackVariant, dialogLoginOpen, shared, logged, server, waiting}=this.props;
 		return (this.props.data.length === 1) ? (
 			<div>
 				<Grid container spacing={8}>
@@ -279,9 +278,19 @@ class GiftCodeDetailComponent extends React.Component {
 				</Grid>
 			</div>
 		) : (<div className="global-loading" style={{ backgroundColor: "#232b36", marginTop: "8px" }}>
-			{(server !== true) ? (												
+				{(waiting) ? (<div className="global-loading">
+						{(server !== true) ? (												
+									<CircularProgress style={{ color: "#fff" }} size={50} />):(<img className="error" alt="just alt"
+									src="../baotri.png" />)}
+						</div>) : (this.props.data.length === 0) ? (
+							<Grid item xs={12} className="global-loadmore">
+								<div style={{ width: "100%", textAlign: "center", color: "#fff" }}>Không có dữ liệu</div>
+							</Grid>
+						) : (<div></div>)
+				}
+			{/* {(server !== true) ? (												
 				<CircularProgress style={{ color: "#fff" }} size={50} />):(<img className="error" alt="just alt"
-				src="../baotri.png" />)}
+				src="../baotri.png" />)} */}
 			<LoginRequired open={dialogLoginOpen}></LoginRequired>
 		</div>)
 		

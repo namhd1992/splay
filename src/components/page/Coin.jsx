@@ -141,7 +141,7 @@ class CoinComponent extends React.Component {
                                 <Grid item xs={12}>
 									{(data!==null)?(<div className="infoUserCoin">
 											<div className="titleUser">
-												<p>Topgame ID:</p>
+												<p>Tên tài khoản:</p>
 												<p>Số dư XO:</p>
 											</div>
 											<div className="contentUser">

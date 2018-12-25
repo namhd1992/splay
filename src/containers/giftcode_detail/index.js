@@ -56,15 +56,10 @@ class Giftcode_detail extends React.Component {
 			_this.setState({ fingerprint: result });
 		})
 		if (user != null) {
-			this.props.getDataId(this.props.match.params.id, user.access_token).then(function () {
-				_this.props.changeTitle(_this.props.data[0].title);
-			});
+			this.props.getDataId(this.props.match.params.id, user.access_token);
 		} else {
 			_this.setState({ dialogLoginOpen: true });
-			this.props.getDataId(this.props.match.params.id).then(function () {
-				_this.props.changeTitle(_this.props.data[0].title);
-			});
-
+			this.props.getDataId(this.props.match.params.id);
 		}
 		this.setState({ shared: false });
 		if (user !== null) {
@@ -141,6 +136,7 @@ class Giftcode_detail extends React.Component {
 				<GiftCodeDetailComponent
 					data={this.props.data}
 					server={this.props.server}
+					waiting={this.props.waiting}
 					loginAction={this.loginAction}
 					copyText={this.copyText}
 					linkClicked={this.linkClicked}

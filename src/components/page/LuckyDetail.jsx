@@ -1,25 +1,25 @@
-import React from 'react'
-import Grid from 'material-ui/Grid'
-import { connect } from 'react-redux'
-import Hidden from 'material-ui/Hidden'
-import { CircularProgress } from 'material-ui/Progress'
-import RightArea from '../../components/RightArea'
-import { withStyles } from 'material-ui/styles'
-import Button from 'material-ui/Button'
-import ReactCardFlip from 'react-card-flip'
-import ReactResizeDetector from 'react-resize-detector'
+import React from 'react';
+import Grid from 'material-ui/Grid';
+import { connect } from 'react-redux';
+import Hidden from 'material-ui/Hidden';
+import { CircularProgress } from 'material-ui/Progress';
+import RightArea from '../../components/RightArea';
+import { withStyles } from 'material-ui/styles';
+import Button from 'material-ui/Button';
+import ReactCardFlip from 'react-card-flip';
+import ReactResizeDetector from 'react-resize-detector';
 import Dialog, {
 	DialogActions,
 	DialogContent,
 	DialogTitle,
 	withMobileDialog,
-} from 'material-ui/Dialog'
-import PropTypes from 'prop-types'
-import List, { ListItem, ListItemText } from 'material-ui/List'
-import Notification from '../../components/Notification'
-import LoginRequired from '../../components/LoginRequired'
-import '../../styles/imageServerError.css'
-import '../../styles/luckyDetail.css'
+} from 'material-ui/Dialog';
+import PropTypes from 'prop-types';
+import List, { ListItem, ListItemText } from 'material-ui/List';
+import Notification from '../../components/Notification';
+import LoginRequired from '../../components/LoginRequired';
+import '../../styles/imageServerError.css';
+import '../../styles/luckyDetail.css';
 
 const styles = {
 	paper: {
@@ -54,8 +54,8 @@ class LuckyDetailComponent extends React.Component {
 	constructor(){
 		super();
 		this.state = {
-			intValue:null,
-			whenSelect:null,
+			intValue:1,
+			whenSelect:"1px solid #00ccd4",
 		};
 	}
 	showItem=()=>{
@@ -139,7 +139,7 @@ class LuckyDetailComponent extends React.Component {
 
 	render() {
 		const {dataDetail, dataProfile,message,cardWidth,cardHeight,flippedArr,collapse,cardArr,
-			dialogOpen,highLightCard,openSnack,snackVariant,dialogLoginOpen,dialogItemOpen,fontSize,dialogMoreTurnOpen,server, waiting }=this.props;
+			dialogOpen,highLightCard,openSnack,snackVariant,dialogLoginOpen,dialogItemOpen,fontSize,dialogMoreTurnOpen,server,waiting }=this.props;
 
 					
 		const { classes } = this.props;
@@ -206,14 +206,13 @@ class LuckyDetailComponent extends React.Component {
 								</div>
 							</Grid>
 							<Grid item xs={12} sm={4} className="lucky-button">
-								<Button className={classes.buttonGreen} onClick={this.start}>Chơi
-              ({dataDetail.userSpinInfo.turnsBuy + dataDetail.userSpinInfo.turnsFree})</Button>
+								<button className="buttonGreen" onClick={this.start}>CHƠI ({dataDetail.userSpinInfo.turnsBuy + dataDetail.userSpinInfo.turnsFree})</button>
 							</Grid>
 							<Grid item xs={12} sm={4} className="lucky-button">
-								<Button className={classes.buttonOrange} onClick={this.showItem}>Phần thưởng</Button>
+								<button className="buttonOrange" onClick={this.showItem}>PHẦN THƯỞNG</button>
 							</Grid>
 							<Grid item xs={12} sm={4} className="lucky-button">
-								<Button className={classes.buttonOrange} onClick={this.showBuyTurn}>Mua Lượt</Button>
+								<button className="buttonOrange" onClick={this.showBuyTurn}>MUA LƯỢT</button>
 							</Grid>
 						</Grid>
 					</Grid>
@@ -240,12 +239,8 @@ class LuckyDetailComponent extends React.Component {
 					</DialogContent>
 					<DialogActions>
 						<div>
-							<Button className={classes.buttonOrange} onClick={this.showBuyTurn}>
-								Mua lượt
-              </Button>
-							<Button onClick={this.handleCloseMoreTurnDialog} style={{ color: "#fe8731", borderRadius:"20px" }}>
-								Đóng
-              </Button>
+							<Button className={classes.buttonOrange} onClick={this.showBuyTurn}>Mua lượt</Button>
+							<Button onClick={this.handleCloseMoreTurnDialog} style={{ color: "#888787", borderRadius:"20px", marginRight:"15px" }}>Đóng</Button>
 						</div>
 					</DialogActions>
 				</Dialog>
@@ -329,20 +324,14 @@ class LuckyDetailComponent extends React.Component {
 					</DialogContent>
 					<DialogActions>
 						<div>
-							<Button onClick={this.handleCloseDialogItem} style={{ color: "#fe8731", borderRadius:"20px" }}>
-								Đóng
-              </Button>
+							<Button onClick={this.handleCloseDialogItem} style={{ color: "#888787", borderRadius:"20px" }}>Đóng</Button>
 						</div>
 					</DialogActions>
 				</Dialog>
 				<Notification message={message} variant={snackVariant} openSnack={openSnack} closeSnackHandle={this.handleCloseSnack} ></Notification>
 			</div>
 		) : (<div className="global-loading">
-			{/* {(waiting === true) ? (												
-					<CircularProgress style={{ color: "#fff" }} size={50} />):(<img className="error" alt="just alt"
-					src="../baotri.png" />)} */}
-
-				{(waiting === true) ? (												
+			{(waiting === true) ? (												
 				<CircularProgress style={{ color: "#fff" }} size={50} />):((server===true)?(<img className="error" alt="just alt"
 				src="../baotri.png" />):(<div style={{color:"#fff", fontSize:"20px"}}>Không có dữ liệu!</div>))}
 			<LoginRequired open={dialogLoginOpen}></LoginRequired>

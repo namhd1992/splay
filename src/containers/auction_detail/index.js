@@ -294,18 +294,20 @@ class Auction_detail extends React.Component {
 										<ListItemText primary={(<span style={{ color: "#fff" }}>Còn lại {time_text}</span>)}></ListItemText>
 									</ListItem>
 									<ListItem style={{ padding: "5px" }}>
-										<Button color="primary" variant="raised" style={{
-											margin: "10px auto",
-											width: "100%",
-											borderRadius: "20px",
-											background: "linear-gradient(90deg,#22cab5,#3fe28f)",
-											color: "#fff",
-											padding: "10px",
-											fontSize: "0.8em",
-											whiteSpace: "nowrap",
-											minHeight: "auto"
-										}}
-											onClick={this.handleOpenDialog}>Đấu giá</Button>
+										{(duration>0) ? (
+												<Button color="primary" variant="raised" style={{
+													margin: "10px auto",
+													width: "100%",
+													borderRadius: "20px",
+													background: "linear-gradient(90deg,#22cab5,#3fe28f)",
+													color: "#fff",
+													padding: "10px",
+													fontSize: "0.8em",
+													whiteSpace: "nowrap",
+													minHeight: "auto"
+												}}
+													onClick={this.handleOpenDialog}>Đấu giá</Button>
+											):(<div></div>)}
 									</ListItem>
 								</List>
 							</Grid>

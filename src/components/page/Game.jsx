@@ -355,9 +355,12 @@ class GameComponent extends React.Component {
 						<Grid item xs={12} md={4}>
 							<Grid container style={{ width: "100%", margin: "0" }}>
 								<Grid item xs={12}>
-									<TextField InputProps={{ disableUnderline: true }} style={{ width: "80%", border: "solid 1px #666", borderRight: "0px", padding: "1px 1px 1px 20px", borderRadius: "20px 0px 0px 20px", background: "#151c24" }} placeholder="Tên game" onChange={this.handleChange('searchValue')}
+									{/* <TextField InputProps={{ disableUnderline: true }} style={{ width: "80%", border: "solid 1px #666", borderRight: "0px", padding: "1px 1px 1px 20px", borderRadius: "20px 0px 0px 20px", background: "#151c24" }} placeholder="Tên game" onChange={this.handleChange('searchValue')}
 										defaultValue={searchValue}></TextField>
-									<Button style={{ verticalAlign: "bottom", width: "10%", minWidth: "50px", background: "linear-gradient(90deg, rgb(34, 202, 181), rgb(63, 226, 143))", borderRadius: "0px 20px 20px 0px", padding: "0px" }} ><SearchIcon style={{ margin: "5px", float: "left" }} onClick={this.searchAction} /></Button>
+									<Button style={{ verticalAlign: "bottom", width: "10%", minWidth: "50px", background: "linear-gradient(90deg, rgb(34, 202, 181), rgb(63, 226, 143))", borderRadius: "0px 20px 20px 0px", padding: "0px" }} ><SearchIcon style={{ margin: "5px", float: "left" }} onClick={this.searchAction} /></Button> */}
+									<input type="text" style={{ width: "85%", height:"40px", fontSize:"16px",float:"left", border: "solid 1px #666", borderRight: "0px", padding: "1px 1px 1px 20px", borderRadius: "20px", background: "#fff", paddingRight:"50px" }} placeholder="Tên game" onChange={this.handleChange('searchValue')} />
+											
+											<div style={{ marginLeft: "-40px",  marginTop:"5px", float:"left"}} onClick={this.searchAction}><img style={{width:"32px", height:"32px"}} src="../search.png"/></div>
 								</Grid>
 								<Grid item xs={12}>
 									<TagList
