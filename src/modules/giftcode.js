@@ -59,7 +59,7 @@ export const getDataByGame = (gameId) => {
 		return axios.get(url).then(function (response) {
 			dispatch({
 				type: GIFTCODE_RESPONSE,
-				data: response.data.dataArr,
+				data: response.data.data,
 				totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
@@ -79,7 +79,7 @@ export const getData = (limit, offset) => {
 		return axios.get(url).then(function (response) {
 			dispatch({
 				type: GIFTCODE_RESPONSE,
-				data: response.data.dataArr,
+				data: response.data.data,
 				totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
@@ -99,7 +99,7 @@ export const getMoreData = (limit, offset) => {
 		return axios.get(url).then(function (response) {
 			dispatch({
 				type: GIFTCODE_RESPONSE_MORE,
-				data: response.data.dataArr,
+				data: response.data.data,
 				totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
@@ -129,7 +129,7 @@ export const getDataId = (id, token) => {
 		return axios.get(url, header).then(function (response) {
 			dispatch({
 				type: GIFTCODE_RESPONSE,
-				data: response.data.dataArr
+				data: response.data.data
 			})
 		}).catch(function (error) {
 			dispatch({
