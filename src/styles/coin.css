@@ -30,8 +30,8 @@ select {
       calc(100% - 10px) calc(1em),
       100% 0;
     background-size:
-      10px 10px,
-      10px 10px,
+      10px 9px,
+      10px 9px,
       2.5em 2.5em;
     background-repeat: no-repeat;
   }
@@ -47,8 +47,8 @@ select {
       calc(100% - 10px) calc(1em),
       100% 0;
     background-size:
-      10px 10px,
-      10px 10px,
+      10px 9px,
+      10px 9px,
       2.5em 2.5em;
     background-repeat: no-repeat;
   }
