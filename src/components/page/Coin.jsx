@@ -62,20 +62,27 @@ class CoinComponent extends React.Component {
 		var coin=localStorage.getItem("Coin");
         var pakageCoin=+event.target.value;
         var ratioExchange=this.props.data.ratioExchange;
+        var packageExchangeXUs=this.props.data.packageExchangeXUs;
         if(+coin===1){
+            if(packageExchangeXUs.indexOf(pakageCoin/ratioExchange)===-1){
+                alert("Gói bạn chọn không tồn tại");
+                return;
+            }
             this.setState({pakage:pakageCoin, value:pakageCoin, price:(pakageCoin/ratioExchange), type:"scoinToGame",packageXO:pakageCoin, packageXU:(pakageCoin/ratioExchange)});
         }else if(+coin===2){
+            if(packageExchangeXUs.indexOf(pakageCoin)===-1){
+                alert("Gói bạn chọn không tồn tại");
+                return;
+            }
             this.setState({pakage:pakageCoin, value:pakageCoin, price:ratioExchange*pakageCoin, type:"gameToScoin",packageXU:pakageCoin, packageXO:pakageCoin*ratioExchange});
         }else{
-			this.setState({pakage:pakageCoin, value:pakageCoin, price:ratioExchange*pakageCoin, type:"gameToScoin",packageXU:pakageCoin, packageXO:pakageCoin*ratioExchange});
+            if(packageExchangeXUs.indexOf(pakageCoin)===-1){
+                alert("Gói bạn chọn không tồn tại");
+                return;
+            }
+            this.setState({pakage:pakageCoin, value:pakageCoin, price:ratioExchange*pakageCoin, type:"gameToScoin",packageXU:pakageCoin, packageXO:pakageCoin*ratioExchange});
         }
-    }
-
-    verifyPhone=()=>{
-
-    }
-    verifyNow=()=>{
-        
+       
     }
     changeCoin=()=>{
         var coin=localStorage.getItem("Coin");
@@ -108,6 +115,10 @@ class CoinComponent extends React.Component {
     handleCloseErrorServer=()=>{
         this.props.handleCloseErrorServer();
     }
+    openTopGame=()=> {
+        var win = window.open("http://171.244.14.215:2999/", '_blank');
+        win.focus();
+    }
 
     render() {
         const {data, waiting,server,dialogLoginOpen, dataProfile,message, snackVariant, openSnack, openSnackErrorServer, messageServer}=this.props;
@@ -139,32 +150,35 @@ class CoinComponent extends React.Component {
                                     </select>
                                 </Grid>
                                 <Grid item xs={12}>
-									{(data!==null)?(<div className="infoUserCoin">
+									<div className="infoUserCoin">
 											<div className="titleUser">
 												<p>Tên tài khoản:</p>
 												<p>Số dư XO:</p>
 											</div>
-											<div className="contentUser">
-												<p>@abc123</p>
+											{(data!==null)?(<div className="contentUser">
+												<p>{this.props.dataProfile.fullName}</p>
 												<p><img src="../XO.png" style={{ width: "24px", height:"24px",margin:"0px 5px -4px 0px"}}/>{this.props.data.userBalance ? this.props.data.userBalance.toLocaleString(): "0"} XO</p>
-											</div>
-										</div>):(<div></div>)}
+											</div>):(<div className="contentUser">
+												<p>Chưa có dữ liệu</p>
+												<p>Chưa có dữ liệu</p>
+											</div>)}
+										</div>
                                 </Grid>
                                 <Grid item xs={12} style={{marginBottom:"40px"}}>
-									<div className="pakageCoin">
-										<div className="divOptionCoin">
-											<select className="selectOptionCoin" onChange={(event)=>this.selectOptionCoin(event)}>
-												<option value="" selected disabled hidden>{this.state.value}</option>
-												{(pakageCoin !== undefined) ? pakageCoin.map((obj,key) => {
-														return <option key={key}
-														value={obj}>{obj.toLocaleString()}</option>;
-													}) : (<div></div>)}
-											</select>
-										</div>
-										<div className="divPrice">
-											<span>Giá:</span> <div style={{display:"inline"}}><img src={this.state.srcImg} style={{ width: "24px", height:"24px", margin:"0px 5px -5px 8px"}}/></div> <span>{this.state.price ? this.state.price.toLocaleString(): ""} {this.state.from}</span>
-										</div>
-									</div>
+                                {(data!==null)?(<div className="pakageCoin">
+                                                    <div className="divOptionCoin">
+                                                        <select className="selectOptionCoin" onChange={(event)=>this.selectOptionCoin(event)}>
+                                                            <option value="" selected disabled hidden>{this.state.value}</option>
+                                                            {(pakageCoin !== undefined) ? pakageCoin.map((obj,key) => {
+                                                                    return <option key={key}
+                                                                    value={obj}>{obj.toLocaleString()}</option>;
+                                                                }) : (<div></div>)}
+                                                        </select>
+                                                    </div>
+                                                    <div className="divPrice">
+                                                        <span>Giá:</span> <div style={{display:"inline"}}><img src={this.state.srcImg} style={{ width: "24px", height:"24px", margin:"0px 5px -5px 8px"}}/></div> <span>{this.state.price ? this.state.price.toLocaleString(): ""} {this.state.from}</span>
+                                                    </div>
+                                                </div>):(<div><p style={{color:"red"}}>Không tìm thấy tài khoản TOPGAME, vui lòng tham gia để khởi tạo.</p></div>)}
                                     
                                 </Grid>
                                 {/* <Grid item xs={12}>
@@ -175,20 +189,20 @@ class CoinComponent extends React.Component {
                                     
                                 </Grid> */}
                                 <Grid item xs={12}>
+                                {(data!==null)?(<div>
                                     {(dataProfile.phoneNumber!=="" && dataProfile.phoneNumber!==null && dataProfile.phoneNumber!==undefined)?(<div></div>):(
                                         <div>	
                                             <div className="btnVerify">
                                                 <div className="verifyPhoneCoin">Chưa xác thực số điện thoại</div>
                                                 <a href="http://sandbox.scoin.vn/thong-tin-ca-nhan/" target="_blank">
-                                                    <div className="verifyNow" onClick={this.verifyNow()}>Xác thực ngay</div>
+                                                    <div className="verifyNow">Xác thực ngay</div>
                                                 </a>
                                             </div>
                                         <div className="notePhone"><span style={{color:"red"}}>(*)</span> <span style={{color:"#fff"}}>Bạn cần xác thực để chuyển ra Xu</span></div></div>
-								    )}
-                                    
+								    )}</div>):(<div></div>)}
                                 </Grid>
                                 <Grid item xs={12} style={{marginTop:"20px"}}>
-                                    <button className="btnChange" onClick={this.changeCoin}>ĐỔI</button>
+                                {(data!==null)?(<button className="btnChange" onClick={this.changeCoin}>ĐỔI</button>):(<button className="btnChange" onClick={this.openTopGame}>CHƠI TOPGAME</button>)}
                                 </Grid>
                                 {(waiting) ? (<Grid item xs={12} md={8}>
                                     <div className="global-loadmore">
@@ -216,7 +230,7 @@ class CoinComponent extends React.Component {
                         </DialogContent>
                         <DialogActions>
                             <div>
-                                <Button onClick={this.handleCloseDialogItem} style={{ color: "#fe8731", borderRadius:"20px" }}>
+                                <Button onClick={this.handleCloseDialogItem} style={{ color: "#888787", borderRadius:"20px" }}>
                                     Đóng
                                 </Button>
                                 {(this.state.from === "Xu") ? (<Button style={{ color: "#fff", background:"#00ccd4",borderRadius:"5px"}}>

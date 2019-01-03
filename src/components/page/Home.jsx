@@ -473,8 +473,8 @@ class HomeComponent extends React.Component {
 									<Carousel data={data.carousel[1]}></Carousel>
 									<HeadMenu></HeadMenu>
 								</Grid>
-								{/* <Grid item xs={12} style={{border:"1px solid #f23b32", borderRadius:"5px", cursor: "pointer"}}>
-									<Link to={"./typechangecoin"} >
+								<Grid item xs={12} style={{border:"1px solid #f23b32", borderRadius:"5px", cursor: "pointer"}}>
+									<Link to={"./doi"} >
 										<div style={{height:"40px"}}>
 											<div style={{width:"40%", float:"left"}}>
 												<img className="imgLogoGame" src="../lg-topgame.png"/>
@@ -484,7 +484,7 @@ class HomeComponent extends React.Component {
 											</div>
 										</div>
 									</Link>
-								</Grid> */}
+								</Grid>
 								<Grid container className={classes.homeBlock} spacing={8}>
 									<Hidden smDown>
 										<Grid item xs={12}>

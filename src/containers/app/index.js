@@ -139,8 +139,8 @@ class App extends React.Component {
 						<Route exact path="/giftcodeplugin" component={Giftcode_plugin} />
 						<Route exact path="/giftcodepluginlogin" component={Giftcode_plugin_login} />
 						<Route exact path="/phonecard" component={Phone_card} />
-						<Route exact path="/coin" component={Coin} />
-						<Route exact path="/typechangecoin" component={TypeChangeCoin} />
+						<Route exact path="/chitiet" component={Coin} />
+						<Route exact path="/doi" component={TypeChangeCoin} />
 					</main>
 					{(!this.state.fullscreen) ? (<Footer></Footer>) : (<div></div>)}
 					<ScrollToTop style={{ bottom: 90, right: "10px" }} showUnder={160}>

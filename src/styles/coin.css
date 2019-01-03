@@ -19,8 +19,6 @@ select {
   }
   
   
-  /* arrows */
-  
   select.selectGame {
     text-align: center;
     text-align-last: center;
@@ -39,10 +37,12 @@ select {
   }
 
   select.selectOptionCoin {
+    text-align: center;
+    text-align-last: center;
     background-image:
       linear-gradient(45deg, transparent 50%, #fff 50%),
       linear-gradient(135deg, #fff 50%, transparent 50%);
-      background-position:
+    background-position:
       calc(100% - 20px) calc(1em),
       calc(100% - 10px) calc(1em),
       100% 0;
@@ -52,7 +52,8 @@ select {
       2.5em 2.5em;
     background-repeat: no-repeat;
   }
-  
+
+
 .selectGame{
     width:100%;
     text-align:center;
@@ -62,6 +63,18 @@ select {
     border-radius: 5px;
     background: #212933;
 }
+
+
+.selectOptionCoin{
+    width:100%;
+    text-align:center;
+    height:40px;
+    border: 1px solid #12cdd4;
+    border-radius: 5px;
+    color: #12cdd4;
+    background: #212933;
+}
+
 .infoUserCoin{
     color: #fff;
     width:50%;
@@ -77,15 +90,7 @@ select {
     width:50%;
     float:left
 }
-.selectOptionCoin{
-    width:100%;
-    text-align:center;
-    height:40px;
-    border: 1px solid #12cdd4;
-    border-radius: 5px;
-    color: #12cdd4;
-    background: #212933;
-}
+
 .pakageCoin{
     height: 40px;
 }

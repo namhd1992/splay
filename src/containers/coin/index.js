@@ -35,10 +35,12 @@ class Coin extends React.Component {
 	}
 
 	componentDidMount() {
+		console.log("AAAAAAAAA")
 		var user = JSON.parse(localStorage.getItem("user"));
 		var coin=localStorage.getItem("Coin");
 		var _this = this;
 		if (user !== null) {
+			
 			if(coin){
 				this.props.getData(user.access_token, coin)
 			}else{
@@ -55,13 +57,22 @@ class Coin extends React.Component {
 		var coin=localStorage.getItem("Coin");
 		if (user !== null) {
 			this.props.changeCoin(user.access_token, packageXO, packageXu, type).then(function () {
-				if(_this.props.status==="01"){
+				var status=_this.props.status;
+				if(status==="01"){
 					_this.setState({ openSnack: true, message: "Đổi thành công", snackVariant: "success" });
 					_this.props.getData(user.access_token, coin)
 					_this.props.getDataProfile(user.access_token, user.scoinAccessToken)
-				}else if(_this.props.status==="08"){
-					_this.setState({ openSnack: true, message: "Quá hạn quy đổi", snackVariant: "info" });
-				}else if(_this.props.status==="00"){
+				}else if(status==="-55"){
+					_this.setState({ openSnack: true, message: "Số dư Xu không đủ", snackVariant: "info" });
+				}else if(status==="-304"){
+					_this.setState({ openSnack: true, message: "Dịch vụ này không tồn tại hoặc đang tạm dừng", snackVariant: "info" });
+				}else if(status==="-1004"){
+					_this.setState({ openSnack: true, message: "Vượt quá giới hạn nạp XO", snackVariant: "info" });
+				}else if(status==="-1005"){
+					_this.setState({ openSnack: true, message: "Vượt quá giới hạn rút XO", snackVariant: "info" });
+				}else if(status==="-1001"){
+					_this.setState({ openSnack: true, message: "Số dư XO không đủ", snackVariant: "info" });
+				}else if(status==="00" || status==="02" || status==="-99" || status==="-1003" || status==="-1099" ){
 					_this.setState({ openSnack: true, message: "Lỗi hệ thống", snackVariant: "error" });
 				}
 				

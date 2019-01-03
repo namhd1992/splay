@@ -29,6 +29,7 @@ export default (state = initialState, action) => {
 				...state,
 				status:action.data.status,
 				totalRecords: action.data.totalRecords,
+				waiting: false
 			}
 		case SERVER_ERROR_OTHER:
 			return {
@@ -41,6 +42,7 @@ export default (state = initialState, action) => {
 }
 
 export const getData = (token, coin) => {
+	console.log("AAAAAAAAAA")
 	var header = {
 		headers: {
 			"Content-Type": "application/json",
