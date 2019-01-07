@@ -35,14 +35,13 @@ class Coin extends React.Component {
 	}
 
 	componentDidMount() {
-		console.log("AAAAAAAAA")
 		var user = JSON.parse(localStorage.getItem("user"));
 		var coin=localStorage.getItem("Coin");
+		var serviceId=localStorage.getItem("serviceId");
 		var _this = this;
 		if (user !== null) {
-			
 			if(coin){
-				this.props.getData(user.access_token, coin)
+				this.props.getData(user.access_token, coin, serviceId)
 			}else{
 				this.props.getData(user.access_token, 2)
 			}
@@ -55,8 +54,9 @@ class Coin extends React.Component {
 		var _this = this;
 		var user = JSON.parse(localStorage.getItem("user"));
 		var coin=localStorage.getItem("Coin");
+		var serviceId=localStorage.getItem("serviceId");
 		if (user !== null) {
-			this.props.changeCoin(user.access_token, packageXO, packageXu, type).then(function () {
+			this.props.changeCoin(user.access_token, packageXO, packageXu, type, serviceId).then(function () {
 				var status=_this.props.status;
 				if(status==="01"){
 					_this.setState({ openSnack: true, message: "Đổi thành công", snackVariant: "success" });

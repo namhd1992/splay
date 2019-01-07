@@ -14,8 +14,44 @@ import '../../styles/typeChangeCoin.css'
 
 class TypeChangeCoinComponent extends React.Component {
 
-	findGame=()=>{
-		
+	constructor(){
+        super();
+        this.state = {
+			value:"",
+			idTopgame:false,
+			data:[],
+			idGame:''
+        };
+	}
+
+	componentWillMount(){
+		var scoinGameId=localStorage.getItem("serviceId");
+		this.setState({idGame:scoinGameId});
+		if(+scoinGameId===330281){
+			this.setState({idTopgame:true});
+		}
+	}
+	
+	UNSAFE_componentWillReceiveProps(nextProps){
+		var scoinGameId=localStorage.getItem("serviceId");
+		if(this.props.dataGame !== nextProps.dataGame){
+			var game=nextProps.dataGame.filter(v=>v.scoinGameId===+scoinGameId);
+			var n=nextProps.dataGame.map(v=>{
+				return v.scoinGameId
+			}).indexOf(+scoinGameId);
+			nextProps.dataGame.splice(n,1);
+			nextProps.dataGame.unshift(game[0]);
+		}
+	}
+
+    selectOptionCoin= (event) =>{
+		var scoinGameId=localStorage.getItem("serviceId");
+		this.setState({idGame:scoinGameId});
+		if(+event.target.value===330281){
+			this.setState({idTopgame:true});
+		}else{
+			this.setState({idTopgame:false});
+		}
     }
     nextToCoin=(value)=>{
 		if (typeof(Storage) !== "undefined") {
@@ -26,7 +62,7 @@ class TypeChangeCoinComponent extends React.Component {
 	}
 
 	render() {
-		const {data, waiting,server,dialogLoginOpen}=this.props;
+		const {data, dataGame, waiting,server,dialogLoginOpen}=this.props;
 		return (
 				<div style={{ marginTop: "8px", marginBottom: "5px", borderRadius: "5px", padding: "5px" }}>
 					<HeadMenu></HeadMenu>
@@ -35,34 +71,51 @@ class TypeChangeCoinComponent extends React.Component {
 							<Grid container style={{ width: "100%", margin: "0"}} spacing={8} justify="center">
                                 <p style={{color:"#12cdd4"}}>Chọn hình thức đổi</p>
                                 <Grid item xs={12}>
-									<select className="listGame" onClick={this.findGame()}>
-										<option value="0">TOP GAME</option>
+									<select className="listGame" onChange={(event)=>this.selectOptionCoin(event)}>
+										{/* <option value="" selected disabled hidden>Chọn Game</option> */}
+										{(dataGame !== undefined) ? dataGame.map((obj,key) => {
+												return <option key={key}
+												value={obj.scoinGameId}>{obj.name}</option>;
+											}) : (<div></div>)}
 									</select>
+									{/* <select className="listGame" onClick={this.findGame()}>
+										<option value="0">TOP GAME</option>
+									</select> */}
 								</Grid>
-                                <Grid item xs={12}>
-                                    <Link to={"./chitiet"}>
-										<button 
-											style={{width:"100%", height:"45px",border:"1px solid #12cdd4", background:"#212933"}} 
-											onClick={()=>this.nextToCoin(2)}>
-												<span style={{color:"#12cdd4"}}>ĐỔI XO </span>
-												<img src="../arrow_green.png" style={{ width: "24px", height:"20px", paddingTop:"10px"}}/>
-												<span style={{color:"#12cdd4"}}> Xu</span>
-												<img style={{float:"right"}} alt="just alt" src="../keyboard_arrow_right.png" />
+								{(this.state.idTopgame && this.state.idGame !=='')?(
+									<Grid item xs={12} style={{width:"100%"}}>
+										<Grid item xs={12} style={{margin:'10px 0px 20px 0px'}}>
+											<Link to={"./chitiet"}>
+												<button 
+													style={{width:"100%", height:"45px",border:"1px solid #12cdd4", background:"#212933"}} 
+													onClick={()=>this.nextToCoin(2)}>
+														<span style={{color:"#12cdd4"}}>ĐỔI XO </span>
+														<img src="../arrow_green.png" style={{ width: "24px", height:"20px", paddingTop:"10px"}}/>
+														<span style={{color:"#12cdd4"}}> Xu</span>
+														<img style={{float:"right"}} alt="just alt" src="../keyboard_arrow_right.png" />
+												</button>
+											</Link>
+										</Grid>    
+										<Grid item xs={12}>
+											<Link to={"./chitiet"}>
+												<button
+													style={{width:"100%", height:"45px",border:"1px solid #12cdd4", background:"#212933"}}
+													onClick={()=>this.nextToCoin(1)}>
+														<span style={{color:"#12cdd4"}}>ĐỔI Xu </span>
+														<img src="../arrow_green.png" style={{ width: "24px", height:"20px", paddingTop:"10px"}}/>
+														<span style={{color:"#12cdd4"}}> XO</span>
+														<img style={{float:"right"}} alt="just alt" src="../keyboard_arrow_right.png" />
+												</button>						
+											</Link>
+										</Grid>
+									</Grid>
+								):(<Grid item xs={12}>
+									<Link to={"#"}>
+										<button style={{width:"100%", height:"45px",border:"1px solid #12cdd4", background:"#212933"}}>
+											<span style={{color:"#12cdd4"}}>Nạp game từ ví Xu</span>
 										</button>
-                                    </Link>
-                                </Grid>    
-                                <Grid item xs={12}>
-                                    <Link to={"./chitiet"}>
-                                        <button
-											style={{width:"100%", height:"45px",border:"1px solid #12cdd4", background:"#212933"}}
-											onClick={()=>this.nextToCoin(1)}>
-												<span style={{color:"#12cdd4"}}>ĐỔI Xu </span>
-												<img src="../arrow_green.png" style={{ width: "24px", height:"20px", paddingTop:"10px"}}/>
-												<span style={{color:"#12cdd4"}}> XO</span>
-												<img style={{float:"right"}} alt="just alt" src="../keyboard_arrow_right.png" />
-										</button>						
-                                    </Link>
-                                </Grid>
+									</Link>
+								</Grid>)}
 								{(waiting) ? (<Grid item xs={12} md={8}>
 									<div className="global-loadmore">
 									{(server !== true) ? (												

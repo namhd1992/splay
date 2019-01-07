@@ -2,13 +2,14 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {
-	getData, getDataGame
+	getDataGame
 } from '../../modules/coin'
+
 import { withRouter } from 'react-router-dom'
-import TypeChangeCoinComponent from '../../components/page/TypeChangeCoin'
+import SelectGameComponent from '../../components/page/SelectGame'
 
 
-class TypeChangeCoin extends React.Component {
+class SelectGame extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -23,25 +24,16 @@ class TypeChangeCoin extends React.Component {
 	}
 
 	componentDidMount() {
-		var user = JSON.parse(localStorage.getItem("user"));
-		var _this = this;
-		if (user !== null) {
-			this.props.getDataGame(50, 0, '', '', '');
-			// this.props.getData(user.access_token, user.scoinAccessToken)
-		} else {
-			_this.setState({ dialogLoginOpen: true });
-		}
+		this.props.getDataGame(50, 0, '', '', '');
 	}
 
 	render() {
 		return (
 			<div>
-				<TypeChangeCoinComponent
-					data={this.props.data}
+				<SelectGameComponent
 					dataGame={this.props.dataGame}
 					server={this.props.server}
 					waiting={this.props.waiting}
-					dialogLoginOpen={this.state.dialogLoginOpen}
 				/>
 			</div>
 		)
@@ -50,14 +42,12 @@ class TypeChangeCoin extends React.Component {
 }
 
 const mapStateToProps = state => ({	
-	data: state.coin.data,
 	dataGame: state.coin.dataGame,
 	waiting: state.coin.waiting,
 	server:state.server.serverError
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-	getData,
 	getDataGame
 }, dispatch)
 
@@ -65,4 +55,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 export default withRouter(connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(TypeChangeCoin))
+)(SelectGame))
