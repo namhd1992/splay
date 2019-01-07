@@ -110,11 +110,11 @@ class TypeChangeCoinComponent extends React.Component {
 										</Grid>
 									</Grid>
 								):(<Grid item xs={12}>
-									<Link to={"#"}>
+									<a href={"https://scoin.vn/nap-vao-game?GameId="+this.state.idGame} target="_blank">
 										<button style={{width:"100%", height:"45px",border:"1px solid #12cdd4", background:"#212933"}}>
 											<span style={{color:"#12cdd4"}}>Nạp game từ ví Xu</span>
 										</button>
-									</Link>
+									</a>
 								</Grid>)}
 								{(waiting) ? (<Grid item xs={12} md={8}>
 									<div className="global-loadmore">

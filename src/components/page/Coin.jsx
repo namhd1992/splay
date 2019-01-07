@@ -68,19 +68,19 @@ class CoinComponent extends React.Component {
                 alert("Gói bạn chọn không tồn tại");
                 return;
             }
-            this.setState({pakage:pakageCoin, value:pakageCoin, price:(pakageCoin/ratioExchange), type:"scoinToGame",packageXO:pakageCoin, packageXU:(pakageCoin/ratioExchange)});
+            this.setState({pakage:pakageCoin, value:pakageCoin, price:(pakageCoin/ratioExchange), type:"SCOINTOGAME",packageXO:pakageCoin, packageXU:(pakageCoin/ratioExchange)});
         }else if(+coin===2){
             if(packageExchangeXUs.indexOf(pakageCoin)===-1){
                 alert("Gói bạn chọn không tồn tại");
                 return;
             }
-            this.setState({pakage:pakageCoin, value:pakageCoin, price:ratioExchange*pakageCoin, type:"gameToScoin",packageXU:pakageCoin, packageXO:pakageCoin*ratioExchange});
+            this.setState({pakage:pakageCoin, value:pakageCoin, price:ratioExchange*pakageCoin, type:"GAMETOSCOIN",packageXU:pakageCoin, packageXO:pakageCoin*ratioExchange});
         }else{
             if(packageExchangeXUs.indexOf(pakageCoin)===-1){
                 alert("Gói bạn chọn không tồn tại");
                 return;
             }
-            this.setState({pakage:pakageCoin, value:pakageCoin, price:ratioExchange*pakageCoin, type:"gameToScoin",packageXU:pakageCoin, packageXO:pakageCoin*ratioExchange});
+            this.setState({pakage:pakageCoin, value:pakageCoin, price:ratioExchange*pakageCoin, type:"GAMETOSCOIN",packageXU:pakageCoin, packageXO:pakageCoin*ratioExchange});
         }
        
     }
