@@ -45,8 +45,8 @@ class TypeChangeCoinComponent extends React.Component {
 	}
 
     selectOptionCoin= (event) =>{
-		var scoinGameId=localStorage.getItem("serviceId");
-		this.setState({idGame:scoinGameId});
+		// var scoinGameId=localStorage.getItem("serviceId");
+		this.setState({idGame:+event.target.value});
 		if(+event.target.value===330281){
 			this.setState({idTopgame:true});
 		}else{
