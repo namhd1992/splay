@@ -60,7 +60,7 @@ class Coin extends React.Component {
 				var status=_this.props.status;
 				if(status==="01"){
 					_this.setState({ openSnack: true, message: "Đổi thành công", snackVariant: "success" });
-					_this.props.getData(user.access_token, coin)
+					_this.props.getData(user.access_token, coin, serviceId)
 					_this.props.getDataProfile(user.access_token, user.scoinAccessToken)
 				}else if(status==="-55"){
 					_this.setState({ openSnack: true, message: "Số dư Xu không đủ", snackVariant: "info" });
