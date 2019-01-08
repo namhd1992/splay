@@ -1,0 +1,96 @@
+select {
+
+    /* styling */
+    background-color: white;
+    border-radius: 4px;
+    display: inline-block;
+    font: inherit;
+    line-height: 1.5em;
+    padding: 0.5em 3.5em 0.5em 1em;
+  
+    /* reset */
+  
+    margin: 0;      
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+  select.selectOptionXu {
+    background-image:
+      linear-gradient(45deg, transparent 50%, #fff 50%),
+      linear-gradient(135deg, #fff 50%, transparent 50%);
+      background-position:
+      calc(100% - 20px) calc(1em),
+      calc(100% - 10px) calc(1em),
+      100% 0;
+    background-size:
+      10px 10px,
+      10px 10px,
+      2.5em 2.5em;
+    background-repeat: no-repeat;
+  }
+.selectOptionXu{
+    width:100%;
+    text-align:center;
+    height:40px;
+    border: 1px solid #12cdd4;
+    border-radius: 5px;
+    color: #12cdd4;
+    background: #212933;
+}
+.xu_event{
+    height: 40px;
+}
+.btnChangePoint{
+    width:100%;
+    height:40px;
+    color: #fff;
+    border-radius: 5px;
+    margin: 25px 0px;
+    border: 0px;
+    background: #12cdd4;
+}
+.btnChangePoint:hover{
+
+    background: #43e9ef;
+}
+.divOptionXu{
+    width:48%;
+    float:left
+}
+.divPrice{
+    width:50%;
+    float:right;
+    text-align:right;
+    color:#fff;
+    padding-right:15px;
+    line-height:40px;
+}
+.notePhone{
+    display: inline-block;
+    margin-top: 10px;
+}
+.statusChangePoint{
+    text-align: center;
+    margin: 0px !important;
+}
+
+@media only screen and (max-width:600px){
+    .divOptionXu{
+        width:100%;
+    }
+    .divPrice{
+        width:100%;
+        float:none;
+        text-align:left;
+    }
+    .btnChangePoint{
+        margin-top: 20px;
+    }
+    .xu_event{
+        height: 60px;
+    }
+}
