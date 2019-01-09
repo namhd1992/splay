@@ -113,6 +113,13 @@
 	}
 }
 
+@media only screen and (max-width:768px){
+	.infoGame{
+		padding-top:15px;
+		margin-top:-20px;
+	}
+}
+
 @media only screen and (max-width:667px){
 	
 }
