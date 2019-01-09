@@ -252,7 +252,7 @@ class GameDetailComponent extends React.Component {
 		return (gameData.length === 1) ? (
 			<div style={{ marginTop: "8px", borderRadius: "5px", overflow: "hidden", margin: "auto" }}>
 					{(this.state.showButtonPlay) ? (<Grid>
-									{(this.state.compact) ? (<Grid style={{position:'fixed', paddingLeft:'15px', color:'#fff', zIndex:'1', width:'100%', backgroundColor:"#151c24", marginTop:this.state.marginTop, marginLeft:'-10px', paddingTop:'10px'}}>
+									{(this.state.compact) ? (<Grid style={{position:'fixed', paddingLeft:'15px', color:'#fff', zIndex:'1', width:'100%', backgroundColor:"#232b36", marginTop:this.state.marginTop, marginLeft:'-10px', paddingTop:'10px'}}>
 										<p style={{ color: '#fff', float:'left'}}><b>{gameData[0].name}</b></p>
 					
 										<Button
