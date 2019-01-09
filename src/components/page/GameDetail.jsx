@@ -31,6 +31,7 @@ import moment from 'moment'
 import LoginRequired from '../../components/LoginRequired'
 import YouTube from 'react-youtube'
 import { withStyles } from 'material-ui/styles'
+import '../../styles/gameDetail.css'
 import '../../styles/imageServerError.css'
 
 const styles = {
@@ -54,10 +55,37 @@ class GameDetailComponent extends React.Component {
 			width:"",
 			height:"",
 			paddingBottom:"",
-			margin:""
+			margin:"",
+			compact: false,
+			showButtonPlay: false,
 		}
 	}
 
+	componentWillUnmount() {
+		for(let i=0; i<100; i++){
+			window.clearInterval(i);
+		}
+		window.removeEventListener('scroll', this.handleScroll);
+	}
+
+	componentDidMount() {
+		window.addEventListener('scroll', this.handleScroll);
+	}
+
+	handleScroll = (event) => {
+		if (document.body.offsetWidth < 768) {
+			this.setState({ compact: true });
+		} else {
+			this.setState({ compact: false });
+		}
+
+		if (document.body.getBoundingClientRect().top >-250){
+			this.setState({ showButtonPlay: false });
+		}else{
+
+			this.setState({ showButtonPlay: true });
+		}
+	}
 	UNSAFE_componentWillReceiveProps(nextProps){
 		if(this.props.data !== nextProps.data){
 			const _this=this;
@@ -79,7 +107,7 @@ class GameDetailComponent extends React.Component {
 					// _this.setState({width:this.width, height: this.height})
 				}
 				img.src = link.replace("=download","");
-			}
+			}	
 		}
 	}
 
@@ -162,6 +190,7 @@ class GameDetailComponent extends React.Component {
 			 snackVariant, openSnack,lightBoxOpen, lightBoxIndex, youtubeOpen, gameArticles, gameData,server}=this.props;
 
 		const { classes } = this.props;
+
 		const { theme } = this.props;
 		const { primary, secondary } = theme.palette;
 		const { fullScreen } = this.props;
@@ -214,6 +243,44 @@ class GameDetailComponent extends React.Component {
 		};
 		return (gameData.length === 1) ? (
 			<div style={{ marginTop: "8px", borderRadius: "5px", overflow: "hidden", margin: "auto" }}>
+					{(this.state.showButtonPlay) ? (<Grid>
+									{(this.state.compact) ? (<Grid style={{position:'fixed', paddingLeft:'15px', color:'#fff', zIndex:'1', width:'100%', backgroundColor:"#151c24", marginTop:'-68px', marginLeft:'-10px'}}>
+										<p style={{ color: '#fff', float:'left'}}><b>{gameData[0].name}</b></p>
+					
+										<Button
+												variant="raised" style={{
+													borderRadius: "20px",
+													background: "linear-gradient(90deg,#22cab5,#3fe28f)",
+													color: "#fff",
+													padding: "5px 15px",
+													fontSize: "0.8em",
+													whiteSpace: "nowrap",
+													float:'right',
+													marginTop:'12px',
+													marginRight: "10px"
+												}}><a style={{color:'#fff'}} target="_blank"
+												href={(deviceType === "ios") ? gameData[0].urlDownloadIos : gameData[0].urlDownloadAndroid}>Chơi Ngay</a></Button></Grid>):(
+												<div className="infoGame">
+													<img className='imgLogoGame' alt="game icon" src={gameData[0].defaultImage} />
+													<p className="nameGame"><b>{gameData[0].name}</b></p>
+													<div style={{marginLeft:'15px', float:'left' }}> {gameData[0].downloadTurns + " Lượt tải"}<br /><span
+														onClick={this.openRatingDialog}><Rating point={gameData[0].pointReview}></Rating></span>
+														<span style={{
+																	marginLeft:"20px",
+																	fontSize:"11px",
+																	border: "1px solid #23c9b6",
+																	padding:"1px 2px",
+																	borderRadius: "20px"}}>
+																	<label style={{color:"#23c9b6"}}>{this.getTheLoai(gameData[0])}</label>
+													</span></div>
+													
+													
+													
+													<button className="btn_playNow"><a style={{color:'#fff'}} target="_blank"
+														href={(deviceType === "ios") ? gameData[0].urlDownloadIos : gameData[0].urlDownloadAndroid}>CHƠI NGAY</a></button>
+													<Button style={{ color: "#fe8731", borderRadius:"5px",float:'right', }}><a style={{color:'#c45b36'}} href={gameData[0].fanpageFB}>Fanpage</a></Button>
+												</div>)}
+								</Grid>) : (<div></div>)}
 				<HeadMenu></HeadMenu>
 				<Grid container style={{
 					margin: "0px",
