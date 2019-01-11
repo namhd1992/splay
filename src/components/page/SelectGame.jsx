@@ -63,7 +63,7 @@ class SelectGameComponent extends React.Component {
                                 <Grid item xs={12}>
 									{this.state.listSearch.map((obj, key) => (
 										<Grid key={key} item xs={12}>
-											<Link to={"./doi"} style={{ textDecoration: "none" }} onClick={()=>this.selectGame(obj)}>
+											<Link to={"./doi"} style={{ textDecoration: "none" }} onMouseDown={()=>this.selectGame(obj)} onClick={()=>this.selectGame(obj)}>
 												<ListItem style={{ padding: "8px 0px" }}>
 
 													<div style={{
