@@ -69,7 +69,7 @@ class App extends React.Component {
 			this.setState({ isMobile: true });
 		}
 		window.addEventListener('scroll', this.handleScroll);
-		if (document.location.pathname === "/giftcodepluginlogin" || document.location.pathname === "/giftcodeplugin" || document.location.pathname==="/eventgame") {
+		if (document.location.pathname === "/giftcodepluginlogin" || document.location.pathname === "/giftcodeplugin" || document.location.pathname==="/eventgame" || document.location.pathname==="/eventgame/") {
 			this.setState({ fullscreen: true, backgroundColor:'#1a1a1a' });
 		} else {
 			this.setState({ fullscreen: false });
@@ -154,7 +154,7 @@ class App extends React.Component {
 						<Route exact path="/chongame" component={SelectGame} />
 						<Route exact path="/chitiet" component={Coin} />
 						<Route exact path="/doi" component={TypeChangeCoin} />
-						<Route exact path="/eventgame" component={EventGame} />
+						<Route exact path="/eventgame/" component={EventGame} />
 						{/* <Route exact path="/test-game" component={TestGame} /> */}
 						{/* <Route exact path="/mini-game" component={MiniGame} /> */}
 						{/* <Route exact path="/mini-game-detail" component={MiniGameDetail} /> */}
