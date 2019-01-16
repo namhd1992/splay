@@ -116,7 +116,7 @@ class CoinComponent extends React.Component {
         this.props.handleCloseErrorServer();
     }
     openTopGame=()=> {
-        var win = window.open("http://171.244.14.215:2999/", '_blank');
+        var win = window.open("http://playtop.splay.vn/", '_blank');
         win.focus();
     }
 
