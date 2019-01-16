@@ -452,7 +452,7 @@ class HomeComponent extends React.Component {
 	}
 	getString=()=> {
 		var output = document.getElementById("event");
-		var event='<img style="inline-size:9%; margin-bottom:-3px" src="./lg-topgame.png" /><span style="color:#c3736f">Săn Xu đua Top kiếm QÙA KHỦNG chỉ có tại TOPGame! </span><span id="eventRun" style="color:#93bbe8; cursor:pointer"> Chơi ngay</span>';
+		var event='';
 		// for (let i = 0; i < obj.length; i++) {
 		// 	bonus+='<span>Chúc mừng <span style="color:#00bf98">'+ obj[i].userName+'</span>'+' vừa giành được '+ '<span style="color:#ff9d42">'+ obj[i].itemName+'</span>'+' từ sự kiện ' +'<span style="color:#00bf98">'+ obj[i].eventName+'.'+'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;'
 		// }
@@ -512,6 +512,9 @@ class HomeComponent extends React.Component {
 							<div style={{display:this.state.close, background:'#f4dede', height:'40px', marginLeft:'3px', borderRadius:'5px', border:'1px solid #d98c8c'}}>
 								<div className="marquee_home">
 									<marquee id="event" scrollamount={this.state.speed} direction="left">
+										<img className="imgGameRun" src="./lg-topgame.png" />
+										<span style={{color:"#c3736f"}}>Săn Xu đua Top kiếm QÙA KHỦNG chỉ có tại TOPGame! </span>
+										<span id="eventRun" style={{color:"#93bbe8", cursor:"pointer"}}> Chơi ngay</span>
 									</marquee>
 								</div>
 								<div>
