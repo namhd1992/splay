@@ -8,13 +8,13 @@ import { Link } from 'react-router-dom'
 import { ListItem, ListItemText } from 'material-ui/List'
 import KeyboardArrowRight from 'material-ui-icons/KeyboardArrowRight'
 import ReactResizeDetector from 'react-resize-detector'
-import LikeIcon from 'material-ui-icons/ThumbUp'
 import Dialog, {
 	DialogActions,
 	DialogContent,
 	DialogTitle,
 	withMobileDialog,
 } from 'material-ui/Dialog'
+import Modal from 'material-ui/Modal';
 import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
 import Ultilities from '../../Ultilities/global'
@@ -357,6 +357,10 @@ class HomeComponent extends React.Component {
 		this.state = {
 			openPopupMission:false,
 			compact:false,
+			speed:10,
+			add:true,
+			close:'block',
+			open:true,
 		};
 	}
 
@@ -366,6 +370,14 @@ class HomeComponent extends React.Component {
 		} else {
 			this.setState({ compact: false });
 		}
+	}
+	componentDidMount(){
+		document.addEventListener('click',function(e){
+			if(e.target && e.target.id== 'eventRun'){
+				var win = window.open("http://171.244.14.215:2999/", '_blank');
+				win.focus();
+			}
+		 })
 	}
 
 	onResize=()=>{
@@ -438,6 +450,33 @@ class HomeComponent extends React.Component {
 		}
 		return {status,color};
 	}
+	getString=()=> {
+		var output = document.getElementById("event");
+		var event='<img style="inline-size:9%; margin-bottom:-3px" src="./lg-topgame.png" /><span style="color:#c3736f">Săn Xu đua Top kiếm QÙA KHỦNG chỉ có tại TOPGame! </span><span id="eventRun" style="color:#93bbe8; cursor:pointer"> Chơi ngay</span>';
+		// for (let i = 0; i < obj.length; i++) {
+		// 	bonus+='<span>Chúc mừng <span style="color:#00bf98">'+ obj[i].userName+'</span>'+' vừa giành được '+ '<span style="color:#ff9d42">'+ obj[i].itemName+'</span>'+' từ sự kiện ' +'<span style="color:#00bf98">'+ obj[i].eventName+'.'+'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;'
+		// }
+		if(output!==null && this.state.add){
+			this.setState({add:false})
+			output.insertAdjacentHTML('beforeend',event)
+		}
+	}
+
+	closeMarquee=()=>{
+		this.setState({close:'none'})
+	}
+	handleOpen = () => {
+		this.setState({ open: true });
+	};
+
+	handleClose = () => {
+		this.setState({ open: false });
+	};
+	openGame=()=> {
+        var win = window.open("http://171.244.14.215:2999/", '_blank');
+		win.focus();
+		this.setState({ open: false });
+    }
 	render() {
 		const {data,articleData,dataMission,logged,dialogDetailOpen,dialogContent,server,title_dialog}=this.props;
 		const { theme } = this.props;
@@ -447,6 +486,7 @@ class HomeComponent extends React.Component {
 		var sizeImgGame="";
 		var fontsize="";
 		if (data.carousel !== undefined) {
+			this.getString();
 			data.splayGame.map((obj, key) => {
 				if (Ultilities.object_exist(obj.tagsList, "name", "NEW")) {
 					newGames.push(obj);
@@ -465,25 +505,39 @@ class HomeComponent extends React.Component {
 		}
 		
 		return (data.carousel !== undefined) ? (
+
 				<div className={classes.homeRoot + " home-root"}>
 					<Grid container style={{width: "100%", margin: "0px",overflow: "hidden",}} spacing={8}>
+						<Grid item xs={12}>
+							<div style={{display:this.state.close, background:'#f4dede', height:'40px', marginLeft:'3px', borderRadius:'5px', border:'1px solid #d98c8c'}}>
+								<div className="marquee_home">
+									<marquee id="event" scrollamount={this.state.speed} direction="left">
+									</marquee>
+								</div>
+								<div>
+									<img className="closeMarquee" alt="just alt" src="../close.png" onClick={this.closeMarquee}/>
+								</div>
+							</div>
+						</Grid>
 						<Grid item xs={12} md={8}>
 							<Grid container style={{width: "100%", margin: "0px", overflow: "hidden",}} spacing={8}>
 								<Grid item xs={12}>
 									<Carousel data={data.carousel[1]}></Carousel>
 									<HeadMenu></HeadMenu>
 								</Grid>
-								<Grid item xs={12} style={{border:"1px solid #f23b32", borderRadius:"5px", cursor: "pointer"}}>
-									<Link to={"./chongame"} >
-										<div style={{height:"40px"}}>
-											{/* <div style={{width:"40%", float:"left"}}>
-												<img className="imgLogoGame" src="../lg-topgame.png"/>
-											</div> */}
-											<div style={{lineHeight:"40px", textAlign:'center'}}>
-												<p style={{display:"inline"}}><span style={{color:"#f23b32"}}>[ĐẶC BIỆT]</span><span  style={{color:"#ffffff"}}> Đổi Xu/ Nạp game từ ví Xu</span></p>
+								<Grid item xs={12} >
+									<div style={{border:"1px solid #f23b32", borderRadius:"5px", cursor: "pointer", padding:'5px'}}>
+										<Link to={"./chongame"} >
+											<div style={{height:"40px"}}>
+												{/* <div style={{width:"40%", float:"left"}}>
+													<img className="imgLogoGame" src="../lg-topgame.png"/>
+												</div> */}
+												<div style={{lineHeight:"40px", textAlign:'center'}}>
+													<p style={{display:"inline"}}><span style={{color:"#f23b32"}}>[ĐẶC BIỆT]</span><span  style={{color:"#ffffff"}}> Đổi Xu/ Nạp game từ ví Xu</span></p>
+												</div>
 											</div>
-										</div>
-									</Link>
+										</Link>
+									</div>
 								</Grid>
 								<Grid container className={classes.homeBlock} spacing={8}>
 									<Hidden smDown>
@@ -1056,6 +1110,19 @@ class HomeComponent extends React.Component {
 						reward={this.props.reward}
 						doMission={this.props.doMission}
 					/>
+					<Modal
+						aria-labelledby="simple-modal-title"
+						aria-describedby="simple-modal-description"
+						open={this.state.open}
+						style={{backgroundColor:'rgba(0, 0, 0, 0.7)'}}
+						onClose={this.handleClose}
+						>
+						<div className="popupGame" style={{ backgroundImage: "url(./popup.jpg)"}}>
+							<img style={{float:'right', zIndex:"1", cursor:"pointer"}} src="./close.png" alt="close popup" onClick={this.handleClose} />
+							<div style={{width:"100%", height:"100%", cursor:"pointer"}} onClick={this.openGame}>
+							</div>
+						</div>
+					</Modal>
 				</div >
 			) :
 				(<Grid item xs={12} style={{ marginTop: "8px" }}>

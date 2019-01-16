@@ -24,21 +24,21 @@ class EventComponent extends React.Component {
 	}
 
 	render() {
+		var arr=[20000,50000,100000,200000,500000]
 		return (
 			<div>
                 <div className="xu_event">
 					<div className="divOptionXu">
 						<select className="selectOptionXu" onChange={(event)=>this.selectOptionCoin(event)}>
 							<option value="" selected disabled hidden>Chọn gói Xu muốn nhận</option>
-							<option value="20000">20000</option>
-							<option value="50000">50000</option>
-							<option value="100000">100000</option>
-							<option value="200000">200000</option>
-							<option value="500000">500000</option>
-						</select>
+								{arr.map((obj,key) => {
+										return <option key={key}
+										value={obj}>{obj.toLocaleString()}</option>;
+									})}
+                        </select>
 					</div>
 					<div className="divPrice">
-						<span style={{marginRight:"20px"}}>Giá:</span><span>{this.state.point} điểm</span> 
+						<span style={{marginRight:"20px"}}>Giá:</span><span>{this.state.point.toLocaleString()} điểm</span> 
 					</div>
 				</div>
 				<button className="btnChangePoint" onClick={this.changeCoin}>ĐỔI</button>

@@ -60,13 +60,14 @@ class Carousel extends React.Component {
 		return (
 			<div className='carousel-root' style={{ width: "auto", marginLeft: "0px", marginRight: "0px" }}>
 				<div style={{ position: "relative", overflow: "visible" }}>
-					{/* {(this.state.isMobile) ? (<div
-						style={{ backgroundImage: "url(" + this.state.backgroundBlur + ")", width: "100%", height: "120%", marginTop: "-65px", marginBottom: "-65px", position: "absolute", filter: "blur(40px)" }}></div>) : (<div></div>)} */}
-					{/*<Hidden smDown>*/}
-					{/*<Grid container spacing={0}>*/}
-					{/*<Grid item xs={9}>*/}
-					{/*<Grid container>*/}
-					{/*{this.props.data.slice(0, 1).map((item, key) => {*/}
+
+					{(this.state.isMobile) ? (<div
+						style={{ backgroundImage: "url(" + this.state.backgroundBlur + ")", width: "100%", height: "120%", marginTop: "-65px", marginBottom: "-65px", position: "absolute", filter: "blur(40px)" }}></div>) : (<div></div>)}
+					{/* <Hidden smDown>
+					<Grid container spacing={0}>
+					<Grid item xs={9}>
+					<Grid container> */}
+					{/* {this.props.data.slice(0, 1).map((item, key) => { */}
 					{/*return (<Grid item md={12} key={key}><a href={item.urlView} target="_blank">*/}
 					{/*<div className="carousel-item-inside" style={{backgroundImage: "url(" + item.urlImage + ")"}}></div>*/}
 					{/*</a></Grid>)*/}
@@ -84,20 +85,20 @@ class Carousel extends React.Component {
 					{/*</Grid>*/}
 					{/*</Grid>*/}
 					{/*</Hidden>*/}
-					{/*<Hidden mdUp>*/}
+					{/*<Hidden mdUp> */}
 					<Slider dotsClass={"slick-dots carousel-dot"} {...settings} >
 						{this.props.data.map((item, key) => {
 							return (<div
 								key={key}
 								className="carousel-item"
 								style={{ cursor: "pointer" }}
-							// onPointerDown={this.handlePointerDown}
-							// onPointerUp={() => this.handlePointerUp(item.urlView)}
-							// onPointerMove={this.handlePointerMove}
+							onPointerDown={this.handlePointerDown}
+							onPointerUp={() => this.handlePointerUp(item.urlView)}
+							onPointerMove={this.handlePointerMove}
 							>
-								<a href={item.urlView} target="_blank">
+								<span>
 									<div className="carousel-item-inside" style={{ backgroundImage: "url(" + item.urlImage + ")" }}></div>
-								</a>
+								</span>
 							</div>)
 						})}
 					</Slider>

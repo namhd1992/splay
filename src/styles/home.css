@@ -162,6 +162,45 @@ button.buttonFull:hover{
 	background: linear-gradient(90deg,#51e1d1,#7aebb1);
 }
 
+.marquee_home {
+    height: 40px;
+    line-height: 40px;
+	width: 98%;
+	float: left;
+	/* background:#f4dede; */
+    color: #fff;
+    overflow: hidden;
+    position: relative;
+}
+.closeMarquee{
+	cursor: pointer;
+	margin-left: 4px;
+}
+
+.popupGame{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -300px;
+	margin-left: -300px;
+	width: 600px;
+	height:600px;
+	background-size:contain;
+	background-repeat:no-repeat;
+	box-shadow: 5px;
+	padding: 5px;
+	outline: "none";
+}
+
+@media only screen and (max-width:1366px){
+	.popupGame{
+		margin-top: -250px;
+		margin-left: -250px;
+		width: 500px;
+		height:500px;
+	}
+}
+
 @media only screen and (max-width:1280px){
 	.mission_home{
 	   padding: 2px 0px;
@@ -218,7 +257,15 @@ button.buttonFull:hover{
 	.avatar{
 		padding: 3px 8px;
 	}
-
+	.marquee_home {
+		width: 97%;
+	}
+	.popupGame{
+		margin-top: -200px;
+		margin-left: -200px;
+		width: 400px;
+		height:400px;
+	}
 }
  
 
@@ -245,6 +292,34 @@ button.buttonFull:hover{
 	}
 }
 
+@media only screen and (max-width:768px){
+	.mission_home{
+		padding: 2px 0px 2px 1px;
+	}
+	.mission_home_action{
+		flex:auto;
+		width:32%; 
+		float:left;
+	}
+	.mission_home .mission_home_action{
+		margin-right: 4px;
+	}
+	span.valueBonus{
+		font-size: 0.7em;
+	}
+	span.numberBonus{
+		font-size: 0.7em;
+		margin-left: 3px;
+	}
+	.marquee_home {
+		width: 96%;
+	}
+	.closeMarquee{
+		margin-left: 4px;
+	}
+}
+
+
 @media only screen and (max-width:667px){
 	.mission_home{
 		padding: 2px 0px 2px 1px;
@@ -263,6 +338,15 @@ button.buttonFull:hover{
 	span.numberBonus{
 		font-size: 0.7em;
 		margin-left: 3px;
+	}
+	.marquee_home {
+		width: 96%;
+	}
+	.popupGame{
+		margin-top: -175px;
+		margin-left: -175px;
+		width: 350px;
+		height:350px;
 	}
 }
 
@@ -287,6 +371,18 @@ button.buttonFull:hover{
 	span.numberBonus{
 		font-size: 0.7em;
 		margin-left: 3px;
+	}
+	.marquee_home {
+		width: 95%;
+	}
+	.closeMarquee{
+		margin-left: 0px;
+	}
+	.popupGame{
+		margin-top: -150px;
+		margin-left: -150px;
+		width: 300px;
+		height:300px;
 	}
 }
 
@@ -315,6 +411,18 @@ button.buttonFull:hover{
 	span.numberBonus{
 		font-size: 0.7em;
 		margin-left: 3px;
+	}
+	.marquee_home {
+		width: 93%;
+	}
+	.closeMarquee{
+		margin-left: 2px;
+	}
+	.popupGame{
+		margin-top: -150px;
+		margin-left: -150px;
+		width: 300px;
+		height:300px;
 	}
 }
 
@@ -356,5 +464,11 @@ button.buttonFull:hover{
 	}
 	.mission_home .avatar{
 		padding: 2px 8px;
+	}
+	.popupGame{
+		margin-top: -125px;
+		margin-left: -125px;
+		width: 250px;
+		height:250px;
 	}
 }

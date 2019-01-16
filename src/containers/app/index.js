@@ -38,6 +38,7 @@ import Coin from '../coin';
 import TypeChangeCoin from '../type_change_coin';
 import SelectGame from '../select_game';
 import EventGame from '../event_game';
+import '../../styles/app.css'
 
 
 class App extends React.Component {
@@ -108,10 +109,16 @@ class App extends React.Component {
 		// 	this.setState({ scrolling: false });
 		// }
 	}
+	linkToGame=()=>{
+		window.location.replace(`${window.location.protocol}//${window.location.host}/article_detail/142`);
+	}
 	render() {
 		return (
 			<div style={{ backgroundColor: this.state.backgroundColor }}>
-				<div style={{ maxWidth: "1280px", margin: "auto", background: this.state.backgroundColorc }}>
+				<div className="banner" >
+					<img className="img_banner" src="/../banner.jpg" alt="banner" onClick={this.linkToGame}/>
+				</div>
+				<div className="content" style={{ background: this.state.backgroundColorc }}>
 					{(!this.state.fullscreen) ? (<MenuAppBar isMobile={this.state.isMobile} pathname={document.location.pathname} compact={this.state.compact} scrolling={this.state.scrolling}
 						data={[{ url: "home", label: "home" }, { url: "about", label: "about" }]}></MenuAppBar>) : (<div></div>)}
 					<main ref={(c) => this.main = c} style={(document.location.pathname === "/eventgame") ? { padding: "30px 8px 8px 8px" } : { padding: "60px 8px 8px 8px" }}>
@@ -152,6 +159,9 @@ class App extends React.Component {
 						<Avatar style={{ opacity: "0.6", background: "#23c9b6", border: "1px solid #23c9b6", width: "32px", height: "32px" }}><KeyboardArrowUp
 							style={{ color: "#fff" }}></KeyboardArrowUp></Avatar>
 					</ScrollToTop>
+				</div>
+				<div className="banner" >
+					<img className="img_banner" src="/../banner.jpg" alt="banner" onClick={this.linkToGame}/>
 				</div>
 			</div>
 		)
