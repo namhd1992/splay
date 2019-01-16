@@ -36,9 +36,12 @@ import Avatar from 'material-ui/Avatar';
 import Phone_card from '../phone_card';
 import Coin from '../coin';
 import TypeChangeCoin from '../type_change_coin';
-import SelectGame from '../select_game';
+import SelectGame from '../select_game'
+// import TestGame from '../test_game';
 import EventGame from '../event_game';
 import '../../styles/app.css'
+// import MiniGame from '../mini_game';
+// import MiniGameDetail from '../mini_game_detail';
 
 
 class App extends React.Component {
@@ -49,8 +52,8 @@ class App extends React.Component {
 			main: null,
 			compact: false,
 			scrolling: false,
-			backgroundColor:'#212933',
 			fullscreen: false,
+			backgroundColor:'#212933',
 			title: "",
 			isMobile: false,
 			scrollPos: 0,
@@ -94,8 +97,7 @@ class App extends React.Component {
 			this.setState({ compact: false });
 		}
 
-		if (document.body.getBoundingClientRect().top > this.state.scrollPos){
-			// console.log("UP")
+		if (document.body.getBoundingClientRect().top >= this.state.scrollPos || document.body.getBoundingClientRect().top>-150){
 			this.setState({ scrolling: false });
 		}else{
 			// console.log('DOWN');
@@ -118,7 +120,7 @@ class App extends React.Component {
 				<div className="banner" >
 					<img className="img_banner" src="/../banner.jpg" alt="banner" onClick={this.linkToGame}/>
 				</div>
-				<div className="content" style={{ background: this.state.backgroundColorc }}>
+				<div className="content" style={{ background: this.state.backgroundColor }}>
 					{(!this.state.fullscreen) ? (<MenuAppBar isMobile={this.state.isMobile} pathname={document.location.pathname} compact={this.state.compact} scrolling={this.state.scrolling}
 						data={[{ url: "home", label: "home" }, { url: "about", label: "about" }]}></MenuAppBar>) : (<div></div>)}
 					<main ref={(c) => this.main = c} style={(document.location.pathname === "/eventgame") ? { padding: "30px 8px 8px 8px" } : { padding: "60px 8px 8px 8px" }}>
@@ -150,9 +152,12 @@ class App extends React.Component {
 						<Route exact path="/giftcodepluginlogin" component={Giftcode_plugin_login} />
 						<Route exact path="/phonecard" component={Phone_card} />
 						<Route exact path="/chongame" component={SelectGame} />
-						<Route exact path="/eventgame" component={EventGame} />
 						<Route exact path="/chitiet" component={Coin} />
 						<Route exact path="/doi" component={TypeChangeCoin} />
+						<Route exact path="/eventgame" component={EventGame} />
+						{/* <Route exact path="/test-game" component={TestGame} /> */}
+						{/* <Route exact path="/mini-game" component={MiniGame} /> */}
+						{/* <Route exact path="/mini-game-detail" component={MiniGameDetail} /> */}
 					</main>
 					{(!this.state.fullscreen) ? (<Footer></Footer>) : (<div></div>)}
 					<ScrollToTop style={{ bottom: 90, right: "10px" }} showUnder={160}>
@@ -160,7 +165,7 @@ class App extends React.Component {
 							style={{ color: "#fff" }}></KeyboardArrowUp></Avatar>
 					</ScrollToTop>
 				</div>
-				<div className="banner" >
+				<div className="banner">
 					<img className="img_banner" src="/../banner.jpg" alt="banner" onClick={this.linkToGame}/>
 				</div>
 			</div>
