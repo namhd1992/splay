@@ -374,7 +374,7 @@ class HomeComponent extends React.Component {
 	componentDidMount(){
 		document.addEventListener('click',function(e){
 			if(e.target && e.target.id== 'eventRun'){
-				var win = window.open("http://playtop.splay.vn/", '_blank');
+				var win = window.open("https://top.splay.vn/", '_blank');
 				win.focus();
 			}
 		 })
@@ -473,7 +473,7 @@ class HomeComponent extends React.Component {
 		this.setState({ open: false });
 	};
 	openGame=()=> {
-        var win = window.open("http://playtop.splay.vn/", '_blank');
+        var win = window.open("https://top.splay.vn/", '_blank');
 		win.focus();
 		this.setState({ open: false });
     }
