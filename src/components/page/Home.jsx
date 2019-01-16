@@ -473,7 +473,7 @@ class HomeComponent extends React.Component {
 		this.setState({ open: false });
 	};
 	openGame=()=> {
-        var win = window.open("http://171.244.14.215:2999/", '_blank');
+        var win = window.open("http://playtop.splay.vn/", '_blank');
 		win.focus();
 		this.setState({ open: false });
     }
