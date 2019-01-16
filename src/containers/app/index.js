@@ -69,7 +69,7 @@ class App extends React.Component {
 			this.setState({ isMobile: true });
 		}
 		window.addEventListener('scroll', this.handleScroll);
-		if (document.location.pathname === "/giftcodepluginlogin" || document.location.pathname === "/giftcodeplugin" || document.location.pathname==="/eventgame" || document.location.pathname==="/eventgame/") {
+		if (document.location.pathname === "/giftcodepluginlogin" || document.location.pathname === "/giftcodeplugin" || document.location.pathname.indexOf("/eventgame")!==-1) {
 			this.setState({ fullscreen: true, backgroundColor:'#1a1a1a' });
 		} else {
 			this.setState({ fullscreen: false });
