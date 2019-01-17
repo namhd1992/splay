@@ -8,23 +8,35 @@ class EventComponent extends React.Component {
 	constructor(props){
 		super(props);
 		this.state={
-			status:'',
-			statusColor:'#12cdd4',
-			point:'0'
+			point:0,
 		}
 	}
 
 	selectOptionCoin= (event) =>{
         var pakageXu=+event.target.value;
-        this.setState({point: pakageXu/1000, status:''})
+		this.setState({point: pakageXu/1000})
+		this.props.selectPackage()
     }
 
-	changeCoin=()=>{
-		this.setState({status:'Đổi thành công, Xu được cộng vào tài khoản'})
+	changePoint=()=>{
+		var scoinToken=this.getScoinToken('token');
+		this.props.changePoint(scoinToken,this.state.point)
+	}
+	getScoinToken=(paramName)=>{
+		var url = window.location.search.substring(1);
+		var qArray = url.split('&');
+		for (var i = 0; i < qArray.length; i++) 
+		{
+			var pArr = qArray[i].split('='); //split key and value
+			if (pArr[0] == paramName) 
+				return pArr[1]; //return value
+		}
+		return '';
 	}
 
 	render() {
 		var arr=[20000,50000,100000,200000,500000]
+		const {status, statusColor}=this.props;
 		return (
 			<div>
                 <div className="xu_event">
@@ -41,8 +53,8 @@ class EventComponent extends React.Component {
 						<span style={{marginRight:"20px"}}>Giá:</span><span>{this.state.point.toLocaleString()} điểm</span> 
 					</div>
 				</div>
-				<button className="btnChangePoint" onClick={this.changeCoin}>ĐỔI</button>
-				<p className="statusChangePoint" style={{ color:this.state.statusColor}}>{this.state.status}</p>
+				<button className="btnChangePoint" onClick={this.changePoint}>ĐỔI</button>
+				<p className="statusChangePoint" style={{ color:statusColor}}>{status}</p>
             </div>
 		)
 	}
