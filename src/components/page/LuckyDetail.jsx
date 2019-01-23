@@ -54,8 +54,11 @@ class LuckyDetailComponent extends React.Component {
 	constructor(){
 		super();
 		this.state = {
-			intValue:1,
-			whenSelect:"1px solid #00ccd4",
+			intValue:0,
+			whenSelect:"",
+			btnPlay:'block',
+			div1:'back',
+			div2:'front',
 		};
 	}
 	showItem=()=>{
@@ -63,6 +66,7 @@ class LuckyDetailComponent extends React.Component {
 	}
 	
 	showBuyTurn=()=>{
+		this.setState({intValue:1,whenSelect:"1px solid #00ccd4"})
 		this.props.showBuyTurn();
 	}
 	
@@ -83,15 +87,29 @@ class LuckyDetailComponent extends React.Component {
 	}
 	
 	buyTurn=()=>{
-		this.props.buyTurn(this.state.intValue);
-		this.setState({whenSelect:""});
+		if(this.state.intValue!==0){
+			this.props.buyTurn(this.state.intValue);
+			this.setState({intValue:0, whenSelect:""});
+		}else{
+			this.props.notSelectOption();
+		}
 	}
 	
 	pick=(key)=>{
+		var _this = this;
+		setTimeout(function () {
+			_this.showBtnPlay();
+		}, 1500);
 		this.props.pick(key);
+	}
+	showBtnPlay=()=>{
+		this.setState({btnPlay:'block'})
 	}
 	
 	start=()=>{
+		if(this.props.dataDetail.userSpinInfo.turnsBuy + this.props.dataDetail.userSpinInfo.turnsFree >0){
+			this.setState({btnPlay:'none',div1:'front', div2:'back'})
+		}
 		this.props.start();
 	}
 	
@@ -155,7 +173,7 @@ class LuckyDetailComponent extends React.Component {
 				<Grid container spacing={8}>
 					<Grid item xs={12} md={8}>
 						<Grid container className="lucky-detail-root" spacing={8}>
-							<Grid item xs={12}>
+							<Grid item xs={12} sm={8}>
 								<div className="lucky-wrap"
 									style={{ margin: "auto", width: (cardWidth * 4) + "px", height: (cardHeight * 3) + "px", position: "relative" }}>
 									{cardArr.map((obj, key) => {
@@ -175,7 +193,7 @@ class LuckyDetailComponent extends React.Component {
 												top: top
 											}}>
 											<ReactCardFlip style={{ height: '100%' }} isFlipped={flippedArr.find(x => x.id === obj.item.id).status}>
-												<div key="front" style={{
+												<div key={this.state.div1} style={{
 													opacity: (highLightCard === null || highLightCard === obj.item.id) ? "1" : "0.5",
 													backgroundSize: "contain",
 													backgroundRepeat: "no-repeat",
@@ -189,7 +207,7 @@ class LuckyDetailComponent extends React.Component {
 														src={obj.item.urlImage} /></div>
 													<div style={{ fontSize: fontSize }}>{obj.item.name}</div>
 												</div>
-												<div key="back" onClick={() => this.pick(obj.item.id)} style={{
+												<div key={this.state.div2} onClick={() => this.pick(obj.item.id)} style={{
 													backgroundSize: "contain",
 													backgroundRepeat: "no-repeat",
 													backgroundPosition: "center",
@@ -205,14 +223,27 @@ class LuckyDetailComponent extends React.Component {
 									)}
 								</div>
 							</Grid>
-							<Grid item xs={12} sm={4} className="lucky-button">
-								<button className="buttonGreen" onClick={this.start}>CHƠI ({dataDetail.userSpinInfo.turnsBuy + dataDetail.userSpinInfo.turnsFree})</button>
-							</Grid>
-							<Grid item xs={12} sm={4} className="lucky-button">
-								<button className="buttonOrange" onClick={this.showItem}>PHẦN THƯỞNG</button>
-							</Grid>
-							<Grid item xs={12} sm={4} className="lucky-button">
-								<button className="buttonOrange" onClick={this.showBuyTurn}>MUA LƯỢT</button>
+							<Grid style={{padding:"8px"}} container spacing={8} sm={4}>
+								<Grid container></Grid>
+								<Grid container></Grid>
+								<Grid container></Grid>
+								<Grid container></Grid>
+								<Grid container></Grid>
+								<Grid container></Grid>
+								<Grid container></Grid>
+								<Grid container></Grid>
+								<Grid container></Grid>
+								<Grid container spacing={8}>
+									<Grid item xs={12} className="lucky-button">
+										<button style={{display:this.state.btnPlay}} className="buttonGreen" onClick={this.start}>CHƠI ({dataDetail.userSpinInfo.turnsBuy + dataDetail.userSpinInfo.turnsFree})</button>
+									</Grid>
+									<Grid item xs={12} className="lucky-button">
+										<button className="buttonOrange" onClick={this.showItem}>PHẦN THƯỞNG</button>
+									</Grid>
+									<Grid item xs={12} className="lucky-button">
+										<button className="buttonOrange" onClick={this.showBuyTurn}>MUA LƯỢT</button>
+									</Grid>
+								</Grid>
 							</Grid>
 						</Grid>
 					</Grid>

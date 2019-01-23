@@ -214,6 +214,9 @@ class Lucky_detail extends React.Component {
 	showItem = () => {
 		this.setState({ dialogItemOpen: true });
 	}
+	notSelectOption=()=>{
+		this.setState({ openSnack: true, message: "Bạn chưa chọn gói", snackVariant: "error" });
+	}
 	
 
 	render() {
@@ -239,6 +242,7 @@ class Lucky_detail extends React.Component {
 					openCard={this.openCard}
 					onResize={this.onResize}
 					handleCloseSnack={this.handleCloseSnack}
+					notSelectOption={this.notSelectOption}
 
 					dataDetail={this.props.dataDetail}
 					server={this.props.server}

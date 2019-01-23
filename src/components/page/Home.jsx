@@ -509,11 +509,11 @@ class HomeComponent extends React.Component {
 				<div className={classes.homeRoot + " home-root"}>
 					<Grid container style={{width: "100%", margin: "0px",overflow: "hidden",}} spacing={8}>
 						<Grid item xs={12}>
-							<div style={{display:this.state.close, background:'#f4dede', height:'40px', marginLeft:'3px', borderRadius:'5px', border:'1px solid #d98c8c'}}>
+							<div style={{display:this.state.close, background:'#f4dede', height:'40px', marginLeft:'3px', borderRadius:'5px', border:'1px solid #b4504b'}}>
 								<div className="marquee_home">
 									<marquee id="event" scrollamount={this.state.speed} direction="left">
 										<img className="imgGameRun" src="./lg-topgame.png" />
-										<span style={{color:"#c3736f"}}>Săn Xu đua Top kiếm QÙA KHỦNG chỉ có tại TOPGame! </span>
+										<span style={{color:"#b4504b"}}>Săn Xu đua Top kiếm QÙA KHỦNG chỉ có tại TOPGame! </span>
 										<span id="eventRun" style={{color:"#93bbe8", cursor:"pointer"}}> Chơi ngay</span>
 									</marquee>
 								</div>
