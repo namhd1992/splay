@@ -68,7 +68,7 @@ class Coin extends React.Component {
 				}else if(status==="-304"){
 					_this.setState({ openSnack: true, message: "Dịch vụ này không tồn tại hoặc đang tạm dừng", snackVariant: "info" });
 				}else if(status==="-310"){
-					_this.setState({ openSnack: true, message: "Vượt qua giới hạn đổi xu ngày hôm nay", snackVariant: "info" });
+					_this.setState({ openSnack: true, message: "Vượt qua giới hạn đổi Xu ngày hôm nay", snackVariant: "info" });
 				}else if(status==="-1004"){
 					_this.setState({ openSnack: true, message: "Vượt quá giới hạn nạp XO", snackVariant: "info" });
 				}else if(status==="-1005"){
