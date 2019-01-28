@@ -360,7 +360,7 @@ class HomeComponent extends React.Component {
 			speed:10,
 			add:true,
 			close:'block',
-			open:true,
+			open:false,
 		};
 	}
 
@@ -372,12 +372,12 @@ class HomeComponent extends React.Component {
 		}
 	}
 	componentDidMount(){
-		document.addEventListener('click',function(e){
-			if(e.target && e.target.id== 'eventRun'){
-				var win = window.open("https://top.splay.vn/", '_blank');
-				win.focus();
-			}
-		 })
+		// document.addEventListener('click',function(e){
+		// 	if(e.target && e.target.id== 'eventRun'){
+		// 		var win = window.open("https://top.splay.vn/", '_blank');
+		// 		win.focus();
+		// 	}
+		//  })
 	}
 
 	onResize=()=>{
@@ -450,15 +450,14 @@ class HomeComponent extends React.Component {
 		}
 		return {status,color};
 	}
-	getString=()=> {
+	getString=(content)=> {
 		var output = document.getElementById("event");
-		var event='';
 		// for (let i = 0; i < obj.length; i++) {
 		// 	bonus+='<span>Chúc mừng <span style="color:#00bf98">'+ obj[i].userName+'</span>'+' vừa giành được '+ '<span style="color:#ff9d42">'+ obj[i].itemName+'</span>'+' từ sự kiện ' +'<span style="color:#00bf98">'+ obj[i].eventName+'.'+'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;'
 		// }
 		if(output!==null && this.state.add){
 			this.setState({add:false})
-			output.insertAdjacentHTML('beforeend',event)
+			output.insertAdjacentHTML('beforeend',content)
 		}
 	}
 
@@ -485,8 +484,17 @@ class HomeComponent extends React.Component {
 		var newGames = [];
 		var sizeImgGame="";
 		var fontsize="";
+		var carousel=[];
+		var content='';
 		if (data.carousel !== undefined) {
-			this.getString();
+			data.carousel[1].map((obj, key) => {
+				if (obj.typeCarousel==="IMAGE") {
+					carousel.push(obj);
+				}else if(obj.typeCarousel==="TEXT"){
+					content=obj.content;
+				}
+			})
+			this.getString(content);
 			data.splayGame.map((obj, key) => {
 				if (Ultilities.object_exist(obj.tagsList, "name", "NEW")) {
 					newGames.push(obj);
@@ -511,10 +519,10 @@ class HomeComponent extends React.Component {
 						<Grid item xs={12}>
 							<div style={{display:this.state.close, background:'#f4dede', height:'40px', marginLeft:'3px', borderRadius:'5px', border:'1px solid #b4504b'}}>
 								<div className="marquee_home">
-									<marquee id="event" scrollamount={this.state.speed} direction="left">
-										<img className="imgGameRun" src="./lg-topgame.png" />
+									<marquee className="contentRun" id="event" scrollamount={this.state.speed} direction="left">
+										{/* <img className="imgGameRun" src="./lg-topgame.png" />
 										<span style={{color:"#b4504b"}}>Săn Xu đua Top kiếm QÙA KHỦNG chỉ có tại TOPGame! </span>
-										<span id="eventRun" style={{color:"#93bbe8", cursor:"pointer"}}> Chơi ngay</span>
+										<span id="eventRun" style={{color:"#93bbe8", cursor:"pointer"}}> Chơi ngay</span> */}
 									</marquee>
 								</div>
 								<div>
@@ -525,7 +533,7 @@ class HomeComponent extends React.Component {
 						<Grid item xs={12} md={8}>
 							<Grid container style={{width: "100%", margin: "0px", overflow: "hidden",}} spacing={8}>
 								<Grid item xs={12}>
-									<Carousel data={data.carousel[1]}></Carousel>
+									<Carousel data={carousel}></Carousel>
 									<HeadMenu></HeadMenu>
 								</Grid>
 								<Grid item xs={12} >

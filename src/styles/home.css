@@ -196,6 +196,17 @@ button.buttonFull:hover{
 	inline-size:9%;
 	margin-bottom:-3px;
 }
+.contentRun p{
+	color: #b4504b;
+	padding: 0px !important;
+}
+
+.contentRun p a{
+	color: #93bbe8;
+}
+.contentRun p img{
+	margin-bottom:-5px;
+}
 
 @media only screen and (max-width:1366px){
 	.popupGame{
