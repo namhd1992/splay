@@ -59,6 +59,8 @@ class LuckyDetailComponent extends React.Component {
 			btnPlay:'block',
 			div1:'back',
 			div2:'front',
+			guide1:'Nhấn CHƠI để bắt đầu.',
+			guide2:'Sau đó các thẻ phần thưởng sẽ được úp xuống.'
 		};
 	}
 	showItem=()=>{
@@ -103,12 +105,12 @@ class LuckyDetailComponent extends React.Component {
 		this.props.pick(key);
 	}
 	showBtnPlay=()=>{
-		this.setState({btnPlay:'block'})
+		this.setState({btnPlay:'block', guide1:'Phần thưởng sẽ được cộng vào tài khoản hoặc lưu trong Hộp thư.', guide2:'Nhấn CHƠI để bắt đầu tiếp.'})
 	}
 	
 	start=()=>{
 		if(this.props.dataDetail.userSpinInfo.turnsBuy + this.props.dataDetail.userSpinInfo.turnsFree >0){
-			this.setState({btnPlay:'none',div1:'front', div2:'back'})
+			this.setState({btnPlay:'none',div1:'front', div2:'back', guide1:'Mời bạn lật thẻ để nhận phần thưởng.', guide2:''})
 		}
 		this.props.start();
 	}
@@ -226,7 +228,10 @@ class LuckyDetailComponent extends React.Component {
 							<Grid style={{padding:"8px"}} container spacing={8} sm={4}>
 								<Grid container></Grid>
 								<Grid container></Grid>
-								<Grid container></Grid>
+								<Grid container style={{backgroundColor:'#2f3747', borderRadius:'10px',marginBottom:'20px'}}>
+									<span style={{color:'#fff', textAlign:'left', paddingLeft:'5px', paddingTop:'10px'}}>{this.state.guide1}</span>
+									<span style={{color:'#fff', textAlign:'left', paddingLeft:'5px', paddingBottom:'15px'}}>{this.state.guide2}</span>
+								</Grid>
 								<Grid container></Grid>
 								<Grid container></Grid>
 								<Grid container></Grid>

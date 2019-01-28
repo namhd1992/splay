@@ -76,7 +76,10 @@ class Lucky_detail extends React.Component {
 		if (window.innerWidth > 480 && window.innerWidth <= 768) {
 			this.setState({ cardHeight: 180, cardWidth: 120, fontSize: "1em" });
 		}
-		if (window.innerWidth > 768) {
+		if (window.innerWidth > 768 && window.innerWidth <= 1024) {
+			this.setState({ cardHeight: 160, cardWidth: 95, fontSize: "0.8em" });
+		}
+		if (window.innerWidth > 1024) {
 			this.setState({ cardHeight: 180, cardWidth: 120, fontSize: "1em" });
 		}
 	}
@@ -209,7 +212,7 @@ class Lucky_detail extends React.Component {
 	};
 
 	showBuyTurn = () => {
-		this.setState({ dialogOpen: true });
+		this.setState({ dialogOpen: true, dialogMoreTurnOpen: false});
 	}
 	showItem = () => {
 		this.setState({ dialogItemOpen: true });
