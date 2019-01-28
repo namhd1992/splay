@@ -58,6 +58,7 @@ class Coin extends React.Component {
 		if (user !== null) {
 			this.props.changeCoin(user.access_token, packageXO, packageXu, type, serviceId).then(function () {
 				var status=_this.props.status;
+				console.log()
 				if(status==="01"){
 					_this.setState({ openSnack: true, message: "Đổi thành công", snackVariant: "success" });
 					_this.props.getData(user.access_token, coin, serviceId)
@@ -66,6 +67,8 @@ class Coin extends React.Component {
 					_this.setState({ openSnack: true, message: "Số dư Xu không đủ", snackVariant: "info" });
 				}else if(status==="-304"){
 					_this.setState({ openSnack: true, message: "Dịch vụ này không tồn tại hoặc đang tạm dừng", snackVariant: "info" });
+				}else if(status==="-310"){
+					_this.setState({ openSnack: true, message: "Vượt qua giới hạn đổi xu ngày hôm nay", snackVariant: "info" });
 				}else if(status==="-1004"){
 					_this.setState({ openSnack: true, message: "Vượt quá giới hạn nạp XO", snackVariant: "info" });
 				}else if(status==="-1005"){
