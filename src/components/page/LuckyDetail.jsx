@@ -226,11 +226,11 @@ class LuckyDetailComponent extends React.Component {
 								</div>
 							</Grid>
 							<Grid style={{padding:"8px"}} container spacing={8} sm={4}>
-								<Grid container></Grid>
-								<Grid container></Grid>
-								<Grid container style={{backgroundColor:'#2f3747', borderRadius:'10px',marginBottom:'20px'}}>
-									<span style={{color:'#fff', textAlign:'left', paddingLeft:'5px', paddingTop:'10px'}}>{this.state.guide1}</span>
-									<span style={{color:'#fff', textAlign:'left', paddingLeft:'5px', paddingBottom:'15px'}}>{this.state.guide2}</span>
+								<Grid container>
+									<div className="tutorial">
+										<p style={{color:'#fff', textAlign:'left', paddingLeft:'5px', paddingTop:'10px'}}>{this.state.guide1}</p>
+										<p style={{color:'#fff', textAlign:'left', paddingLeft:'5px', paddingBottom:'15px'}}>{this.state.guide2}</p>
+									</div>
 								</Grid>
 								<Grid container></Grid>
 								<Grid container></Grid>
@@ -238,16 +238,20 @@ class LuckyDetailComponent extends React.Component {
 								<Grid container></Grid>
 								<Grid container></Grid>
 								<Grid container></Grid>
+								<Grid container></Grid>
+								<Grid container></Grid>
 								<Grid container spacing={8}>
-									<Grid item xs={12} className="lucky-button">
-										<button style={{display:this.state.btnPlay}} className="buttonGreen" onClick={this.start}>CHƠI ({dataDetail.userSpinInfo.turnsBuy + dataDetail.userSpinInfo.turnsFree})</button>
-									</Grid>
-									<Grid item xs={12} className="lucky-button">
-										<button className="buttonOrange" onClick={this.showItem}>PHẦN THƯỞNG</button>
-									</Grid>
-									<Grid item xs={12} className="lucky-button">
-										<button className="buttonOrange" onClick={this.showBuyTurn}>MUA LƯỢT</button>
-									</Grid>
+									<div className="actionPlay">
+										<Grid item xs={12} className="lucky-button">
+											<button style={{display:this.state.btnPlay}} className="buttonGreen" onClick={this.start}>CHƠI ({dataDetail.userSpinInfo.turnsBuy + dataDetail.userSpinInfo.turnsFree})</button>
+										</Grid>
+										<Grid item xs={12} className="lucky-button">
+											<button className="buttonOrange" onClick={this.showItem}>PHẦN THƯỞNG</button>
+										</Grid>
+										<Grid item xs={12} className="lucky-button">
+											<button className="buttonOrange" onClick={this.showBuyTurn}>MUA LƯỢT</button>
+										</Grid>
+									</div>
 								</Grid>
 							</Grid>
 						</Grid>
