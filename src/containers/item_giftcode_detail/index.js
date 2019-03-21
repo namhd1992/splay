@@ -224,7 +224,8 @@ class Item_giftcode_detail extends React.Component {
 							<Grid item xs={12} sm={6}>
 								<List className="auction-root">
 									<ListItem style={{ padding: "5px" }}>
-										<ListItemText primary={(<span style={{ color: "#fff" }}>Giá: <span style={{ color: "#fe8731" }}>{this.setImage(this.props.data[0].shopingItem.coinType)} {this.props.data[0].shopingItem.price} </span></span>)} ></ListItemText>
+									{(this.props.data[0].shopingItem.hasPromotion)?(
+									<ListItemText primary={(<span style={{ color: "#fff" }}>Giá: {this.setImage(this.props.data[0].shopingItem.coinType)} <span style={{ color: "#fe8731" }}>{this.props.data[0].promotion.newPrice.toLocaleString()}</span>&nbsp;&nbsp;&nbsp;<span style={{ color: "#fff", textDecoration:"line-through" }}>{this.props.data[0].shopingItem.price.toLocaleString()}</span></span>)} ></ListItemText>):(<ListItemText primary={(<span style={{ color: "#fe8731" }}>Giá: {this.setImage(this.props.data[0].shopingItem.coinType)} <span style={{ color: "#fff"}}>{this.props.data[0].shopingItem.price.toLocaleString()}</span></span>)} ></ListItemText>)}
 									</ListItem>
 									<ListItem style={{ padding: "5px" }}>
 										<ListItemText primary={(<span style={{ color: "#fff" }}>Số lượng: {this.props.data[0].shopingItem.quantity}</span>)}></ListItemText>
