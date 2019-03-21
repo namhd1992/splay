@@ -2,6 +2,7 @@
     width: 15%;
      float: left;
      height: 100vh;
+     margin-top: -20px;
 }
 .content{
     float: left;

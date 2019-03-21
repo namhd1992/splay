@@ -77,7 +77,7 @@ class TagList extends React.Component {
 						borderColor: (sort === obj.value) ? secondary.main : "transparent",
 						color: (sort === obj.value) ? secondary.main : "#fff"
 					}}
-						label={obj.name} onClick={() => this.changeSort(obj.value)} />
+						label={obj.name} onClick={() => this.changeSort(obj.value)} key={key}/>
 				))}
 			</div>
 		);

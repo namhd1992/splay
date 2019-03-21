@@ -98,7 +98,7 @@ class Item_giftcode_detail extends React.Component {
 		var user = JSON.parse(localStorage.getItem("user"));
 		if (user !== null) {
 			this.props.getDataId(this.props.match.params.id).then(function () {
-				_this.props.changeTitle(_this.props.data[0].name);
+				_this.props.changeTitle(_this.props.data[0].shopingItem.name);
 			});
 			// this.props.getData(user.access_token, user.scoinAccessToken).then(function () {
 			// 	_this.setState({ phone: _this.props.dataProfile.phoneNumber });
@@ -161,6 +161,18 @@ class Item_giftcode_detail extends React.Component {
 		this.setState({ value });
 	};
 
+	setImage=(type)=>{
+		if(type==="XU"){
+			return <img src={"../Xu.png"} style={{ width: "22px", verticalAlign: "text-bottom" }} />
+		}else if(type==="THIT"){
+			return <img src={"../thit.png"} style={{ width: "22px", verticalAlign: "text-bottom" }} />
+		}else if(type==="SCOIN"){
+			return <img src={"../scoin.png"} style={{ width: "22px", verticalAlign: "text-bottom" }} />
+		}else{
+			return <img src={"../scoin.png"} style={{ width: "22px", verticalAlign: "text-bottom" }} />
+		}
+	}
+
 	render() {
 		// const { fullScreen } = this.props;
 		const { classes } = this.props;
@@ -170,8 +182,8 @@ class Item_giftcode_detail extends React.Component {
 		var now = moment(new Date()); //todays date
 		var time_text = "";
 		if (this.props.data[0] !== undefined) {
-			var end = moment(new Date(this.props.data[0].toDate)); // another date
-			var start = moment(new Date(this.props.data[0].fromDate)); // another date
+			var end = moment(new Date(this.props.data[0].shopingItem.toDate)); // another date
+			var start = moment(new Date(this.props.data[0].shopingItem.fromDate)); // another date
 			var duration = moment.duration(end.diff(now));
 			var durationstart = moment.duration(start.diff(now));
 			var days = Math.floor(duration.asDays());
@@ -202,7 +214,7 @@ class Item_giftcode_detail extends React.Component {
 									margin: "auto",
 									width: "80%",
 									paddingBottom: "100%",
-									backgroundImage: "url(" + this.props.data[0].defaultImage + ")",
+									backgroundImage: "url(" + this.props.data[0].shopingItem.defaultImage + ")",
 									backgroundSize: "contain",
 									backgroundRepeat: "no-repeat",
 									backgroundPosition: "center"
@@ -212,10 +224,10 @@ class Item_giftcode_detail extends React.Component {
 							<Grid item xs={12} sm={6}>
 								<List className="auction-root">
 									<ListItem style={{ padding: "5px" }}>
-										<ListItemText primary={(<span style={{ color: "#fff" }}>Giá <span className="global-thit" style={{ color: "#fe8731" }}><img alt="just alt" src="/../scoin.png" /> {this.props.data[0].priceScoin} </span></span>)} ></ListItemText>
+										<ListItemText primary={(<span style={{ color: "#fff" }}>Giá: <span style={{ color: "#fe8731" }}>{this.setImage(this.props.data[0].shopingItem.coinType)} {this.props.data[0].shopingItem.price} </span></span>)} ></ListItemText>
 									</ListItem>
 									<ListItem style={{ padding: "5px" }}>
-										<ListItemText primary={(<span style={{ color: "#fff" }}>Số lượng {this.props.data[0].quantity}</span>)}></ListItemText>
+										<ListItemText primary={(<span style={{ color: "#fff" }}>Số lượng: {this.props.data[0].shopingItem.quantity}</span>)}></ListItemText>
 									</ListItem>
 									<ListItem style={{ padding: "5px" }}>
 										<Button color="primary" variant="raised" style={{
@@ -243,7 +255,7 @@ class Item_giftcode_detail extends React.Component {
 								{value === 0 &&
 									<div style={{ color: "#fff" }}>
 										<div style={{ padding: "10px" }}
-											dangerouslySetInnerHTML={{ __html: this.props.data[0].description }}>
+											dangerouslySetInnerHTML={{ __html: this.props.data[0].shopingItem.description }}>
 										</div>
 									</div>}
 							</Grid>
@@ -266,13 +278,13 @@ class Item_giftcode_detail extends React.Component {
 					<DialogContent>
 						<List>
 							<ListItem style={{ padding: "5px" }}>
-								<ListItemText primary={(<span style={{ color: "#fff" }}>Mua {this.props.data[0].name} với giá <span className="global-thit" style={{ color: "#fff" }}><img alt="just alt" src="/../scoin.png" /> {this.props.data[0].priceScoin} </span></span>)} ></ListItemText>
+								<ListItemText primary={(<span style={{ color: "#fff" }}>Mua {this.props.data[0].shopingItem.name} với giá <span className="global-thit" style={{ color: "#fff" }}><img alt="just alt" src="/../scoin.png" /> {this.props.data[0].shopingItem.priceScoin} </span></span>)} ></ListItemText>
 							</ListItem>
 						</List>
 					</DialogContent>
 					<DialogActions>
 						<div className="popup-button">
-							<Button onClick={this.handleCloseDialog} style={{ color: "#fe8731", borderRadius:"20px" }}>
+							<Button onClick={this.handleCloseDialog} style={{ color: "#888787", borderRadius:"20px" }}>
 								Đóng
               </Button>
 							<Button variant="raised" style={{
@@ -286,7 +298,7 @@ class Item_giftcode_detail extends React.Component {
 								whiteSpace: "nowrap",
 								minHeight: "auto"
 							}}
-								onClick={() => this.handleOnBuy(this.props.data[0].id)}
+								onClick={() => this.handleOnBuy(this.props.data[0].shopingItem.id)}
 								color="primary" autoFocus>
 								Xác nhận
               </Button>

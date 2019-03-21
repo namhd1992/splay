@@ -45,7 +45,7 @@ export const getData = (limit, offset) => {
 		return axios.get(url).then(function (response) {
 			dispatch({
 				type: ITEMANDAUCTION_RESPONSE,
-				data: response.data.dataArr,
+				data: response.data.data,
 				totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
@@ -65,7 +65,7 @@ export const getMoreData = (limit, offset) => {
 		return axios.get(url).then(function (response) {
 			dispatch({
 				type: ITEMANDAUCTION_RESPONSE_MORE,
-				data: response.data.dataArr,
+				data: response.data.data,
 				totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {

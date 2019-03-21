@@ -261,9 +261,9 @@ class TitleContainer extends React.Component {
 			<div className="mission_home_container">
 				{data.slice(0, 8).map((obj, key) => (
 					// <div className={(obj.highLights === true) ? "mission": ""}>
-						<div className="mission_home_content">
-							<Grid key={key}> 
-								<ListItem key={key} className={classes.giftcodeItem}>
+						<div className="mission_home_content"  key={key}>
+							<Grid> 
+								<ListItem className={classes.giftcodeItem}>
 									{/* <div className={(obj.highLights === true) ? "highLights": ""}> */}
 										<div id={this.setId(key)} className="avatar">
 											{/* {(obj.actionName === "1") ? ( */}
@@ -366,7 +366,7 @@ class HomeComponent extends React.Component {
 
 	componentWillMount(){
 		if (document.body.offsetWidth < 768) {
-			this.setState({ compact: true });
+			this.setState({ compact: true, speed:5 });
 		} else {
 			this.setState({ compact: false });
 		}
@@ -693,7 +693,7 @@ class HomeComponent extends React.Component {
 													"marginLeft": "5px",
 												}}>{obj.subTitle}</span>) : (<span></span>)}</span>)}
 													secondary={(<span fontSize={fontsize}>{"Hơn " + obj.downloadTurns + " lượt tải"}<br />
-													<div style={{marginTop:"5px"}}>
+													<span style={{marginTop:"5px"}}>
 														<Rating point={obj.pointReview}></Rating>
 														<span style={{
 																marginLeft:"10px",
@@ -703,7 +703,7 @@ class HomeComponent extends React.Component {
 																borderRadius: "20px"}}>
 																<label style={{color:"#23c9b6"}}>{this.getTheLoai(obj)}</label>
 														</span>
-														</div>
+														</span>
 													</span>)} />
 														<button className="buttonGhost">Chơi</button>
 											</ListItem>

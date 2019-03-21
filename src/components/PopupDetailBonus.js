@@ -156,6 +156,7 @@ class PopupDetailBonus extends React.Component {
 			<div>
 				<Dialog
 					fullScreen={false}
+					onBackdropClick={this.props.handleCloseBonus}
 					open={this.props.openDetailBonus}
 					aria-labelledby="responsive-dialog-title"
 				>

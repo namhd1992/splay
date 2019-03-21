@@ -52,7 +52,7 @@ export const getData = (limit, offset) => {
 		return axios.get(url).then(function (response) {
 			dispatch({
 				type: SHOPITEM_RESPONSE,
-				data: response.data.dataArr,
+				data: response.data.data,
 				totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
@@ -72,7 +72,7 @@ export const getMoreData = (limit, offset, type) => {
 		return axios.get(url).then(function (response) {
 			dispatch({
 				type: SHOPITEM_RESPONSE_MORE,
-				data: response.data.dataArr,
+				data: response.data.data,
 				totalRecords: response.data.totalRecords
 			})
 		}).catch(function (error) {
@@ -92,7 +92,7 @@ export const getDataId = (id) => {
 		return axios.get(url).then(function (response) {
 			dispatch({
 				type: SHOPITEM_RESPONSE,
-				data: response.data.dataArr
+				data: response.data.data
 			})
 		}).catch(function (error) {
 			dispatch({
