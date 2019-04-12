@@ -31,7 +31,7 @@ class EventTruyKichComponent extends React.Component {
 			openModalLink:false,
 			dialogItemOpen: false,
 			dialogUserEmpty: false,
-			idServer:0,
+			idServer:1,
 			serverName:'',
 			nameItem:'',
 		}
@@ -133,7 +133,7 @@ class EventTruyKichComponent extends React.Component {
 
 	openComfirm=()=>{
 		const {idServer}=this.state;
-		if(idServer===0){
+		if(idServer===1){
 			this.setState({serverName:"Miền Bắc"})
 		}else{
 			this.setState({serverName:"Miền Nam"})
@@ -187,7 +187,7 @@ class EventTruyKichComponent extends React.Component {
 			}
 			arr=itemEvents
 		}
-		var listServer=[{name:"Miền Bắc", serverGameId:0}, {name:"Miền Nam", serverGameId:1}]
+		var listServer=[{name:"Miền Bắc", serverGameId:1}, {name:"Miền Nam", serverGameId:2}]
 		// var listObject=["Gamer1", "Gamer2", "Gamer3"]
 		return (
 			<Grid container style={{ width: "100%", margin: "0" }} spacing={8}>
@@ -238,7 +238,7 @@ class EventTruyKichComponent extends React.Component {
 								<img className="img_play" src="/../cachchoi_event.png" alt="" />
 							</div>
 						<div>
-							<p style={{textAlign:"center"}}>👉TẠO LINK TRIỆU HỒI👉 KIẾM ĐIỂM 👉 ĐỔI PHẦN THƯỞNG</p>
+							<p style={{textAlign:"center", color:'#fff'}}>👉TẠO LINK TRIỆU HỒI👉 KIẾM ĐIỂM 👉 ĐỔI PHẦN THƯỞNG</p>
 								{/* <img className="img_step" src="/../cacbuocthuchien_event.png" alt="" /> */}
 						</div>
 						</div>
@@ -272,7 +272,7 @@ class EventTruyKichComponent extends React.Component {
 						</div>
 						<p style={{textAlign: "center", color:"#fac710"}}>Hướng dẫn: Chọn vật phẩm muốn đổi > Chọn server > Xác nhận</p>
 						<div>
-							<p>Danh sách phần thưởng <span style={{color:"red", float:"right", marginRight:"10px"}}>Đang có {(data !==null && data.eventPoint)? (data.eventPoint):0} điểm</span></p>
+							<p style={{color:'#fff'}}>Danh sách phần thưởng <span style={{color:"red", float:"right", marginRight:"10px"}}>Đang có {(data !==null && data.eventPoint)? (data.eventPoint):0} điểm</span></p>
 						</div>
 							
 						<div style={{ textAlign:'center' }}>
@@ -293,7 +293,7 @@ class EventTruyKichComponent extends React.Component {
 
 											<Grid item xs={12} style={{textAlign:"center"}}>
 													<div className="nameItemTruyKich" style={{textAlign:'left'}}>{obj.item.name}</div>
-													<span className="priceItemTruyKich"><span className="priceItem">{obj.newPrice} ĐIỂM</span><span className="statusItem">ĐÃ ĐỔI</span></span>
+													<span className="priceItemTruyKich"><span className="priceItem">{obj.newPrice} ĐIỂM</span><span className="statusItem">ĐỔI</span></span>
 											</Grid>
 										</Grid>
 										})}
@@ -312,7 +312,7 @@ class EventTruyKichComponent extends React.Component {
 												border:"1px solid #4bb525"}} justify="center" onClick={()=>this.selectOptionCoin(obj)}>
 												<Grid item xs={12} style={{textAlign:"center"}}>
 													 <div className="nameItemTruyKich" style={{textAlign:'left'}}>{obj.item.name}</div>
-													 <span className="priceItemTruyKich"><span className="priceItem">{obj.newPrice} ĐIỂM</span><span className="statusItem">ĐÃ ĐỔI</span></span>
+													 <span className="priceItemTruyKich"><span className="priceItem">{obj.newPrice} ĐIỂM</span><span className="statusItem">ĐỔI</span></span>
 												</Grid>
 												
 											</Grid>
@@ -334,7 +334,7 @@ class EventTruyKichComponent extends React.Component {
 												border:"1px solid #4bb525"}} justify="center" onClick={()=>this.selectOptionCoin(obj)}>
 												<Grid item xs={12} style={{textAlign:"center"}}>
 													 <div className="nameItemTruyKich" style={{textAlign:'left'}}>{obj.item.name}</div>
-													 <span className="priceItemTruyKich"><span className="priceItem">{obj.newPrice} ĐIỂM</span><span className="statusItem">ĐÃ ĐỔI</span></span>
+													 <span className="priceItemTruyKich"><span className="priceItem">{obj.newPrice} ĐIỂM</span><span className="statusItem">ĐỔI</span></span>
 												</Grid>
 												
 											</Grid>
