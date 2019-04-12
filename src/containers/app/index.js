@@ -39,6 +39,7 @@ import TypeChangeCoin from '../type_change_coin';
 import SelectGame from '../select_game'
 // import TestGame from '../test_game';
 import EventGame from '../event_game';
+import GameTruyKich from '../game_truykich';
 import '../../styles/app.css'
 // import MiniGame from '../mini_game';
 // import MiniGameDetail from '../mini_game_detail';
@@ -69,7 +70,7 @@ class App extends React.Component {
 			this.setState({ isMobile: true });
 		}
 		window.addEventListener('scroll', this.handleScroll);
-		if (document.location.pathname === "/giftcodepluginlogin" || document.location.pathname === "/giftcodeplugin" || document.location.pathname.indexOf("/MCD-trieuhoi")!==-1) {
+		if (document.location.pathname === "/giftcodepluginlogin" || document.location.pathname === "/giftcodeplugin" || document.location.pathname.indexOf("/MCD-trieuhoi")!==-1 || document.location.pathname.indexOf("-Truy-")!==-1) {
 			this.setState({ fullscreen: true});
 		} else {
 			this.setState({ fullscreen: false });
@@ -118,12 +119,12 @@ class App extends React.Component {
 		return (
 			<div style={{ backgroundColor: this.state.backgroundColor }}>
 				<div className="banner" >
-					<img className="img_banner" src="/../banner.jpg" alt="banner" onClick={this.linkToGame}/>
+				{(document.location.pathname.indexOf("/MCD-trieuhoi")!==-1 || document.location.pathname.indexOf("-Truy-")!==-1)?(<div></div>):(<img className="img_banner" src="/../banner.jpg" alt="banner" onClick={this.linkToGame}/>)}
 				</div>
 				<div className="content" style={{ background: this.state.backgroundColor }}>
 					{(!this.state.fullscreen) ? (<MenuAppBar isMobile={this.state.isMobile} pathname={document.location.pathname} compact={this.state.compact} scrolling={this.state.scrolling}
 						data={[{ url: "home", label: "home" }, { url: "about", label: "about" }]}></MenuAppBar>) : (<div></div>)}
-					<main ref={(c) => this.main = c} style={(document.location.pathname.indexOf("/MCD-trieuhoi")!==-1) ? { padding: "0px 8px 8px 8px", marginTop:"-20px"} : { padding: "40px 8px 8px 8px"}}>
+					<main ref={(c) => this.main = c} style={(document.location.pathname.indexOf("/MCD-trieuhoi")!==-1 || document.location.pathname.indexOf("-Truy-")!==-1) ? { padding: "0px 8px 8px 8px", marginTop:"-20px"} : { padding: "40px 8px 8px 8px"}}>
 						<Route exact path="/" component={Home} />
 						<Route exact path="/about-us" component={About} />
 						<Route exact path="/loginwidget" component={LoginWidget} />
@@ -156,6 +157,8 @@ class App extends React.Component {
 						<Route exact path="/doi" component={TypeChangeCoin} />
 						<Route exact path="/MCD-trieuhoi" component={EventGame} />
 						<Route exact path="/MCD-trieuhoi/:id" component={EventGame} />
+						<Route exact path="/Su-Kien-Truy-Kich-Bung-No" component={GameTruyKich} />
+						<Route exact path="/Su-Kien-Truy-Kich-Bung-No/:id" component={GameTruyKich} />
 						{/* <Route exact path="/eventgame/" component={EventGame} /> */}
 						{/* <Route exact path="/test-game" component={TestGame} /> */}
 						{/* <Route exact path="/mini-game" component={MiniGame} /> */}
@@ -168,7 +171,7 @@ class App extends React.Component {
 					</ScrollToTop>
 				</div>
 				<div className="banner">
-					<img className="img_banner" src="/../banner.jpg" alt="banner" onClick={this.linkToGame}/>
+				{(document.location.pathname.indexOf("/MCD-trieuhoi")!==-1 || document.location.pathname.indexOf("-Truy-")!==-1)?(<div></div>):(<img className="img_banner" src="/../banner.jpg" alt="banner" onClick={this.linkToGame}/>)}
 				</div>
 			</div>
 		)

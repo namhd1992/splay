@@ -10,7 +10,7 @@
     margin:  auto;
 }
 .img_banner{
-    inline-size: 13%;
+    width: 13%;
     margin-top: 56px;
     margin-left: 18px;
     cursor: pointer;

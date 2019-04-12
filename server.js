@@ -462,6 +462,38 @@ app.get('/history', function(request, response) {
       response.send(result);
     });
   });
+
+  app.get('/Su-Kien-Truy-Kich-Bung-No', function(request, response) {
+    
+    const filePath = path.resolve(__dirname, './build', 'index.html')
+    fs.readFile(filePath, 'utf8', function (err,data) {
+      if (err) {
+        return console.log(err);
+      }
+      data = data.replace(/\$OG_URL/g, 'https://splay.vn/Su-Kien-Truy-Kich-Bung-No');
+      data = data.replace(/\$OG_TYPE/g, "website");
+      data = data.replace(/\$OG_TITLE/g, 'Sự Kiện Truy Kích Bùng Nổ');
+      data = data.replace(/\$OG_DESCRIPTION/g, "Share Liền Tay Nhận Ngay Súng Khủng");
+      result = data.replace(/\$OG_IMAGE/g, 'https://i.postimg.cc/2SL8rjPm/truykich.png');
+      response.send(result);
+    });
+  });
+
+  app.get('/Su-Kien-Truy-Kich-Bung-No/:id', function(request, response) {
+    
+    const filePath = path.resolve(__dirname, './build', 'index.html')
+    fs.readFile(filePath, 'utf8', function (err,data) {
+      if (err) {
+        return console.log(err);
+      }
+      data = data.replace(/\$OG_URL/g, 'https://splay.vn/Su-Kien-Truy-Kich-Bung-No/');
+      data = data.replace(/\$OG_TYPE/g, "website");
+      data = data.replace(/\$OG_TITLE/g, 'Sự Kiện Truy Kích Bùng Nổ');
+      data = data.replace(/\$OG_DESCRIPTION/g, "Share Liền Tay Nhận Ngay Súng Khủng");
+      result = data.replace(/\$OG_IMAGE/g, 'https://i.postimg.cc/2SL8rjPm/truykich.png');
+      response.send(result);
+    });
+  });
   // app.get('/test-game', function(request, response) {
     
   //   const filePath = path.resolve(__dirname, './build', 'index.html')

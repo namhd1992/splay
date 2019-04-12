@@ -1,0 +1,1002 @@
+.logo_truykich{
+    width: auto;
+    height: 710px;
+    background-size: 100%;
+	background-position: top;
+	background-repeat: no-repeat;
+}
+.social{
+    color: #fff;
+    text-align: center;
+}
+.social span{
+    width:180px;
+    border: 1px solid #fff; 
+    border-top: 0px solid; 
+    border-radius: 0px 0px 4px 4px; 
+    padding: 5px 20px;
+}
+.a_home{
+    color:#fff;
+    border: 0px solid; 
+    cursor: pointer; 
+    margin-right: 20px;
+}
+.a_face{
+    color:#fff; 
+    border: 0px solid; 
+    cursor: pointer;
+}
+
+.title_event{
+    text-align: center;
+    font-weight: 800;
+    font-size: 28px;
+    margin-top: 300px;
+    color: #fff;
+}
+.img_link{
+    cursor: pointer;
+}
+.genlink{
+    color: #fff;
+}
+.div_link{
+    text-align:center;
+}
+.btn_link{
+    padding: 0px 0px !important;
+    border: 0px solid;
+    background-color: #232b36; 
+}
+
+.info_user{
+    margin-top: 20px;
+    padding: 30px;
+    font-size: 18px;
+}
+.btn_login{
+    color:#fff;
+    float: right;
+    background-color: #232b36; 
+    font-weight: 600;
+    font-size: 18px;
+    border: 0px solid; 
+    cursor: pointer;
+}
+
+.btn_update{
+    color:#fff; 
+    float: right;
+    background-color: #232b36;
+    font-weight: 600; 
+    border: 0px solid; 
+    cursor: pointer;
+}
+.btn_logout{
+    color:#ff0000; 
+    float: right;
+    background-color: #232b36;
+    font-weight: 600; 
+    border: 0px solid; 
+    cursor: pointer;
+}
+
+.play{
+    border: 3px solid #333333;
+    color: #00948d;
+    border-radius: 40px;
+    background-color: #1a1a1a;
+    padding: 30px;
+    font-size: 18px;
+    margin: 60px 30px;
+}
+.img_play{
+    width: 25%; 
+    margin-top: -60px
+}
+
+.img_step{
+    margin: 20px;
+    display: flex;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.img_shop{
+    width: 25%; 
+    margin-top: -60px
+}
+
+ul{
+    color:#fff;
+}
+.point{
+    color: #fac708; 
+    margin-top: -45px; 
+    font-size: 12px;
+}
+
+.container_tag{
+    overflow-x: auto; 
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.item_tag{
+    width: 15%; 
+    text-align: center; 
+    float: left; 
+    margin-right: 2%;
+}
+
+.gift{
+    color:#f24726; 
+    border: 2px solid #50251d; 
+    border-radius: 20px; 
+    width: 100%; 
+    height: auto; 
+    text-align: center;
+    padding-top: 20px;
+}
+
+.img_gift{
+    width: 80%;
+}
+
+.btn_gift{
+    color:#fff; 
+    background-color: #12cdd4; 
+    border: 0px solid; 
+    border-radius: 5px; 
+    padding: 5px 15px; 
+    text-align: center; 
+    margin-top: 20px;
+}
+.changePoint{
+    border: 3px solid #333333;
+    color: #00948d;
+    border-radius: 40px;
+    background-color: #1a1a1a;
+    padding: 30px;
+    margin: 30px;
+    font-size: 18px;
+}
+
+.iframe_xu{
+    border-style: none;
+    width: 100%;
+    height: 200px;
+}
+.footer{
+    text-align: center;
+    margin-bottom: 10px;
+}
+.footer p{
+    margin: 3px !important;
+    font-size: 11px;
+    text-align: center;
+}
+.number_point{
+    padding-top: 10px;
+}
+
+
+
+select {
+
+    /* styling */
+    background-color: white;
+    border-radius: 4px;
+    display: inline-block;
+    font: inherit;
+    line-height: 1.5em;
+    padding: 0.5em 3.5em 0.5em 1em;
+  
+    /* reset */
+  
+    margin: 0;      
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+select.selectObject {
+    background-image:
+        linear-gradient(45deg, transparent 50%, #fff 50%),
+        linear-gradient(135deg, #fff 50%, transparent 50%);
+        background-position:
+        calc(100% - 20px) calc(1em),
+        calc(100% - 10px) calc(1em),
+        100% 0;
+    background-size:
+        10px 10px,
+        10px 10px,
+        2.5em 2.5em;
+    background-repeat: no-repeat;
+}
+.selectObject{
+    font-size: 16px;
+    width:100%;
+    text-align:center;
+    height:40px;
+    border: 1px solid #12cdd4;
+    border-radius: 5px;
+    color: #12cdd4;
+    background: #212933;
+}
+select.selectServer {
+    background-image:
+        linear-gradient(45deg, transparent 50%, #fff 50%),
+        linear-gradient(135deg, #fff 50%, transparent 50%);
+        background-position:
+        calc(100% - 20px) calc(1em),
+        calc(100% - 10px) calc(1em),
+        100% 0;
+    background-size:
+        10px 10px,
+        10px 10px,
+        2.5em 2.5em;
+    background-repeat: no-repeat;
+}
+
+.selectServer{
+    font-size: 16px;
+    width:300px;
+    text-align:center;
+    height:40px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    color: #fff;
+    background: #212933;
+}
+
+.xu_event{
+    height: 40px;
+}
+.btnTruyKich{
+    width:100%;
+    color: #fff;
+    border-radius: 5px;
+    border: 0px;
+    background: #12cdd4;
+}
+.divOptionXu{
+    width:48%;
+    float:left
+}
+.divPrice{
+    width:50%;
+    float:right;
+    text-align:right;
+    color:#fff;
+    padding-right:15px;
+    line-height:40px;
+}
+.notePhone{
+    display: inline-block;
+    margin-top: 10px;
+}
+.statusChangePoint{
+    text-align: center;
+    margin: 0px !important;
+}
+.popupGenLink{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -300px;
+	margin-left: -300px;
+	width: 600px;
+	height:300px;
+	background-size:contain;
+	background-repeat:no-repeat;
+	box-shadow: 5px;
+	padding: 5px;
+	outline: "none";
+}
+.popupSelectServer{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -200px;
+	margin-left: -300px;
+	width: 600px;
+	height:200px;
+	background-size:contain;
+	background-repeat:no-repeat;
+	box-shadow: 5px;
+	padding: 5px;
+	outline: "none";
+}
+.titlePopupGenLink{
+    color: white;
+    font-size:20px;
+    padding: 30px;
+}
+
+.itemTruyKich{
+    background-repeat: no-repeat;
+    background-size:100%;
+    height: 190px; margin-bottom: 15px;
+    cursor: pointer;
+    border: 1px solid #4bb525;
+}
+
+.nameItemTruyKich{
+    color: #fac710;
+    padding: 5px 10px;
+}
+.priceItemTruyKich{
+    float: right;
+    margin-top: 120px;
+    height: 35px;
+    border: 1px solid #4bb525;
+    padding: 5px 1px;
+    background-color: #4bb525;
+}
+.priceItem{
+    color: #808080;
+    background-color: black;
+    padding: 5px 10px;
+}
+.statusItem{
+    color: black;
+    padding: 5px 10px;
+}
+
+.footerTryKich{
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+}
+
+@media only screen and (max-width:1850px){
+    .logo_truykich{
+        height: 640px;
+    }
+    .priceItem{
+        padding: 4px 10px;
+    }
+}
+
+@media only screen and (max-width:1700px){
+    .logo_truykich{
+        height: 600px;
+    }
+    .priceItem{
+        padding: 4px 10px;
+    }
+}
+
+@media only screen and (max-width:1600px){
+    .logo_truykich{
+        height: 560px;
+    }
+    .itemTruyKich{
+        height: 170px;
+    }
+    .priceItemTruyKich{
+        margin-top: 100px;
+    }
+}
+
+@media only screen and (max-width:1500px){
+    .logo_truykich{
+        height: 520px;
+    }
+    .itemTruyKich{
+        height: 155px;
+    }
+    .priceItemTruyKich{
+        margin-top: 85px;
+    }
+}
+
+@media only screen and (max-width:1370px){
+    .logo_truykich{
+        height: 660px;
+    }
+    .itemTruyKich{
+        height: 190px;
+    }
+    .priceItemTruyKich{
+        margin-top: 120px;
+    }
+}
+
+@media only screen and (max-width:1250px){
+    .logo_truykich{
+        height: 620px;
+    }
+}
+
+@media only screen and (max-width:1150px){
+    .logo_truykich{
+        height: 590px;
+    }
+    .itemTruyKich{
+        height: 165px;
+    }
+    .priceItemTruyKich{
+        margin-top: 95px;
+    }
+}
+
+@media only screen and (max-width:1024px){
+    .logo_truykich{
+        height: 530px;
+    }
+    .itemTruyKich{
+        height: 155px;
+    }
+    .priceItemTruyKich{
+        margin-top: 85px;
+    }
+    .logo{
+        width: 100%;
+        height: 380px;
+        background-size: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+	.sidebar{
+        width: 0%;
+    }
+    .img_link{
+        width: 30%;
+    }
+    .img_play_game{
+        width: 17%;
+    }
+    .content{
+        width: 100%;
+    }
+    .title_event{
+        font-size: 24px
+    }
+    .btn_login{
+        font-size: 24px;
+    }
+    
+    .btn_detail{
+        font-size: 24px;
+    }
+}
+ 
+
+@media only screen and (max-width:960px){
+    .logo_truykich{
+        height: 500px;
+    }
+    .itemTruyKich{
+        font-size: 13px;
+        height: 135px;
+    }
+    .priceItemTruyKich{
+        margin-top: 75px;
+        height: 30px;
+    }
+}
+
+@media only screen and (max-width:900px){
+    .logo_truykich{
+        height: 470px;
+    }
+    .itemTruyKich{
+        height: 130px;
+    }
+    .priceItemTruyKich{
+        margin-top: 70px;
+    }
+}
+
+
+@media only screen and (max-width:820px){
+    .logo_truykich{
+        height: 430px;
+    }
+    .itemTruyKich{
+        font-size: 13px;
+        height: 120px;
+    }
+    .priceItemTruyKich{
+        margin-top: 60px;
+    }
+
+    .priceItem{
+        padding: 3px 7px;
+    }
+    .statusItem{
+        padding: 3px 7px;
+    }
+    
+	.logo{
+        height: 300px;
+    }
+    .title_event{
+        margin-top: 220px;
+        font-size: 18px
+    }
+    .img_link{
+        width: 35%;
+    }
+    .img_play_game{
+        width: 20%;
+    }
+    .btn_login{
+        font-size: 16px;
+    }
+    
+    .btn_detail{
+        font-size: 16px;
+    }
+    .img_step{
+        width: 100%;
+        margin: 20px 0px;
+    }
+    .info_user{
+        padding: 10px;
+        font-size: 16px;
+    }
+    .play{
+        border-radius: 20px;
+        margin: 40px 10px;
+        font-size: 16px;
+    }
+    .img_play{
+        width: 30%; 
+        margin-top: -55px
+    }
+    ul{
+        margin-left: -30px;
+    }
+    .img_shop{
+        width: 30%; 
+        margin-top: -55px
+    }
+    .point{
+        margin-top: -35px; 
+        font-size: 10px;
+    }
+    .changePoint{
+        border-radius: 20px;
+        margin: 40px 10px;
+        font-size: 16px;
+    }
+    
+    .number_point{
+        padding-top: 0px;
+        margin: 8px 0px !important;
+    }
+    .popupGenLink{
+        margin-top: -150px;
+        margin-left: -200px;
+        width: 400px;
+        height:300px;
+    }
+    .titlePopupGenLink{
+        font-size:18px;
+        padding: 15px;
+    }
+}
+
+@media only screen and (max-width:780px){
+    .logo_truykich{
+        height: 390px;
+    }
+    .itemTruyKich{
+        font-size: 12px;
+        height: 110px;
+    }
+    .priceItemTruyKich{
+        margin-top: 55px;
+        height: 28px;
+    }
+    .logo{
+        height: 270px;
+    }
+    .title_event{
+        margin-top: 200px;
+        font-size: 24px;
+    }
+    .img_link{
+        width: 40%;
+    }
+    .img_play_game{
+        width: 23%;
+    }
+    .btn_login{
+        font-size: 20px;
+    }
+    
+    .btn_detail{
+        font-size: 20px;
+    }
+   
+    .img_step{
+        width: 100%;
+    }
+    .point{
+        margin-top: -40px; 
+        font-size: 11px;
+    }
+    .popupGenLink{
+        margin-top: -150px;
+        margin-left: -200px;
+        width: 400px;
+        height:300px;
+    }
+    .titlePopupGenLink{
+        font-size:18px;
+        padding: 15px;
+    }
+}
+
+
+@media only screen and (max-width:700px){
+    .logo_truykich{
+        height: 340px;
+    }
+    .itemTruyKich{
+        font-size: 10px;
+        height: 100px;
+    }
+    .priceItemTruyKich{
+        margin-top: 50px;
+        height: 25px;
+    }
+	.logo{
+        height: 245px;
+    }
+    .title_event{
+        margin-top: 175px;
+        font-size: 16px
+    }
+    .img_step{
+        width: 100%;
+        margin: 20px 0px;
+    }
+    .info_user{
+        padding: 10px;
+        font-size: 14px;
+    }
+    .play{
+        border-radius: 20px;
+        margin: 40px 10px;
+        font-size: 14px;
+    }
+    .img_play{
+        width: 30%; 
+        margin-top: -55px
+    }
+    ul{
+        margin-left: -30px;
+    }
+    .img_shop{
+        width: 30%; 
+        margin-top: -55px
+    }
+    .point{
+        margin-top: -35px; 
+        font-size: 10px;
+    }
+    .changePoint{
+        border-radius: 20px;
+        margin: 40px 10px;
+        font-size: 14px;
+    }
+    .item_tag{
+        width: 30%; 
+        text-align: center; 
+        float: left; 
+        margin-right: 3%;
+    }
+    .btn_gift{
+        margin: 20px 0px;
+        font-size: 14px;
+    }
+    .gift{
+        padding-top: 15px;
+    }
+    
+    .number_point{
+        padding-top: 0px;
+        margin: 8px 0px !important;
+    }
+}
+
+@media only screen and (max-width:600px){
+	.logo_truykich{
+        height: 290px;
+    }
+    .title_event{
+        margin-top: 140px;
+        font-size: 14px
+    }
+
+    .img_step{
+        width: 100%;
+        margin: 0px;
+        margin-bottom: 20px;
+    }
+    .info_user{
+        padding: 10px;
+        font-size: 13px;
+    }
+    .play{
+        border-radius: 20px;
+        margin: 40px 10px;
+        font-size: 13px;
+    }
+    .img_play{
+        width: 35%; 
+        margin-top: -65px
+    }
+    ul{
+        margin-left: -30px;
+    }
+    .img_shop{
+        width: 35%; 
+        margin-top: -65px
+    }
+    .point{
+        margin-top: -40px; 
+        font-size: 10px;
+    }
+    .changePoint{
+        border-radius: 20px;
+        margin: 40px 10px;
+        font-size: 13px;
+    }
+    .item_tag{
+        width: 30%; 
+        text-align: center; 
+        float: left; 
+        margin-right: 3%;
+    }
+    .btn_gift{
+        margin: 20px 0px;
+        font-size: 10px;
+    }
+    .gift{
+        padding-top: 15px;
+    }
+    
+    .number_point{
+        padding-top: 0px;
+        margin: 8px 0px !important;
+    }
+    .iframe_xu{
+        height: 210px;
+    }
+    .divOptionXu{
+        width:100%;
+    }
+    .divPrice{
+        width:100%;
+        float:none;
+        text-align:left;
+    }
+    .btnChangePoint{
+        margin-top: 20px;
+    }
+    .xu_event{
+        height: 60px;
+    }
+    .btnChangePoint{
+        font-size: 14px
+     }
+}
+
+@media only screen and (max-width:500px){
+	.logo_truykich{
+        height: 250px;
+    }
+    .selectServer{
+        width:300px;
+    }
+    .footerTryKich{
+        font-size: 10px;
+    }
+}
+@media only screen and (max-width:420px){
+	.logo_truykich{
+        height: 210px;
+    }
+    .title_event{
+        margin-top: 80px;
+        font-size: 18px
+    }
+    .img_link{
+        width: 50%;
+    }
+    .img_play_game{
+        width: 29%;
+    }
+    .btn_login{
+        font-size: 14px;
+    }
+    .btn_detail{
+        font-size: 14px;
+    }
+    .img_step{
+        width: 100%;
+        margin: 0px;
+        margin-bottom: 20px;
+    }
+    .info_user{
+        padding: 10px;
+        font-size: 13px;
+    }
+    .play{
+        border-radius: 20px;
+        margin: 40px 10px;
+        font-size: 13px;
+    }
+    .img_play{
+        width: 50%; 
+        margin-bottom: 5px
+    }
+    ul{
+        margin-left: -30px;
+    }
+    .img_shop{
+        width: 50%; 
+        margin-bottom: 5px
+    }
+    .point{
+        margin-top: -34px; 
+        font-size: 8px;
+    }
+    .changePoint{
+        border-radius: 20px;
+        margin: 40px 10px;
+        font-size: 13px;
+    }
+    .item_tag{
+        width: 30%; 
+        text-align: center; 
+        float: left; 
+        margin-right: 3%;
+    }
+    .btn_gift{
+        margin: 20px 0px;
+        font-size: 10px;
+    }
+    .gift{
+        padding-top: 15px;
+    }
+    
+    .number_point{
+        padding-top: 0px;
+        margin: 8px 0px !important;
+    }
+
+    .popupGenLink{
+        margin-top: -200px;
+        margin-left: -150px;
+        width: 300px;
+        height:350px;
+    }
+    .titlePopupGenLink{
+        font-size:16px;
+        padding: 10px;
+    }
+    .btnChangePoint{
+        font-size: 14px
+     }
+     .selectServer{
+        width:230px;
+    }
+}
+
+@media only screen and (max-width:320px){
+
+    .logo_truykich{
+        height: 160px;
+    }
+    .img_link{
+        width: 50%;
+    }
+    .btn_login{
+        font-size: 12px;
+    }
+    
+    .btn_detail{
+        font-size: 12px;
+    }
+    .social span{
+        width:180px;
+        padding: 3px 15px;
+        font-size: 12px;
+    }
+    .a_home{
+        color:#fff;
+        border: 0px solid; 
+        cursor: pointer; 
+        margin-right: 20px;
+    }
+    .a_face{
+        color:#fff; 
+        border: 0px solid; 
+        cursor: pointer;
+    }
+    .title_event{
+        margin-top: 65px;
+        font-size: 12px
+    }
+
+    .img_step{
+        width: 100%;
+        margin: 0px;
+        margin-bottom: 20px;
+    }
+    .info_user{
+        padding: 10px;
+        font-size: 11px;
+    }
+    .play{
+        border-radius: 20px;
+        margin: 40px 10px;
+        font-size: 11px;
+    }
+    .img_play{
+        width: 50%; 
+        margin-bottom: 10px
+    }
+    ul{
+        margin-left: -30px;
+    }
+    .img_shop{
+        width: 50%; 
+        margin-bottom: 10px
+    }
+    .point{
+        margin-top: -32px; 
+        font-size: 7px;
+    }
+    .changePoint{
+        border-radius: 20px;
+        margin: 40px 10px;
+        font-size: 11px;
+    }
+    .item_tag{
+        width: 30%; 
+        text-align: center; 
+        float: left; 
+        margin-right: 3%;
+    }
+    .btn_gift{
+        margin: 20px 0px;
+        font-size: 8px;
+    }
+    .gift{
+        padding-top: 15px;
+    }
+    
+    .number_point{
+        padding-top: 0px;
+        margin: 8px 0px !important;
+    }
+
+    .popupGenLink{
+        margin-top: -200px;
+        margin-left: -150px;
+        width: 300px;
+        height:350px;
+    }
+    .titlePopupGenLink{
+        font-size:16px;
+        padding: 10px;
+    }
+    .btnChangePoint{
+       font-size: 14px
+    }
+    .selectServer{
+        width:215px;
+    }
+}
