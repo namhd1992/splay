@@ -280,34 +280,35 @@ class EventTruyKichComponent extends React.Component {
 								<Hidden xsDown>
 									<div className="optionLeft">
 										{arrLeft.map((obj,key)=>{
-										return 	<Grid key={key} container style={{
-											margin: "0px",
-											width: "100%",
-											backgroundImage: "url('/../truykich.jpg')",
-											backgroundSize: "100% auto",
-											cursor:"pointer",
-											backgroundPosition: "center top",
-											marginBottom:"20px",
-											backgroundRepeat: "no-repeat",
-											border:"1px solid #4bb525"}} justify="center"  onClick={()=>this.selectOptionCoin(obj)}>
+										return <Grid key={key} container style={{background:'black', marginBottom:"20px"}}>
+											<div container className='itemTruyKich' style={{
+												margin: "0px",
+												width: "100%",
+												backgroundImage: "url("+obj.item.defaultImage+")",
+												
+												cursor:"pointer",
+												backgroundPosition: "center top",
+												backgroundRepeat: "no-repeat",
+												border:"1px solid #4bb525"}} justify="center"  onClick={()=>this.selectOptionCoin(obj)}>
 
-											<Grid item xs={12} style={{textAlign:"center"}}>
-													<div className="nameItemTruyKich" style={{textAlign:'left'}}>{obj.item.name}</div>
-													<span className="priceItemTruyKich"><span className="priceItem">{obj.newPrice} ĐIỂM</span><span className="statusItem">ĐỔI</span></span>
-											</Grid>
+												<Grid item xs={12} style={{textAlign:"center"}}>
+														<div className="nameItemTruyKich" style={{textAlign:'left'}}>{obj.item.name}</div>
+														<span className="priceItemTruyKich"><span className="priceItem">{obj.newPrice} ĐIỂM</span><span className="statusItem">ĐỔI</span></span>
+												</Grid>
+											</div>
 										</Grid>
 										})}
 									</div>
 									<div className="optionRight">
 									{arrRight.map((obj,key)=>{
-											return 	<Grid key={key} container style={{
+											return 	<Grid key={key} container style={{background:'black', marginBottom:"20px"}}>
+											<div className='itemTruyKich' container style={{
 												margin: "0px",
 												width: "100%",
-												backgroundImage: "url('/../truykich.jpg')",
-												backgroundSize: "100% auto",
+												backgroundImage: "url("+obj.item.defaultImage+")",
+												
 												cursor:"pointer",
 												backgroundPosition: "center top",
-												marginBottom:"20px",
 												backgroundRepeat: "no-repeat",
 												border:"1px solid #4bb525"}} justify="center" onClick={()=>this.selectOptionCoin(obj)}>
 												<Grid item xs={12} style={{textAlign:"center"}}>
@@ -315,6 +316,7 @@ class EventTruyKichComponent extends React.Component {
 													 <span className="priceItemTruyKich"><span className="priceItem">{obj.newPrice} ĐIỂM</span><span className="statusItem">ĐỔI</span></span>
 												</Grid>
 												
+											</div>
 											</Grid>
 										})}
 									</div>
@@ -322,21 +324,22 @@ class EventTruyKichComponent extends React.Component {
 								<Hidden smUp>
 									<div className="optionLeft">
 										{arr.map((obj,key)=>{
-											return 	<Grid key={key} container style={{
-												margin: "0px",
-												width: "100%",
-												backgroundImage: "url('/../truykich.jpg')",
-												backgroundSize: "100% auto",
-												cursor:"pointer",
-												backgroundPosition: "center top",
-												marginBottom:"20px",
-												backgroundRepeat: "no-repeat",
-												border:"1px solid #4bb525"}} justify="center" onClick={()=>this.selectOptionCoin(obj)}>
-												<Grid item xs={12} style={{textAlign:"center"}}>
-													 <div className="nameItemTruyKich" style={{textAlign:'left'}}>{obj.item.name}</div>
-													 <span className="priceItemTruyKich"><span className="priceItem">{obj.newPrice} ĐIỂM</span><span className="statusItem">ĐỔI</span></span>
-												</Grid>
-												
+											return 	<Grid key={key} container style={{background:'black', marginBottom:"20px"}}>
+												<div container className='itemTruyKich' style={{
+													margin: "0px",
+													width: "100%",
+													backgroundImage: "url("+obj.item.defaultImage+")",
+													
+													cursor:"pointer",
+													backgroundPosition: "center top",
+													backgroundRepeat: "no-repeat",
+													border:"1px solid #4bb525"}} justify="center" onClick={()=>this.selectOptionCoin(obj)}>
+													<Grid item xs={12} style={{textAlign:"center"}}>
+														<div className="nameItemTruyKich" style={{textAlign:'left'}}>{obj.item.name}</div>
+														<span className="priceItemTruyKich"><span className="priceItem">{obj.newPrice} ĐIỂM</span><span className="statusItem">ĐỔI</span></span>
+													</Grid>
+													
+												</div>
 											</Grid>
 										})}
 									</div>

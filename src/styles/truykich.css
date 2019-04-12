@@ -354,22 +354,26 @@ select.selectServer {
     font-size: 12px;
 }
 
+.itemTruyKich{
+ background-size: 50%;
+}
+
 @media only screen and (max-width:1850px){
     .logo_truykich{
         height: 640px;
     }
-    .priceItem{
+    /* .priceItem{
         padding: 4px 10px;
-    }
+    } */
 }
 
 @media only screen and (max-width:1700px){
     .logo_truykich{
         height: 600px;
     }
-    .priceItem{
+    /* .priceItem{
         padding: 4px 10px;
-    }
+    } */
 }
 
 @media only screen and (max-width:1600px){
@@ -507,9 +511,9 @@ select.selectServer {
         margin-top: 60px;
     }
 
-    .priceItem{
+    /* .priceItem{
         padding: 3px 7px;
-    }
+    } */
     .statusItem{
         padding: 3px 7px;
     }
