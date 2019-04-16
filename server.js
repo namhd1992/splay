@@ -473,7 +473,7 @@ app.get('/history', function(request, response) {
       data = data.replace(/\$OG_URL/g, 'https://splay.vn/Su-Kien-Truy-Kich-Bung-No');
       data = data.replace(/\$OG_TYPE/g, "website");
       data = data.replace(/\$OG_TITLE/g, 'Sự Kiện Truy Kích Bùng Nổ');
-      data = data.replace(/\$OG_DESCRIPTION/g, "Share Liền Tay Nhận Ngay Súng Khủng");
+      data = data.replace(/\$OG_DESCRIPTION/g, "Share Liền Tay Nhận Ngay 2 củ 3");
       result = data.replace(/\$OG_IMAGE/g, 'https://i.postimg.cc/sXKdRVG4/truy-kich-3.png');
       response.send(result);
     });
@@ -489,7 +489,7 @@ app.get('/history', function(request, response) {
       data = data.replace(/\$OG_URL/g, 'https://splay.vn/Su-Kien-Truy-Kich-Bung-No/');
       data = data.replace(/\$OG_TYPE/g, "website");
       data = data.replace(/\$OG_TITLE/g, 'Sự Kiện Truy Kích Bùng Nổ');
-      data = data.replace(/\$OG_DESCRIPTION/g, "Share Liền Tay Nhận Ngay Súng Khủng");
+      data = data.replace(/\$OG_DESCRIPTION/g, "Share Liền Tay Nhận Ngay 2 củ 3");
       result = data.replace(/\$OG_IMAGE/g, 'https://i.postimg.cc/sXKdRVG4/truy-kich-3.png');
       response.send(result);
     });

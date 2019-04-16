@@ -341,7 +341,7 @@ select.selectServer {
 .priceItem{
     color: #4bb525;
     background-color: black;
-    padding: 4px 10px;
+    padding: 5px 10px 4px 10px;
 }
 .statusItem{
     color: black;
@@ -363,7 +363,7 @@ select.selectServer {
         height: 640px;
     }
     .priceItem{
-        padding: 4px 10px;
+        padding: 5px 10px 4px 10px;
     }
 }
 
@@ -372,7 +372,7 @@ select.selectServer {
         height: 600px;
     }
     .priceItem{
-        padding: 4px 10px;
+        padding: 5px 10px 4px 10px;
     }
 }
 
@@ -485,7 +485,7 @@ select.selectServer {
         height: 30px;
     }
     .priceItem{
-        padding: 5px 10px;
+        padding: 5px 10px 6px 10px;
     }
 }
 
@@ -515,7 +515,7 @@ select.selectServer {
     }
 
     .priceItem{
-        padding: 5px 10px;
+        padding: 5px 10px 6px 10px;
     }
     .statusItem{
         padding: 3px 7px;
@@ -641,6 +641,9 @@ select.selectServer {
         font-size:18px;
         padding: 15px;
     }
+    .priceItem{
+        padding: 5px 10px;
+    }
 }
 
 
@@ -655,6 +658,9 @@ select.selectServer {
     .priceItemTruyKich{
         margin-top: 50px;
         height: 25px;
+    }
+    .priceItem{
+        padding: 5px 10px;
     }
 	.logo{
         height: 245px;
@@ -797,6 +803,9 @@ select.selectServer {
     .btnChangePoint{
         font-size: 14px
      }
+     .priceItem{
+        padding: 5px 10px 6px 10px;
+    }
 }
 
 @media only screen and (max-width:500px){
