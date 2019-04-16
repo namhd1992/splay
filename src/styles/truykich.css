@@ -341,7 +341,7 @@ select.selectServer {
 .priceItem{
     color: #4bb525;
     background-color: black;
-    padding: 5px 10px;
+    padding: 4px 10px;
 }
 .statusItem{
     color: black;
@@ -362,18 +362,18 @@ select.selectServer {
     .logo_truykich{
         height: 640px;
     }
-    /* .priceItem{
+    .priceItem{
         padding: 4px 10px;
-    } */
+    }
 }
 
 @media only screen and (max-width:1700px){
     .logo_truykich{
         height: 600px;
     }
-    /* .priceItem{
+    .priceItem{
         padding: 4px 10px;
-    } */
+    }
 }
 
 @media only screen and (max-width:1600px){
@@ -484,6 +484,9 @@ select.selectServer {
         margin-top: 75px;
         height: 30px;
     }
+    .priceItem{
+        padding: 5px 10px;
+    }
 }
 
 @media only screen and (max-width:900px){
@@ -511,9 +514,9 @@ select.selectServer {
         margin-top: 60px;
     }
 
-    /* .priceItem{
-        padding: 3px 7px;
-    } */
+    .priceItem{
+        padding: 5px 10px;
+    }
     .statusItem{
         padding: 3px 7px;
     }
