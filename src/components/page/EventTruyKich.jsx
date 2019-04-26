@@ -71,7 +71,7 @@ class EventTruyKichComponent extends React.Component {
 	}
 
 	selectOptionCoin= (option) =>{
-		this.setState({nameItem:option.item.name})
+		this.setState({nameItem:option.item.name, idServer:1})
 		this.props.selectOptionCoin(option.item.id);
   	}
 
@@ -81,6 +81,7 @@ class EventTruyKichComponent extends React.Component {
 
 	buyItem=()=>{
 		this.props.buyItem(this.state.idServer)
+		this.setState({ dialogItemOpen: false });
 	}
 
 	getScoinToken=(paramName)=>{
