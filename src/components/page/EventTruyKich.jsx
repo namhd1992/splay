@@ -29,7 +29,6 @@ class EventTruyKichComponent extends React.Component {
 			auth:false,
 			fullName:'',
 			openModalLink:false,
-			dialogItemOpen: false,
 			dialogUserEmpty: false,
 			idServer:1,
 			serverName:'',
@@ -81,7 +80,6 @@ class EventTruyKichComponent extends React.Component {
 
 	buyItem=()=>{
 		this.props.buyItem(this.state.idServer)
-		this.setState({ dialogItemOpen: false });
 	}
 
 	getScoinToken=(paramName)=>{
@@ -121,7 +119,7 @@ class EventTruyKichComponent extends React.Component {
 		this.props.handleOpenGame()
 	}
 	handleCloseDialogItem = () => {
-		this.setState({ dialogItemOpen: false });
+		this.props.handleCloseDialogItem();
 	};
 	
 	selectServer=(event)=>{
@@ -139,7 +137,6 @@ class EventTruyKichComponent extends React.Component {
 		}else{
 			this.setState({serverName:"Miền Nam"})
 		}
-		this.setState({dialogItemOpen:true})
 		this.handleCloseModalInfoGame();
 	}
 
@@ -172,7 +169,7 @@ class EventTruyKichComponent extends React.Component {
 
 
 	render() {
-		const { openSnack,message,snackVariant,dialogLoginOpen, data, openModalLink, openModalInfoGame, dialogUserEmpty, isOpenListUser, itemEvents, day, hour, minute, second, isLogin}=this.props;
+		const { openSnack,message,snackVariant,dialogLoginOpen,dialogItemOpen, data, openModalLink, openModalInfoGame, dialogUserEmpty, isOpenListUser, itemEvents, day, hour, minute, second, isLogin}=this.props;
 		var arrLeft=[];
 		var arrRight=[];
 		var arr=[];
@@ -413,7 +410,7 @@ class EventTruyKichComponent extends React.Component {
 					</Dialog>
 
 					<Dialog
-							open={this.state.dialogItemOpen}
+							open={dialogItemOpen}
 							onClose={this.handleCloseDialogItem}
 							aria-labelledby="responsive-dialog-title"
 					>

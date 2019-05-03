@@ -31,6 +31,7 @@ class GameTruyKich extends React.Component {
 			minute:0, 
 			second:0,
 			dialogLoginOpen:false,
+			dialogItemOpen: false,
 			isLogin:false,
 
 		};
@@ -116,7 +117,7 @@ class GameTruyKich extends React.Component {
 				var data= _this.props.data;
 				if(data!==undefined){
 					if(data.status==="01"){
-						this.setState({openSnack:true, message:'Đổi thành công, vật phẩm thêm vào nhân vật',snackVariant:'success'})
+						this.setState({openSnack:true, message:'Đổi thành công, vật phẩm thêm vào nhân vật',snackVariant:'success', dialogItemOpen: false})
 						_this.getLink(user);
 					}else if(data.status==="05"){
 						this.setState({openSnack:true, message:'Số điểm của bạn không đủ để đổi',snackVariant:'info',})
@@ -214,8 +215,11 @@ class GameTruyKich extends React.Component {
 
 
 	handleCloseModalInfoGame=()=>{
-		this.setState({openModalInfoGame:false})
+		this.setState({openModalInfoGame:false, dialogItemOpen:true})
 	}
+	handleCloseDialogItem = () => {
+		this.setState({ dialogItemOpen: false });
+	};
 
 	openListUser=()=>{
 		const {data}=this.state;
@@ -258,6 +262,7 @@ class GameTruyKich extends React.Component {
 					minute={this.state.minute}
 					second={this.state.second}
 					isLogin={this.state.isLogin}
+					dialogItemOpen={this.state.dialogItemOpen}
 
 
 					handleCloseSnack={this.handleCloseSnack}
@@ -272,6 +277,7 @@ class GameTruyKich extends React.Component {
 					closeDialogUserEmpty={this.closeDialogUserEmpty}
 					dialogLoginOpen={this.state.dialogLoginOpen}
 					handleCloseDialogLogin={this.handleCloseDialogLogin}
+					handleCloseDialogItem={this.handleCloseDialogItem}
 					buyItem={this.buyItem}
 					// getData={this.getData}
 					// selectPackage={this.selectPackage}
