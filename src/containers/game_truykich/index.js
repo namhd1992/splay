@@ -121,6 +121,8 @@ class GameTruyKich extends React.Component {
 						_this.getLink(user);
 					}else if(data.status==="05"){
 						this.setState({openSnack:true, message:'Số điểm của bạn không đủ để đổi',snackVariant:'info',})
+					}else if(data.status==="06"){
+						this.setState({openSnack:true, message:'Hết hạn đổi vật phẩm',snackVariant:'info',})
 					}else if(data.status==="04"){
 						this.setState({openSnack:true, message:'Người dùng chưa tham gia sự kiện',snackVariant:'info',})
 					}else if(data.status==="02"){
