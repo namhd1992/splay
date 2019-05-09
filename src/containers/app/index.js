@@ -119,7 +119,7 @@ class App extends React.Component {
 		return (
 			<div style={{ backgroundColor: this.state.backgroundColor }}>
 				<div className="banner" >
-				{(document.location.pathname.indexOf("/MCD-trieuhoi")!==-1 || document.location.pathname.indexOf("-Truy-")!==-1)?(<div></div>):(<img className="img_banner" src="/../banner.jpg" alt="banner" onClick={this.linkToGame}/>)}
+				{/* {(document.location.pathname.indexOf("/MCD-trieuhoi")!==-1 || document.location.pathname.indexOf("-Truy-")!==-1)?(<div></div>):(<img className="img_banner" src="/../banner.jpg" alt="banner" onClick={this.linkToGame}/>)} */}
 				</div>
 				<div className="content" style={{ background: this.state.backgroundColor }}>
 					{(!this.state.fullscreen) ? (<MenuAppBar isMobile={this.state.isMobile} pathname={document.location.pathname} compact={this.state.compact} scrolling={this.state.scrolling}
@@ -171,7 +171,7 @@ class App extends React.Component {
 					</ScrollToTop>
 				</div>
 				<div className="banner">
-				{(document.location.pathname.indexOf("/MCD-trieuhoi")!==-1 || document.location.pathname.indexOf("-Truy-")!==-1)?(<div></div>):(<img className="img_banner" src="/../banner.jpg" alt="banner" onClick={this.linkToGame}/>)}
+				{/* {(document.location.pathname.indexOf("/MCD-trieuhoi")!==-1 || document.location.pathname.indexOf("-Truy-")!==-1)?(<div></div>):(<img className="img_banner" src="/../banner.jpg" alt="banner" onClick={this.linkToGame}/>)} */}
 				</div>
 			</div>
 		)
